@@ -20,7 +20,7 @@ ECOCIDE is a geospatial causal-inference framework built to independently verify
 
 ---
 
-Interactive geospatial map hosted separately via GitHub Pages and embedded live in the dashboard: **[View the interactive flood-extent map →](https://sakshimaske303-commits.github.io/ECOCIDE/dashboard/static/kherson_flood_extent_webmap/index.html)**
+Interactive geospatial map hosted separately via GitHub Pages and embedded live in the dashboard: *[View the interactive dashboard →](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)
 
 ---
 

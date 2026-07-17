@@ -89,4 +89,4 @@ Stop Ecocide International. (2024). Mass destruction of nature reaches Internati
 ---
 
 **Full dataset, code, and reproducible pipeline**: github.com/sakshimaske303-commits/ECOCIDE
-**Live interactive dashboard**: *(link to be added upon deployment)*
+**Live interactive dashboard**: https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/
