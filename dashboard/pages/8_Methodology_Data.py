@@ -98,6 +98,15 @@ project's primary finding.
 st.markdown("---")
 
 st.markdown(f"""
+<div class="forensic-card" style="margin-bottom: 16px;">
+    <p style="color: {PALETTE['accent']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px;">GitHub Repository</p>
+    <p style="color: {PALETTE['text_primary']}; font-size: 0.9rem; margin: 0;">
+        <a href="https://github.com/sakshimaske303-commits/ECOCIDE" target="_blank" style="color: {PALETTE['accent']};">github.com/sakshimaske303-commits/ECOCIDE</a>
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown(f"""
 <div class="forensic-card" style="text-align: center; padding: 25px;">
     <p style="color: {PALETTE['text_secondary']}; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;">Project Author</p>
     <h2 style="color: {PALETTE['text_primary']}; margin: 5px 0;">SAKSHI D. MASKE</h2>
