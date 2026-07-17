@@ -23,7 +23,7 @@ Interactive map of verified UNOSAT flood-extent polygons across three dates (6 J
 
 st.markdown("---")
 
-MAP_SERVER_BASE = "/app/static"
+MAP_SERVER_BASE = "https://sakshimaske303-commits.github.io/ECOCIDE/dashboard/static"
 map_url = f"{MAP_SERVER_BASE}/kherson_flood_extent_webmap/index.html"
 
 components.iframe(src=map_url, height=600, scrolling=True)
