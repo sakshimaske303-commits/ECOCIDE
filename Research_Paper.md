@@ -1,6 +1,4 @@
-Chalo-**literature-review-ke-liye-kuch-searches** karti-hoon pehle, genuinely-grounded-paper-ke-liye.# ECOCIDE: Isolating Conflict-Attributable Environmental Damage Through Causal Inference — A Case Study of the Kakhovka Dam Destruction
-
-**Sakshi D. Maske**
+# Sakshi D. Maske
 Independent Geospatial Researcher
 
 ## Abstract
