@@ -4,13 +4,13 @@
 
 ECOCIDE is a geospatial causal-inference framework designed to independently verify claims of environmental destruction arising from armed conflict, using Earth Observation (EO) data, remote sensing, and statistical causal-inference methods. In recent years, international legal bodies have begun formally considering the recognition of mass environmental destruction — "ecocide" — as a prosecutable international crime, alongside genocide, crimes against humanity, war crimes, and aggression.
 
-Existing geospatial assessments of conflict-related environmental damage — including the most recent published assessment of the Ukraine war (Leal Filho et al., 2026) — rely on visual, qualitative before-after satellite image comparison and explicitly do not attempt to establish statistical causality, instead describing observed changes as "conflict-associated" rather than conflict-attributable. This is a deliberate and reasonable methodological choice given the scope of that prior work, but it leaves a specific, acknowledged gap: no existing framework quantifies conflict-attributable environmental damage using a genuine causal-inference design with a matched non-conflict control zone, statistical significance testing, and placebo validation.
+Existing geospatial assessments of conflict-related environmental damage — including the most recent published assessment of the Ukraine war (Leal Filho et al., 2026) — rely on visual, qualitative before-after satellite image comparison and explicitly do not attempt to establish statistical causality, instead describing observed changes as "conflict-associated" rather than conflict-attributable. This is a deliberate and reasonable methodological choice given the scope of that prior work, but it leaves a specific, acknowledged gap: To the best of this literature review, no published framework quantifies conflict-attributable environmental damage using a genuine causal-inference design with a matched non-conflict control zone, statistical significance testing, and placebo validation.
 
 ECOCIDE addresses this specific gap directly, applying a Difference-in-Differences causal framework — validated through placebo testing and event-study analysis — to isolate conflict-attributable environmental damage from pre-existing or naturally occurring degradation, using independently observed satellite data rather than self-reported administrative claims or purely visual interpretation.
 
 ## Problem Statement
 
-Environmental damage in conflict zones is frequently documented through anecdotal reporting, damaged infrastructure counts, or qualitative before-after satellite image comparison, all of which are vulnerable to bias, incompleteness, and — critically — an inability to distinguish conflict-caused degradation from broader environmental trends already underway prior to the conflict (drought cycles, pre-existing industrial pollution, seasonal variation). Even recent, methodologically careful geospatial assessments explicitly decline to make causal attribution claims for this reason. There is currently no accessible, reproducible geospatial methodology that quantifies environmental war damage with the statistical rigor of a genuine causal-inference design, sufficient to support legal, humanitarian, or policy use.
+Environmental damage in conflict zones is frequently documented through anecdotal reporting, damaged infrastructure counts, or qualitative before-after satellite image comparison, all of which are vulnerable to bias, incompleteness, and — critically — an inability to distinguish conflict-caused degradation from broader environmental trends already underway prior to the conflict (drought cycles, pre-existing industrial pollution, seasonal variation). Even recent, methodologically careful geospatial assessments explicitly decline to make causal attribution claims for this reason. There is currently no accessible, reproducible geospatial methodology that quantifies environmental war damage with the statistical rigor of a genuine causal-inference design, sufficient to support legal evidence assessment , humanitarian, or policy use.
 
 ## Aim
 
@@ -31,7 +31,7 @@ Does armed conflict produce a statistically significant, quantifiable increase i
 
 ## Relationship to Existing Work
 
-This project directly builds on and differentiates from the most recent geospatial assessment of Ukraine's war-related environmental damage (Leal Filho et al., 2026, Frontiers in Environmental Science), which explicitly identifies the development of standardized, quantitative indicators as a direction for future research. That study's methodology — visual interpretation of multi-temporal imagery, triangulated with qualitative institutional reporting, without a matched control zone or causal-inference design — is appropriate for its broader descriptive and typological aims, but does not attempt statistical attribution. ECOCIDE is designed specifically to fill that acknowledged gap for a shared case-study region, applying the same causal-inference rigor (Difference-in-Differences, placebo testing, event-study validation) previously developed and validated in this researcher's prior work (GPIE, DOUBLE JEOPARDY).
+This project directly builds on and differentiates from the most recent geospatial assessment of Ukraine's war-related environmental damage (Leal Filho et al., 2026, Frontiers in Environmental Science), which explicitly identifies the development of standardized, quantitative indicators as a direction for future research. That study's methodology — visual interpretation of multi-temporal imagery, triangulated with qualitative institutional reporting, without a matched control zone or causal-inference design — is appropriate for its broader descriptive and typological aims, but does not attempt statistical attribution. ECOCIDE is designed specifically to fill that acknowledged gap for a shared case-study region, applying the same causal-inference rigor (Difference-in-Differences, placebo testing, event-study validation) previously developed and validated during previous research projects).
 
 ## Expected Outputs
 
@@ -219,3 +219,98 @@ A placebo test was conducted using a fake treatment date (June 2022, one year be
 event), restricted to pre-conflict data only. This produced no significant effect (did_term = 
 0.0148, p=0.7411), confirming the real result is not an artifact of a general pre-existing trend 
 in Kherson, and providing strong validation of the genuine treatment effect's credibility.
+
+## Event Study Validation
+
+A quarterly-binned event study (necessary after monthly-resolution bins produced a 
+rank-deficient, unestimable model with only 70 total observations) was conducted to test whether 
+the treatment effect was genuinely concentrated around the June 2023 event, rather than reflecting 
+a pre-existing trend.
+
+Results were mixed rather than cleanly supportive. Quarters immediately following the event 
+(Quarter 0, Jun-Aug 2023: p=0.035; Quarter +4, 2024: p=0.0001) showed significant negative 
+effects, consistent with genuine post-conflict vegetation decline. However, one pre-event quarter 
+(Quarter -4, summer 2022) also showed a significant negative effect (p=0.007), which is not 
+consistent with a clean parallel-trends assumption and is reported honestly as a limitation rather 
+than omitted. This does not invalidate the overall DiD and placebo-test results, but indicates 
+the treatment effect should be interpreted with appropriate caution regarding pre-existing 
+seasonal or baseline differences between the two zones, rather than presented as an unambiguous, 
+fully clean causal estimate.
+
+## Placebo Test Ambiguity — Narrowed Window
+
+A placebo test using a fake treatment date (March 2023) within the narrowed pre-period produced 
+a coefficient (-0.1382) nearly identical in magnitude to the real June 2023 result (-0.1384), 
+though not statistically significant (p=0.169 vs p=0.002). This is interpreted cautiously rather 
+than as clean validation: the narrowed placebo window (Jan-May 2023, only 10 observations) has 
+substantially reduced statistical power, making it unable to reliably distinguish a genuine null 
+effect from an underpowered test of a real effect. The near-identical coefficient magnitude means 
+this placebo test cannot be treated as strong confirmatory evidence, unlike the original 
+2022-baseline placebo test, which showed both a near-zero coefficient and a high p-value together. 
+This is reported as a genuine methodological limitation: the narrowed-baseline DiD result should 
+be interpreted as suggestive rather than definitively isolated from possible confounding events 
+in the March-May 2023 period specifically.
+
+## Difference-in-Differences Model — NDVI, Full Journey
+
+### Initial Model (Full 2022-2024 Baseline, No Seasonal Control)
+
+The first DiD model compared monthly NDVI between Kherson (treatment) and Tulcea (control) across the full available 2022-2024 window, with June 2023 as the treatment date. This produced a weak, non-significant result (R²=0.054, did_term coefficient=-0.0703, p=0.117). This was not accepted as a null finding without investigation, since NDVI is known to follow strong seasonal cycles that, if uncontrolled, dominate residual variance and can mask a genuine treatment effect regardless of whether one exists.
+
+**Reasoning for next step**: Rather than concluding "no effect exists," the low R² itself was treated as diagnostic — a model explaining only 5% of variance in a variable with strong, well-documented seasonal structure suggested a missing control variable, not an absent effect.
+
+### Adding Month Fixed Effects
+
+Month fixed effects were added to control for seasonal vegetation cycles. This substantially improved model fit (R²=0.747) and produced a statistically significant treatment effect (did_term=-0.0703, p=0.007) — the same coefficient magnitude as before, now correctly estimated with appropriate precision once seasonal noise was removed from the residual variance.
+
+**Reasoning**: The coefficient did not change, only its estimated precision did — confirming the seasonal confound was inflating uncertainty around a real effect, rather than the effect itself being an artifact of missing controls.
+
+### Placebo Test (Fake Date, Full Baseline)
+
+Following the standard validation discipline established in prior work (GPIE), a placebo test was run using a fake treatment date (June 2022) restricted to pre-conflict-event data. This produced a near-zero, non-significant coefficient (0.0148, p=0.741), providing strong validation that the real June 2023 result reflects a genuine event-specific effect rather than a general pre-existing trend.
+
+**Reasoning for accepting this as validation**: A clean placebo result requires both a near-zero coefficient AND a high p-value together — this placebo test showed both, which is the strongest form of validation available short of a randomized experiment.
+
+### Event Study — Monthly Resolution Failure
+
+An attempt to run a full monthly-resolution event study (following the same category of validation used in GPIE's 23-quarter analysis) failed technically: with only 70 total observations and a model specification requiring roughly 68 parameters (monthly relative-time dummies, month fixed effects, and event-interaction terms), the model became rank-deficient and could not estimate standard errors (all p-values returned as NaN).
+
+**Reasoning for the fix**: This was diagnosed as an over-parameterization problem specific to this project's much smaller sample size relative to GPIE's 27-country, multi-year panel — not a fundamental flaw in the event-study approach itself. The fix was to reduce temporal resolution (quarterly rather than monthly bins) to bring the parameter count well below the observation count, preserving the event-study logic while making it estimable.
+
+### Event Study — Quarterly Resolution, Mixed Result
+
+The quarterly event study revealed a genuine problem: while post-event quarters showed significant negative effects (Quarter 0: p=0.035; Quarter +4: p=0.0001), one pre-event quarter (Quarter -4, summer 2022) also showed a significant negative effect (p=0.007) — inconsistent with a clean parallel-trends assumption.
+
+**Reasoning for investigating rather than reporting as-is**: A significant pre-treatment effect specifically threatens the core validity of a DiD design, so this was investigated for cause rather than noted and left unresolved. The investigation identified that Kherson Oblast was already the site of active conflict (including the Kherson liberation operation, August-November 2022) well before the June 2023 dam destruction — meaning the original "pre-period" baseline was not a genuine pre-conflict baseline at all, but a period of different, already-ongoing conflict intensity. This is a scope-definition problem: the project aims to isolate the dam destruction's specific effect, not the cumulative effect of the entire war, and a baseline period that itself contains major conflict events cannot cleanly serve that narrower purpose.
+
+### Narrowed-Baseline DiD (Sensitivity Analysis)
+
+To address this, the pre-period was narrowed to January-May 2023 only — the months immediately preceding the dam's destruction, avoiding the confounded 2022 baseline. This produced a larger, still highly significant effect (did_term=-0.1384, p=0.002, R²=0.768).
+
+**Reasoning for treating this as a sensitivity check rather than an automatic replacement for the original result**: A larger effect size after removing a contaminated baseline is exactly what would be expected if the narrowing correctly isolated the marginal event-specific damage. However, a subsequent placebo test within this narrowed window (fake date: March 2023) produced a coefficient of nearly identical magnitude (-0.1382) to the real result, though not statistically significant (p=0.169).
+
+**Reasoning for not accepting this narrowed result as cleanly validated**: A placebo coefficient of nearly identical magnitude to the real effect is a meaningfully different — and weaker — form of validation than a placebo coefficient near zero, even when the placebo's p-value is not significant. The narrowed placebo window contains only 10 observations, giving it low statistical power; a non-significant p-value in this context could reflect either a genuine null effect or an underpowered test of a real (possibly confounded) effect, and the near-identical coefficient magnitude means this distinction cannot be resolved with the current data. This is reported as an honest, unresolved limitation rather than treated as either confirmatory or disqualifying.
+
+### Current Reporting Decision
+
+Both results are retained and reported transparently rather than selecting only the more favorable one: the original broader-baseline DiD result (did_term=-0.0703, p=0.007) is treated as the primary finding, since its placebo test was unambiguously clean (near-zero coefficient, high p-value together). The narrowed-baseline result (did_term=-0.1384, p=0.002) is reported as a sensitivity analysis showing a larger effect once the confounded 2022 baseline is excluded, with its own placebo-validation limitation explicitly disclosed rather than omitted.
+
+## Design Principle Reinforced
+
+This sequence directly parallels the discipline established in prior work (GPIE's placebo-driven model correction; DOUBLE JEOPARDY's honest reporting of an unsupported hypothesis): a favorable-looking result at each stage was treated as a hypothesis requiring further stress-testing rather than a conclusion, technical failures (the rank-deficient monthly event study) were diagnosed to their specific cause rather than worked around by weakening the validation approach, and an ambiguous validation result was reported as ambiguous rather than either suppressed or force-interpreted in the more convenient direction.
+
+## Reservoir Water-Loss — Quantification Without a Comparable Control
+
+An attempt was made to statistically quantify reservoir/floodplain water-loss in a Difference-in-
+Differences format matching the NDVI approach, but this was not feasible: no comparable control-
+zone equivalent exists for a river-mouth reservoir collapse specifically, since Tulcea's Danube
+Delta control zone has no equivalent large upstream reservoir infrastructure. This is reported as
+a genuine data-availability constraint rather than worked around.
+
+Instead, reservoir and downstream floodplain water changes are reported descriptively using the
+UNOSAT flood-progression data already validated: pre-breach reservoir extent of approximately
+2,155 km² and 18.2 km³ water volume (documented), against downstream floodplain inundation
+peaking at 464.18 km² on 9 June 2023 before receding to 21.17 km² by 21 June — presented as
+supporting descriptive evidence of physical scale alongside the statistically validated NDVI
+DiD result, rather than as an independently causally-tested finding.
+

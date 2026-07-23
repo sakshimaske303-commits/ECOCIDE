@@ -31,6 +31,12 @@ The most directly relevant prior work is a recently published geospatial assessm
 
 ## 3. Data and Methodology
 
+<p align="center">
+  <img src="outputs/plots/study_area_overview.png" width="700">
+</p>
+
+**Figure 1.** Study area showing the treatment zone (Kherson Oblast, Ukraine) and the matched control zone (Tulcea County, Romania) used in the Difference-in-Differences research design. Administrative boundaries were obtained from GADM v4.1. The control area was selected to represent a comparable river-delta ecosystem while remaining unaffected by the Kakhovka Dam destruction, enabling causal estimation through a matched treatment–control comparison.
+
 ### 3.1 Study Design
 
 A Difference-in-Differences design was used, comparing the treatment zone (Kherson Oblast, Ukraine, containing the dam and downstream floodplain) against a matched control zone (Tulcea County, Romania, the Danube Delta), selected for comparable pre-conflict river-delta and steppe ecology while being genuinely non-combatant.
@@ -54,6 +60,35 @@ A Difference-in-Differences regression was estimated with month fixed effects to
 
 Verified UNOSAT data revealed a complete flood hydrograph: 122.50 km² (6 June), expanding to a peak of 464.18 km² (9 June), before receding to 21.17 km² by 21 June — a full rise-peak-recession cycle within approximately two weeks.
 
+<p align="center">
+  <img src="outputs/maps/before_may2023_final.png" width="700">
+</p>
+
+<p align="center">
+  <img src="outputs/maps/after_july_2023_final.png" width="700">
+</p>
+
+**Figure 2.** Sentinel-2 true-colour imagery of the Kakhovka reservoir immediately before (May 2023) and after (July 2023) the destruction of the Kakhovka Dam. The post-event image reveals the near-complete drainage of the reservoir and extensive exposure of the former lakebed, providing direct visual evidence of the environmental transformation that motivated the subsequent statistical analysis.
+
+<p align="center">
+  <img src="outputs/plots/flood_extent_map.png" width="700">
+</p>
+
+**Figure 2.1.** Difference-in-Differences estimation of the causal impact of the Kakhovka Dam destruction on vegetation greenness. The primary model estimates a statistically significant treatment effect (coefficient = −0.0703, p = 0.007, R² = 0.747), indicating a measurable decline in NDVI within the treatment region relative to the matched control region following the June 2023 event.
+
+
+<p align="center">
+  <img src="outputs/plots/ndvi_comparison.png" width="700">
+</p>
+
+**Figure 3.** Monthly mean NDVI trends for the treatment region (Kherson Oblast, Ukraine) and the control region (Tulcea County, Romania) from January 2022 to December 2024. Following the June 2023 Kakhovka Dam destruction, the treatment region exhibits a clear and statistically consistent decline in vegetation greenness relative to the control region, providing preliminary evidence of an environmental impact prior to formal Difference-in-Differences estimation.
+
+<p align="center">
+  <img src="outputs/plots/flood_hydrograph.png" width="700">
+</p>
+
+**Figure 4.** Verified flood hydrograph derived from UNOSAT observations showing the temporal evolution of downstream flooding following the Kakhovka Dam destruction. Flood extent increased rapidly from 122.50 km² on 6 June 2023 to a peak of 464.18 km² on 9 June before progressively receding to 21.17 km² by 21 June, confirming the complete rise–peak–recession cycle independently of the statistical vegetation analysis.
+
 ### 4.2 Vegetation Impact
 
 The Difference-in-Differences model found a statistically significant NDVI decline in Kherson relative to Tulcea (coefficient = −0.0703, p = 0.007, R² = 0.747). A placebo test using a fake June 2022 treatment date produced a near-zero, non-significant coefficient (0.0148, p = 0.741), providing clean validation that the real effect is event-specific.
@@ -61,6 +96,12 @@ The Difference-in-Differences model found a statistically significant NDVI decli
 ### 4.3 Event Study and a Disclosed Limitation
 
 A quarterly event study found significant negative effects in the treatment quarter (p = 0.035) and one year later (p = 0.0001), but also a significant effect in a pre-treatment quarter (summer 2022, p = 0.007) — traced to Kherson already being an active conflict zone (including a major liberation operation) before the dam's destruction, meaning the original baseline period was not a genuinely quiet pre-conflict period. A sensitivity analysis narrowing the baseline to immediately pre-event months produced a larger effect (−0.1384, p = 0.002), but its own placebo test was ambiguous — a near-identical coefficient magnitude with a non-significant p-value, reflecting low statistical power from a small sample rather than clean validation. Both results are reported, with the broader-baseline estimate treated as the primary, cleanly-validated finding.
+
+<p align="center">
+  <img src="outputs/plots/event_study.png" width="700">
+</p>
+
+**Figure 6.** Quarterly event-study estimates showing treatment effects relative to the pre-event baseline. Significant negative effects emerge during the treatment quarter and one year later, while a statistically significant pre-treatment coefficient highlights the influence of earlier conflict-related vegetation changes in Kherson. This pre-treatment signal motivated the sensitivity analysis and is reported transparently as a methodological limitation rather than being excluded.
 
 ## 5. Discussion
 
