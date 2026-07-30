@@ -5,6 +5,24 @@ def apply_custom_style():
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=JetBrains+Mono:wght@600;700&display=swap');
 
+
+        [data-testid="stHeader"] {
+    background-color: transparent !important;
+    height: 0rem !important;
+}
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+#MainMenu {
+    visibility: hidden !important;
+}
+.block-container {
+    padding-top: 1.5rem !important;
+}
+
         html, body, [class*="css"] {
             font-family: 'Inter', sans-serif;
         }

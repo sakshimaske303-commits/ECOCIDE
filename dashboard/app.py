@@ -134,12 +134,62 @@ for i, (icon, title, desc) in enumerate(nav_items):
 
 st.markdown("---")
 
+# ============================================================
+# FULL PROJECT DOCUMENTATION
+# ============================================================
+st.markdown(
+    f"""
+    <p style="text-align:center; color:{PALETTE['accent']}; text-transform:uppercase;
+              letter-spacing:1.5px; font-weight:800; font-size:0.95rem; margin-bottom:14px;">
+        Full Project Documentation
+    </p>
+    """,
+    unsafe_allow_html=True,
+)
+
+doc_col1, doc_col2, doc_col3 = st.columns(3)
+
+with doc_col1:
+    with open("Research_Paper.pdf", "rb") as f:
+        st.download_button(
+            label="📗 Research Paper",
+            data=f,
+            file_name="Research_Paper.pdf",
+            mime="application/pdf",
+            use_container_width=True
+        )
+
+with doc_col2:
+    with open("Project_Journal.pdf", "rb") as f:
+        st.download_button(
+            label="📘 Project Journal",
+            data=f,
+            file_name="Project_Journal.pdf",
+            mime="application/pdf",
+            use_container_width=True
+        )
+
+with doc_col3:
+    with open("Devlopment_Log.pdf", "rb") as f:
+        st.download_button(
+            label="📙 Development Log",
+            data=f,
+            file_name="Devlopment_Log.pdf",
+            mime="application/pdf",
+            use_container_width=True
+        )
+
+st.markdown("---")
+
 st.markdown(
     f"""
     <div style="text-align: center; padding: 25px;" class="forensic-card">
         <p style="color: {PALETTE['text_secondary']}; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;">Developed by</p>
         <h2 style="color: {PALETTE['text_primary']}; margin: 5px 0;">SAKSHI D. MASKE</h2>
-        <p style="color: {PALETTE['accent']}; font-weight: 700;">Independent Geospatial Researcher</p>
+        <p style="color: {PALETTE['accent']}; font-weight: 700; margin-bottom: 18px;">Independent Geospatial Researcher</p>
+        <a href="https://github.com/sakshimaske303-commits/ECOCIDE" target="_blank" style="display:inline-block; background-color:#2A2F36; border: 1px solid {PALETTE['accent']}; padding:12px 26px; border-radius:8px; text-decoration:none;">
+            <span style="color:{PALETTE['text_primary']} !important; font-weight:700; font-size:1rem;">🔗 View Full Project on GitHub</span>
+        </a>
     </div>
     """,
     unsafe_allow_html=True,
