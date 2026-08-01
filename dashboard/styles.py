@@ -6,11 +6,13 @@ def apply_custom_style():
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=JetBrains+Mono:wght@600;700&display=swap');
 
 
+        /* ---- Keep header visible (needed for the sidebar
+        open/close button) but hide only the Deploy button ---- */
         [data-testid="stHeader"] {
-    background-color: transparent !important;
-    height: 0rem !important;
+    background-color: #0E1A1F !important;
+    height: 3rem !important;
 }
-[data-testid="stToolbar"] {
+[data-testid="stAppDeployButton"] {
     display: none !important;
 }
 [data-testid="stDecoration"] {
@@ -20,8 +22,45 @@ def apply_custom_style():
     visibility: hidden !important;
 }
 .block-container {
-    padding-top: 1.5rem !important;
+    padding-top: 1rem !important;
 }
+
+        /* ---- Sidebar collapse/expand button — safety net
+        covering every naming variant Streamlit has used
+        across versions, since it's invisible-by-default on
+        a dark theme and hard to see on mobile otherwise ---- */
+        [data-testid="collapsedControl"],
+        [data-testid="stSidebarCollapsedControl"],
+        [data-testid="stSidebarCollapseButton"],
+        [data-testid="baseButton-header"],
+        [data-testid="stHeader"] button,
+        [data-testid*="ollapse" i],
+        button[kind="header"] {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 999999 !important;
+        }
+        [data-testid="collapsedControl"],
+        [data-testid="stSidebarCollapsedControl"] {
+            position: fixed !important;
+            top: 12px !important;
+            left: 12px !important;
+            background: #0A1418 !important;
+            border: 1.5px solid #00ACC1 !important;
+            border-radius: 8px !important;
+            padding: 4px !important;
+        }
+        [data-testid="collapsedControl"] svg,
+        [data-testid="stSidebarCollapsedControl"] svg,
+        [data-testid="stSidebarCollapseButton"] svg,
+        [data-testid="baseButton-header"] svg,
+        [data-testid="stHeader"] button svg,
+        button[kind="header"] svg {
+            fill: #00ACC1 !important;
+            stroke: #00ACC1 !important;
+            opacity: 1 !important;
+        }
 
         html, body, [class*="css"] {
             font-family: 'Inter', sans-serif;
