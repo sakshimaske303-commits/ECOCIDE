@@ -24,6 +24,14 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown(
+    "<div style='text-align: center; margin-top: 10px;'>"
+    "<a href='https://doi.org/10.5281/zenodo.21757974' target='_blank'>"
+    "<img src='https://zenodo.org/badge/DOI/10.5281/zenodo.21757974.svg' alt='DOI'>"
+    "</a></div>",
+    unsafe_allow_html=True,
+)
+
 st.markdown("---")
 
 col1, col2, col3, col4 = st.columns(4)

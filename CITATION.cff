@@ -30,6 +30,11 @@ keywords:
   - Kakhovka Dam
   - NDVI
   - geospatial analysis
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21757974"
+    description: "Zenodo archive of ECOCIDE v1.0.0"
+doi: "10.5281/zenodo.21757974"
 license: CC-BY-4.0
 version: 1.0.0
 date-released: "2026-08-02"
