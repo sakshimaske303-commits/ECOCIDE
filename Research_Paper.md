@@ -76,33 +76,33 @@ Verified UNOSAT data revealed a complete flood hydrograph: 122.50 km² (6 June),
   <img src="outputs/plots/flood_extent_map.png" width="700">
 </p>
 
-**Figure 3.** Difference-in-Differences estimation of the causal impact of the Kakhovka Dam destruction on vegetation greenness. The primary model estimates a statistically significant treatment effect (coefficient = −0.0703, 95% CI [−0.130, −0.010], HAC-robust p = 0.022, R² = 0.747), indicating a measurable decline in NDVI within the treatment region relative to the matched control region following the June 2023 event.
-
-<p align="center">
-  <img src="outputs/plots/ndvi_comparison.png" width="700">
-</p>
-
-**Figure 4.** Monthly mean NDVI trends for the treatment region (Kherson Oblast, Ukraine) and the control region (Tulcea County, Romania) from January 2022 to December 2024. Following the June 2023 Kakhovka Dam destruction, the treatment region exhibits a clear and statistically consistent decline in vegetation greenness relative to the control region, providing preliminary evidence of an environmental impact prior to formal Difference-in-Differences estimation.
+**Figure 3.** Verified multi-sensor UNOSAT flood-extent polygons over the Kherson Oblast flood corridor, at three dates spanning the event (6, 9, and 21 June 2023), showing the spatial footprint of the flood's rise, peak, and recession.
 
 <p align="center">
   <img src="outputs/plots/flood_hydrograph.png" width="700">
 </p>
 
-**Figure 5.** Verified flood hydrograph derived from UNOSAT observations showing the temporal evolution of downstream flooding following the Kakhovka Dam destruction. Flood extent increased rapidly from 122.50 km² on 6 June 2023 to a peak of 464.18 km² on 9 June before progressively receding to 21.17 km² by 21 June, confirming the complete rise–peak–recession cycle independently of the statistical vegetation analysis.
+**Figure 4.** Verified flood hydrograph derived from UNOSAT observations showing the temporal evolution of downstream flooding following the Kakhovka Dam destruction. Flood extent increased rapidly from 122.50 km² on 6 June 2023 to a peak of 464.18 km² on 9 June before progressively receding to 21.17 km² by 21 June, confirming the complete rise–peak–recession cycle independently of the statistical vegetation analysis.
 
 ### 4.2 Vegetation Impact
+
+<p align="center">
+  <img src="outputs/plots/ndvi_comparison.png" width="700">
+</p>
+
+**Figure 5.** Monthly mean NDVI trends for the treatment region (Kherson Oblast, Ukraine) and the control region (Tulcea County, Romania) from January 2022 to December 2024. Following the June 2023 Kakhovka Dam destruction, the treatment region exhibits a clear and statistically consistent decline in vegetation greenness relative to the control region, providing preliminary evidence of an environmental impact prior to formal Difference-in-Differences estimation.
 
 The Difference-in-Differences model found a statistically significant NDVI decline in Kherson relative to Tulcea (coefficient = −0.0703, 95% CI [−0.130, −0.010], R² = 0.747). Under HAC-robust standard errors the effect remains statistically significant (p = 0.022), a modest attenuation from the classical OLS estimate (p = 0.007) consistent with positive serial correlation in monthly NDVI. A placebo test using a fake June 2022 treatment date produced a near-zero, non-significant coefficient (0.0148, 95% CI [−0.043, 0.072], HAC p = 0.612), providing clean validation that the real effect is event-specific rather than an artifact of the estimation procedure.
 
 ### 4.3 Event Study and a Disclosed Limitation
 
-A quarterly event study found significant negative effects in the treatment quarter (HAC p = 0.005) and one year later (HAC p < 0.0001), but also a significant effect in a pre-treatment quarter (summer 2022, HAC p < 0.001) — traced to Kherson already being an active conflict zone (including a major liberation operation) before the dam's destruction, meaning the original baseline period was not a genuinely quiet pre-conflict period. A sensitivity analysis narrowing the baseline to immediately pre-event months produced a larger effect (−0.1384, 95% CI [−0.209, −0.068], HAC p = 0.0001), but its own placebo test — non-significant under classical standard errors (p = 0.169) — becomes statistically significant under the methodologically correct HAC correction (p = 0.001), a consequence of serial correlation in the very short, ten-observation narrowed window. This is reported as a decisive validation failure for the narrowed-baseline specification, not merely an ambiguous one: the window is too short and too serially correlated to support an independent causal estimate. Both results are reported, with the broader-baseline estimate — whose own placebo test remains clean under HAC — treated as the sole primary, validated finding, and the narrowed-baseline estimate retained only as an illustration of the pre-treatment-quarter problem rather than as independent evidence.
+A quarterly event study found significant negative effects in the treatment quarter (HAC p = 0.005), the following quarter (HAC p = 0.023 — not significant under classical standard errors, p = 0.075, but significant under HAC), and one year later (HAC p < 0.0001), but also a significant effect in a pre-treatment quarter (summer 2022, HAC p < 0.001) — traced to Kherson already being an active conflict zone (including a major liberation operation) before the dam's destruction, meaning the original baseline period was not a genuinely quiet pre-conflict period. A sensitivity analysis narrowing the baseline to immediately pre-event months produced a larger effect (−0.1384, 95% CI [−0.209, −0.068], HAC p = 0.0001), but its own placebo test — non-significant under classical standard errors (p = 0.169) — becomes statistically significant under the methodologically correct HAC correction (p = 0.001), a consequence of serial correlation in the very short, ten-observation narrowed window. This is reported as a decisive validation failure for the narrowed-baseline specification, not merely an ambiguous one: the window is too short and too serially correlated to support an independent causal estimate. Both results are reported, with the broader-baseline estimate — whose own placebo test remains clean under HAC — treated as the sole primary, validated finding, and the narrowed-baseline estimate retained only as an illustration of the pre-treatment-quarter problem rather than as independent evidence.
 
 <p align="center">
   <img src="outputs/plots/event_study.png" width="700">
 </p>
 
-**Figure 6.** Quarterly event-study estimates showing treatment effects relative to the pre-event baseline. Significant negative effects emerge during the treatment quarter and one year later, while a statistically significant pre-treatment coefficient highlights the influence of earlier conflict-related vegetation changes in Kherson. This pre-treatment signal motivated the sensitivity analysis and is reported transparently as a methodological limitation rather than being excluded.
+**Figure 6.** Quarterly event-study estimates (Newey-West HAC standard errors) showing treatment effects relative to the pre-event baseline. Significant negative effects emerge during the treatment quarter, the following quarter, and one year later, while a statistically significant pre-treatment coefficient highlights the influence of earlier conflict-related vegetation changes in Kherson. This pre-treatment signal motivated the sensitivity analysis and is reported transparently as a methodological limitation rather than being excluded.
 
 ### 4.4 Robustness Checks
 
@@ -114,6 +114,12 @@ Every regression in this study was re-estimated with Newey–West HAC standard e
 | Narrowed-baseline DiD | −0.1384 | [−0.209, −0.068] | 0.002 | 0.0001 |
 | Placebo (broad baseline) | 0.0148 | [−0.043, 0.072] | 0.741 | 0.612 |
 | Placebo (narrowed baseline) | −0.1382 | [−0.221, −0.055] | 0.169 | 0.001 |
+
+<p align="center">
+  <img src="outputs/plots/robustness_check.png" width="700">
+</p>
+
+**Figure 7.** Point estimates and 95% confidence intervals for all four causal-inference models under classical OLS versus Newey-West HAC standard errors. The main and narrowed-baseline DiD estimates hold, and remain clearly bounded away from zero, under both specifications. The broad-baseline placebo interval straddles zero under both specifications (clean validation). The narrowed-baseline placebo interval straddles zero classically but excludes zero under HAC — the visual signature of the validation failure discussed above.
 
 The main finding and the narrowed-baseline point estimate both survive HAC correction — the narrowed-baseline estimate in fact becomes more significant, not less. The one qualitative reversal is the narrowed-baseline placebo test, which fails under HAC. This reinforces, rather than undermines, the paper's decision to treat the broader-baseline specification as its sole primary result.
 

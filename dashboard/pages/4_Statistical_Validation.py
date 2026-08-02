@@ -61,11 +61,11 @@ else:
 
 st.warning("""
 **A genuine limitation, disclosed honestly:** While quarters immediately following the event
-(Quarter 0: HAC p=0.005; Quarter +4: HAC p<0.0001) showed significant negative effects, one
-pre-event quarter (Quarter -4, summer 2022) also showed a significant effect (HAC p<0.001) —
-inconsistent with a fully clean parallel-trends assumption. Investigation traced this to Kherson
-already being an active conflict zone in 2022 (including the Kherson liberation operation),
-meaning the original baseline period was not a genuinely quiet pre-conflict period.
+(Quarter 0: HAC p=0.005; Quarter +1: HAC p=0.023; Quarter +4: HAC p<0.0001) showed significant
+negative effects, one pre-event quarter (Quarter -4, summer 2022) also showed a significant effect
+(HAC p<0.001) — inconsistent with a fully clean parallel-trends assumption. Investigation traced
+this to Kherson already being an active conflict zone in 2022 (including the Kherson liberation
+operation), meaning the original baseline period was not a genuinely quiet pre-conflict period.
 """)
 
 st.markdown("---")
@@ -102,6 +102,24 @@ does not survive proper robustness testing. It is retained on this dashboard onl
 the pre-treatment-quarter problem it was built to investigate, not as independent evidence. The
 broader-baseline result (-0.0703, HAC p=0.022), whose own placebo test remains clean under HAC, is
 the project's sole primary finding.
+""")
+
+st.markdown("---")
+
+st.markdown("### Robustness Summary — All Four Models, Both Standard-Error Specifications")
+
+robustness_image_path = os.path.join(PROJECT_ROOT, "outputs", "plots", "robustness_check.png")
+if os.path.exists(robustness_image_path):
+    st.image(robustness_image_path, use_container_width=True)
+else:
+    st.warning("Robustness check image not found.")
+
+st.markdown("""
+Every model in this project is shown here twice — once under classical OLS standard errors, once
+under Newey-West HAC. The main and narrowed-baseline DiD estimates stay clearly bounded away from
+zero either way. The broad-baseline placebo interval straddles zero under both specifications
+(clean validation). The narrowed-baseline placebo interval straddles zero classically but excludes
+zero under HAC — the visual signature of the validation failure discussed above.
 """)
 
 st.markdown("---")

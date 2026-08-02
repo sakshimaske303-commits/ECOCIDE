@@ -46,7 +46,9 @@ def main():
 
     event_terms = " + ".join([f"evt_q{q}".replace("-", "neg") for q in quarters])
     formula = f"ndvi ~ treatment + C(month_num) + {event_terms}"
-    model = smf.ols(formula, data=df).fit()
+    # Newey-West HAC standard errors (Newey & West, 1987), consistent with the
+    # rest of the analysis; cluster-robust SEs do not apply to a two-unit design
+    model = smf.ols(formula, data=df).fit(cov_type="HAC", cov_kwds={"maxlags": 1})
 
     plot_quarters, coefs, ci_lower, ci_upper, colors = [], [], [], [], []
     for q in quarters:
@@ -74,11 +76,16 @@ def main():
 
     ax.axhline(0, color="#ffffff", linestyle="-", linewidth=1, alpha=0.5)
     ax.axvline(0, color=ACCENT, linestyle="--", linewidth=1.5, alpha=0.7)
-    ax.text(0, max(coefs) + max(ci_upper) + 0.02, "Dam Destroyed\n(Quarter 0)", color=ACCENT,
-            fontsize=10, fontweight="bold", ha="center")
+
+    top = max(c + u for c, u in zip(coefs, ci_upper))
+    bottom = min(c - l for c, l in zip(coefs, ci_lower))
+    span = top - bottom
+    ax.set_ylim(bottom - span * 0.12, top + span * 0.22)
+    ax.text(0, top + span * 0.08, "Dam Destroyed\n(Quarter 0)", color=ACCENT,
+            fontsize=10, fontweight="bold", ha="center", va="bottom")
 
     ax.set_title("Event Study: Quarterly Treatment Effect on NDVI\nRelative to Kakhovka Dam Destruction (June 2023)",
-                 color=TEXT_COLOR, fontsize=18, fontweight="bold", pad=20)
+                 color=TEXT_COLOR, fontsize=18, fontweight="bold", pad=28)
     ax.set_xlabel("Quarters Relative to Dam Destruction", color=TEXT_COLOR, fontsize=12)
     ax.set_ylabel("Treatment Effect on NDVI", color=TEXT_COLOR, fontsize=12)
     ax.tick_params(colors=TEXT_COLOR, labelsize=10)
@@ -88,17 +95,17 @@ def main():
         spine.set_color(GRID_COLOR)
 
     handles = [
-        plt.Line2D([0], [0], marker="o", color="w", markerfacecolor=SIG_COLOR, markersize=10, label="p < 0.05 (significant)"),
+        plt.Line2D([0], [0], marker="o", color="w", markerfacecolor=SIG_COLOR, markersize=10, label="p < 0.05, HAC (significant)"),
         plt.Line2D([0], [0], marker="o", color="w", markerfacecolor=NONSIG_COLOR, markersize=10, label="Not significant"),
     ]
     legend = ax.legend(handles=handles, loc="lower left", fontsize=10, frameon=True, facecolor="#1a1a2e", edgecolor="none")
     for text in legend.get_texts():
         text.set_color(TEXT_COLOR)
 
-    plt.figtext(0.5, 0.02, "ECOCIDE — Quarterly-binned event study, month fixed effects included",
+    plt.figtext(0.5, -0.02, "ECOCIDE — Quarterly-binned event study, month fixed effects, Newey-West HAC standard errors",
                 ha="center", fontsize=9, color="#888888")
 
-    plt.tight_layout()
+    plt.tight_layout(rect=[0, 0.04, 1, 1])
     plt.savefig("outputs/plots/event_study.png", dpi=220, facecolor=BACKGROUND, bbox_inches="tight")
     plt.close()
     print("Saved: outputs/plots/event_study.png")
