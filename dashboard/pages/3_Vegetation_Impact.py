@@ -41,7 +41,7 @@ with col1:
     <div class="forensic-card" style="border-left: 4px solid {PALETTE['damage']}; min-height: 200px;">
         <p style="color: {PALETTE['damage']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Primary Result</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 2rem; font-weight: 900; margin-bottom: 4px;">-0.0703</p>
-        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin-bottom: 12px;">p = 0.007 · R² = 0.747</p>
+        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin-bottom: 12px;">p = 0.022 (HAC) · R² = 0.747</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.85rem; margin: 0;">
             A statistically significant NDVI decline in Kherson relative to Tulcea following the 
             conflict event, controlling for baseline differences and seasonality.
@@ -54,10 +54,11 @@ with col2:
     <div class="forensic-card" style="border-left: 4px solid {PALETTE['accent']}; min-height: 200px;">
         <p style="color: {PALETTE['accent']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Sensitivity Analysis</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 2rem; font-weight: 900; margin-bottom: 4px;">-0.1384</p>
-        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin-bottom: 12px;">p = 0.002 · Narrowed baseline</p>
+        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin-bottom: 12px;">p = 0.0001 (HAC) · Narrowed baseline</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.85rem; margin: 0;">
-            A larger effect emerges when excluding the confounded 2022 baseline period — reported 
-            with its own validation limitation disclosed on the Statistical Validation page.
+            A larger effect emerges when excluding the confounded 2022 baseline period — but this
+            specification fails its own placebo test under HAC correction, so it is kept only as an
+            illustrative sensitivity check; see the Statistical Validation page for the full picture.
         </p>
     </div>
     """, unsafe_allow_html=True)

@@ -1,3 +1,7 @@
+# Environment & credentials
+.env
+*.json.key
+
 *.tif
 
 data/mangroves/

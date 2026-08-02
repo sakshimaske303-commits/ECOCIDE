@@ -42,7 +42,9 @@ def main():
     event_terms = " + ".join([f"evt_q{q}".replace("-", "neg") for q in quarters])
     formula = f"ndvi ~ treatment + C(month_num) + {event_terms}"
 
-    model = smf.ols(formula, data=df).fit()
+    # Newey-West HAC standard errors (Newey & West, 1987); with only two
+    # geographic units, cluster-robust SEs are not applicable
+    model = smf.ols(formula, data=df).fit(cov_type="HAC", cov_kwds={"maxlags": 1})
 
     print("Event study coefficients (quarterly bins relative to June 2023):\n")
     for q in quarters:

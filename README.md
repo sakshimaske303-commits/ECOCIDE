@@ -35,9 +35,9 @@ Interactive geospatial map hosted separately via GitHub Pages and embedded live 
 
 ## 🔬 Key Findings
 
-**A statistically significant, causally-validated NDVI decline was detected.** Comparing Kherson (treatment) against Tulcea, Romania (control), a Difference-in-Differences model found a coefficient of −0.0703 (p = 0.007), confirmed through a clean placebo test using a counterfactual pre-event date (p = 0.741, near-zero coefficient).
+**A statistically significant, causally-validated NDVI decline was detected.** Comparing Kherson (treatment) against Tulcea, Romania (control), a Difference-in-Differences model found a coefficient of −0.0703 (95% CI [−0.130, −0.010], HAC-robust p = 0.022), confirmed through a clean placebo test using a counterfactual pre-event date (p = 0.612, near-zero coefficient). Standard errors use the Newey-West HAC correction rather than clustering, since this two-unit (treatment/control) design has too few clusters for cluster-robust inference to apply.
 
-**A genuine complication was found and reported honestly.** A quarterly event study revealed a significant effect in a pre-treatment quarter — traced to Kherson already being an active conflict zone before the dam's destruction. Rather than concealing this, it is disclosed transparently as a limitation on a narrowed-baseline sensitivity analysis, while the primary, cleanly-validated result stands independently.
+**A genuine complication was found and reported honestly.** A quarterly event study revealed a significant effect in a pre-treatment quarter — traced to Kherson already being an active conflict zone before the dam's destruction. A narrowed-baseline sensitivity analysis built to address this produces a larger effect, but its own placebo test fails once the correct HAC standard errors are applied — a genuine validation failure, disclosed as such rather than downplayed, while the primary, cleanly-validated broader-baseline result stands independently.
 
 **Verified flood data confirms a complete hydrograph.** UNOSAT's multi-sensor flood-extent data shows a full rise-peak-recession cycle: 122.50 km² (6 June) → 464.18 km² peak (9 June) → 21.17 km² (21 June).
 
@@ -66,7 +66,7 @@ ECOCIDE/
 
 ## 🛠️ Tech Stack
 
-Python · GeoPandas · Rasterio · Statsmodels · Plotly · Streamlit · QGIS · QGIS2Web · GitHub Pages · Sentinel Hub API · UNOSAT
+Python · GeoPandas · Matplotlib · Statsmodels · Streamlit · QGIS · QGIS2Web · GitHub Pages · Sentinel Hub API · UNOSAT
 
 ## 📚 Data Sources
 
@@ -91,6 +91,10 @@ streamlit run app.py
 **Sakshi D. Maske**
 
 Independent Geospatial Researcher
+
+## 📜 License
+
+This project is licensed under [CC BY 4.0](./LICENSE) — you are free to share and adapt this work for any purpose, including commercially, with attribution.
 
 ---
 

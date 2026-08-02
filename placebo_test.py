@@ -31,7 +31,11 @@ def main():
     df["did_term"] = df["treatment"] * df["post"]
     df["month"] = df["date"].dt.month.astype(str)
 
-    model = smf.ols("ndvi ~ treatment + post + did_term + C(month)", data=df).fit()
+    # Newey-West HAC standard errors (Newey & West, 1987), consistent with
+    # the main model, so the placebo test is a fair apples-to-apples check
+    model = smf.ols("ndvi ~ treatment + post + did_term + C(month)", data=df).fit(
+        cov_type="HAC", cov_kwds={"maxlags": 3}
+    )
     print("PLACEBO TEST (fake treatment date: June 2022)")
     print(f"did_term coefficient: {model.params['did_term']:.4f}")
     print(f"p-value: {model.pvalues['did_term']:.4f}")

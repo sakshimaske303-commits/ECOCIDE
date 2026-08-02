@@ -28,7 +28,13 @@ def main():
     # which otherwise dominate NDVI variance and mask the treatment effect
     df["month"] = df["date"].dt.month.astype(str)
 
-    model = smf.ols("ndvi ~ treatment + post + did_term + C(month)", data=df).fit()
+    # Standard errors: with only two geographic units (one treatment zone,
+    # one control zone), cluster-robust SEs are degenerate here, so
+    # inference uses Newey-West HAC standard errors (Newey & West, 1987)
+    # to account for serial correlation within each zone's monthly series
+    model = smf.ols("ndvi ~ treatment + post + did_term + C(month)", data=df).fit(
+        cov_type="HAC", cov_kwds={"maxlags": 3}
+    )
     print(model.summary())
 
     df.to_csv("data/did_panel_ndvi.csv", index=False)

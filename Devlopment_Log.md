@@ -49,8 +49,8 @@ The Kakhovka Dam destruction (6 June 2023) and surrounding Dnipro River floodpla
 
 ## Current Status
 
-Project Concept Finalized (Sharpened following literature review)
-Version 2.0
+Complete — all nine modules finished: causal analysis (Modules 1–6), geospatial visualization and interactive dashboard (Modules 7–8), and full documentation with GitHub/Zenodo deployment (Module 9). The methodology was subsequently reviewed and strengthened with Newey-West HAC-robust standard errors and a full panel-readiness pass; see "Panel-Readiness Review and Robustness Pass" below.
+Version 3.0
 
 ----------------------------------------------------------------------------------------------------
 
@@ -106,18 +106,6 @@ has itself been affected by war-related strikes on Danube port infrastructure an
 unsuitable as a control.
 
 ---------------------------------------------------------------------------------------------------
-
-# Development Log — ECOCIDE
-
-## Study Area & Control Zone — Decision Log
-
-**Conflict (Treatment) Zone**: Kakhovka Dam area and Dnipro River downstream floodplain (46.777°N, 33.370°E), Kherson Oblast, Ukraine. Dam destroyed 6 June 2023. Flood-affected analysis zone spans approximately 10,800 km² (dam to river mouth, per UNOSAT satellite analysis).
-
-**Control Zone Selection Process**: A within-Ukraine non-frontline control zone (e.g., Dnipropetrovsk Oblast) was initially considered, but rejected — recent reporting indicates the frontline has moved closer to this region, and war-adjacent economic and demographic effects (supply disruption, displacement) could contaminate a control zone even without direct conflict in that specific area. This mirrors a methodological risk identified in prior work (GPIE), where an internal-to-the-affected-region control group proved insufficiently independent.
-
-**Control Zone Selected**: Danube Delta, Tulcea County, Romania (45.200°N, 29.500°E). Selected for a comparable pre-conflict ecological baseline — river-delta wetland, Pannonian steppe, agricultural floodplain, similar continental climate — while being genuinely non-combatant. Explicitly verified as distinct from the Ukrainian side of the Danube Delta (Odesa Oblast), which has itself been affected by war-related strikes on Danube port infrastructure and is therefore unsuitable as a control.
-
----
 
 ## Boundary Acquisition
 
@@ -313,4 +301,88 @@ UNOSAT flood-progression data already validated: pre-breach reservoir extent of 
 peaking at 464.18 km² on 9 June 2023 before receding to 21.17 km² by 21 June — presented as
 supporting descriptive evidence of physical scale alongside the statistically validated NDVI
 DiD result, rather than as an independently causally-tested finding.
+
+----------------------------------------------------------------------------------------------------
+
+## Geospatial Visualization, Dashboard, and Documentation (Modules 7–9)
+
+With the causal model, event study, and flood-extent analysis complete, the remaining modules
+converted the statistical results into publication-grade outputs.
+
+**Module 7 — Geospatial Visualization**: A set of static maps and plots was produced from the
+validated data — the study-area overview (treatment/control zone boundaries), before/after
+true-colour imagery of the Kakhovka reservoir, the DiD regression result, the monthly NDVI
+comparison, the verified flood hydrograph, and the quarterly event-study chart — matching the
+figures referenced throughout Research_Paper.md. An interactive QGIS2Web flood-extent map was
+also built from the UNOSAT polygons for the dashboard's Interactive Maps page.
+
+**Module 8 — Dashboard & Deployment**: A multi-page Streamlit dashboard was built (overview page
+plus eight sub-pages: Study Design, Flood Analysis, Vegetation Impact, Statistical Validation,
+Explore Trends, Satellite Evidence, Interactive Maps, and Methodology & Data), presenting every
+finding — including the honestly disclosed narrowed-baseline limitation — in an interactive,
+non-technical format. The dashboard was deployed to Streamlit Community Cloud and linked from the
+project's GitHub repository.
+
+**Module 9 — Documentation**: Project_Journal.md, Research_Paper.md, and this development log were
+finalized, and README.md was written to summarize the project, its findings, and its reproducible
+pipeline for a GitHub audience. The repository was published to GitHub.
+
+----------------------------------------------------------------------------------------------------
+
+## Panel-Readiness Review and Robustness Pass
+
+### Motivation
+
+With the project functionally complete — causal analysis, dashboard, and documentation all
+finished — the project was reviewed once more end-to-end against the kind of scrutiny an Erasmus
+Mundus GEM/CDE scholarship panel would apply: whether the standard-error specification was
+appropriate for a two-unit comparative time series, whether the reference list met academic
+standards, whether the reported figures were internally consistent across every document, and
+whether the repository's security hygiene held up to public scrutiny.
+
+### Standard-Error Correction
+
+The original models used classical OLS standard errors throughout. On reflection, these are not
+the right choice for this design: with only two geographic units (Kherson as treatment, Tulcea as
+control) observed monthly over time, cluster-robust standard errors — the correction used in this
+researcher's prior multi-country panel work — are degenerate, since cluster-robust inference
+requires many independent clusters, not two. The appropriate correction for a small number of long
+time series is Newey-West HAC (heteroskedasticity- and autocorrelation-consistent) standard
+errors, which was applied to all five causal-inference scripts (`did_model.py`,
+`did_model_narrowed.py`, `placebo_test.py`, `placebo_narrowed.py`, `event_study.py`).
+
+The main finding and the narrowed-baseline point estimate both survive this correction — the
+narrowed-baseline estimate in fact becomes *more* significant, not less. The one substantive
+change is that the narrowed-baseline placebo test, previously reported as merely "ambiguous"
+under classical standard errors, becomes statistically significant under HAC — meaning it fails
+outright as a validation check rather than sitting in an unresolved middle ground. This is now
+reported plainly as a validation failure throughout Research_Paper.md, Project_Journal.md, and
+the dashboard, rather than the softer "ambiguous" framing used previously. It does not change the
+project's primary conclusion, since the broader-baseline result's own placebo test remains clean
+under the same correction.
+
+### Other Fixes Applied
+
+- **Figure numbering** in Research_Paper.md was corrected — a stray decimal sub-figure and a
+  missing figure number were resolved into a clean sequential 1–6 sequence.
+- **References** were rewritten with complete, verifiable citation details, replacing incomplete
+  entries and a placeholder journal name.
+- **Confidence intervals** were added alongside every reported coefficient and p-value, and a new
+  Robustness Checks subsection was added to Research_Paper.md summarizing the classical-versus-HAC
+  comparison in full.
+- **`requirements.txt`** was audited against actual imports across every script in the repository
+  and corrected — two unused packages were dropped and two actually-used packages that were
+  missing were added.
+- **The dashboard's PDF download buttons** used paths relative to the working directory, which
+  fails when the app is served from Streamlit Cloud (the working directory there is not the repo
+  root); this was fixed to resolve paths relative to the script's own location, with a graceful
+  fallback if a file is genuinely missing.
+- **Repository security**: the `.env` file containing live API credentials had been committed to
+  the public repository, because `.gitignore` never excluded it. The committed file was replaced
+  with placeholders, `.gitignore` was corrected to exclude `.env` and similar credential files
+  going forward, and the live credentials are being rotated at the provider separately from this
+  documentation pass.
+- A `LICENSE` (CC BY 4.0) and `CITATION.cff` were added ahead of the project's Zenodo archival, and
+  every dashboard page and document referencing the project's statistics was updated to keep the
+  HAC-corrected figures consistent throughout.
 

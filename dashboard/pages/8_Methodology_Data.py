@@ -59,13 +59,26 @@ with st.expander("**A Significant Pre-Event Quarter Revealed a Confounded Baseli
     not a genuinely quiet pre-conflict period.
     """)
 
-with st.expander("**A Narrowed Baseline's Placebo Test Was Ambiguous, Not Clean**"):
+with st.expander("**A Narrowed Baseline's Placebo Test Fails Under the Correct Standard Errors**"):
     st.markdown("""
-    Narrowing the pre-period to exclude the confounded 2022 baseline produced a larger, more 
-    significant effect — but its own placebo test (a fake date within the narrow window) produced 
-    a coefficient nearly identical in magnitude to the real result, though not statistically 
-    significant, due to low statistical power from only 10 observations. This is disclosed as an 
-    unresolved limitation rather than treated as confirmatory.
+    Narrowing the pre-period to exclude the confounded 2022 baseline produced a larger, more
+    significant effect — but its own placebo test (a fake date within the narrow window) produced
+    a coefficient nearly identical in magnitude to the real result. Under classical standard errors
+    this looked merely ambiguous (p=0.169, not significant); under the methodologically correct
+    Newey-West HAC standard errors — appropriate given serial correlation in this ten-observation
+    window — that placebo coefficient is statistically significant (p=0.001). This is a genuine
+    validation failure for the narrowed-baseline specification, disclosed as such rather than
+    downplayed as merely underpowered.
+    """)
+
+with st.expander("**Standard Errors: Why HAC, Not Clustering**"):
+    st.markdown("""
+    This design compares only two geographic units — one treatment zone (Kherson), one control
+    zone (Tulcea) — observed monthly over time. Cluster-robust standard errors, the usual
+    correction in panel designs with many independent units, are degenerate with only two clusters.
+    Newey-West HAC standard errors (Newey & West, 1987) are the standard remedy instead, correcting
+    for serial correlation within each zone's own time series. All models were re-estimated with
+    HAC alongside classical OLS; the comparison is reported in full in Research_Paper.md.
     """)
 
 with st.expander("**Downstream Flood Signal Was Lost to Cloud-Contaminated Optical Data**"):
@@ -89,10 +102,11 @@ statistically validated NDVI findings, not as an independently causally-tested r
 """)
 
 st.error("""
-**The narrowed-baseline DiD result (-0.1384) carries an unresolved validation limitation** — its 
-placebo test could not cleanly distinguish a genuine effect from statistical noise due to limited 
-sample size. The broader-baseline result (-0.0703, cleanly placebo-validated) is treated as the 
-project's primary finding.
+**The narrowed-baseline DiD result (-0.1384) fails its own placebo test under HAC correction** —
+the methodologically correct standard errors, given serial correlation in this short window. It is
+retained here only to illustrate the pre-treatment-quarter problem, not as independent evidence.
+The broader-baseline result (-0.0703, HAC p=0.022, cleanly placebo-validated under HAC) is treated
+as the project's sole primary finding.
 """)
 
 st.markdown("---")

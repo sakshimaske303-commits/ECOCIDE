@@ -32,7 +32,11 @@ def main():
     df["did_term"] = df["treatment"] * df["post"]
     df["month"] = df["date"].dt.month.astype(str)
 
-    model = smf.ols("ndvi ~ treatment + post + did_term + C(month)", data=df).fit()
+    # Newey-West HAC standard errors (Newey & West, 1987); cluster-robust
+    # SEs do not apply to a two-unit (treatment/control) comparison
+    model = smf.ols("ndvi ~ treatment + post + did_term + C(month)", data=df).fit(
+        cov_type="HAC", cov_kwds={"maxlags": 3}
+    )
     print(model.summary())
 
     df.to_csv("data/did_panel_ndvi_narrowed.csv", index=False)

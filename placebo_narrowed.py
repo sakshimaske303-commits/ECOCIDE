@@ -31,7 +31,15 @@ def main():
     df["post"] = (df["date"] >= FAKE_TREATMENT_DATE).astype(int)
     df["did_term"] = df["treatment"] * df["post"]
 
-    model = smf.ols("ndvi ~ treatment + post + did_term", data=df).fit()
+    # Newey-West HAC standard errors (Newey & West, 1987), maxlags=1 given
+    # the very short (10-observation) narrowed window. Note: under this
+    # correction the coefficient becomes statistically significant (unlike
+    # under classical OLS) — a genuine validation failure for the
+    # narrowed-baseline specification, not a computational artifact. See
+    # Research_Paper.md Sections 4.3/4.4 for the full discussion.
+    model = smf.ols("ndvi ~ treatment + post + did_term", data=df).fit(
+        cov_type="HAC", cov_kwds={"maxlags": 1}
+    )
     print("PLACEBO TEST (narrowed window, fake date: March 2023)")
     print(f"did_term coefficient: {model.params['did_term']:.4f}")
     print(f"p-value: {model.pvalues['did_term']:.4f}")

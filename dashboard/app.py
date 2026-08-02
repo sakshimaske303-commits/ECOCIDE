@@ -2,7 +2,10 @@ import streamlit as st
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+
+sys.path.append(BASE_DIR)
 from styles import apply_custom_style, PALETTE
 
 st.set_page_config(
@@ -29,7 +32,7 @@ with col1:
 with col2:
     st.metric("PEAK FLOOD", "464.18 km²", "9 June 2023")
 with col3:
-    st.metric("NDVI EFFECT", "-0.0703", "p = 0.007")
+    st.metric("NDVI EFFECT", "-0.0703", "p = 0.022 (HAC)")
 with col4:
     st.metric("VALIDATION", "Placebo-Tested", "Confirmed")
 
@@ -60,10 +63,11 @@ with col_right:
             <p style="color:{PALETTE['accent']}; text-transform:uppercase; font-size:0.78rem;
                       letter-spacing:1.5px; font-weight:800; margin-bottom:12px;">Core Finding</p>
             <p style="color:{PALETTE['text_primary']}; font-size:0.95rem; line-height:1.7; margin:0; font-weight:500;">
-                A causally-validated <b>NDVI decline of 0.0703</b> (p=0.007) was detected in the 
-                Kherson conflict zone relative to a matched non-conflict control zone (Danube 
-                Delta, Romania) — confirmed through a clean placebo test using a fake pre-event 
-                date, which showed no comparable effect (p=0.741).
+                A causally-validated <b>NDVI decline of 0.0703</b> (95% CI [-0.130, -0.010],
+                HAC-robust p=0.022) was detected in the Kherson conflict zone relative to a
+                matched non-conflict control zone (Danube Delta, Romania) — confirmed through a
+                clean placebo test using a fake pre-event date, which showed no comparable effect
+                (p=0.612).
             </p>
         </div>
         """, unsafe_allow_html=True
@@ -150,34 +154,43 @@ st.markdown(
 doc_col1, doc_col2, doc_col3 = st.columns(3)
 
 with doc_col1:
-    with open("Research_Paper.pdf", "rb") as f:
-        st.download_button(
-            label="📗 Research Paper",
-            data=f,
-            file_name="Research_Paper.pdf",
-            mime="application/pdf",
-            use_container_width=True
-        )
+    try:
+        with open(os.path.join(ROOT_DIR, "Research_Paper.pdf"), "rb") as f:
+            st.download_button(
+                label="📗 Research Paper",
+                data=f,
+                file_name="Research_Paper.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+    except FileNotFoundError:
+        st.warning("Research Paper PDF not found.")
 
 with doc_col2:
-    with open("Project_Journal.pdf", "rb") as f:
-        st.download_button(
-            label="📘 Project Journal",
-            data=f,
-            file_name="Project_Journal.pdf",
-            mime="application/pdf",
-            use_container_width=True
-        )
+    try:
+        with open(os.path.join(ROOT_DIR, "Project_Journal.pdf"), "rb") as f:
+            st.download_button(
+                label="📘 Project Journal",
+                data=f,
+                file_name="Project_Journal.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+    except FileNotFoundError:
+        st.warning("Project Journal PDF not found.")
 
 with doc_col3:
-    with open("Devlopment_Log.pdf", "rb") as f:
-        st.download_button(
-            label="📙 Development Log",
-            data=f,
-            file_name="Devlopment_Log.pdf",
-            mime="application/pdf",
-            use_container_width=True
-        )
+    try:
+        with open(os.path.join(ROOT_DIR, "Devlopment_Log.pdf"), "rb") as f:
+            st.download_button(
+                label="📙 Development Log",
+                data=f,
+                file_name="Devlopment_Log.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+    except FileNotFoundError:
+        st.warning("Development Log PDF not found.")
 
 st.markdown("---")
 

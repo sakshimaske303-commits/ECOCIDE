@@ -1,7 +1,8 @@
 streamlit
 pandas
 geopandas
-plotly
-rasterio
+matplotlib
 numpy
 statsmodels
+requests
+python-dotenv
