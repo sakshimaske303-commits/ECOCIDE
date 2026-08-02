@@ -56,11 +56,15 @@ A Difference-in-Differences regression was estimated with month fixed effects to
 
 Because this design compares only two geographic units (one treatment zone, one control zone) observed over time, cluster-robust standard errors — the standard correction in panel designs with many independent units — are not meaningful here; with only two clusters, cluster-robust inference is degenerate. Instead, inference uses Newey–West heteroskedasticity- and autocorrelation-consistent (HAC) standard errors (Newey & West, 1987), the standard remedy for serial correlation within a small number of long time series. All reported p-values and confidence intervals are HAC-corrected unless otherwise noted; the corresponding classical OLS statistics are reported alongside them in Section 4.4 for comparison.
 
+### 3.4 Pre-Treatment Covariate Balance
+
+A credible Difference-in-Differences design requires the treatment and control zones to be comparable before treatment, not merely afterward. This was tested directly rather than assumed. Over the pre-period (January 2022 – May 2023), mean NDVI was 0.222 in Kherson (n=17 months, SD=0.074) against 0.203 in Tulcea (n=17 months, SD=0.110) — a raw difference not statistically distinguishable from zero (two-sample t-test, p=0.553). Formally, the DiD regression's own `treatment` main-effect term (the estimated baseline level gap between zones, holding month fixed effects constant) is 0.019 NDVI, 95% CI [−0.021, 0.059], HAC p=0.347 — again not significant. Pre-period variability differs somewhat between zones (Tulcea's seasonal amplitude, 0.351, exceeds Kherson's, 0.274), which is disclosed here rather than smoothed over; this asymmetry is consistent with Tulcea's wetland hydrology and does not, on its own, indicate a violation of parallel pre-trends, which is tested directly via the event study in Section 4.3.
+
 ## 4. Results
 
 ### 4.1 Flood Extent
 
-Verified UNOSAT data revealed a complete flood hydrograph: 122.50 km² (6 June), expanding to a peak of 464.18 km² (9 June), before receding to 21.17 km² by 21 June — a full rise-peak-recession cycle within approximately two weeks.
+Verified UNOSAT data revealed a complete flood hydrograph: 122.50 km² (6 June), expanding to a peak of 464.18 km² (9 June), before receding to 21.17 km² by 21 June — a full rise-peak-recession cycle within approximately two weeks. At its peak, the flood covered approximately 4.3% of the roughly 10,800 km² downstream analysis corridor (dam to river mouth) — a scale indicator alongside the statistical vegetation result, not a substitute for it.
 
 <p align="center">
   <img src="outputs/maps/before_may2023_final.png" width="700">
@@ -70,7 +74,7 @@ Verified UNOSAT data revealed a complete flood hydrograph: 122.50 km² (6 June),
   <img src="outputs/maps/after_july_2023_final.png" width="700">
 </p>
 
-**Figure 2.** Sentinel-2 true-colour imagery of the Kakhovka reservoir immediately before (May 2023) and after (July 2023) the destruction of the Kakhovka Dam. The post-event image reveals the near-complete drainage of the reservoir and extensive exposure of the former lakebed, providing direct visual evidence of the environmental transformation that motivated the subsequent statistical analysis.
+**Figure 2.** Sentinel-2 true-colour imagery of the Kakhovka reservoir immediately before (May 2023) and after (July 2023) the destruction of the Kakhovka Dam. The post-event image reveals the near-complete drainage of the reservoir and extensive exposure of the former lakebed. This pair is presented to illustrate the spatial scale of the event and to motivate the statistical analysis that follows; it is not, on its own, evidence of a causal effect — that evidence is established separately in Sections 4.2–4.4, precisely to avoid the reliance on visual interpretation this study critiques in the existing literature (Section 2.3).
 
 <p align="center">
   <img src="outputs/plots/flood_extent_map.png" width="700">
@@ -93,6 +97,8 @@ Verified UNOSAT data revealed a complete flood hydrograph: 122.50 km² (6 June),
 **Figure 5.** Monthly mean NDVI trends for the treatment region (Kherson Oblast, Ukraine) and the control region (Tulcea County, Romania) from January 2022 to December 2024. Following the June 2023 Kakhovka Dam destruction, the treatment region exhibits a clear and statistically consistent decline in vegetation greenness relative to the control region, providing preliminary evidence of an environmental impact prior to formal Difference-in-Differences estimation.
 
 The Difference-in-Differences model found a statistically significant NDVI decline in Kherson relative to Tulcea (coefficient = −0.0703, 95% CI [−0.130, −0.010], R² = 0.747). Under HAC-robust standard errors the effect remains statistically significant (p = 0.022), a modest attenuation from the classical OLS estimate (p = 0.007) consistent with positive serial correlation in monthly NDVI. A placebo test using a fake June 2022 treatment date produced a near-zero, non-significant coefficient (0.0148, 95% CI [−0.043, 0.072], HAC p = 0.612), providing clean validation that the real effect is event-specific rather than an artifact of the estimation procedure.
+
+In practical terms, a coefficient of −0.0703 represents a decline of approximately 32% relative to Kherson's own pre-period mean NDVI (0.222; Section 3.4) — a substantial relative reduction in vegetation greenness, not merely a statistically detectable one. This framing is offered as a scale reference; NDVI is a spectral index, not a direct physical measurement of biomass or land area lost, and this study does not attempt to convert it into hectares or tonnes of vegetation without field-validated calibration, which was outside its scope.
 
 ### 4.3 Event Study and a Disclosed Limitation
 
@@ -127,11 +133,34 @@ The main finding and the narrowed-baseline point estimate both survive HAC corre
 
 This study's central methodological contribution is not merely applying satellite data to a conflict-damage question, but subjecting that application to the same falsification discipline standard in causal-inference research generally — a discipline the existing literature on satellite evidence in legal contexts identifies as precisely what is missing. The pre-treatment-quarter anomaly, rather than being suppressed, itself illustrates why naive before-after comparisons of conflict zones are methodologically fragile: an active war zone rarely has a genuinely undisturbed "before" period, and treating one as such risks conflating cumulative war effects with the effect of a specific, dateable event.
 
-## 6. Limitations
+### 5.1 Legal Relevance and Its Limits
+
+Article 8(2)(b)(iv) of the Rome Statute — the existing war-crime provision most directly concerned with environmental harm, distinct from the separately proposed standalone crime of ecocide discussed in Section 2.1 — prohibits attacks known to cause "widespread, long-term and severe damage to the natural environment which would be clearly excessive in relation to the concrete and direct overall military advantage anticipated." This study's findings speak to only one element of that conjunctive, multi-part test. The magnitude and statistical confidence of the vegetation decline (Section 4.2) and the spatial scale of the verified flood extent (Section 4.1) provide quantified evidence relevant to the "severe" and "widespread" elements specifically. They do not, on their own, establish the "long-term" element — this study's NDVI series runs only through November 2024, some 18 months post-event, which is suggestive but not conclusive of a durable, non-recovering change — and they say nothing about the "clearly excessive... military advantage" element, which is a legal and factual judgment outside this study's data and scope entirely. This study is offered as a contribution to the evidentiary basis such a legal determination would require, not as a substitute for one.
+
+## 6. Limitations and Threats to Validity
 
 The narrowed-baseline sensitivity analysis fails its own placebo test once HAC-robust standard errors are applied (Section 4.4) and is therefore not treated as independent validating evidence; it is retained in this paper only to illustrate the pre-treatment-quarter problem that motivated it. This study's overall causal design also rests on a single treatment–control pair rather than a multi-unit panel, which is why cluster-robust inference is unavailable and HAC correction was used instead; a design with more comparison zones would allow cluster-robust estimation and a stronger test of external validity. Reservoir water-loss could not be tested causally, since no comparable control-zone equivalent exists for a large upstream reservoir collapse, and is reported descriptively rather than as an independently causally-tested finding.
 
-## 7. Conclusion
+The following threats to validity were considered specifically, beyond the headline limitations above:
+
+- **Selection bias in the control zone.** Tulcea County was chosen for ecological comparability and genuinely non-combatant status (Section 3.1), and pre-treatment covariate balance was tested directly rather than assumed (Section 3.4). It remains a single, human-selected control rather than one of several candidates weighted algorithmically against the treatment zone, as a Synthetic Control Method design would provide (Section 7).
+- **Spatial spillover.** The Difference-in-Differences design assumes the control zone is unaffected by the treatment. Tulcea, roughly 300 km from Kherson across an international border, is a reasonable candidate for this assumption, but no formal spillover test (e.g., a spatial-lag diagnostic) was conducted.
+- **Data attrition from cloud contamination.** As documented in Devlopment_Log.md, optical Sentinel-2 composites are affected by cloud cover, which can bias which pixels contribute to a given month's statistic. This motivated the switch to UNOSAT's multi-sensor (including radar) flood product for the flood-extent analysis specifically; the NDVI series itself remains optical and inherits this general limitation, partially mitigated by monthly (rather than higher-frequency) aggregation.
+- **Serial correlation.** Addressed directly via Newey-West HAC standard errors throughout (Section 3.3, 4.4) rather than left uncorrected.
+- **Single-index measurement.** NDVI captures vegetation greenness specifically; it does not directly measure soil salinization, water contamination, or other dimensions of environmental harm potentially relevant to a fuller damage assessment (Section 7).
+
+## 7. Future Work
+
+Several extensions were identified as valuable but out of scope for this study's timeline and data budget, and are recorded here rather than silently omitted:
+
+- **Synthetic Control Method (SCM).** Constructing a weighted synthetic counterfactual from multiple candidate control regions (e.g., additional Danube Delta or Black Sea coastal counties) would reduce reliance on a single hand-selected control zone and directly strengthen the external-validity concern raised in Section 6.
+- **Additional vegetation and moisture indices.** Re-running the causal model on EVI (Enhanced Vegetation Index, less sensitive to soil background) and NDMI (Normalized Difference Moisture Index) would test whether the NDVI-based finding is an artifact of index choice or a robust cross-index signal.
+- **Meteorological and soil covariates.** Incorporating ERA5-Land reanalysis temperature and precipitation as regression covariates would help isolate the conflict-attributable signal from ordinary climate variability beyond what month fixed effects capture.
+- **SAR-based soil moisture and salinization analysis.** Sentinel-1 C-band SAR (VV/VH ratio) time series could speak to soil salinization and moisture-regime change in the drained reservoir bed and downstream floodplain — a dimension of damage NDVI alone cannot capture.
+- **Control-zone sensitivity analysis.** Re-estimating the main model against two or three alternative control counties would test whether the Tulcea-specific result generalizes or is sensitive to that particular choice.
+- **Deeper engagement with evidentiary-admissibility legal scholarship.** Beyond Section 5.1's treatment of Article 8(2)(b)(iv), a fuller discussion of scientific-evidence admissibility standards (e.g., the *Daubert* framework and its international-tribunal analogues) would strengthen the paper's positioning at the law–statistics interface.
+
+## 8. Conclusion
 
 Applying a causal-inference framework — previously undemonstrated for this event — to satellite-derived vegetation data, this study identifies a statistically significant, placebo-validated environmental effect attributable specifically to the Kakhovka Dam's destruction, while transparently disclosing a genuine methodological complication arising from the region's pre-existing conflict status. This directly addresses a gap the existing literature on both satellite-based conflict-damage assessment and legal evidentiary standards for environmental crimes explicitly identifies: the absence of standardized, statistically rigorous methods capable of distinguishing conflict-attributable damage from background environmental trends.
 
@@ -142,6 +171,8 @@ Atılgan Pazvantoğlu, C. (2025). Ecocide as a separate crime under the Rome Sta
 Kroker, P. (2015). Satellite imagery as evidence for international crimes. *International Justice Monitor*.
 
 Newey, W. K., & West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. *Econometrica*, 55(3), 703–708.
+
+Rome Statute of the International Criminal Court. (1998, as amended). Article 8(2)(b)(iv). United Nations. https://legal.un.org/icc/statute/99_corr/cstatute.htm
 
 Stop Ecocide International. (2024). Mass destruction of nature reaches International Criminal Court (ICC) as Pacific island states propose recognition of "ecocide" as international crime.
 

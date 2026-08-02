@@ -16,7 +16,7 @@
 
 ---
 
-ECOCIDE is a geospatial causal-inference framework built to independently verify claims of environmental destruction arising from armed conflict, using Earth Observation data and rigorous causal-inference methods. As international legal bodies move toward formally recognizing "ecocide" as a prosecutable international crime, this project addresses a specific, acknowledged gap: existing satellite-based assessments of war-related environmental damage rely on qualitative, visual interpretation and explicitly decline to establish statistical causality. ECOCIDE fills that gap, applying a Difference-in-Differences framework — validated through placebo testing and event-study analysis — to the destruction of Ukraine's Kakhovka Dam.
+ECOCIDE is a geospatial causal-inference framework built to independently verify claims of environmental destruction arising from armed conflict, using Earth Observation data and rigorous causal-inference methods — "independent" here means independent of official government reporting from any party, not independent of all human judgment; the analysis itself is built on publicly available, third-party-processed satellite products (Sentinel Hub, UNOSAT), and the full pipeline is open for scrutiny. As international legal bodies move toward formally recognizing "ecocide" as a prosecutable international crime, this project addresses a specific, acknowledged gap: existing satellite-based assessments of war-related environmental damage rely on qualitative, visual interpretation and explicitly decline to establish statistical causality. ECOCIDE fills that gap, applying a Difference-in-Differences framework — validated through placebo testing and event-study analysis — to the destruction of Ukraine's Kakhovka Dam.
 
 ---
 
@@ -42,6 +42,27 @@ Interactive geospatial map hosted separately via GitHub Pages and embedded live 
 **Verified flood data confirms a complete hydrograph.** UNOSAT's multi-sensor flood-extent data shows a full rise-peak-recession cycle: 122.50 km² (6 June) → 464.18 km² peak (9 June) → 21.17 km² (21 June).
 
 Full methodology, including every debugging decision and disclosed limitation, is documented in the dashboard's Methodology page and in `Project_Journal.md`.
+
+## 🏗️ Architecture
+
+```text
+Satellite APIs (Sentinel Hub, UNOSAT)
+        │
+        ▼
+Acquisition scripts (download_*.py, auth_sentinelhub.py)
+        │
+        ▼
+Preprocessing (NDVI/NDWI extraction, boundary clipping, GADM matching)
+        │
+        ▼
+Causal models (did_model.py, placebo_test.py, event_study.py — HAC-robust SEs)
+        │
+        ▼
+Static figures (map*.py) ──► Research_Paper.md / Project_Journal.md
+        │
+        ▼
+Streamlit dashboard (dashboard/app.py + 8 pages) ──► Zenodo DOI
+```
 
 ## 🗂️ Repository Structure
 
