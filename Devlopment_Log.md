@@ -1,5 +1,42 @@
 # ECOCIDE: A Causal-Inference Framework for Independently Verifying War-Time Environmental Damage
 
+## Index
+
+1. [Project Overview](#project-overview)
+2. [Problem Statement](#problem-statement)
+3. [Aim](#aim)
+4. [Objectives](#objectives)
+5. [Research Question](#research-question)
+6. [Relationship to Existing Work](#relationship-to-existing-work)
+7. [Expected Outputs](#expected-outputs)
+8. [Demonstration Case](#demonstration-case)
+9. [Current Status](#current-status)
+10. [Module Architecture](#ecocide-module-architecture)
+11. [Module 1 — Project Conceptualization & Literature Review](#module-1-project-conceptualization-literature-review)
+12. [Module 2 — Study Area & Control Zone Definition](#module-2-study-area-control-zone-definition)
+13. [Module 3 — Core Dataset Acquisition](#module-3-core-dataset-acquisition)
+14. [Module 4 — Conflict Event Timeline Construction](#module-4-conflict-event-timeline-construction)
+15. [Module 5 — Difference-in-Differences Causal Model](#module-5-difference-in-differences-causal-model)
+16. [Module 6 — Statistical Confidence & Damage Quantification](#module-6-statistical-confidence-damage-quantification)
+17. [Module 7 — Geospatial Visualization](#module-7-geospatial-visualization)
+18. [Module 8 — Dashboard & Deployment](#module-8-dashboard-deployment)
+19. [Module 9 — Documentation](#module-9-documentation)
+20. [Study Area & Control Zone — Decision Log](#study-area-control-zone-decision-log)
+21. [Boundary Acquisition](#boundary-acquisition)
+22. [NDVI Acquisition](#ndvi-acquisition)
+23. [NDWI Acquisition — A Multi-Stage Debugging Process](#ndwi-acquisition-a-multi-stage-debugging-process)
+24. [Design Principle Reinforced](#design-principle-reinforced)
+25. [Downstream Floodplain — Resolution via Authoritative UNOSAT Flood Extent Data](#downstream-floodplain-resolution-via-authoritative-unosat-flood-extent-data)
+26. [Difference-in-Differences Model — NDVI](#difference-in-differences-model-ndvi)
+27. [Event Study Validation](#event-study-validation)
+28. [Placebo Test Ambiguity — Narrowed Window](#placebo-test-ambiguity-narrowed-window)
+29. [Difference-in-Differences Model — NDVI, Full Journey](#difference-in-differences-model-ndvi-full-journey)
+30. [Design Principle Reinforced (Reservoir Analysis)](#design-principle-reinforced-1)
+31. [Reservoir Water-Loss — Quantification Without a Comparable Control](#reservoir-water-loss-quantification-without-a-comparable-control)
+32. [Geospatial Visualization, Dashboard, and Documentation (Modules 7–9)](#geospatial-visualization-dashboard-and-documentation-modules-79)
+33. [Panel-Readiness Review and Robustness Pass](#panel-readiness-review-and-robustness-pass)
+34. [Deep Verify: Independent Recomputation of Every Reported Statistic (2026-08-03)](#development-log-deep-verify-independent-recomputation-of-every-reported-statistic-2026-08-03)
+
 ## Project Overview
 
 ECOCIDE is a geospatial causal-inference framework designed to independently verify claims of environmental destruction arising from armed conflict, using Earth Observation (EO) data, remote sensing, and statistical causal-inference methods — "independent" of official government reporting from any party, not of all human judgment, since the analysis is built on publicly available, third-party-processed satellite products. In recent years, international legal bodies have begun formally considering the recognition of mass environmental destruction — "ecocide" — as a prosecutable international crime, alongside genocide, crimes against humanity, war crimes, and aggression.
@@ -385,4 +422,39 @@ under the same correction.
 - A `LICENSE` (CC BY 4.0) and `CITATION.cff` were added ahead of the project's Zenodo archival, and
   every dashboard page and document referencing the project's statistics was updated to keep the
   HAC-corrected figures consistent throughout.
+
+---
+
+# Development Log — Deep Verify: Independent Recomputation of Every Reported Statistic (2026-08-03)
+
+## Status
+
+Complete. Everything matched exactly — no discrepancies found.
+
+## Method
+
+Every quantitative claim in `Research_Paper.md` was independently recomputed by re-running this project's own scripts (`did_model.py`, `did_model_narrowed.py`, `placebo_test.py`, `placebo_narrowed.py`, `event_study.py`) directly against the raw `data/ndvi/kherson_ndvi_monthly.json` / `tulcea_ndvi_monthly.json` files, plus independently re-deriving the flood-extent areas from the raw UNOSAT shapefiles (`ST3_20230606_FloodExtent_KhersonskaOblast_UKR.shp`, `ST3_20230609_FloodExtent_KhersonskaOblast_UKR.shp`, `ST1_20230621_FloodExtent_KhersonskarOblast_UKR.shp`) using the same EPSG:6933 equal-area reprojection `water_loss_summary.py` uses, and re-implementing the pre-treatment covariate-balance test (§3.4) from scratch since it has no standalone script.
+
+## What was independently reproduced and confirmed exact
+
+- **§3.4 Pre-Treatment Covariate Balance:** re-derived from the raw NDVI series (Jan 2022–May 2023): Kherson n=17, mean=0.222, SD=0.074; Tulcea n=17, mean=0.203, SD=0.110; two-sample t-test p=0.553. Seasonal amplitude (max−min over the pre-period): Tulcea 0.351, Kherson 0.274. The DiD model's own `treatment` main-effect term: 0.0193 (paper rounds to 0.019), HAC p=0.347. All match exactly.
+- **§4.1 Flood Extent:** re-read the three raw UNOSAT flood-extent shapefiles and reprojected to EPSG:6933 for area calculation: 122.50 km² (6 June), 464.18 km² (9 June, the peak), 21.17 km² (21 June) — all match exactly. (The paper's "~4.3% of ~10,800 km² downstream corridor" figure is itself explicitly hedged as an approximate scale indicator — 464.18/10,800 = 4.30%, internally consistent with the stated corridor figure, though the corridor-area figure itself has no dedicated computation script to independently re-derive.)
+- **§4.2 Vegetation Impact — Main DiD model:** re-ran `did_model.py`: did_term coefficient = −0.0703, HAC p = 0.022, 95% CI [−0.130, −0.010], R² = 0.747. Classical OLS: p = 0.0070, 95% CI [−0.1206, −0.0200]. All match exactly, including both the HAC and classical figures reported side-by-side in §4.4's table.
+- **§4.2 Placebo test (broad baseline):** re-ran `placebo_test.py`: coefficient = 0.0148, HAC p = 0.6124; classical p = 0.7411. Matches exactly.
+- **§4.3 Narrowed-baseline DiD:** re-ran `did_model_narrowed.py`: coefficient = −0.1384, HAC p = 0.000129 (paper: <0.0001, rounds correctly), 95% CI [−0.209, −0.068]; classical p = 0.0019 (paper: 0.002). Matches exactly.
+- **§4.3 Narrowed-baseline placebo:** re-ran `placebo_narrowed.py`: coefficient = −0.1382, HAC p = 0.0011 (paper: 0.001); classical p = 0.1687 (paper: 0.169). Matches exactly — including the specific "classical non-significant, HAC significant" validation-failure pattern the paper calls out as the key finding of this test.
+- **§4.3 Event study:** re-ran `event_study.py`'s full quarterly-bin regression. Treatment quarter (rel_quarter 0): p=0.0053 (paper: HAC p=0.005). Following quarter (rel_quarter +1): p=0.0233 (paper: HAC p=0.023). One year later (rel_quarter +4, i.e. 12–15 months post-event): p=0.0000 (paper: HAC p<0.0001). Pre-treatment quarter, summer 2022 (rel_quarter −4, correctly identified via `rel_month = (year−2023)×12+(month−6)`): p=0.0004 (paper: HAC p<0.001). All four cited quarters match exactly, including the specific "pre-treatment anomaly" the paper reports as a disclosed limitation rather than concealing it.
+- **§4.2 "~32% relative decline" framing:** −0.0703 / 0.222 (Kherson's own pre-period mean, §3.4) = −31.7%, which the paper correctly rounds to "approximately 32%."
+
+## What could not be independently re-derived
+
+The "~10,800 km² downstream analysis corridor" figure used to compute the ~4.3% peak-flood-coverage statistic (§4.1) has no dedicated script producing it in this repository — it appears to be a manually-estimated corridor extent. The percentage itself is arithmetically consistent with the stated corridor area (464.18/10,800 = 4.30%), and the paper already explicitly hedges this framing ("roughly," "approximately," and "a scale indicator... not a substitute for" the statistical result), so this is noted rather than treated as a discrepancy.
+
+## Citation spot-check
+
+Spot-checked 3 of 6 references: Atılgan Pazvantoğlu (2025), *Ecocide as a separate crime under the Rome Statute: A legal analysis of the discourse*, Environmental Policy and Law 55(2–3), 57–67 — confirmed real on SAGE Journals, exact title match. Wang, Raymond, Gould & Baker (2013), *Problems from hell, solution in the heavens?*, Stability: International Journal of Security and Development 2(3), Art. 53 — confirmed real, exact title and DOI match. The paper's core factual claim (Vanuatu/Fiji/Samoa's September 2024 Rome Statute ecocide amendment proposal, cited to Stop Ecocide International 2024) was independently confirmed against Stop Ecocide International's own published article. No problems found in the 3 spot-checked; Kroker (2015), Newey & West (1987, a very well-established econometrics reference), and the Rome Statute primary-source citation were not individually re-verified this pass.
+
+## Outcome
+
+This is the cleanest Deep Verify pass across the portfolio so far — every single independently re-derivable statistic (pre-treatment balance test, all four causal models under both classical and HAC standard errors, all four cited event-study quarters, and all three flood-extent measurements) matched the paper exactly, with no fixes required to `Research_Paper.md`, `Project_Journal.md`, or the dashboard.
 
