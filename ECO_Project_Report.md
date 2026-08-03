@@ -1,6 +1,6 @@
 # ECOCIDE: A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes
 
-## Project Journal
+## Project Report
 
 ## Project Overview
 

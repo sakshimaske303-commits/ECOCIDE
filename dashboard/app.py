@@ -189,11 +189,11 @@ doc_col1, doc_col2, doc_col3 = st.columns(3)
 
 with doc_col1:
     try:
-        with open(os.path.join(ROOT_DIR, "Research_Paper.pdf"), "rb") as f:
+        with open(os.path.join(ROOT_DIR, "ECO_Research_Paper.pdf"), "rb") as f:
             st.download_button(
                 label="📗 Research Paper",
                 data=f,
-                file_name="Research_Paper.pdf",
+                file_name="ECO_Research_Paper.pdf",
                 mime="application/pdf",
                 use_container_width=True
             )
@@ -202,11 +202,11 @@ with doc_col1:
 
 with doc_col2:
     try:
-        with open(os.path.join(ROOT_DIR, "Project_Journal.pdf"), "rb") as f:
+        with open(os.path.join(ROOT_DIR, "ECO_Project_Report.pdf"), "rb") as f:
             st.download_button(
-                label="📘 Project Journal",
+                label="📘 Project Report",
                 data=f,
-                file_name="Project_Journal.pdf",
+                file_name="ECO_Project_Report.pdf",
                 mime="application/pdf",
                 use_container_width=True
             )
@@ -215,11 +215,11 @@ with doc_col2:
 
 with doc_col3:
     try:
-        with open(os.path.join(ROOT_DIR, "Devlopment_Log.pdf"), "rb") as f:
+        with open(os.path.join(ROOT_DIR, "ECO_Development_Log.pdf"), "rb") as f:
             st.download_button(
                 label="📙 Development Log",
                 data=f,
-                file_name="Devlopment_Log.pdf",
+                file_name="ECO_Development_Log.pdf",
                 mime="application/pdf",
                 use_container_width=True
             )
