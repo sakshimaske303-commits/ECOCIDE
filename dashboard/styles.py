@@ -72,63 +72,34 @@ def apply_custom_style():
             background: #0E1A1F;
         }
 
-        /* ---- Sidebar — same dark-card-with-cyan-glow language as the
-        DOI badge on the home page, instead of a bright teal/orange block ---- */
+        /* ---- Sidebar — same dark-gradient nav-pill language used
+        across the whole portfolio (matched to Double Jeopardy) ---- */
         section[data-testid="stSidebar"] {
-            background: linear-gradient(145deg, #141A22 0%, #0A1418 100%);
-            border-right: 2px solid #00ACC1;
-            box-shadow: 4px 0 24px rgba(0, 172, 193, 0.25);
-        }
-
-        section[data-testid="stSidebar"] * {
-            color: #F5F7FA !important;
+            background: linear-gradient(180deg, #141A22 0%, #0A1418 100%);
+            border-right: 1px solid rgba(0, 172, 193, 0.2);
         }
 
         section[data-testid="stSidebar"] label,
         section[data-testid="stSidebar"] p,
         section[data-testid="stSidebar"] span {
-            font-weight: 700;
+            color: #F5F7FA !important;
+            font-weight: 500;
         }
 
-        /* Nav page list — bold caps, breathing room, each link a mini
-        DOI-badge-style card on hover/active (dark + cyan border glow) */
-        section[data-testid="stSidebar"] [data-testid="stSidebarNavItems"] {
-            padding-top: 4px !important;
-            padding-bottom: 4px !important;
+        section[data-testid="stSidebar"] a {
+            border-radius: 8px !important;
+            padding: 8px 14px !important;
+            transition: all 0.2s ease;
         }
-        section[data-testid="stSidebar"] [data-testid="stSidebarNavItems"] li,
-        section[data-testid="stSidebar"] nav ul li,
-        section[data-testid="stSidebar"] ul li {
-            margin-bottom: 8px !important;
+        section[data-testid="stSidebar"] a:hover {
+            background: rgba(0, 172, 193, 0.12) !important;
+            border-left: 3px solid #00ACC1;
         }
-        section[data-testid="stSidebar"] [data-testid="stSidebarNavLink"],
-        section[data-testid="stSidebar"] [data-testid="stSidebarNavItems"] a,
-        section[data-testid="stSidebar"] nav a,
-        section[data-testid="stSidebar"] ul li a {
-            font-weight: 900 !important;
-            font-size: 1.1rem !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
-            color: #7FD8E8 !important;
-            padding: 10px 14px !important;
-            border-radius: 10px !important;
-            border: 1px solid transparent !important;
-            transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-        }
-        section[data-testid="stSidebar"] [data-testid="stSidebarNavLink"]:hover,
-        section[data-testid="stSidebar"] nav a:hover,
-        section[data-testid="stSidebar"] ul li a:hover {
-            background-color: rgba(0, 172, 193, 0.12) !important;
-            border-color: rgba(0, 172, 193, 0.4) !important;
-            transform: translateX(3px);
-        }
-        section[data-testid="stSidebar"] [aria-selected="true"],
-        section[data-testid="stSidebar"] [aria-current="page"] {
-            background: linear-gradient(145deg, #141A22, #0A1418) !important;
-            border: 2px solid #00ACC1 !important;
-            box-shadow: 0 0 16px rgba(0, 172, 193, 0.45) !important;
-            color: #F5F7FA !important;
-            font-weight: 900 !important;
+        section[data-testid="stSidebar"] a[aria-current="page"],
+        section[data-testid="stSidebar"] [aria-selected="true"] {
+            background: rgba(30, 90, 168, 0.18) !important;
+            border-left: 3px solid #1E5AA8;
+            font-weight: 700 !important;
         }
 
         h1 {
