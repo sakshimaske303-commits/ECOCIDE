@@ -152,6 +152,7 @@ st.markdown("### Explore the Evidence")
 
 nav_items = [
     ("🏛️", "Study Design", "Treatment/control zones, methodology"),
+    ("🌊", "Theoretical Foundations", "The flood physics and coastal oceanography behind the evidence"),
     ("🌊", "Flood Analysis", "Hydrograph, verified flood extent"),
     ("🌿", "Vegetation Impact", "NDVI causal analysis, DiD results"),
     ("📊", "Statistical Validation", "Placebo tests, event study, limitations"),
@@ -198,7 +199,7 @@ with doc_col1:
                 use_container_width=True
             )
     except FileNotFoundError:
-        st.warning("Research Paper PDF not found.")
+        st.warning("ECO_Research_Paper.pdf not found.")
 
 with doc_col2:
     try:
@@ -211,7 +212,7 @@ with doc_col2:
                 use_container_width=True
             )
     except FileNotFoundError:
-        st.warning("Project Journal PDF not found.")
+        st.warning("ECO_Project_Report.pdf not found.")
 
 with doc_col3:
     try:
@@ -224,7 +225,7 @@ with doc_col3:
                 use_container_width=True
             )
     except FileNotFoundError:
-        st.warning("Development Log PDF not found.")
+        st.warning("ECO_Development_Log.pdf not found.")
 
 st.markdown("---")
 
