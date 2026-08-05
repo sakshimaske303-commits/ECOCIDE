@@ -15,6 +15,51 @@ st.markdown(
 )
 st.markdown("---")
 
+# ============================================================
+# PROOF-OF-WORK POPOVERS — tiny, pulsing "📸" buttons next to the
+# exact data source / script they back up. Click to reveal the
+# screenshot inline; nothing pushes the page layout around. Drop
+# the PNGs into outputs/proof_screenshots/ (see filenames below)
+# and these activate automatically — until then each falls back to
+# a quiet "not added yet" note instead of breaking the page.
+# ============================================================
+st.markdown(f"""
+<style>
+    div[data-testid="stPopover"] button {{
+        animation: proof-blink 1.8s ease-in-out infinite;
+        border: 3px solid {PALETTE['accent']} !important;
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        min-height: unset !important;
+        min-width: unset !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }}
+    div[data-testid="stPopover"] button p {{
+        margin: 0 !important;
+        font-size: 0.95rem !important;
+        line-height: 1 !important;
+    }}
+    @keyframes proof-blink {{
+        0%, 100% {{ box-shadow: 0 0 0px rgba(0, 172, 193, 0); }}
+        50% {{ box-shadow: 0 0 12px rgba(0, 172, 193, 0.85); }}
+    }}
+</style>
+""", unsafe_allow_html=True)
+
+PROOF_DIR = os.path.join(PROJECT_ROOT, "outputs", "proof_screenshots")
+
+def proof_popover(filename, caption):
+    path = os.path.join(PROOF_DIR, filename)
+    with st.popover("📸"):
+        if os.path.exists(path):
+            st.image(path, caption=caption, use_container_width=True)
+        else:
+            st.caption(f"Screenshot not added yet — save it as `outputs/proof_screenshots/{filename}`.")
+
 st.markdown("### Data Sources")
 
 col1, col2 = st.columns(2)
@@ -25,10 +70,12 @@ with col1:
     - **Boundaries** — GADM v4.1
     """)
 with col2:
-    st.markdown("""
-    - **Flood Extent** — UNOSAT (ICEYE, Landsat-9, SkySat, WorldView-3, MODIS)
-    - **Reservoir Data** — Documented public sources (pre-breach capacity)
-    """)
+    r1a, r1b = st.columns([0.88, 0.12])
+    with r1a:
+        st.markdown("- **Flood Extent** — UNOSAT (ICEYE, Landsat-9, SkySat, WorldView-3, MODIS)")
+    with r1b:
+        proof_popover("01_kherson_flood_extent_qgis.png", "UNOSAT flood extent layers (ST1/ST3) for Kherson Oblast in QGIS, before/after Sentinel-2 imagery loaded alongside — the flood-extent product substituted in after cloud-contaminated optical NDWI detection failed.")
+    st.markdown("- **Reservoir Data** — Documented public sources (pre-breach capacity)")
 
 st.markdown("---")
 
@@ -52,12 +99,15 @@ with st.expander("**Monthly Event Study Failed — Model Was Rank-Deficient**"):
 
 with st.expander("**A Significant Pre-Event Quarter Revealed a Confounded Baseline**"):
     st.markdown("""
-    The quarterly event study revealed a significant effect in a pre-treatment quarter (summer 
-    2022) — a genuine threat to the parallel-trends assumption. Investigation traced this to 
-    active conflict already underway in Kherson well before the dam's destruction (including the 
-    Kherson liberation operation, August–November 2022), meaning the original baseline period was 
+    The quarterly event study revealed a significant effect in a pre-treatment quarter (summer
+    2022) — a genuine threat to the parallel-trends assumption. Investigation traced this to
+    active conflict already underway in Kherson well before the dam's destruction (including the
+    Kherson liberation operation, August–November 2022), meaning the original baseline period was
     not a genuinely quiet pre-conflict period.
     """)
+    esa, esb = st.columns([0.92, 0.08])
+    with esb:
+        proof_popover("02_event_study_vscode.png", "event_study.py open in VS Code — the quarterly event study that revealed the significant pre-treatment quarter and the confounded 2022 baseline.")
 
 with st.expander("**A Narrowed Baseline's Placebo Test Fails Under the Correct Standard Errors**"):
     st.markdown("""
@@ -70,6 +120,9 @@ with st.expander("**A Narrowed Baseline's Placebo Test Fails Under the Correct S
     validation failure for the narrowed-baseline specification, disclosed as such rather than
     downplayed as merely underpowered.
     """)
+    pna, pnb = st.columns([0.92, 0.08])
+    with pnb:
+        proof_popover("03_placebo_narrowed_vscode.png", "placebo_narrowed.py open in VS Code — the placebo test that looked ambiguous under classical SEs (p=0.169) but fails under the correct Newey-West HAC SEs (p=0.001).")
 
 with st.expander("**Standard Errors: Why HAC, Not Clustering**"):
     st.markdown("""
@@ -96,18 +149,22 @@ st.markdown("---")
 st.markdown("### Honest Limitations")
 
 st.warning("""
-**Reservoir water-loss could not be tested causally** — no comparable control-zone equivalent 
-exists for a large upstream reservoir collapse, so this is reported descriptively alongside the 
+**Reservoir water-loss could not be tested causally** — no comparable control-zone equivalent
+exists for a large upstream reservoir collapse, so this is reported descriptively alongside the
 statistically validated NDVI findings, not as an independently causally-tested result.
 """)
 
-st.error("""
-**The narrowed-baseline DiD result (-0.1384) fails its own placebo test under HAC correction** —
-the methodologically correct standard errors, given serial correlation in this short window. It is
-retained here only to illustrate the pre-treatment-quarter problem, not as independent evidence.
-The broader-baseline result (-0.0703, HAC p=0.022, cleanly placebo-validated under HAC) is treated
-as the project's sole primary finding.
-""")
+era, erb = st.columns([0.94, 0.06])
+with era:
+    st.error("""
+    **The narrowed-baseline DiD result (-0.1384) fails its own placebo test under HAC correction** —
+    the methodologically correct standard errors, given serial correlation in this short window. It is
+    retained here only to illustrate the pre-treatment-quarter problem, not as independent evidence.
+    The broader-baseline result (-0.0703, HAC p=0.022, cleanly placebo-validated under HAC) is treated
+    as the project's sole primary finding.
+    """)
+with erb:
+    proof_popover("04_did_model_vscode.png", "did_model.py open in VS Code — the core difference-in-differences model that produces the project's primary finding (-0.0703, HAC p=0.022).")
 
 st.markdown("---")
 st.markdown(
