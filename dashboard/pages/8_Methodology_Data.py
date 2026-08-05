@@ -97,32 +97,36 @@ with st.expander("**Monthly Event Study Failed — Model Was Rank-Deficient**"):
     bins, which preserved the event-study logic while keeping the model estimable.
     """)
 
-with st.expander("**A Significant Pre-Event Quarter Revealed a Confounded Baseline**"):
-    st.markdown("""
-    The quarterly event study revealed a significant effect in a pre-treatment quarter (summer
-    2022) — a genuine threat to the parallel-trends assumption. Investigation traced this to
-    active conflict already underway in Kherson well before the dam's destruction (including the
-    Kherson liberation operation, August–November 2022), meaning the original baseline period was
-    not a genuinely quiet pre-conflict period.
-    """)
-    esa, esb = st.columns([0.92, 0.08])
-    with esb:
-        proof_popover("02_event_study_vscode.png", "event_study.py open in VS Code — the quarterly event study that revealed the significant pre-treatment quarter and the confounded 2022 baseline.")
+esa, esb = st.columns([0.94, 0.06])
+with esa:
+    with st.expander("**A Significant Pre-Event Quarter Revealed a Confounded Baseline**"):
+        st.markdown("""
+        The quarterly event study revealed a significant effect in a pre-treatment quarter (summer
+        2022) — a genuine threat to the parallel-trends assumption. Investigation traced this to
+        active conflict already underway in Kherson well before the dam's destruction (including the
+        Kherson liberation operation, August–November 2022), meaning the original baseline period was
+        not a genuinely quiet pre-conflict period.
+        """)
+with esb:
+    st.markdown("<div style='margin-top: 0.5rem;'></div>", unsafe_allow_html=True)
+    proof_popover("02_event_study_vscode.png", "event_study.py open in VS Code — the quarterly event study that revealed the significant pre-treatment quarter and the confounded 2022 baseline.")
 
-with st.expander("**A Narrowed Baseline's Placebo Test Fails Under the Correct Standard Errors**"):
-    st.markdown("""
-    Narrowing the pre-period to exclude the confounded 2022 baseline produced a larger, more
-    significant effect — but its own placebo test (a fake date within the narrow window) produced
-    a coefficient nearly identical in magnitude to the real result. Under classical standard errors
-    this looked merely ambiguous (p=0.169, not significant); under the methodologically correct
-    Newey-West HAC standard errors — appropriate given serial correlation in this ten-observation
-    window — that placebo coefficient is statistically significant (p=0.001). This is a genuine
-    validation failure for the narrowed-baseline specification, disclosed as such rather than
-    downplayed as merely underpowered.
-    """)
-    pna, pnb = st.columns([0.92, 0.08])
-    with pnb:
-        proof_popover("03_placebo_narrowed_vscode.png", "placebo_narrowed.py open in VS Code — the placebo test that looked ambiguous under classical SEs (p=0.169) but fails under the correct Newey-West HAC SEs (p=0.001).")
+pna, pnb = st.columns([0.94, 0.06])
+with pna:
+    with st.expander("**A Narrowed Baseline's Placebo Test Fails Under the Correct Standard Errors**"):
+        st.markdown("""
+        Narrowing the pre-period to exclude the confounded 2022 baseline produced a larger, more
+        significant effect — but its own placebo test (a fake date within the narrow window) produced
+        a coefficient nearly identical in magnitude to the real result. Under classical standard errors
+        this looked merely ambiguous (p=0.169, not significant); under the methodologically correct
+        Newey-West HAC standard errors — appropriate given serial correlation in this ten-observation
+        window — that placebo coefficient is statistically significant (p=0.001). This is a genuine
+        validation failure for the narrowed-baseline specification, disclosed as such rather than
+        downplayed as merely underpowered.
+        """)
+with pnb:
+    st.markdown("<div style='margin-top: 0.5rem;'></div>", unsafe_allow_html=True)
+    proof_popover("03_placebo_narrowed_vscode.png", "placebo_narrowed.py open in VS Code — the placebo test that looked ambiguous under classical SEs (p=0.169) but fails under the correct Newey-West HAC SEs (p=0.001).")
 
 with st.expander("**Standard Errors: Why HAC, Not Clustering**"):
     st.markdown("""
