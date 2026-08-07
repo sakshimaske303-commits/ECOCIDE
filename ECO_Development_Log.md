@@ -360,9 +360,9 @@ finding — including the honestly disclosed narrowed-baseline limitation — in
 non-technical format. The dashboard was deployed to Streamlit Community Cloud and linked from the
 project's GitHub repository.
 
-**Module 9 — Documentation**: Project_Journal.md, Research_Paper.md, and this development log were
-finalized, and README.md was written to summarize the project, its findings, and its reproducible
-pipeline for a GitHub audience. The repository was published to GitHub.
+**Module 9 — Documentation**: ECO_Project_Report.md, ECO_Research_Paper.md, and this development log
+were finalized, and README.md was written to summarize the project, its findings, and its
+reproducible pipeline for a GitHub audience. The repository was published to GitHub.
 
 ----------------------------------------------------------------------------------------------------
 

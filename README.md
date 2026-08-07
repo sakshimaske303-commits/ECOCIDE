@@ -12,9 +12,9 @@
 
 | Document | What's Inside |
 |---|---|
-| 📘 [`Project_Journal.md`](./Project_Journal.md) | Polished project summary — methodology, findings, conclusions (start here) |
-| 📗 [`Research_Paper.md`](./Research_Paper.md) | Formal academic paper — literature review, statistical methodology, results, discussion |
-| 📙 [`Devlopment_Log.md`](./Devlopment_Log.md) | Full technical development log — every bug, debugging session, and methodology iteration |
+| 📘 [`ECO_Project_Report.md`](./ECO_Project_Report.md) | Polished project summary — methodology, findings, conclusions (start here) |
+| 📗 [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Formal academic paper — literature review, statistical methodology, results, discussion |
+| 📙 [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Full technical development log — every bug, debugging session, and methodology iteration |
 
 ---
 
@@ -43,7 +43,7 @@ Interactive geospatial map hosted separately via GitHub Pages and embedded live 
 
 **Verified flood data confirms a complete hydrograph.** UNOSAT's multi-sensor flood-extent data shows a full rise-peak-recession cycle: 122.50 km² (6 June) → 464.18 km² peak (9 June) → 21.17 km² (21 June).
 
-Full methodology, including every debugging decision and disclosed limitation, is documented in the dashboard's Methodology page and in `Project_Journal.md`.
+Full methodology, including every debugging decision and disclosed limitation, is documented in the dashboard's Methodology page and in `ECO_Project_Report.md`.
 
 ## 🏗️ Architecture
 
@@ -78,9 +78,9 @@ ECOCIDE/
 ├── outputs/
 │   └── plots/                       # Static visualizations (hydrograph, event study, etc.)
 ├── qgis_processing/                 # Original QGIS2Web webmap export
-├── Project_Journal.md               # Polished project summary and methodology
-├── Research_Paper.md                # Formal academic research paper
-├── Devlopment_Log.md                # Full technical development log
+├── ECO_Project_Report.md            # Polished project summary and methodology
+├── ECO_Research_Paper.md            # Formal academic research paper
+├── ECO_Development_Log.md           # Full technical development log
 ├── download_*.py                    # Dataset acquisition scripts
 ├── did_model*.py / event_study.py   # Causal inference scripts
 ├── map*.py                          # Static visualization scripts
@@ -121,4 +121,4 @@ This project is licensed under [CC BY 4.0](./LICENSE) — you are free to share 
 
 ---
 
-*This project's full development process — including every debugging session, methodology iteration, and disclosed limitation — is documented in `Devlopment_Log.md` for full transparency and reproducibility.*
+*This project's full development process — including every debugging session, methodology iteration, and disclosed limitation — is documented in `ECO_Development_Log.md` for full transparency and reproducibility.*

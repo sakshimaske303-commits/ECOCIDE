@@ -156,8 +156,10 @@ nav_items = [
     ("🌊", "Flood Analysis", "Hydrograph, verified flood extent"),
     ("🌿", "Vegetation Impact", "NDVI causal analysis, DiD results"),
     ("📊", "Statistical Validation", "Placebo tests, event study, limitations"),
+    ("📈", "Explore Trends", "Interactive NDVI time series, live difference calculator"),
     ("🛰️", "Satellite Evidence", "Before/after true-color imagery"),
     ("🗺️", "Interactive Maps", "Live geospatial exploration"),
+    ("📖", "Methodology & Data", "Full transparency, data sources, honest limitations"),
 ]
 
 cols = st.columns(3)
