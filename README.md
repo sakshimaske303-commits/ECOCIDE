@@ -12,6 +12,7 @@
 
 | Document | What's Inside |
 |---|---|
+| ⚡ [`ECO_Executive_Summary.pdf`](./ECO_Executive_Summary.pdf) | One-page snapshot — question, method, headline finding, robustness checklist, and links (fastest overview) |
 | 📘 [`ECO_Project_Report.md`](./ECO_Project_Report.md) | Polished project summary — methodology, findings, conclusions (start here) |
 | 📗 [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Formal academic paper — literature review, statistical methodology, results, discussion |
 | 📙 [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Full technical development log — every bug, debugging session, and methodology iteration |

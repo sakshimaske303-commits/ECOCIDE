@@ -72,6 +72,29 @@ with col4:
 
 st.markdown("---")
 
+st.markdown(
+    f"""
+    <div style="padding: 20px 26px; margin: 4px 0 20px 0; background: rgba(0, 172, 193, 0.06);
+                border: 1px solid rgba(0, 172, 193, 0.3); border-left: 4px solid {PALETTE['accent']};
+                border-radius: 10px;">
+        <p style="color:{PALETTE['accent']}; text-transform:uppercase; letter-spacing:1.5px;
+                  font-weight:800; font-size:0.85rem; margin-bottom:8px;">⚡ Why This Matters</p>
+        <p style="color:{PALETTE['text_primary']}; font-size:1rem; line-height:1.6; margin:0;">
+            International courts have already accepted satellite evidence in war-crimes prosecutions —
+            the ICC's <i>Al Mahdi</i> case was built on satellite imagery of cultural-heritage destruction
+            — and legal bodies are now considering "ecocide" itself as a prosecutable international crime.
+            But most satellite-based damage assessments of this specific event stop at visual, qualitative
+            interpretation — they show <i>what</i> happened, not whether it is statistically distinguishable
+            from a pre-existing trend. ECOCIDE closes that evidentiary gap: a causally-validated,
+            placebo-tested estimate of conflict-attributable environmental damage, held to the same
+            open-source-investigation discipline used by organizations like Bellingcat and Human Rights
+            Watch — and honest enough to disclose exactly where its own validation didn't hold up.
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 col_left, col_right = st.columns([1.1, 1])
 
 with col_left:
@@ -188,9 +211,22 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-doc_col1, doc_col2, doc_col3 = st.columns(3)
+doc_col1, doc_col2, doc_col3, doc_col4 = st.columns(4)
 
 with doc_col1:
+    try:
+        with open(os.path.join(ROOT_DIR, "ECO_Executive_Summary.pdf"), "rb") as f:
+            st.download_button(
+                label="⚡ Executive Summary",
+                data=f,
+                file_name="ECO_Executive_Summary.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+    except FileNotFoundError:
+        st.warning("ECO_Executive_Summary.pdf not found.")
+
+with doc_col2:
     try:
         with open(os.path.join(ROOT_DIR, "ECO_Research_Paper.pdf"), "rb") as f:
             st.download_button(
@@ -203,7 +239,7 @@ with doc_col1:
     except FileNotFoundError:
         st.warning("ECO_Research_Paper.pdf not found.")
 
-with doc_col2:
+with doc_col3:
     try:
         with open(os.path.join(ROOT_DIR, "ECO_Project_Report.pdf"), "rb") as f:
             st.download_button(
@@ -216,7 +252,7 @@ with doc_col2:
     except FileNotFoundError:
         st.warning("ECO_Project_Report.pdf not found.")
 
-with doc_col3:
+with doc_col4:
     try:
         with open(os.path.join(ROOT_DIR, "ECO_Development_Log.pdf"), "rb") as f:
             st.download_button(

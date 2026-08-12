@@ -21,6 +21,34 @@ documents both the validation that succeeded and the validation that revealed ge
 — reported transparently rather than selectively.
 """)
 
+_checks = [
+    ("✓", PALETTE['vegetation'], "Matched Non-Conflict Control Zone (Tulcea, Romania)"),
+    ("✓", PALETTE['vegetation'], "HAC-Robust Standard Errors (Newey-West)"),
+    ("✓", PALETTE['vegetation'], "Placebo Test #1 — Clean Pass (broad baseline)"),
+    ("⚠", PALETTE['warning'], "Placebo Test #2 — Genuine Failure Disclosed (narrowed baseline)"),
+    ("✓", PALETTE['vegetation'], "23-Quarter Event-Study Check"),
+    ("✓", PALETTE['vegetation'], "Month Fixed Effects (seasonal controls)"),
+    ("✓", PALETTE['vegetation'], "Multi-Sensor Verified Flood Data (UNOSAT, 5 sensors)"),
+]
+_badges = "".join(
+    f"""<span style="display:inline-flex; align-items:center; gap:6px; background:rgba(0,172,193,0.08);
+        border:1px solid rgba(0,172,193,0.3); border-radius:20px; padding:6px 14px; margin:4px;
+        font-size:0.82rem; color:{PALETTE['text_primary']}; font-weight:600;">
+        <span style="color:{color}; font-weight:900;">{mark}</span>{label}</span>"""
+    for mark, color, label in _checks
+)
+st.markdown(
+    f"""
+    <p style="color:{PALETTE['accent']}; text-transform:uppercase; letter-spacing:1.5px;
+              font-weight:800; font-size:0.85rem; margin-bottom:6px;">🔍 Robustness At a Glance</p>
+    <div style="display:flex; flex-wrap:wrap; margin-bottom: 6px;">{_badges}</div>
+    <p style="color:{PALETTE['text_secondary']}; font-size:0.78rem; margin-top:8px;">
+        One check is flagged, not hidden — see Placebo Test #2 below for exactly what failed and why.
+    </p>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.markdown("---")
 
 st.markdown("### Placebo Test #1 — Full Baseline (Clean Validation)")
