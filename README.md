@@ -30,7 +30,7 @@ Interactive geospatial map hosted separately via GitHub Pages and embedded live 
 ## 📊 What This Project Does
 
 - Tests whether the Kakhovka Dam's destruction (6 June 2023) produced a statistically significant environmental effect, isolated from Ukraine's broader, already-elevated conflict baseline
-- Uses a matched non-conflict control zone (Danube Delta, Romania) rather than a simple before-after comparison
+- Uses a four-county Danube/Black Sea Romanian control panel (Tulcea, Galați, Brăila, Constanța) rather than a simple before-after comparison
 - Validates every result through placebo testing (fake treatment dates) and quarterly event-study analysis
 - Sources verified, multi-sensor flood-extent data (UNOSAT) rather than independently deriving flood detection from noisy raw satellite bands
 - Presents before/after true-color satellite imagery, acquired programmatically for full reproducibility
@@ -38,9 +38,11 @@ Interactive geospatial map hosted separately via GitHub Pages and embedded live 
 
 ## 🔬 Key Findings
 
-**A statistically significant, causally-validated NDVI decline was detected.** Comparing Kherson (treatment) against Tulcea, Romania (control), a Difference-in-Differences model found a coefficient of −0.0703 (95% CI [−0.130, −0.010], HAC-robust p = 0.022), confirmed through a clean placebo test using a counterfactual pre-event date (p = 0.612, near-zero coefficient). Standard errors use the Newey-West HAC correction rather than clustering, since this two-unit (treatment/control) design has too few clusters for cluster-robust inference to apply.
+**A statistically significant, causally-validated NDVI decline was detected.** The primary specification compares Kherson (treatment) against Tulcea, Romania (control): a Difference-in-Differences model finds a coefficient of −0.0703 (95% CI [−0.130, −0.010], HAC-robust p = 0.022), confirmed through a clean placebo test using a counterfactual pre-event date (p = 0.612, near-zero coefficient). Standard errors use the Newey-West HAC correction rather than clustering, since this two-unit (treatment/control) design has too few clusters for cluster-robust inference to apply.
 
-**A genuine complication was found and reported honestly.** A quarterly event study revealed a significant effect in a pre-treatment quarter — traced to Kherson already being an active conflict zone before the dam's destruction. A narrowed-baseline sensitivity analysis built to address this produces a larger effect, but its own placebo test fails once the correct HAC standard errors are applied — a genuine validation failure, disclosed as such rather than downplayed, while the primary, cleanly-validated broader-baseline result stands independently.
+**The same model was also run as a robustness check against the full four-county control panel, and the effect held.** Tulcea sits alongside three other Danube/Black Sea Romanian counties — Galați, Brăila, Constanța — chosen for comparable pre-conflict ecology (river-delta wetland, steppe, agricultural floodplain, coastal) while being genuinely non-combatant. Pooled across all four, the effect stands: −0.0600 (HAC p = 0.029, 95% CI [−0.114, −0.006]; cluster-robust p = 0.002, 95% CI [−0.097, −0.023]). Tested individually, three of the four controls (Tulcea, Galați, Brăila) each independently reproduce a significant effect close to the primary-specification magnitude; the fourth, Constanța — the most purely coastal, most urbanized of the four — does not, and that's reported as an open question rather than smoothed over. A placebo test on the four-county panel comes back clean (+0.0222, p = 0.216, wrong sign).
+
+**A genuine complication was found and reported honestly.** A quarterly event study on the two-zone (Kherson/Tulcea) specification revealed a significant effect in a pre-treatment quarter — traced to Kherson already being an active conflict zone before the dam's destruction. A narrowed-baseline sensitivity analysis built to address this produces a larger effect, but its own placebo test fails once the correct HAC standard errors are applied — a genuine validation failure, disclosed as such rather than downplayed, while the primary, cleanly-validated broader-baseline result stands independently. Running the same quarterly event study on the four-county panel surfaces an intrinsic property of a 5-cluster design (1 treatment + 4 control) against roughly 24 model parameters: cluster-robust standard errors become rank-deficient (rank 4, not 24) — numerically degenerate rather than genuinely precise — so HAC is reported for that specific model instead, where the exact-treatment-quarter effect is not significant (p = 0.972, versus p = 0.005 in the two-zone-only event study), though the quarter-plus-4 effect remains significant (p = 0.011).
 
 **Verified flood data confirms a complete hydrograph.** UNOSAT's multi-sensor flood-extent data shows a full rise-peak-recession cycle: 122.50 km² (6 June) → 464.18 km² peak (9 June) → 21.17 km² (21 June).
 
@@ -61,7 +63,7 @@ Preprocessing (NDVI/NDWI extraction, boundary clipping, GADM matching)
 Causal models (did_model.py, placebo_test.py, event_study.py — HAC-robust SEs)
         │
         ▼
-Static figures (map*.py) ──► Research_Paper.md / Project_Journal.md
+Static figures (map*.py) ──► ECO_Research_Paper.md / ECO_Development_Log.md
         │
         ▼
 Streamlit dashboard (dashboard/app.py + 8 pages) ──► Zenodo DOI

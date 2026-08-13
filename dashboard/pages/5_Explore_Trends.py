@@ -18,6 +18,12 @@ st.markdown(
 )
 st.markdown("---")
 
+st.markdown("""
+Explore NDVI trends across all five zones — the treatment zone (Kherson) and the four-county
+Romanian control panel (Tulcea, Galați, Brăila, Constanța) — and compare Kherson against any
+control zone directly.
+""")
+
 
 def load_ndvi(zone_name):
     with open(os.path.join(PROJECT_ROOT, "data", "ndvi", f"{zone_name}_ndvi_monthly.json")) as f:
@@ -30,29 +36,32 @@ def load_ndvi(zone_name):
     return pd.DataFrame(rows)
 
 
-kherson = load_ndvi("kherson")
-tulcea = load_ndvi("tulcea")
+ZONES = {
+    "Kherson (Treatment)": ("kherson", PALETTE["damage"]),
+    "Tulcea (Control)": ("tulcea", PALETTE["accent"]),
+    "Galați (Control)": ("galati", "#7FB77E"),
+    "Brăila (Control)": ("braila", "#E0A458"),
+    "Constanța (Control — null result)": ("constanta", "#8a8a8a"),
+}
+
+ndvi_data = {label: load_ndvi(key) for label, (key, _) in ZONES.items()}
 
 st.markdown("### Select Zones to Compare")
 
 zones_to_show = st.multiselect(
     "Zones",
-    options=["Kherson (Treatment)", "Tulcea (Control)"],
+    options=list(ZONES.keys()),
     default=["Kherson (Treatment)", "Tulcea (Control)"],
 )
 
 fig = go.Figure()
 
-if "Kherson (Treatment)" in zones_to_show:
+for label in zones_to_show:
+    df = ndvi_data[label]
+    _, color = ZONES[label]
     fig.add_trace(go.Scatter(
-        x=kherson["date"], y=kherson["ndvi"], mode="lines+markers",
-        name="Kherson (Treatment)", line=dict(color=PALETTE["damage"], width=2.5)
-    ))
-
-if "Tulcea (Control)" in zones_to_show:
-    fig.add_trace(go.Scatter(
-        x=tulcea["date"], y=tulcea["ndvi"], mode="lines+markers",
-        name="Tulcea (Control)", line=dict(color=PALETTE["accent"], width=2.5)
+        x=df["date"], y=df["ndvi"], mode="lines+markers",
+        name=label, line=dict(color=color, width=2.5)
     ))
 
 fig.add_vline(x=pd.Timestamp("2023-06-01").timestamp() * 1000, line_dash="dash",
@@ -78,6 +87,15 @@ st.markdown("---")
 
 st.markdown("### 🎛️ Live Difference Calculator")
 
+kherson = ndvi_data["Kherson (Treatment)"]
+
+control_choice = st.selectbox(
+    "Compare Kherson against",
+    options=[l for l in ZONES if l != "Kherson (Treatment)"],
+    index=0,
+)
+control_df = ndvi_data[control_choice]
+
 col1, col2 = st.columns(2)
 with col1:
     date1 = st.selectbox("Compare Month A", kherson["date"].dt.strftime("%Y-%m").tolist(), index=0)
@@ -87,16 +105,16 @@ with col2:
 
 k_val1 = kherson[kherson["date"].dt.strftime("%Y-%m") == date1]["ndvi"].values[0]
 k_val2 = kherson[kherson["date"].dt.strftime("%Y-%m") == date2]["ndvi"].values[0]
-t_val1 = tulcea[tulcea["date"].dt.strftime("%Y-%m") == date1]["ndvi"].values[0]
-t_val2 = tulcea[tulcea["date"].dt.strftime("%Y-%m") == date2]["ndvi"].values[0]
+c_val1 = control_df[control_df["date"].dt.strftime("%Y-%m") == date1]["ndvi"].values[0]
+c_val2 = control_df[control_df["date"].dt.strftime("%Y-%m") == date2]["ndvi"].values[0]
 
 k_diff = k_val2 - k_val1
-t_diff = t_val2 - t_val1
-did_diff = k_diff - t_diff
+c_diff = c_val2 - c_val1
+did_diff = k_diff - c_diff
 
 c1, c2, c3 = st.columns(3)
 c1.metric("Kherson Change", f"{k_diff:+.4f}")
-c2.metric("Tulcea Change", f"{t_diff:+.4f}")
+c2.metric(f"{control_choice.split(' (')[0]} Change", f"{c_diff:+.4f}")
 c3.metric("Difference-in-Differences", f"{did_diff:+.4f}")
 
 st.markdown("---")

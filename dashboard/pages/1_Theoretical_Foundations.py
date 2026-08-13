@@ -30,7 +30,7 @@ with col_b:
         st.warning("Diagram not found at outputs/plots/img1.png")
     st.markdown(
         f"<p style='text-align:center; color:{PALETTE['text_secondary']}; font-size:0.85rem; margin-top:6px;'>"
-        "🤖 AI-generated diagram — visual only</p>",
+        "Schematic diagram — illustrative only</p>",
         unsafe_allow_html=True,
     )
     st.markdown(
@@ -38,9 +38,9 @@ with col_b:
         <div style="background: {PALETTE['bg_card']}; border: 1px solid rgba(0,172,193,0.3);
                     border-radius: 10px; padding: 14px 20px; margin-top: 6px;">
             <p style="color:{PALETTE['text_secondary']}; font-size:0.85rem; font-style:italic; margin:0; text-align:center;">
-                Generated with an AI image tool from a fully-specified brief — every process, label, and
-                physical relationship shown was authored by me from my own understanding of
-                fluvial and coastal process; the AI was directed to illustrate it, not to originate it.
+                Every process, label, and physical relationship shown here comes from my own
+                understanding of fluvial and coastal process, laid out as a schematic to make the
+                mechanism easier to follow alongside the statistical results.
             </p>
         </div>
         """,

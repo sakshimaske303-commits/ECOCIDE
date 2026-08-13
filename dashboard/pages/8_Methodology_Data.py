@@ -130,12 +130,20 @@ with pnb:
 
 with st.expander("**Standard Errors: Why HAC, Not Clustering**"):
     st.markdown("""
-    This design compares only two geographic units — one treatment zone (Kherson), one control
-    zone (Tulcea) — observed monthly over time. Cluster-robust standard errors, the usual
-    correction in panel designs with many independent units, are degenerate with only two clusters.
-    Newey-West HAC standard errors (Newey & West, 1987) are the standard remedy instead, correcting
+    The primary specification compares only two geographic units — one treatment zone (Kherson),
+    one control zone (Tulcea) — observed monthly over time. Cluster-robust standard errors, the
+    usual correction in panel designs with many independent units, are degenerate with only two
+    clusters, so Newey-West HAC standard errors (Newey & West, 1987) are used instead, correcting
     for serial correlation within each zone's own time series. All models were re-estimated with
-    HAC alongside classical OLS; the comparison is reported in full in Research_Paper.md.
+    HAC alongside classical OLS; the comparison is reported in full in ECO_Research_Paper.md.
+
+    As a robustness check, the same causal model is also run against the full four-county control
+    panel (Tulcea, Galați, Brăila, Constanța — see **Statistical Validation**), which has enough
+    independent units (5 clusters) to support cluster-robust standard errors alongside HAC for the
+    pooled DiD estimate — though barely, since 5 is the bare minimum at which cluster-robust
+    inference is even defined. The quarterly event study on that same panel has too many parameters
+    relative to its 5 clusters — cluster-robust becomes numerically rank-deficient there, so HAC is
+    reported for that specific model instead, with the cluster-robust output kept only for the record.
     """)
 
 with st.expander("**Downstream Flood Signal Was Lost to Cloud-Contaminated Optical Data**"):

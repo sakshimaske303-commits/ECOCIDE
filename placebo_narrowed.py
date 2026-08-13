@@ -36,7 +36,7 @@ def main():
     # correction the coefficient becomes statistically significant (unlike
     # under classical OLS) — a genuine validation failure for the
     # narrowed-baseline specification, not a computational artifact. See
-    # Research_Paper.md Sections 4.3/4.4 for the full discussion.
+    # ECO_Research_Paper.md Sections 4.3/4.4 for the full discussion.
     model = smf.ols("ndvi ~ treatment + post + did_term", data=df).fit(
         cov_type="HAC", cov_kwds={"maxlags": 1}
     )

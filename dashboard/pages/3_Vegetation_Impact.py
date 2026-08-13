@@ -63,6 +63,13 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
+st.info("""
+This page shows the primary specification's result (Kherson vs. Tulcea). The same model also holds
+up as a robustness check across a four-county control panel — Tulcea, Galați, Brăila, Constanța —
+with the pooled effect at -0.0600, reproducing in three of the four controls individually. See
+**Statistical Validation** for the full multi-control results.
+""")
+
 st.markdown("---")
 
 st.markdown("### Why the Model Needed Seasonal Controls")

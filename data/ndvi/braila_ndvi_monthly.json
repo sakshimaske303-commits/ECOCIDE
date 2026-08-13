@@ -1,0 +1,776 @@
+{
+  "data": [
+    {
+      "interval": {
+        "from": "2022-01-01T00:00:00Z",
+        "to": "2022-02-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.22527200677508957,
+                "stDev": 0.17122874241671124,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-02-01T00:00:00Z",
+        "to": "2022-03-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.09996950850897174,
+                "stDev": 0.20101377041108748,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-03-01T00:00:00Z",
+        "to": "2022-04-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.2822984828688389,
+                "stDev": 0.19962988857717331,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-04-01T00:00:00Z",
+        "to": "2022-05-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.3426919375320469,
+                "stDev": 0.25962572486980173,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-05-01T00:00:00Z",
+        "to": "2022-06-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.40524871683800767,
+                "stDev": 0.25485390830210786,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-06-01T00:00:00Z",
+        "to": "2022-07-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.4180579346060786,
+                "stDev": 0.2904969731566054,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-07-01T00:00:00Z",
+        "to": "2022-08-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.35895795046071843,
+                "stDev": 0.2530427270179222,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-08-01T00:00:00Z",
+        "to": "2022-09-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.3355603601196973,
+                "stDev": 0.21691928009445166,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-09-01T00:00:00Z",
+        "to": "2022-10-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.3303717116855512,
+                "stDev": 0.23460180467514435,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-10-01T00:00:00Z",
+        "to": "2022-11-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.2819577870381359,
+                "stDev": 0.2120644244948391,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-11-01T00:00:00Z",
+        "to": "2022-12-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.2615966997679768,
+                "stDev": 0.21376058476792434,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2022-12-01T00:00:00Z",
+        "to": "2023-01-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.29534452499976155,
+                "stDev": 0.23454060403406699,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-01-01T00:00:00Z",
+        "to": "2023-02-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": -0.013003419388827904,
+                "stDev": 0.08238861651056413,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-02-01T00:00:00Z",
+        "to": "2023-03-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": -0.010045374676992395,
+                "stDev": 0.1348082902723021,
+                "sampleCount": 65536,
+                "noDataCount": 2271
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-03-01T00:00:00Z",
+        "to": "2023-04-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 0.9754952192306519,
+                "mean": 0.3308423530512301,
+                "stDev": 0.24236799498035844,
+                "sampleCount": 65536,
+                "noDataCount": 7501
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-04-01T00:00:00Z",
+        "to": "2023-05-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.4403460510124581,
+                "stDev": 0.29418797406306535,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-05-01T00:00:00Z",
+        "to": "2023-06-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.4434451937453016,
+                "stDev": 0.29926415900845466,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-06-01T00:00:00Z",
+        "to": "2023-07-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.4389739173808265,
+                "stDev": 0.30684692527336177,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-07-01T00:00:00Z",
+        "to": "2023-08-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.47607117007096517,
+                "stDev": 0.3016881274733708,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-08-01T00:00:00Z",
+        "to": "2023-09-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.3471329530667841,
+                "stDev": 0.2898774195597613,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-09-01T00:00:00Z",
+        "to": "2023-10-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.319793332602338,
+                "stDev": 0.2109117622369288,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-10-01T00:00:00Z",
+        "to": "2023-11-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.27995884850650676,
+                "stDev": 0.2210802133908863,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-11-01T00:00:00Z",
+        "to": "2023-12-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.24861619802553,
+                "stDev": 0.23134115343072847,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2023-12-01T00:00:00Z",
+        "to": "2024-01-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.27900749167506284,
+                "stDev": 0.20862236127879819,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-01-01T00:00:00Z",
+        "to": "2024-02-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.2475090575031209,
+                "stDev": 0.20818670878017143,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-02-01T00:00:00Z",
+        "to": "2024-03-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.2239594971475589,
+                "stDev": 0.20075875650995217,
+                "sampleCount": 65536,
+                "noDataCount": 13755
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-03-01T00:00:00Z",
+        "to": "2024-04-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.3438425654629065,
+                "stDev": 0.3113977460147694,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-04-01T00:00:00Z",
+        "to": "2024-05-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.4661317526026316,
+                "stDev": 0.3187470994856251,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-05-01T00:00:00Z",
+        "to": "2024-06-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.5114769226206788,
+                "stDev": 0.272950962893771,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-06-01T00:00:00Z",
+        "to": "2024-07-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.44486780141523125,
+                "stDev": 0.2999103238565269,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-07-01T00:00:00Z",
+        "to": "2024-08-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.42965213849165795,
+                "stDev": 0.28225447259859954,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-08-01T00:00:00Z",
+        "to": "2024-09-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.36371723737237954,
+                "stDev": 0.2426470610545773,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-09-01T00:00:00Z",
+        "to": "2024-10-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.3641081069919683,
+                "stDev": 0.243794885772912,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-10-01T00:00:00Z",
+        "to": "2024-11-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.31192287026533233,
+                "stDev": 0.23605787263007602,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "interval": {
+        "from": "2024-11-01T00:00:00Z",
+        "to": "2024-12-01T00:00:00Z"
+      },
+      "outputs": {
+        "ndvi": {
+          "bands": {
+            "B0": {
+              "stats": {
+                "min": -1.0,
+                "max": 1.0,
+                "mean": 0.39805964987241577,
+                "stDev": 0.27707672380462084,
+                "sampleCount": 65536,
+                "noDataCount": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "status": "OK",
+  "geometryPixelCount": 65536
+}

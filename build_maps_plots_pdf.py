@@ -18,9 +18,9 @@ FIGURES = [
         "num": 1,
         "path": "plots/study_area_overview.png",
         "title": "Study Area Overview",
-        "caption": "Treatment zone (Kherson Oblast, Ukraine) and matched control zone "
-                   "(Tulcea County, Romania) used in the Difference-in-Differences design. "
-                   "Boundaries: GADM v4.1.",
+        "caption": "Treatment zone (Kherson Oblast, Ukraine) and the four-control panel "
+                   "(Tulcea, Galati, Braila, Constanta counties, Romania) used in the "
+                   "Difference-in-Differences design. Boundaries: GADM v4.1.",
     },
     {
         "num": 2,
@@ -73,6 +73,14 @@ FIGURES = [
         "title": "Robustness: Classical vs. HAC Standard Errors",
         "caption": "Point estimates and 95% confidence intervals for all four causal-inference "
                    "models under classical OLS versus Newey-West HAC standard errors.",
+    },
+    {
+        "num": 8,
+        "path": "plots/control_panel_comparison.png",
+        "title": "Multi-Control Robustness Check",
+        "caption": "Kherson's NDVI decline tested against each of four control counties "
+                   "individually, plus the pooled four-control estimate. Three of four "
+                   "controls reproduce a significant effect; Constanta does not.",
     },
 ]
 

@@ -13,9 +13,13 @@ abstract: >-
   quantify conflict-attributable environmental damage from the destruction
   of Ukraine's Kakhovka Dam (6 June 2023). Comparing monthly NDVI in the
   conflict-affected Kherson Oblast against a matched non-conflict control
-  zone (Tulcea County, Romania), the analysis identifies a statistically
-  significant vegetation decline attributable to the event, validated
-  through placebo testing and HAC-robust standard errors, alongside a
+  panel of four Danube/Black Sea Romanian counties (Tulcea, Galați, Brăila,
+  Constanța), the primary specification (Kherson against Tulcea) identifies
+  a statistically significant vegetation decline attributable to the event
+  (coefficient -0.0703, HAC-robust p = 0.022), validated through placebo
+  testing. As a robustness check, the same model is run across the full
+  four-county panel; the pooled effect holds (-0.0600, HAC p = 0.029), and
+  three of the four controls reproduce it individually, alongside a
   verified multi-sensor UNOSAT flood-extent timeline. The project is
   designed to fill a specific, acknowledged gap in existing satellite-based
   assessments of environmental war damage, which rely on qualitative

@@ -62,6 +62,13 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
+st.info("""
+The primary specification compares Kherson against Tulcea. Three more Romanian counties along the
+same Danube/Black Sea corridor — **Galați, Brăila, and Constanța** — form a four-county control
+panel used as a robustness check, testing whether the result depends on the specific choice of a
+single control. See **Statistical Validation** for what came back.
+""")
+
 st.markdown("---")
 
 st.markdown("### Study Area Overview")
@@ -104,8 +111,11 @@ st.markdown("""
 5. **Placebo Validation** — Fake treatment dates tested to confirm the real effect is genuine, 
    not a general pre-existing trend.
 
-6. **Quarterly Event Study** — Testing whether the effect is genuinely concentrated around the 
+6. **Quarterly Event Study** — Testing whether the effect is genuinely concentrated around the
    June 2023 event, disclosed transparently including any limitations found.
+
+7. **Multi-Control Robustness Check** — The same causal model run against a four-county
+   Danube/Black Sea panel, testing whether the result depends on the choice of a single control zone.
 """)
 
 st.markdown("---")

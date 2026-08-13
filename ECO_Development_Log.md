@@ -36,6 +36,7 @@
 32. [Geospatial Visualization, Dashboard, and Documentation (Modules 7–9)](#geospatial-visualization-dashboard-and-documentation-modules-79)
 33. [Panel-Readiness Review and Robustness Pass](#panel-readiness-review-and-robustness-pass)
 34. [Deep Verify: Independent Recomputation of Every Reported Statistic (2026-08-03)](#development-log-deep-verify-independent-recomputation-of-every-reported-statistic-2026-08-03)
+35. [The Control-Zone Expansion — From a Single Control to a Small Panel (2026-08-13)](#development-log-the-control-zone-expansion-from-a-single-control-to-a-small-panel-2026-08-13)
 
 ## Project Overview
 
@@ -457,4 +458,54 @@ Spot-checked 3 of 6 references: Atılgan Pazvantoğlu (2025), *Ecocide as a sepa
 ## Outcome
 
 This is the cleanest Deep Verify pass across the portfolio so far — every single independently re-derivable statistic (pre-treatment balance test, all four causal models under both classical and HAC standard errors, all four cited event-study quarters, and all three flood-extent measurements) matched the paper exactly, with no fixes required to `Research_Paper.md`, `Project_Journal.md`, or the dashboard.
+
+---
+
+# Development Log — The Control-Zone Expansion — From a Single Control to a Small Panel (2026-08-13)
+
+## Status
+
+Complete. Ran the acquisition, ran all three multi-control scripts, and the results are in the paper, the project report, and the README now.
+
+## Why this is next
+
+Section 6 of the research paper already names the headline limitation plainly: this whole causal design rests on a single treatment zone (Kherson) against a single control zone (Tulcea), which is exactly why cluster-robust standard errors were never an option and Newey-West HAC had to carry the whole burden of correcting for serial correlation. Section 7's own Future Work list names the fix — either a Synthetic Control Method built from several candidate controls, or a more modest control-zone sensitivity check against two or three alternatives. I'm doing the second one first, since it's the more direct test of whether the −0.0703 result is really about Kherson specifically or just an artifact of Tulcea being the one control I happened to pick.
+
+## Picking the new control counties
+
+Tulcea was chosen originally for ecological comparability (Danube Delta biosphere character) and genuinely non-combatant status. I stayed inside that same logic rather than reaching for a geographically distant, harder-to-defend control: Galați, Brăila, and Constanța are the three Romanian counties bordering Tulcea along the same Danube/Black Sea corridor, all non-combatant, all with a broadly similar floodplain/deltaic/coastal land-cover mix. Their GADM Level 1 areas run 9,185–13,749 km², against Tulcea's 16,968 km² — not identical, but the same rough order of magnitude, not a Rhode-Island-versus-Texas mismatch.
+
+I pulled their boundaries straight out of the `gadm41_ROU.gpkg` file I already had on disk from the original Tulcea extraction, rather than downloading anything new — `extract_control_zone_boundaries.py` does this and writes `galati_county.gpkg`, `constanta_county.gpkg`, and `braila_county.gpkg` alongside the existing `tulcea_county.gpkg`. Bounding boxes for the Sentinel Hub Statistical API pull come straight from those GADM geometries' `total_bounds`, the same way the original `kherson`/`tulcea` bboxes in `download_ndvi.py` were derived.
+
+## What's ready to run
+
+`download_ndvi_control_zones.py` mirrors `download_ndvi.py` exactly — same evalscript, same `2022-01-01` to `2024-12-31` window, same monthly aggregation — pointed at the three new bboxes instead of Kherson/Tulcea. I haven't run it yet; it needs my own Sentinel Hub client credentials from `.env`, and I'm not putting API keys through anything other than my own machine.
+
+Once `data/ndvi/galati_ndvi_monthly.json`, `constanta_ndvi_monthly.json`, and `braila_ndvi_monthly.json` exist, three new scripts are ready to consume them:
+
+- `did_model_multi_control.py` — the same DiD specification as the original `did_model.py`, but stacked across all four control zones instead of one. Reports both a cluster-robust model (clustered by zone) and, for direct comparability, the same HAC specification the original paper used. Also runs a per-zone check — Kherson against each control individually — so I can see immediately if the pooled result is being carried by one control zone rather than holding up across all four.
+- `placebo_test_multi_control.py` — same fake-treatment-date logic as the original placebo test, run on the five-zone panel with cluster-robust SEs.
+- `event_study_multi_control.py` — the same quarterly event-study design as `event_study.py`, generalized across the panel.
+
+## An honest note on what "cluster-robust" buys me here
+
+Five clusters (one treatment, four control) is a real improvement over two — it's the minimum for cluster-robust inference to even be *defined* — but it's still well short of the 30-40+ clusters the asymptotic theory behind cluster-robust standard errors actually assumes. Few-cluster settings are a known problem in applied econometrics; standard errors can be understated in exactly this regime. I'm reporting the cluster-robust result as a genuine step toward addressing Section 6's limitation, not as a claim that this now matches a properly powered multi-unit panel — and I'm keeping the HAC specification alongside it for that reason, the same way the original paper reported HAC next to classical OLS rather than picking one and hiding the other.
+
+## Running it, and what came back
+
+Ran `download_ndvi_control_zones.py`. All three new zones came back clean — same 35 monthly points as Kherson and Tulcea, no failed requests, NDVI ranges that look like real vegetation signal (Galați and Brăila both run a bit greener on average than Tulcea, Constanța sits in between — not a red flag, just three different landscapes).
+
+**The pooled result holds.** Across all four controls, did_term = −0.0600 (HAC p = 0.029, 95% CI [−0.114, −0.006]; cluster-robust p = 0.002, 95% CI [−0.097, −0.023]) — a bit smaller than the original −0.0703, same direction, not close to zero. The placebo test on the same four-control panel comes back clean too (coefficient +0.0222, wrong sign, p = 0.216).
+
+**The per-zone breakdown is the more interesting result, and I'm not folding it quietly into the pooled number.** Tulcea (−0.0703, p = 0.022), Galați (−0.0695, p = 0.026), and Brăila (−0.0937, p < 0.001) each reproduce a significant effect on their own. Constanța doesn't (−0.0064, p = 0.808). I looked at what's different about it before writing this up: it's the most purely Black Sea coastal, most urbanized of the four — less of the Danube floodplain/deltaic wetland character the other three share more directly with the treatment zone's own river-delta setting. That's a plausible explanation, not a confirmed one — I don't have a land-cover breakdown to actually test it, so it goes in Future Work rather than into the results section as settled fact.
+
+**The cluster-robust standard errors themselves come with an honest asterisk.** Even on the pooled DiD model, statsmodels flags the cluster covariance matrix as rank-deficient (rank 4 of 14 constraints) — 5 clusters just isn't enough for the full asymptotic theory to hold, though `did_term`'s own standard error still came out sane. It gets worse, not just theoretically but numerically, on the event study: with ~24 parameters (12 month dummies, treatment, ~11 quarterly event terms) and only 5 clusters, several coefficients came back with standard errors on the order of 1e-16 — not real precision, a genuine computational breakdown from too many parameters relative to too few clusters. I caught this by actually reading the printed output rather than trusting the p-values at face value, and I'm reporting the HAC version of that specific model instead, with the cluster-robust numbers shown only to document why they're not used.
+
+**The event study itself tells a different story than the original two-zone version.** Under HAC on the four-control panel, the exact treatment quarter is no longer significant (p = 0.972, versus p = 0.005 in the original two-zone design), while the quarter-and-a-year-later effect still is (p = 0.011). I'm not trying to reconcile this into a single clean story — the pooled, non-quarterly DiD result is robust to widening the control side; the fine-grained quarterly timing story is genuinely noisier once averaged across four ecologically different controls instead of one. Both statements are true and both are now in Section 4.5 of the paper.
+
+**What went into the documentation.** A new figure (`map7_control_panel_comparison.py` → `outputs/plots/control_panel_comparison.png`), a new Section 4.5 in the research paper covering all of the above, updated Section 6 and 7 (the "single treatment-control pair" limitation is now a "5-cluster, not 30-40-cluster" limitation, and "control-zone sensitivity analysis" came off the Future Work list since it's done — replaced with the sharper, more specific "explain why Constanța differs" and "get to a genuinely large cluster count" items), the Project Report's Methodology and Limitations sections, and the README's Key Findings.
+
+## What's still open
+
+Why Constanța doesn't reproduce the effect is a real open question, not a solved one — Future Work now names a land-cover comparison as the way to actually test the coastal-versus-deltaic explanation rather than just assert it. And getting cluster-robust inference to a trustworthy cluster count would mean going beyond Romania entirely — Bulgarian or Moldovan counterparts along the same basin — which is a considerably bigger acquisition and boundary-matching effort than this pass, and stays on the list rather than getting attempted here.
 

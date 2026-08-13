@@ -29,6 +29,7 @@ _checks = [
     ("✓", PALETTE['vegetation'], "23-Quarter Event-Study Check"),
     ("✓", PALETTE['vegetation'], "Month Fixed Effects (seasonal controls)"),
     ("✓", PALETTE['vegetation'], "Multi-Sensor Verified Flood Data (UNOSAT, 5 sensors)"),
+    ("⚠", PALETTE['warning'], "Multi-Control Robustness Check (4-control panel, 3 of 4 reproduce it)"),
 ]
 _badges = "".join(
     f"""<span style="display:inline-flex; align-items:center; gap:6px; background:rgba(0,172,193,0.08);
@@ -148,6 +149,57 @@ under Newey-West HAC. The main and narrowed-baseline DiD estimates stay clearly 
 zero either way. The broad-baseline placebo interval straddles zero under both specifications
 (clean validation). The narrowed-baseline placebo interval straddles zero classically but excludes
 zero under HAC — the visual signature of the validation failure discussed above.
+""")
+
+st.markdown("---")
+
+st.markdown("### Multi-Control Robustness Check — Testing Against a Four-County Panel")
+
+czi_image_path = os.path.join(PROJECT_ROOT, "outputs", "plots", "control_panel_comparison.png")
+if os.path.exists(czi_image_path):
+    st.image(czi_image_path, use_container_width=True)
+else:
+    st.warning("Control panel comparison image not found.")
+
+st.markdown("""
+The single treatment-control-pair design above carries a known limitation — with only Tulcea as a
+control, cluster-robust inference is undefined and Newey-West HAC has to carry the whole burden of
+correcting for serial correlation. As a robustness check, the same causal model is also run against
+a four-county Romanian panel along the same Danube/Black Sea corridor (Tulcea, Galați, Brăila,
+Constanța) to test that limitation directly.
+""")
+
+col5, col6 = st.columns(2)
+with col5:
+    st.markdown(f"""
+    <div class="forensic-card" style="border-left: 4px solid {PALETTE['vegetation']}; min-height: 160px;">
+        <p style="color: {PALETTE['vegetation']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Pooled: All 4 Controls (HAC)</p>
+        <p style="color: {PALETTE['text_primary']}; font-size: 1.6rem; font-weight: 900; margin-bottom: 4px;">-0.0600</p>
+        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin: 0;">p = 0.029 (HAC) · p = 0.002 (cluster-robust) — holds</p>
+    </div>
+    """, unsafe_allow_html=True)
+with col6:
+    st.markdown(f"""
+    <div class="forensic-card" style="border-left: 4px solid {PALETTE['warning']}; min-height: 160px;">
+        <p style="color: {PALETTE['warning']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Per-Control Check</p>
+        <p style="color: {PALETTE['text_primary']}; font-size: 1.6rem; font-weight: 900; margin-bottom: 4px;">3 of 4</p>
+        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin: 0;">Tulcea, Galați, Brăila confirm — Constanța does not</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.warning("""
+**Two honest complications, disclosed rather than smoothed over.** First, Constanța — the most
+purely Black Sea coastal, most urbanized of the four control counties — does not reproduce the
+effect (coefficient -0.0064, p = 0.808), while Tulcea, Galați, and Brăila each do individually. A
+land-cover difference is a plausible explanation but not a confirmed one; it is left as an open
+question rather than asserted as fact. Second, cluster-robust inference at only 5 clusters (one
+treatment, four control) is thinner than the 30-40+ clusters standard guidance wants — on the
+pooled DiD model this is a real but survivable caveat, but extending the same panel to a quarterly
+event study pushes it past the point of being usable at all: several coefficients come back with
+numerically degenerate standard errors (~1e-16), an artifact of too many parameters for too few
+clusters. HAC is reported for that model instead, and shows the exact treatment-quarter effect no
+longer significant (p = 0.972) when pooled across four heterogeneous controls, while the
+one-year-later effect still is (p = 0.011).
 """)
 
 st.markdown("---")
