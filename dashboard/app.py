@@ -181,7 +181,7 @@ nav_items = [
     ("📊", "Statistical Validation", "Placebo tests, event study, limitations"),
     ("📈", "Explore Trends", "Interactive NDVI time series, live difference calculator"),
     ("🛰️", "Satellite Evidence", "Before/after true-color imagery"),
-    ("🗺️", "Interactive Maps", "Live geospatial exploration"),
+    ("🗺️", "Interactive Maps & Plots", "Live geospatial exploration plus the three headline charts"),
     ("📖", "Methodology & Data", "Full transparency, data sources, honest limitations"),
 ]
 

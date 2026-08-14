@@ -23,7 +23,19 @@ ECOCIDE is a geospatial causal-inference framework built to independently verify
 
 ---
 
-Interactive geospatial map hosted separately via GitHub Pages and embedded live in the dashboard: **[View the interactive flood-extent map →](https://sakshimaske303-commits.github.io/ECOCIDE/dashboard/static/kherson_flood_extent_webmap/index.html)**
+## 🗺️ Interactive Maps & Plots
+
+Interactive maps and headline charts are hosted via GitHub Pages:
+
+**Map**
+- [Verified Flood-Extent Map](https://sakshimaske303-commits.github.io/ECOCIDE/dashboard/static/kherson_flood_extent_webmap/index.html)
+
+**Plots**
+- [Event Study — Quarterly Treatment Effect on NDVI](https://sakshimaske303-commits.github.io/ECOCIDE/outputs/plots/interactive/event_study.html)
+- [Multi-Control Robustness Check](https://sakshimaske303-commits.github.io/ECOCIDE/outputs/plots/interactive/control_panel_comparison.html)
+- [Classical vs. HAC Standard Errors](https://sakshimaske303-commits.github.io/ECOCIDE/outputs/plots/interactive/robustness_check.html)
+
+*(All four are also embedded together on the dashboard's Interactive Maps & Plots page.)*
 
 ---
 
@@ -35,6 +47,7 @@ Interactive geospatial map hosted separately via GitHub Pages and embedded live 
 - Sources verified, multi-sensor flood-extent data (UNOSAT) rather than independently deriving flood detection from noisy raw satellite bands
 - Presents before/after true-color satellite imagery, acquired programmatically for full reproducibility
 - Transparently discloses a genuine methodological limitation discovered during validation, rather than concealing it
+- Presents the flood-extent map and the three headline statistical charts as hoverable, toggleable interactive visualizations, not just flat images
 
 ## 🔬 Key Findings
 
@@ -75,11 +88,13 @@ Streamlit dashboard (dashboard/app.py + 8 pages) ──► Zenodo DOI
 ECOCIDE/
 ├── dashboard/                       # Streamlit dashboard (8 pages)
 │   └── static/                      # QGIS2Web interactive map export (served via GitHub Pages)
+├── build_interactive_plots.py       # Plotly interactive chart generation
 ├── data/
 │   ├── boundaries/, ndvi/, ndwi/
 │   └── satellite_imagery/           # Before/after true-color imagery
 ├── outputs/
 │   └── plots/                       # Static visualizations (hydrograph, event study, etc.)
+│       └── interactive/             # Plotly interactive HTML charts
 ├── qgis_processing/                 # Original QGIS2Web webmap export
 ├── ECO_Project_Report.md            # Polished project summary and methodology
 ├── ECO_Research_Paper.md            # Formal academic research paper
