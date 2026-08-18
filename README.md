@@ -87,7 +87,7 @@ Streamlit dashboard (dashboard/app.py + 8 pages) ──► Zenodo DOI
 ```text
 ECOCIDE/
 ├── dashboard/                       # Streamlit dashboard (8 pages)
-│   └── static/                      # QGIS2Web interactive map export (served via GitHub Pages)
+│   └── static/                      # Interactive flood-extent map, built in Python/folium (served via GitHub Pages)
 ├── build_interactive_plots.py       # Plotly interactive chart generation
 ├── data/
 │   ├── boundaries/, ndvi/, ndwi/
@@ -107,7 +107,7 @@ ECOCIDE/
 
 ## 🛠️ Tech Stack
 
-Python · GeoPandas · Matplotlib · Statsmodels · Streamlit · QGIS · QGIS2Web · GitHub Pages · Sentinel Hub API · UNOSAT
+Python · GeoPandas · Matplotlib · Folium · Statsmodels · Streamlit · GitHub Pages · Sentinel Hub API · UNOSAT
 
 ## 📚 Data Sources
 

@@ -18,8 +18,8 @@ st.markdown("---")
 
 st.markdown("""
 Interactive map of verified UNOSAT flood-extent polygons across three dates (6 June, 9 June,
-21 June 2023), built in QGIS, plus the three headline statistical charts as hoverable,
-toggleable plots instead of flat images.
+21 June 2023), built directly in Python (folium), plus the three headline statistical charts
+as hoverable, toggleable plots instead of flat images.
 """)
 
 st.markdown("---")
@@ -62,6 +62,6 @@ else:
 
 st.markdown("---")
 st.markdown(
-    "<p class='caption-text' style='text-align:center;'>ECOCIDE — Map built in QGIS, exported via QGIS2Web; plots built with Plotly</p>",
+    "<p class='caption-text' style='text-align:center;'>ECOCIDE — Map built directly in Python (folium); plots built with Plotly</p>",
     unsafe_allow_html=True,
 )

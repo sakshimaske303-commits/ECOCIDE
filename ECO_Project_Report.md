@@ -55,7 +55,7 @@ The primary specification rests on a single control zone (Tulcea). As a robustne
 
 ## Deliverables
 
-A reproducible causal-inference pipeline testing conflict-attributable environmental damage; a validated UNOSAT-based flood-extent timeline; a placebo-tested and event-study-validated NDVI causal estimate; a four-county control-panel robustness check; before/after true-color satellite imagery for the same verified bounding box; an interactive QGIS-based flood-extent map; and a multi-page interactive dashboard presenting all findings, including honestly disclosed validation limitations.
+A reproducible causal-inference pipeline testing conflict-attributable environmental damage; a validated UNOSAT-based flood-extent timeline; a placebo-tested and event-study-validated NDVI causal estimate; a four-county control-panel robustness check; before/after true-color satellite imagery for the same verified bounding box; an interactive flood-extent map built directly in Python (folium); and a multi-page interactive dashboard presenting all findings, including honestly disclosed validation limitations.
 
 ## Limitations
 
