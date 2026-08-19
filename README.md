@@ -1,21 +1,21 @@
-# 🛰️ ECOCIDE — A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes
+# ECOCIDE — A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21757974.svg)](https://doi.org/10.5281/zenodo.21757974)
 
 **Isolating conflict-attributable environmental damage from pre-existing trends, using causal inference rather than qualitative interpretation.**
 
-## 🔗 Live Dashboard
+## Live Dashboard
 
 **[View the interactive dashboard →](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)**
 
-## 📄 Project Documentation
+## Project Documentation
 
 | Document | What's Inside |
 |---|---|
-| ⚡ [`ECO_Executive_Summary.pdf`](./ECO_Executive_Summary.pdf) | One-page snapshot — question, method, headline finding, robustness checklist, and links (fastest overview) |
-| 📘 [`ECO_Project_Report.md`](./ECO_Project_Report.md) | Polished project summary — methodology, findings, conclusions (start here) |
-| 📗 [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Formal academic paper — literature review, statistical methodology, results, discussion |
-| 📙 [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Full technical development log — every bug, debugging session, and methodology iteration |
+| [`ECO_Executive_Summary.pdf`](./ECO_Executive_Summary.pdf) | One-page snapshot — question, method, headline finding, robustness checklist, and links (fastest overview) |
+| [`ECO_Project_Report.md`](./ECO_Project_Report.md) | Polished project summary — methodology, findings, conclusions (start here) |
+| [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Formal academic paper — literature review, statistical methodology, results, discussion |
+| [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Full technical development log — every bug, debugging session, and methodology iteration |
 
 ---
 
@@ -23,7 +23,7 @@ ECOCIDE is a geospatial causal-inference framework built to independently verify
 
 ---
 
-## 🗺️ Interactive Maps & Plots
+## Interactive Maps & Plots
 
 Interactive maps and headline charts are hosted via GitHub Pages:
 
@@ -39,7 +39,7 @@ Interactive maps and headline charts are hosted via GitHub Pages:
 
 ---
 
-## 📊 What This Project Does
+## What This Project Does
 
 - Tests whether the Kakhovka Dam's destruction (6 June 2023) produced a statistically significant environmental effect, isolated from Ukraine's broader, already-elevated conflict baseline
 - Uses a four-county Danube/Black Sea Romanian control panel (Tulcea, Galați, Brăila, Constanța) rather than a simple before-after comparison
@@ -49,7 +49,7 @@ Interactive maps and headline charts are hosted via GitHub Pages:
 - Transparently discloses a genuine methodological limitation discovered during validation, rather than concealing it
 - Presents the flood-extent map and the three headline statistical charts as hoverable, toggleable interactive visualizations, not just flat images
 
-## 🔬 Key Findings
+## Key Findings
 
 **A statistically significant, causally-validated NDVI decline was detected.** The primary specification compares Kherson (treatment) against Tulcea, Romania (control): a Difference-in-Differences model finds a coefficient of −0.0703 (95% CI [−0.130, −0.010], HAC-robust p = 0.022), confirmed through a clean placebo test using a counterfactual pre-event date (p = 0.612, near-zero coefficient). Standard errors use the Newey-West HAC correction rather than clustering, since this two-unit (treatment/control) design has too few clusters for cluster-robust inference to apply.
 
@@ -61,7 +61,7 @@ Interactive maps and headline charts are hosted via GitHub Pages:
 
 Full methodology, including every debugging decision and disclosed limitation, is documented in the dashboard's Methodology page and in `ECO_Project_Report.md`.
 
-## 🏗️ Architecture
+## Architecture
 
 ```text
 Satellite APIs (Sentinel Hub, UNOSAT)
@@ -82,7 +82,7 @@ Static figures (map*.py) ──► ECO_Research_Paper.md / ECO_Development_Log.m
 Streamlit dashboard (dashboard/app.py + 8 pages) ──► Zenodo DOI
 ```
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ```text
 ECOCIDE/
@@ -105,11 +105,11 @@ ECOCIDE/
 └── requirements.txt
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 Python · GeoPandas · Matplotlib · Folium · Statsmodels · Streamlit · GitHub Pages · Sentinel Hub API · UNOSAT
 
-## 📚 Data Sources
+## Data Sources
 
 | Dataset | Provider |
 |---|---|
@@ -117,7 +117,7 @@ Python · GeoPandas · Matplotlib · Folium · Statsmodels · Streamlit · GitHu
 | Verified Flood Extent | UNOSAT (ICEYE, Landsat-9, SkySat, WorldView-3, MODIS) |
 | Administrative Boundaries | GADM v4.1 |
 
-## ▶️ Running Locally
+## Running Locally
 
 ```bash
 git clone https://github.com/sakshimaske303-commits/ECOCIDE.git
@@ -127,13 +127,13 @@ cd dashboard
 streamlit run app.py
 ```
 
-## 👤 Author
+## Author
 
 **Sakshi D. Maske**
 
 Independent Geospatial Researcher
 
-## 📜 License
+## License
 
 This project is licensed under [CC BY 4.0](./LICENSE) — you are free to share and adapt this work for any purpose, including commercially, with attribution.
 

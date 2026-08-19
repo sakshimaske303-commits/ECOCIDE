@@ -184,17 +184,17 @@ Applying a causal-inference framework — previously undemonstrated for this eve
 
 ## References
 
-Atılgan Pazvantoğlu, C. (2025). Ecocide as a separate crime under the Rome Statute: A legal analysis of the discourse. *Environmental Policy and Law*, 55(2–3), 57–67. https://doi.org/10.1177/18785395251351171
+Atılgan Pazvantoğlu, C. (2025). Ecocide as a separate crime under the Rome Statute: A legal analysis of the discourse. *Environmental Policy and Law*, 55(2–3), 57–67. [https://doi.org/10.1177/18785395251351171](https://doi.org/10.1177/18785395251351171)
 
-Kroker, P. (2015). Satellite imagery as evidence for international crimes. *International Justice Monitor*.
+Kroker, P. (2015). Satellite imagery as evidence for international crimes. *International Justice Monitor*. [https://www.ijmonitor.org/2015/04/satellite-imagery-as-evidence-for-international-crimes/](https://www.ijmonitor.org/2015/04/satellite-imagery-as-evidence-for-international-crimes/)
 
-Newey, W. K., & West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. *Econometrica*, 55(3), 703–708.
+Newey, W. K., & West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. *Econometrica*, 55(3), 703–708. [https://doi.org/10.2307/1913610](https://doi.org/10.2307/1913610)
 
-Rome Statute of the International Criminal Court. (1998, as amended). Article 8(2)(b)(iv). United Nations. https://legal.un.org/icc/statute/99_corr/cstatute.htm
+Rome Statute of the International Criminal Court. (1998, as amended). Article 8(2)(b)(iv). United Nations. [https://legal.un.org/icc/statute/99_corr/cstatute.htm](https://legal.un.org/icc/statute/99_corr/cstatute.htm)
 
-Stop Ecocide International. (2024). Mass destruction of nature reaches International Criminal Court (ICC) as Pacific island states propose recognition of "ecocide" as international crime.
+Stop Ecocide International. (2024). Mass destruction of nature reaches International Criminal Court (ICC) as Pacific island states propose recognition of "ecocide" as international crime. [https://www.stopecocide.earth/2024/mass-destruction-of-nature-reaches-international-criminal-court-icc-as-pacific-island-states-propose-recognition-of-ecocide-as-international-crime](https://www.stopecocide.earth/2024/mass-destruction-of-nature-reaches-international-criminal-court-icc-as-pacific-island-states-propose-recognition-of-ecocide-as-international-crime)
 
-Wang, B. Y., Raymond, N., Gould, G., & Baker, I. (2013). Problems from hell, solution in the heavens?: Identifying obstacles and opportunities for employing geospatial technologies to document and mitigate mass atrocities. *Stability: International Journal of Security and Development*, 2(3), Art. 53. https://doi.org/10.5334/sta.cn
+Wang, B. Y., Raymond, N., Gould, G., & Baker, I. (2013). Problems from hell, solution in the heavens?: Identifying obstacles and opportunities for employing geospatial technologies to document and mitigate mass atrocities. *Stability: International Journal of Security and Development*, 2(3), Art. 53. [https://doi.org/10.5334/sta.cn](https://doi.org/10.5334/sta.cn)
 
 ---
 

@@ -33,7 +33,7 @@ A statistically significant, causally-validated NDVI decline was detected in Khe
 - HAC-robust standard errors (Newey-West correction) throughout; cluster-robust reported alongside HAC for the four-county panel
 - Placebo Test #1 — clean pass on the primary specification, and again on the four-county panel
 - Placebo Test #2 — genuine failure disclosed on a narrowed baseline (see limitation below)
-- 23-quarter event-study validation on the primary specification; four-county panel version shows a genuinely noisier quarterly signature (disclosed, not hidden)
+- Quarterly event-study validation on the primary specification; four-county panel version shows a genuinely noisier quarterly signature (disclosed, not hidden)
 - Month fixed effects (seasonal controls)
 - Multi-sensor verified flood data (UNOSAT, 5 independent sensors)
 

@@ -14,7 +14,7 @@ Environmental damage in conflict zones is frequently documented through anecdota
 
 ## Relationship to Existing Work
 
-The most recent published geospatial assessment of Ukraine's war-related environmental damage relies on visual, qualitative interpretation of multi-temporal imagery, triangulated with institutional reporting, and explicitly identifies the development of standardized, quantitative indicators as a direction for future research. ECOCIDE is designed specifically to fill that acknowledged gap for a shared case-study region, applying the same causal-inference rigor previously developed and validated in this researcher's prior work.
+The most recent published geospatial assessment of Ukraine's war-related environmental damage relies on visual, qualitative interpretation of multi-temporal imagery, triangulated with institutional reporting, and explicitly identifies the development of standardized, quantitative indicators as a direction for future research. ECOCIDE is designed specifically to fill that acknowledged gap for a shared case-study region, applying the same causal-inference rigor previously developed and validated in my prior work.
 
 ## Demonstration Case
 
@@ -63,4 +63,4 @@ The narrowed-baseline sensitivity analysis fails its own placebo test once HAC-r
 
 ## Current Status
 
-Complete. Core causal analysis, satellite evidence, multi-control robustness check, and interactive dashboard finished; GitHub deployment in progress.
+Complete. Core causal analysis, satellite evidence, multi-control robustness check, and interactive dashboard finished, with the full repository and dashboard published and live.
