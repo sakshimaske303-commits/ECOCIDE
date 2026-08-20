@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import sys
 import os
 
@@ -72,11 +73,20 @@ single control. See **Statistical Validation** for what came back.
 st.markdown("---")
 
 st.markdown("### Study Area Overview")
-image_path = os.path.join(PROJECT_ROOT, "outputs", "plots", "study_area_overview.png")
-if os.path.exists(image_path):
-    st.image(image_path, use_container_width=True)
+interactive_map_path = os.path.join(PROJECT_ROOT, "outputs", "plots", "study_area_overview.html")
+if os.path.exists(interactive_map_path):
+    with open(interactive_map_path, "r", encoding="utf-8") as f:
+        components.html(f.read(), height=560)
+    st.markdown(
+        "<p class='caption-text' style='text-align:center;'>Hover a zone for its name and role. Toggle layers top-right.</p>",
+        unsafe_allow_html=True,
+    )
 else:
-    st.warning("Study area overview image not found.")
+    image_path = os.path.join(PROJECT_ROOT, "outputs", "plots", "study_area_overview.png")
+    if os.path.exists(image_path):
+        st.image(image_path, use_container_width=True)
+    else:
+        st.warning("Study area overview image not found.")
 
 st.markdown("---")
 
