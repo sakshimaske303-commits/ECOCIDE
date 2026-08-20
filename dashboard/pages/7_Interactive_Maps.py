@@ -33,10 +33,10 @@ st.markdown(f"""
 <div class="forensic-card" style="margin-top: 12px;">
     <p style="color: {PALETTE['accent']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px;">Map Legend</p>
     <p style="color: {PALETTE['text_primary']}; font-size: 0.9rem; margin: 0;">
-        🟢 Mint outline — Kherson Oblast boundary &nbsp;|&nbsp;
-        🟠 Orange — Flood extent, 6 June &nbsp;|&nbsp;
-        🔴 Red — Flood extent, 9 June (peak) &nbsp;|&nbsp;
-        🔵 Cyan — Flood extent, 21 June (recession)
+        Mint outline — Kherson Oblast boundary &nbsp;|&nbsp;
+        Orange — Flood extent, 6 June &nbsp;|&nbsp;
+        Red — Flood extent, 9 June (peak) &nbsp;|&nbsp;
+        Cyan — Flood extent, 21 June (recession)
     </p>
 </div>
 """, unsafe_allow_html=True)

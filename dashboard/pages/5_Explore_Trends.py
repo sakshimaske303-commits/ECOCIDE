@@ -85,7 +85,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### 🎛️ Live Difference Calculator")
+st.markdown("### Live Difference Calculator")
 
 kherson = ndvi_data["Kherson (Treatment)"]
 

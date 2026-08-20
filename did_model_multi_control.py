@@ -30,19 +30,9 @@ def main():
     df["did_term"] = df["treatment"] * df["post"]
     df["month"] = df["date"].dt.month.astype(str)
 
-    # With five geographic units (one treatment, four control), clustering by
-    # zone is mathematically defined — though still thin. Standard guidance
-    # wants 30-40+ clusters for the asymptotic cluster-robust theory to be
-    # trustworthy, and few-cluster settings are known to understate standard
-    # errors — so this is reported as a useful cross-check, not a substitute
-    # for a properly powered multi-unit panel. Newey-West HAC is kept as a
-    # parallel specification for direct comparability with the primary
-    # single-control specification. statsmodels does flag this model's
-    # cluster covariance as rank-deficient (rank 4 of 14 constraints) given
-    # only 5 clusters against 14 parameters here — did_term itself still
-    # comes out with a sane, non-degenerate standard error, but the
-    # coefficient-by-coefficient reliability of the rest of the cluster-robust
-    # table is genuinely thinner than the HAC specification next to it.
+    # 5 clusters is thin (want 30-40+ for asymptotics) — cross-check only, not a substitute
+    # for HAC below. statsmodels flags cluster cov as rank-deficient (4/14); did_term's own
+    # SE is still sane, rest of the table less trustworthy than the HAC spec.
     model_cluster = smf.ols("ndvi ~ treatment + post + did_term + C(month)", data=df).fit(
         cov_type="cluster", cov_kwds={"groups": df["zone"]}
     )

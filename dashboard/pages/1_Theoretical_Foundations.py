@@ -30,20 +30,7 @@ with col_b:
         st.warning("Diagram not found at outputs/plots/imgg1.png")
     st.markdown(
         f"<p style='text-align:center; color:{PALETTE['text_secondary']}; font-size:0.85rem; margin-top:6px;'>"
-        "Schematic diagram — illustrative only</p>",
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        f"""
-        <div style="background: {PALETTE['bg_card']}; border: 1px solid rgba(0,172,193,0.3);
-                    border-radius: 10px; padding: 14px 20px; margin-top: 6px;">
-            <p style="color:{PALETTE['text_secondary']}; font-size:0.85rem; font-style:italic; margin:0; text-align:center;">
-                Every process, label, and physical relationship shown here comes from my own
-                understanding of fluvial and coastal process, laid out as a schematic to make the
-                mechanism easier to follow alongside the statistical results.
-            </p>
-        </div>
-        """,
+        "AI was used to help generate this image, but the concept and every detail in it are mine.</p>",
         unsafe_allow_html=True,
     )
 

@@ -26,14 +26,14 @@ vegetation cycles?
 
 st.markdown("---")
 
-st.markdown("### The Two Zones")
+st.markdown("### The Primary Comparison")
 
 col1, col2 = st.columns(2)
 
 with col1:
     st.markdown(f"""
     <div class="forensic-card" style="border-left: 4px solid {PALETTE['damage']}; min-height: 240px;">
-        <p style="color: {PALETTE['damage']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">🎯 Treatment Zone</p>
+        <p style="color: {PALETTE['damage']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Treatment Zone</p>
         <h3 style="color: {PALETTE['text_primary']}; margin-bottom: 8px;">Kherson Oblast, Ukraine</h3>
         <p style="color: {PALETTE['text_secondary']}; font-size: 0.88rem; margin-bottom: 12px;">
             46.777°N, 33.370°E — Kakhovka Dam and Dnipro River floodplain
@@ -49,7 +49,7 @@ with col1:
 with col2:
     st.markdown(f"""
     <div class="forensic-card" style="border-left: 4px solid {PALETTE['vegetation']}; min-height: 240px;">
-        <p style="color: {PALETTE['vegetation']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">✅ Control Zone</p>
+        <p style="color: {PALETTE['vegetation']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Primary Control Zone</p>
         <h3 style="color: {PALETTE['text_primary']}; margin-bottom: 8px;">Tulcea County, Romania</h3>
         <p style="color: {PALETTE['text_secondary']}; font-size: 0.88rem; margin-bottom: 12px;">
             45.200°N, 29.500°E — Danube Delta

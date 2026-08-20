@@ -15,14 +15,7 @@ st.markdown(
 )
 st.markdown("---")
 
-# ============================================================
-# PROOF-OF-WORK POPOVERS — tiny, pulsing "📸" buttons next to the
-# exact data source / script they back up. Click to reveal the
-# screenshot inline; nothing pushes the page layout around. Drop
-# the PNGs into outputs/proof_screenshots/ (see filenames below)
-# and these activate automatically — until then each falls back to
-# a quiet "not added yet" note instead of breaking the page.
-# ============================================================
+# Proof-of-work popovers next to each data source/script — screenshots live in outputs/proof_screenshots/
 st.markdown(f"""
 <style>
     div[data-testid="stPopover"] button {{
@@ -54,7 +47,7 @@ PROOF_DIR = os.path.join(PROJECT_ROOT, "outputs", "proof_screenshots")
 
 def proof_popover(filename, caption):
     path = os.path.join(PROOF_DIR, filename)
-    with st.popover("📸"):
+    with st.popover("View"):
         if os.path.exists(path):
             st.image(path, caption=caption, use_container_width=True)
         else:

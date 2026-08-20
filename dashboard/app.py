@@ -41,7 +41,6 @@ st.markdown(
                 padding: 16px 32px;
                 box-shadow: 0 4px 20px rgba(0, 172, 193, 0.35);
             ">
-                <span style="font-size:2.1rem; line-height:1;">📦</span>
                 <div style="text-align:left;">
                     <div style="color:{PALETTE['accent']}; font-family:'Inter',sans-serif; font-weight:800; font-size:1.05rem; letter-spacing:0.4px; display:flex; align-items:center; gap:8px;">
                         <span>ARCHIVED &amp; CITABLE ON ZENODO</span>
@@ -78,7 +77,7 @@ st.markdown(
                 border: 1px solid rgba(0, 172, 193, 0.3); border-left: 4px solid {PALETTE['accent']};
                 border-radius: 10px;">
         <p style="color:{PALETTE['accent']}; text-transform:uppercase; letter-spacing:1.5px;
-                  font-weight:800; font-size:0.85rem; margin-bottom:8px;">⚡ Why This Matters</p>
+                  font-weight:800; font-size:0.85rem; margin-bottom:8px;">Why This Matters</p>
         <p style="color:{PALETTE['text_primary']}; font-size:1rem; line-height:1.6; margin:0;">
             International courts have already accepted satellite evidence in war-crimes prosecutions —
             the ICC's <i>Al Mahdi</i> case was built on satellite imagery of cultural-heritage destruction
@@ -139,7 +138,7 @@ m1, m2, m3 = st.columns(3)
 with m1:
     st.markdown(f"""
     <div class="forensic-card" style="min-height: 190px;">
-        <p style="color: {PALETTE['water']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">🌊 Flood Evidence</p>
+        <p style="color: {PALETTE['water']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Flood Evidence</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
             Multi-sensor UNOSAT verified flood-extent polygons (ICEYE, Landsat-9, SkySat, 
             WorldView-3) tracked across 5 dates, revealing a complete rise-peak-recession cycle.
@@ -150,7 +149,7 @@ with m1:
 with m2:
     st.markdown(f"""
     <div class="forensic-card" style="min-height: 190px;">
-        <p style="color: {PALETTE['vegetation']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">🌿 Causal Inference</p>
+        <p style="color: {PALETTE['vegetation']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Causal Inference</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
             Difference-in-Differences model comparing Kherson (treatment) against a matched 
             non-conflict control zone, with month fixed effects and quarterly event-study validation.
@@ -161,7 +160,7 @@ with m2:
 with m3:
     st.markdown(f"""
     <div class="forensic-card" style="min-height: 190px;">
-        <p style="color: {PALETTE['damage']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">🔥 Honest Validation</p>
+        <p style="color: {PALETTE['damage']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Honest Validation</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
             Every result stress-tested with placebo dates and sensitivity analysis. Ambiguous 
             findings are disclosed transparently, not selectively reported.
@@ -174,15 +173,15 @@ st.markdown("---")
 st.markdown("### Explore the Evidence")
 
 nav_items = [
-    ("🏛️", "Study Design", "Treatment/control zones, methodology"),
-    ("🌊", "Theoretical Foundations", "The flood physics and coastal oceanography behind the evidence"),
-    ("🌊", "Flood Analysis", "Hydrograph, verified flood extent"),
-    ("🌿", "Vegetation Impact", "NDVI causal analysis, DiD results"),
-    ("📊", "Statistical Validation", "Placebo tests, event study, limitations"),
-    ("📈", "Explore Trends", "Interactive NDVI time series, live difference calculator"),
-    ("🛰️", "Satellite Evidence", "Before/after true-color imagery"),
-    ("🗺️", "Interactive Maps & Plots", "Live geospatial exploration plus the three headline charts"),
-    ("📖", "Methodology & Data", "Full transparency, data sources, honest limitations"),
+    ("Study Design", "Treatment/control zones, methodology"),
+    ("Theoretical Foundations", "The flood physics and coastal oceanography behind the evidence"),
+    ("Flood Analysis", "Hydrograph, verified flood extent"),
+    ("Vegetation Impact", "NDVI causal analysis, DiD results"),
+    ("Statistical Validation", "Placebo tests, event study, limitations"),
+    ("Explore Trends", "Interactive NDVI time series, live difference calculator"),
+    ("Satellite Evidence", "Before/after true-color imagery"),
+    ("Interactive Maps & Plots", "Live geospatial exploration plus the three headline charts"),
+    ("Methodology & Data", "Full transparency, data sources, honest limitations"),
 ]
 
 cols = st.columns(3)
@@ -217,7 +216,7 @@ with doc_col1:
     try:
         with open(os.path.join(ROOT_DIR, "ECO_Executive_Summary.pdf"), "rb") as f:
             st.download_button(
-                label="⚡ Executive Summary",
+                label="Executive Summary",
                 data=f,
                 file_name="ECO_Executive_Summary.pdf",
                 mime="application/pdf",
@@ -230,7 +229,7 @@ with doc_col2:
     try:
         with open(os.path.join(ROOT_DIR, "ECO_Research_Paper.pdf"), "rb") as f:
             st.download_button(
-                label="📗 Research Paper",
+                label="Research Paper",
                 data=f,
                 file_name="ECO_Research_Paper.pdf",
                 mime="application/pdf",
@@ -243,7 +242,7 @@ with doc_col3:
     try:
         with open(os.path.join(ROOT_DIR, "ECO_Project_Report.pdf"), "rb") as f:
             st.download_button(
-                label="📘 Project Report",
+                label="Project Report",
                 data=f,
                 file_name="ECO_Project_Report.pdf",
                 mime="application/pdf",
@@ -256,7 +255,7 @@ with doc_col4:
     try:
         with open(os.path.join(ROOT_DIR, "ECO_Development_Log.pdf"), "rb") as f:
             st.download_button(
-                label="📙 Development Log",
+                label="Development Log",
                 data=f,
                 file_name="ECO_Development_Log.pdf",
                 mime="application/pdf",
@@ -274,7 +273,7 @@ st.markdown(
         <h2 style="color: {PALETTE['text_primary']}; margin: 5px 0;">SAKSHI D. MASKE</h2>
         <p style="color: {PALETTE['accent']}; font-weight: 700; margin-bottom: 18px;">Independent Geospatial Researcher</p>
         <a href="https://github.com/sakshimaske303-commits/ECOCIDE" target="_blank" style="display:inline-block; background-color:#2A2F36; border: 1px solid {PALETTE['accent']}; padding:12px 26px; border-radius:8px; text-decoration:none;">
-            <span style="color:{PALETTE['text_primary']} !important; font-weight:700; font-size:1rem;">🔗 View Full Project on GitHub</span>
+            <span style="color:{PALETTE['text_primary']} !important; font-weight:700; font-size:1rem;">View Full Project on GitHub</span>
         </a>
     </div>
     """,

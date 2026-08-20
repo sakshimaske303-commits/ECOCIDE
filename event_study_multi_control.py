@@ -41,13 +41,8 @@ def main():
     event_terms = " + ".join([f"evt_q{q}".replace("-", "neg") for q in quarters])
     formula = f"ndvi ~ treatment + C(month_num) + {event_terms}"
 
-    # Cluster-robust breaks down here in a way it didn't for the simpler
-    # pooled DiD model: with only 5 clusters and ~24 parameters (12 month
-    # dummies + treatment + ~11 quarter-event terms), the cluster covariance
-    # matrix comes out severely rank-deficient (rank 4, not 24) and several
-    # coefficients get numerically degenerate standard errors (~1e-16) that
-    # are not real. Reported here anyway, but flagged rather than used, and
-    # HAC is used as the actual reported specification for this script.
+    # Cluster-robust is worse here than in the pooled DiD: 5 clusters vs ~24 params ->
+    # rank-deficient (rank 4), some SEs come out ~1e-16 (not real). Shown for the record; HAC is the actual spec.
     model_cluster = smf.ols(formula, data=df).fit(cov_type="cluster", cov_kwds={"groups": df["zone"]})
     model_hac = smf.ols(formula, data=df).fit(cov_type="HAC", cov_kwds={"maxlags": 1})
 

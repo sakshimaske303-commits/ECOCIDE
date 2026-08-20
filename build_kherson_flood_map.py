@@ -1,15 +1,6 @@
-"""build_kherson_flood_map.py — folium rebuild of the Kherson flood-extent
-map, replacing the old QGIS2Web export. Same three verified UNOSAT
-flood-extent polygons (6 June, 9 June, 21 June 2023) map4_flood_extent_geospatial.py
-already uses for the static version, same colors, now as one interactive map.
-
-Run from the ECOCIDE folder:
-    python build_kherson_flood_map.py
-
-Produces dashboard/static/kherson_flood_extent_webmap/index.html — same
-output path the dashboard and GitHub Pages link already use, so nothing
-else needs to change.
-"""
+"""Folium rebuild of the Kherson flood-extent map (replaces old QGIS2Web export).
+Same 3 verified UNOSAT flood polygons as map4_flood_extent_geospatial.py, interactive.
+Outputs to dashboard/static/kherson_flood_extent_webmap/index.html."""
 import os
 import geopandas as gpd
 import folium
