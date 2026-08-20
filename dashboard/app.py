@@ -185,11 +185,10 @@ nav_items = [
 ]
 
 cols = st.columns(3)
-for i, (icon, title, desc) in enumerate(nav_items):
+for i, (title, desc) in enumerate(nav_items):
     with cols[i % 3]:
         st.markdown(f"""
         <div class="forensic-card" style="margin-bottom: 14px; min-height: 110px;">
-            <p style="font-size: 1.6rem; margin: 0 0 6px 0;">{icon}</p>
             <p style="color: {PALETTE['text_primary']}; font-weight: 800; font-size: 0.95rem; margin: 0 0 4px 0;">{title}</p>
             <p style="color: {PALETTE['text_secondary']}; font-size: 0.8rem; margin: 0; font-weight: 600;">{desc}</p>
         </div>
