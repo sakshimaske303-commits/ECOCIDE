@@ -1,5 +1,8 @@
-# Sakshi D. Maske
-Independent Geospatial Researcher
+# Quantifying War-Time Environmental Damage: A Difference-in-Differences Analysis of the Kakhovka Dam Destruction
+
+**Sakshi D. Maske**
+
+*Independent Geospatial Researcher*
 
 ## Abstract
 
