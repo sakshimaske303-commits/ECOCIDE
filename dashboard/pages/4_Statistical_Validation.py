@@ -26,7 +26,7 @@ _checks = [
     ("✓", PALETTE['vegetation'], "HAC-Robust Standard Errors (Newey-West)"),
     ("✓", PALETTE['vegetation'], "Placebo Test #1 — Clean Pass (broad baseline)"),
     ("!", PALETTE['warning'], "Placebo Test #2 — Genuine Failure Disclosed (narrowed baseline)"),
-    ("✓", PALETTE['vegetation'], "23-Quarter Event-Study Check"),
+    ("✓", PALETTE['vegetation'], "Quarterly Event-Study Check"),
     ("✓", PALETTE['vegetation'], "Month Fixed Effects (seasonal controls)"),
     ("✓", PALETTE['vegetation'], "Multi-Sensor Verified Flood Data (UNOSAT, 5 sensors)"),
     ("!", PALETTE['warning'], "Multi-Control Robustness Check (4-control panel, 3 of 4 reproduce it)"),

@@ -7,3 +7,6 @@ statsmodels
 requests
 python-dotenv
 plotly
+Pillow
+folium
+reportlab
