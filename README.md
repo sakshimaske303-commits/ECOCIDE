@@ -1,6 +1,6 @@
 # ECOCIDE — A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21757974.svg)](https://doi.org/10.5281/zenodo.21757974)
+[![EarthArXiv](https://img.shields.io/badge/EarthArXiv-Preprint-B7410E.svg)](https://eartharxiv.org/repository/view/14827/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21757974.svg)](https://doi.org/10.5281/zenodo.21757974)
 
 **Isolating conflict-attributable environmental damage from pre-existing trends, using causal inference rather than qualitative interpretation.**
 
