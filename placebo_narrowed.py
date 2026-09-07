@@ -31,8 +31,11 @@ def main():
     df["post"] = (df["date"] >= FAKE_TREATMENT_DATE).astype(int)
     df["did_term"] = df["treatment"] * df["post"]
 
-    # HAC, maxlags=1 (short 10-obs window). Becomes significant here unlike under classical OLS —
-    # real validation failure for the narrowed baseline, see paper Sec 4.3/4.4.
+    # No C(month) here, unlike did_model_narrowed.py: this window is only 5 calendar
+    # months x 2 zones = 10 observations, so 4 month dummies would eat up nearly all
+    # the remaining degrees of freedom. HAC, maxlags=1 (short 10-obs window).
+    # Becomes significant here unlike under classical OLS — real validation failure
+    # for the narrowed baseline, see paper Sec 4.3/4.4.
     model = smf.ols("ndvi ~ treatment + post + did_term", data=df).fit(
         cov_type="HAC", cov_kwds={"maxlags": 1}
     )

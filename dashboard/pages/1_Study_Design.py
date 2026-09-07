@@ -40,9 +40,9 @@ with col1:
             46.777°N, 33.370°E — Kakhovka Dam and Dnipro River floodplain
         </p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
-            Dam destroyed <b>6 June 2023</b>. Flood-affected analysis zone spans approximately 
-            10,800 km² (dam to river mouth, per UNOSAT). Region under active conflict since 
-            February 2022.
+            Dam destroyed <b>6 June 2023</b>. Flood-affected analysis zone spans approximately
+            10,800 km² (dam to river mouth — my own estimated corridor, not a published UNOSAT
+            figure). Region under active conflict since February 2022.
         </p>
     </div>
     """, unsafe_allow_html=True)

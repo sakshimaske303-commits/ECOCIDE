@@ -42,7 +42,7 @@ Interactive maps and headline charts are hosted via GitHub Pages:
 
 - Tests the environmental effect produced by the destruction of the Kakhovka dam (6 June 2023), isolated from Ukraine's already-elevated, ongoing conflict baseline.
 - Provides a before/after comparison for reference, but does not rely on that for the conclusion; uses a four-county Danube/Black Sea Romanian control panel (Tulcea, Galați, Brăila, Constanța) instead
-- Confirms all findings with placebo testing (phony treatment dates) and with quarterly event study analysis
+- Stress-tests the main finding with placebo testing (phony treatment dates) and quarterly event-study analysis — most checks hold up, but not all of them cleanly: the narrowed-baseline placebo and the four-control event study's treatment-quarter timing are both disclosed below as validation failures rather than confirmations
 - Flood-extent data (UNOSAT) is used directly from its already-verified, multi-sensor product, instead of extracting flood detection from the raw satellite bands myself, as that is a task prone to noisy raw satellite band contamination.
 - Presentations of before/after true-color satellite imagery, programmatically generated for full reproducibleness
 - Clearly states an honest methodological scope of error identified during the validation process, never attempts to cover it up
