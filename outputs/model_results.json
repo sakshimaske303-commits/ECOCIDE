@@ -1,0 +1,111 @@
+{
+  "main_did": {
+    "label": "Main DiD\n(broad baseline)",
+    "coef": -0.0703,
+    "classic_ci": [
+      -0.1206,
+      -0.02
+    ],
+    "hac_ci": [
+      -0.1304,
+      -0.0102
+    ],
+    "classic_p": 0.007,
+    "hac_p": 0.0219
+  },
+  "narrowed_did": {
+    "label": "Narrowed-baseline DiD",
+    "coef": -0.1384,
+    "classic_ci": [
+      -0.2216,
+      -0.0552
+    ],
+    "hac_ci": [
+      -0.2093,
+      -0.0676
+    ],
+    "classic_p": 0.0019,
+    "hac_p": 0.0001
+  },
+  "placebo_broad": {
+    "label": "Placebo\n(broad baseline)",
+    "coef": 0.0148,
+    "classic_ci": [
+      -0.0778,
+      0.1075
+    ],
+    "hac_ci": [
+      -0.0425,
+      0.0722
+    ],
+    "classic_p": 0.7411,
+    "hac_p": 0.6124
+  },
+  "placebo_narrowed": {
+    "label": "Placebo\n(narrowed baseline)",
+    "coef": -0.1382,
+    "classic_ci": [
+      -0.3544,
+      0.0779
+    ],
+    "hac_ci": [
+      -0.2213,
+      -0.0552
+    ],
+    "classic_p": 0.1687,
+    "hac_p": 0.0011
+  },
+  "multi_control_rows": [
+    {
+      "label": "Kherson vs. Tulcea\n(primary specification)",
+      "coef": -0.0703,
+      "ci": [
+        -0.1304,
+        -0.0102
+      ],
+      "p": 0.0219,
+      "null": false
+    },
+    {
+      "label": "Kherson vs. Gala\u021bi",
+      "coef": -0.0695,
+      "ci": [
+        -0.1308,
+        -0.0082
+      ],
+      "p": 0.0262,
+      "null": false
+    },
+    {
+      "label": "Kherson vs. Br\u0103ila",
+      "coef": -0.0937,
+      "ci": [
+        -0.1461,
+        -0.0413
+      ],
+      "p": 0.0005,
+      "null": false
+    },
+    {
+      "label": "Kherson vs. Constan\u021ba",
+      "coef": -0.0064,
+      "ci": [
+        -0.058,
+        0.0452
+      ],
+      "p": 0.8076,
+      "null": true
+    },
+    {
+      "label": "Pooled: all 4 controls\n(HAC)",
+      "coef": -0.06,
+      "ci": [
+        -0.1138,
+        -0.0062
+      ],
+      "p": 0.0289,
+      "null": false,
+      "pooled": true
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import json
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -9,21 +10,12 @@ NULL_COLOR = "#8a8a8a"
 TEXT_COLOR = "#ffffff"
 ZERO_LINE = "#e63946"
 
-# did_term coefficients and HAC 95% CIs, reproduced directly from
-# did_model_multi_control.py (Kherson vs. each control individually, and
-# the pooled four-control panel)
-ROWS = [
-    {"label": "Kherson vs. Tulcea\n(primary specification)", "coef": -0.0703,
-     "ci": (-0.1304, -0.0102), "p": 0.0219, "null": False},
-    {"label": "Kherson vs. Galați", "coef": -0.0695,
-     "ci": (-0.1308, -0.0082), "p": 0.0262, "null": False},
-    {"label": "Kherson vs. Brăila", "coef": -0.0937,
-     "ci": (-0.1461, -0.0413), "p": 0.0005, "null": False},
-    {"label": "Kherson vs. Constanța", "coef": -0.0064,
-     "ci": (-0.0580, 0.0452), "p": 0.8076, "null": True},
-    {"label": "Pooled: all 4 controls\n(HAC)", "coef": -0.0600,
-     "ci": (-0.1138, -0.0062), "p": 0.0289, "null": False, "pooled": True},
-]
+# did_term coefficients and HAC 95% CIs read from outputs/model_results.json, which
+# generate_model_results.py builds by re-fitting did_model_multi_control.py directly
+# (Kherson vs. each control individually, and the pooled four-control panel).
+# Re-run generate_model_results.py first if the underlying NDVI data changes.
+with open("outputs/model_results.json") as f:
+    ROWS = json.load(f)["multi_control_rows"]
 
 
 def main():

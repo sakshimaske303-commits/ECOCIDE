@@ -1,3 +1,4 @@
+import json
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -8,42 +9,14 @@ HAC_COLOR = "#00b4d8"
 TEXT_COLOR = "#ffffff"
 ZERO_LINE = "#e63946"
 
-# Coefficients and 95% CIs, reproduced directly from did_model.py, did_model_narrowed.py,
-# placebo_test.py, and placebo_narrowed.py (classical OLS vs Newey-West HAC standard errors)
-MODELS = [
-    {
-        "label": "Main DiD\n(broad baseline)",
-        "coef": -0.0703,
-        "classic_ci": (-0.1206, -0.0200),
-        "hac_ci": (-0.1304, -0.0102),
-        "classic_p": 0.007,
-        "hac_p": 0.022,
-    },
-    {
-        "label": "Narrowed-baseline DiD",
-        "coef": -0.1384,
-        "classic_ci": (-0.2216, -0.0552),
-        "hac_ci": (-0.2093, -0.0676),
-        "classic_p": 0.0019,
-        "hac_p": 0.0001,
-    },
-    {
-        "label": "Placebo\n(broad baseline)",
-        "coef": 0.0148,
-        "classic_ci": (-0.0778, 0.1075),
-        "hac_ci": (-0.0425, 0.0722),
-        "classic_p": 0.7411,
-        "hac_p": 0.6124,
-    },
-    {
-        "label": "Placebo\n(narrowed baseline)",
-        "coef": -0.1382,
-        "classic_ci": (-0.3544, 0.0779),
-        "hac_ci": (-0.2213, -0.0552),
-        "classic_p": 0.1687,
-        "hac_p": 0.0011,
-    },
-]
+# Coefficients and 95% CIs read from outputs/model_results.json, which
+# generate_model_results.py builds by re-fitting did_model.py, did_model_narrowed.py,
+# placebo_test.py, and placebo_narrowed.py directly (classical OLS vs Newey-West HAC).
+# Re-run generate_model_results.py first if the underlying NDVI data changes.
+with open("outputs/model_results.json") as f:
+    _results = json.load(f)
+
+MODELS = [_results["main_did"], _results["narrowed_did"], _results["placebo_broad"], _results["placebo_narrowed"]]
 
 
 def main():

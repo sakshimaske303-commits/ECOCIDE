@@ -26,6 +26,8 @@ My ECOCIDE framework fixes this exact missing puzzle piece. I used a strict Diff
 11. [Entry 11](#entry-11)
 12. [Entry 12](#entry-12)
 13. [Entry 13](#entry-13)
+14. [Entry 14](#entry-14)
+15. [Entry 15](#entry-15)
 
 ---
 
@@ -190,3 +192,27 @@ Sat down and wrote down all these new changes. Added a fresh figure to show the 
 Also updated my Future Work list. I removed the old note abt control zone sensitivity because tht task is finished. In its place, I wrote two new goals: "explain why Constanța behaves differently" n "find a way to scale up to a much larger cluster count." I then made these exact same text updates inside my final Project Report file n the GitHub README page. 
 
 Why Constanța doesnt show the exact same environmental drop is still a big mystery to me. I don't want to just guess or make up a reason, so running a proper satellite land cover data check is the only accurate way to test if the beach coastline structure behaves differently than river floodplains. To fix my cluster robust code problem nd get a truly reliable cluster count, I will have to find data from outside Romania entirely. I need to look for matching basin areas in Bulgaria or Moldova. Doing tht will require massive coordinates searching, boundary downloading, and map matching work which is way too big for this current assignment deadline. So I jst threw it onto my long term future task list instead of trying to code it right now.......
+
+---
+
+## Entry 14
+
+The flood extent map was still sitting inside an old QGIS project file, exported thru the QGIS2Web plugin. Wanted to build it the same way I already switched over for my other projects—directly in Python with folium instead of round tripping thru QGIS every single time I need to touch it.
+
+`build_kherson_flood_map.py` reads the exact same three verified UNOSAT shapefiles the static PNG version already uses, June 6, June 9, nd June 21, so nothing new gets pulled in, jst the same trusted data rendered a different way. Kept the exact same colors too—orange for the 6th, red for the 9th, cyan for the 21st—plus the Kherson Oblast boundary outline sitting on top.
+
+Each shapefile turned out to be one big messy MultiPolygon with a ridiculous amount of detail baked in, somewhere between 20K nd 133K vertices depending on the date, so I simplified the geometry down (0.0002°, way under wht you'd even notice at this zoom) before handing it off to folium. Also had to strip the attribute columns first—one of them, Sensor_Dat, comes in as a raw pandas Timestamp nd folium's GeoJson serializer jst refuses to JSON encode tht. Wasnt going in the popup anyway since the date nd area were already written straight into the popup HTML from the filename nd Area_ha.
+
+Checked the numbers against the static map to make sure nothing got lost in translation: 12,250 ha on June 6, peaking at 46,418 ha on June 9, down to 2,117 ha by the June 21 recession. Matched exactly, so this is jst the same verified data, rendered differently, not a new dataset. Output file came out to abt 2.6MB which GitHub Pages nd the dashboard's iframe embed handle jst fine, same as the other maps.
+
+Updated the dashboard's Interactive Maps page intro nd footer caption, the README's tech stack line nd repo structure comment, nd the Project Report's deliverables line to say Python (folium) instead of QGIS. Left the old qgis_processing/kherson_flood_extent_webmap/ export sitting there as unused legacy stuff since this app cant delete its own files, it'll stay until I clear it out by hand.
+
+---
+
+## Entry 15
+
+Went back thru `map6_robustness_check.py` nd `map7_control_panel_comparison.py` nd realized both of them had my actual statistical numbers—coefficients, confidence intervals, p values, all of it—jst typed straight into the script as plain Python lists. Tht bugged me once I noticed it, because it means if I ever re run the underlying models nd a number shifts even slightly, these two plots would keep showing the old frozen numbers without me knowing unless I remembered to go back nd retype everything by hand.
+
+So I wrote `generate_model_results.py`, which loads the same NDVI json files nd re fits every single one of my causal models directly—`did_model.py`'s broad baseline, the narrowed baseline, both placebo checks, nd the full multi control panel with the per zone breakdown—nd dumps everything into one `outputs/model_results.json` file. Then I rewired both plotting scripts to jst read their numbers straight out of tht json instead of hvaing anything hardcoded.
+
+Reran both plots after the switch to make sure nothing broke. `control_panel_comparison.png` came back byte for byte identical. `robustness_check.png` came back visually the same, jst one p value label shows 0.0219 now instead of the rounded 0.0220 I had typed in by hand before, which is jst the script being more precise than I was, not a real change in the result. So now if I ever touch the underlying data again, I jst rerun `generate_model_results.py` first nd both plots update themselves automatically instead of silently going stale.

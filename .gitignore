@@ -1,5 +1,6 @@
 # Environment & credentials
 .env
+.env.txt
 *.json.key
 
 *.tif
