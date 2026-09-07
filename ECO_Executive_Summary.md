@@ -21,7 +21,7 @@ Not satisfying more than one (handpicked) comparison is a necessary condition fo
 
 ## The Method
 
-My core model is a Difference-in-Differences (DiD) model, where I compare the changes in NDVI levels in Kherson, Ukraine, with the changes in the comparable prewar NDVI levels in 4 other non-conflict cases of "matched counties" in Romania along the Danube/Black Sea corridor: Tulcea, Galați, Brăila, Constanța. Having a monthly effect in my model removes any regular seasonality, and what remains is the signal due to the conflict.
+My core model is a Difference-in-Differences (DiD) model, where I compare the changes in NDVI levels in Kherson, Ukraine, with the changes in comparable NDVI levels in 4 other non-conflict "matched counties" in Romania along the Danube/Black Sea corridor: Tulcea, Galați, Brăila, Constanța — none of which were ever at war, so "prewar" doesn't really apply to them; it's their ecological comparability to Kherson that matters, not a shared conflict timeline. Having a monthly effect in my model removes any regular seasonality, and what remains is the signal due to the conflict.
 
 For my main specification, I compare Kherson and Tulcea only, as I do not meet the criteria for a two-unit design to justify making any cluster-robust inferences. For robustness purposes, I re-estimates the same model using the complete four county panel; for both HAC and cluster-robust specifications. The "flood extent" information is not independent of the various bands of the satellite, but is part of the "available bands" derived by UNOSAT from its verified multi-sensor product composed of ICEYE radar data, Landsat-9, SkySat, WorldView-3, and MODIS.
 
