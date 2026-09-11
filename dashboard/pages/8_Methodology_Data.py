@@ -58,7 +58,10 @@ st.markdown("### Data Sources")
 col1, col2 = st.columns(2)
 with col1:
     st.markdown("""
-    - **NDVI (Vegetation Index)** — Sentinel-2, Sentinel Hub Statistical API
+    - **NDVI (Vegetation Index)** — Sentinel-2, Sentinel Hub Statistical API, queried against
+      each zone's true GADM administrative polygon with pixel-level Scene Classification
+      cloud/shadow/snow masking (corrected — an earlier version used bounding boxes and
+      scene-level cloud filtering only; see the correction note below)
     - **True-Color Imagery** — Sentinel-2 L2A, Sentinel Hub Process API
     - **Boundaries** — GADM v4.1
     """)
@@ -139,6 +142,29 @@ with st.expander("**Standard Errors: Why HAC, Not Clustering**"):
     reported for that specific model instead, with the cluster-robust output kept only for the record.
     """)
 
+with st.expander("**Bounding-Box vs. True Polygon: A Correction That Weakened the Headline Result**"):
+    st.markdown("""
+    A later audit found that the NDVI extraction pipeline queried Sentinel Hub using each zone's
+    rectangular *bounding box*, derived from its GADM polygon but not the polygon itself, and
+    filtered clouds only at the whole-scene level. Both are now corrected: the true, simplified
+    GADM polygon is queried directly, and a per-pixel Sentinel-2 Scene Classification mask
+    excludes cloud, cloud-shadow, cirrus and snow pixels before each month's mean is computed.
+
+    This is not a cosmetic fix. Because a polygon covers less area than its own bounding box, the
+    corrected extraction's valid-pixel ceiling per zone is structurally lower (confirmed directly
+    by comparing each zone's polygon-to-bbox area ratio against its observed maximum valid
+    fraction — they match closely). Re-running the full statistical battery on the corrected data
+    weakens the primary result from HAC p=0.022 to p=0.060 — no longer significant at the
+    conventional 5% level — and, more importantly, an exact randomization-inference check
+    (placebo-in-space, see **Statistical Validation**) shows Kherson is no longer the most extreme
+    of the five geographic units in this design: two of the four Romanian control counties
+    (Brăila, Constanța) independently show comparable-or-larger shifts of their own. Dropping the
+    corrected data's lowest-coverage months does not recover the original result — it weakens it
+    slightly further — ruling out one candidate benign explanation. This correction, and its
+    consequences, are reported here rather than only in a changelog; see `ECO_Research_Paper.md`
+    for the full reasoning and `ECO_RESULTS_RECONCILIATION.md` for every affected number.
+    """)
+
 with st.expander("**Downstream Flood Signal Was Lost to Cloud-Contaminated Optical Data**"):
     st.markdown("""
     Independent NDWI-based flood detection from Sentinel-2 optical imagery produced erratic, 
@@ -162,14 +188,18 @@ statistically validated NDVI findings, not as an independently causally-tested r
 era, erb = st.columns([0.94, 0.06])
 with era:
     st.error("""
-    **The narrowed-baseline DiD result (-0.1384) fails its own placebo test under HAC correction** —
-    the methodologically correct standard errors, given serial correlation in this short window. It is
-    retained here only to illustrate the pre-treatment-quarter problem, not as independent evidence.
-    The broader-baseline result (-0.0703, HAC p=0.022, cleanly placebo-validated under HAC) is treated
-    as the project's sole primary finding.
+    **The primary result no longer clears conventional significance, and Kherson is no longer the
+    most extreme unit under randomization inference.** Under the corrected polygon+SCL NDVI
+    extraction, the primary two-zone specification is -0.0747 (HAC p=0.060) — directionally
+    consistent with the originally-reported -0.0703 (p=0.022), but marginal rather than clearly
+    significant. The narrowed-baseline DiD (-0.1497) no longer fails its own placebo test under
+    HAC correction (p=0.069, an improvement), but remains a secondary, illustrative specification,
+    not the project's primary finding. That role still belongs to the primary two-zone
+    specification above — see **Statistical Validation** for the placebo-in-space and
+    control-only spillover checks that most directly qualify how much confidence it deserves.
     """)
 with erb:
-    proof_popover("04_did_model_vscode.png", "did_model.py open in VS Code — the core difference-in-differences model that produces the project's primary finding (-0.0703, HAC p=0.022).")
+    proof_popover("04_did_model_vscode.png", "did_model.py open in VS Code — the core difference-in-differences model that produces the project's primary finding (-0.0747, HAC p=0.060 on the corrected data).")
 
 st.markdown("---")
 st.markdown(

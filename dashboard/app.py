@@ -86,9 +86,9 @@ with col1:
 with col2:
     st.metric("PEAK FLOOD", "464.18 km²", "9 June 2023")
 with col3:
-    st.metric("NDVI EFFECT", "-0.0703", "p = 0.022 (HAC)")
+    st.metric("NDVI EFFECT", "-0.0747", "p = 0.060 (HAC) — marginal")
 with col4:
-    st.metric("VALIDATION", "Placebo-Tested", "HAC-Robust")
+    st.metric("VALIDATION", "Placebo-Tested", "Not sig. at 5% level")
 
 st.markdown("---")
 
@@ -106,7 +106,7 @@ st.markdown(
             But most satellite-based damage assessments of this specific event stop at visual, qualitative
             interpretation — they show <i>what</i> happened, not whether it is statistically distinguishable
             from a pre-existing trend. ECOCIDE closes that evidentiary gap: a placebo-tested,
-            HAC-robust estimate of conflict-attributable environmental damage, held to the same
+            HAC-robust estimate of an event-associated environmental effect, held to the same
             open-source-investigation discipline used by organizations like Bellingcat and Human Rights
             Watch — and honest enough to disclose exactly where its own validation didn't hold up.
         </p>
@@ -126,11 +126,12 @@ with col_left:
     International legal bodies have begun formally considering "ecocide" — mass environmental 
     destruction — as a prosecutable international crime.
 
-    Existing satellite assessments of this event rely on **visual, qualitative interpretation** 
-    and explicitly decline to establish statistical causality. This project fills that gap: 
-    applying a rigorous **Difference-in-Differences causal-inference framework**, validated 
-    through placebo testing, to independently quantify conflict-attributable environmental 
-    damage — separating it from pre-existing trends with statistical confidence.
+    Existing satellite assessments of this event rely on **visual, qualitative interpretation**
+    and explicitly decline to establish statistical causality. This project fills that gap:
+    applying a **Difference-in-Differences causal-inference framework**, checked against a
+    placebo test and several robustness checks, to estimate an event-associated vegetation
+    decline relative to a matched control zone — while disclosing, not hiding, the places where
+    the design's own assumptions hold up less cleanly (see Honest Validation below).
     """)
 
 with col_right:
@@ -140,11 +141,16 @@ with col_right:
             <p style="color:{PALETTE['accent']}; text-transform:uppercase; font-size:0.78rem;
                       letter-spacing:1.5px; font-weight:800; margin-bottom:12px;">Core Finding</p>
             <p style="color:{PALETTE['text_primary']}; font-size:0.95rem; line-height:1.7; margin:0; font-weight:500;">
-                A statistically significant <b>NDVI decline of 0.0703</b> (95% CI [-0.130, -0.010],
-                HAC-robust p=0.022) was detected in the Kherson conflict zone relative to a
-                matched non-conflict control zone (Danube Delta, Romania) — validated through a
-                clean placebo test using a fake pre-event date, which showed no comparable effect
-                (p=0.612).
+                A directionally consistent <b>NDVI decline of 0.0747</b> (95% CI [-0.153, 0.003],
+                HAC-robust p=0.060) was detected in the Kherson conflict zone relative to a
+                matched non-conflict control zone (Danube Delta, Romania) — just outside
+                conventional significance. A broad-window placebo test using a fake pre-event
+                date still shows no comparable effect (p=0.882), but an exact
+                randomization-inference check finds Kherson is no longer the most extreme of
+                the five geographic units in this design: two of the four Romanian control
+                counties independently show comparable-or-larger shifts of their own, unrelated
+                to the dam. This is disclosed directly on the Statistical Validation page rather
+                than only in the underlying paper.
             </p>
         </div>
         """, unsafe_allow_html=True
