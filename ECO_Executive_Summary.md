@@ -27,21 +27,25 @@ For my main specification, I compare Kherson and Tulcea only, as I do not meet t
 
 ## The Finding
 
-−0.0703. That's the NDVI change I observed at Kherson when compared to Tulcea after the dam was destroyed and it passed the placebo test, which was also conducted on a fake date before the dam was destroyed and yielded a non-significant result. I would expect the same if the change was not real — just some trend that already existed — but it didn't happen in Kherson.
+**Updated after a methodology correction.** An earlier version of this project's NDVI extraction queried Sentinel Hub using each zone's rectangular bounding box rather than its true GADM administrative polygon, and filtered clouds only at the whole-scene level rather than per pixel. Both are now corrected (true polygon geometry + pixel-level Sentinel-2 Scene Classification masking), and the correction weakened the numbers below. See `ECO_RESULTS_RECONCILIATION.md` for the full before/after and `ECO_Research_Paper.md` §3.3 for the technical detail.
 
-Over the entire four-county panel, I found that there was no effect that was washed out, as it remained of a similar magnitude and was reproduced independently in three of the four panel comparisons
+−0.0747. That's the corrected NDVI change I observed at Kherson when compared to Tulcea after the dam was destroyed — directionally the same as my original bbox-based estimate (−0.0703), but at HAC p = 0.060 it no longer clears the conventional 5% significance threshold. The broad-window placebo test, run on a fake date before the dam was destroyed, still comes back clean and non-significant, so whatever produces the real-date estimate isn't present at an arbitrary earlier date — but the real-date estimate itself is now only marginal, not clearly significant.
+
+Over the entire four-county panel, the same weakening shows up: −0.0661 (HAC p = 0.059), with only two of the four panel comparisons (Galați, Brăila) still confirming it individually. More importantly, an exact randomization-inference check (placebo-in-space) now shows Kherson is no longer the most extreme of the five geographic units in this design — two of the four Romanian control counties, Brăila and Constanța, independently show comparable-or-larger shifts of their own, unrelated to the dam. I checked whether this was explained by a handful of low-coverage months in the corrected data; it wasn't — dropping them weakened the result slightly further, not less.
 
 
 | Metric | Value |
 |---|---|
-| NDVI DiD Coefficient (primary specification, Tulcea) | -0.0703 |
-| P-value (HAC-robust) | 0.022 — significant |
-| 95% Confidence Interval | [-0.130, -0.010] |
-| NDVI DiD Coefficient (four-county panel, pooled robustness check) | -0.0600 |
-| P-value (HAC / cluster-robust) | 0.029 / 0.002 — significant |
-| Per-control check | 3 of 4 controls confirm; Constanta does not |
-| Placebo Test #1 (fake date, June 2022, primary specification) | +0.0148, p = 0.612 — clean pass |
-| Placebo Test (four-county panel, fake date) | +0.0222, p = 0.216 — clean pass |
+| NDVI DiD Coefficient (primary specification, Tulcea) | -0.0747 |
+| P-value (HAC-robust) | 0.060 — not significant at 5% |
+| 95% Confidence Interval | [-0.153, 0.003] |
+| NDVI DiD Coefficient (four-county panel, pooled robustness check) | -0.0661 |
+| P-value (HAC / cluster-robust) | 0.059 / 0.034 — not significant at 5% (HAC) |
+| Per-control check | 2 of 4 controls confirm (Galați, Brăila); Tulcea now marginal; Constanța does not |
+| Placebo Test #1 (fake date, June 2022, primary specification) | +0.0051, p = 0.882 — clean pass |
+| Placebo Test (four-county panel, fake date) | +0.0421, HAC p = 0.338 — clean pass (cluster p = 0.078, borderline) |
+| Placebo-in-space: Kherson's rank among the 5 geographic units | 2nd of 5 one-sided / 3rd of 5 two-sided — no longer the most extreme (was 1st of 5) |
+| Control-only spillover (Kherson excluded) | Brăila and Constanța both move independently and significantly — up from 1 of 4 originally |
 | Peak Flood Extent (9 June 2023) | 464.18 sq. km (UNOSAT, 5-sensor verified) |
 
 ## Validation & Robustness Checklist
@@ -49,18 +53,22 @@ Over the entire four-county panel, I found that there was no effect that was was
 - Non-conflict control: County of Tulcea (the principal specification) and the three other counties of the Danube/Black Sea region of Romania—Galați, Brăila, Constanța (full panel is also robustness checked as a pooled check)
 - Standard errors: HAC-robust throughout; cluster-robust also reported alongside HAC for the four-county panel
 - Placebo Test #1 — clean pass on the main specification, and clean pass again on the four-county panel
-- Placebo Test #2 — a genuine failure, disclosed openly and not hidden, on a narrowed baseline (see below for limitation)
+- Placebo Test #2 (narrowed baseline) — no longer fails under the corrected data (HAC p = 0.069); this is one of the few checks that improved rather than worsened, though it remains a secondary, illustrative check
+- Placebo-in-space (randomization inference) — Kherson is no longer the most extreme of the five geographic units; disclosed as the most consequential finding of this correction, not smoothed over
+- Control-only spillover — two of the four control counties (Brăila, Constanța) show their own independent post-event shift with Kherson excluded entirely
 - Quarterly event-study check conducted on the main specification; the four-county panel version is reported too, but it is noisier in the quarterly version
 - The seasonal cycles are controlled for by adding month fixed effects.
 - Flood extent data based on multi-sensor verification – UNOSAT, from the combination of 5 independent sensors
 
 ## Honest Limitations
 
-In my quarterly event study I found a nuisance effect in the pre-treatment quarter (2022 summer) before the dam has been destroyed. This is because Kherson was by then an active theatre of conflict — and a clean before/after design wouldn't really want the pre-conflict period to be as serene as Kherson in Ukraine was then. The effect is bigger (-0.1384) and statistically significant (p = 0.0001) when I use this "narrowed-baseline" specification... but the placebo test for that same narrowed specification, once I apply the correct HAC standard errors, also turns significant (p = 0.001) instead of staying clean. It is indeed a validation failure and not just a rounding error, which I am acknowledging; I don't keep the baseline result to be used as separate evidence, but only for reference to the problem posed by the pre-treatment quarter
+In my quarterly event study I found a nuisance effect in the pre-treatment quarter (2022 summer) before the dam has been destroyed. This is because Kherson was by then an active theatre of conflict — and a clean before/after design wouldn't really want the pre-conflict period to be as serene as Kherson in Ukraine was then. The effect is bigger (-0.1497 under the corrected data) and statistically significant (p = 0.0004) when I use this "narrowed-baseline" specification — and, unlike in an earlier version of this analysis, the placebo test for that same narrowed specification no longer turns significant under HAC (p = 0.069 now, versus p = 0.001 before). That specific concern is therefore less severe than I previously reported, though I still don't treat the narrowed-baseline result as separate evidence — only as a way to illustrate the pre-treatment-quarter problem.
 
-I don't have the opportunity to do cluster-robust inference with my treatment vs control zones: there is only one zone of treatment and one zone of control. I tried to do some of this in the four-county panel I built, and the pooled effect is true for the four counties, too; but has two complications of its own. The most purely coastal and urbanized of the 4 controls, Constanța doesn't produce the effect — an open question I haven't yet settled on, but most likely because it's the furthest of the 4 from being river-delta "wildland". 5 clusters (1 treatment, 4 control) is not enough to rely on cluster-robust standard errors confidently – the numbers I used as a guideline for full asymptotic reliability were in the range of 30-40+ clusters, so I consider these as a cross-check and not as a replacement to the primary HAC specification.
+I don't have the opportunity to do cluster-robust inference with my treatment vs control zones: there is only one zone of treatment and one zone of control. I tried to do some of this in the four-county panel I built, and the pooled effect is directionally true for the four counties too, but the complications around it are now bigger than I originally reported. The most purely coastal and urbanized of the 4 controls, Constanța doesn't produce the effect (and I now have a more concrete answer than an open ecological question — see below), and Tulcea, my own primary control, is itself only marginal now. 5 clusters (1 treatment, 4 control) is not enough to rely on cluster-robust standard errors confidently – the numbers I used as a guideline for full asymptotic reliability were in the range of 30-40+ clusters, so I consider these as a cross-check and not as a replacement to the primary HAC specification.
 
 I report HAC for that model because the thinness of the four-county panel is most noticeable in its quarterly event study, which has around 24 parameters against only 5 clusters, with this being a byproduct of the panel's size rather than an indication that the effect is somehow more precise in that panel.
+
+**The biggest new limitation**: a direct test with Kherson excluded from the panel entirely shows that Brăila and Constanța both have their own statistically significant, independent shift around the same June 2023 window — for reasons this design does not identify. This is why Kherson is no longer the most extreme unit in the placebo-in-space check above. With only five geographic units total, I cannot currently rule out that Kherson's real decline is, statistically speaking, indistinguishable from the independent variation already present among my own control counties. I'm reporting that plainly rather than only reporting the version of this analysis that clears significance.
 
 ## Real-World Relevance
 

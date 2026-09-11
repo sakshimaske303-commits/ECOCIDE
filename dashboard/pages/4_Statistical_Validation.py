@@ -292,10 +292,10 @@ should show a shift even with Kherson absent.
 """)
 
 _spill_rows = [
-    ("Tulcea", "+0.0116", "0.742", False),
-    ("Galați", "+0.0192", "0.567", False),
-    ("Brăila", "+0.0821", "0.027", True),
-    ("Constanța", "-0.1129", "0.020", True),
+    ("Tulcea", "+0.0116", "0.742", False, "1st — most stable"),
+    ("Galați", "+0.0192", "0.567", False, "2nd — stable"),
+    ("Brăila", "+0.0821", "0.027", True, "3rd — unstable"),
+    ("Constanța", "-0.1129", "0.020", True, "4th — least stable"),
 ]
 _spill_html = "".join(
     f"""<tr style="{'background:rgba(255,82,82,0.08);' if sig else ''}">
@@ -303,8 +303,9 @@ _spill_html = "".join(
         <td style="padding:8px 14px; text-align:right;">{coef}</td>
         <td style="padding:8px 14px; text-align:right;">{p}</td>
         <td style="padding:8px 14px; text-align:right;">{'⚠️ significant' if sig else 'clean'}</td>
+        <td style="padding:8px 14px; text-align:right;">{rank}</td>
     </tr>"""
-    for name, coef, p, sig in _spill_rows
+    for name, coef, p, sig, rank in _spill_rows
 )
 st.markdown(
     f"""
@@ -314,6 +315,7 @@ st.markdown(
             <th style="text-align:right; padding:8px 14px;">did_term</th>
             <th style="text-align:right; padding:8px 14px;">HAC p</th>
             <th style="text-align:right; padding:8px 14px;">Result</th>
+            <th style="text-align:right; padding:8px 14px;">Stability Rank</th>
         </tr></thead>
         <tbody>{_spill_html}</tbody>
     </table>
@@ -330,7 +332,10 @@ This gives the placebo-in-space finding above a concrete mechanism: Brăila and 
 random noise from the randomization draw, they are counties that genuinely moved on their own,
 independent of Kherson, around the same window, for reasons this design does not identify
 (disrupted Black Sea shipping and regional agricultural-market effects are plausible candidates,
-but this test establishes that a shift happened, not why). Because the primary specification uses
+but this test establishes that a shift happened, not why). Ranking the four counties by this same
+check gives a simple stability ordering, most to least stable: Tulcea, Galați, Brăila, Constanța —
+and Tulcea, the most stable of the four, is exactly the county chosen as the primary specification's
+own control zone, a choice made before this check existed. Because the primary specification uses
 Tulcea — the one control that passes this check cleanly — the primary two-zone result is not
 directly compromised by this, but the four-county pooled panel and the placebo-in-space ranking
 both are, more so than this project originally disclosed.
