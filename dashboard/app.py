@@ -88,7 +88,7 @@ with col2:
 with col3:
     st.metric("NDVI EFFECT", "-0.0703", "p = 0.022 (HAC)")
 with col4:
-    st.metric("VALIDATION", "Placebo-Tested", "Confirmed")
+    st.metric("VALIDATION", "Placebo-Tested", "HAC-Robust")
 
 st.markdown("---")
 
@@ -105,8 +105,8 @@ st.markdown(
             — and legal bodies are now considering "ecocide" itself as a prosecutable international crime.
             But most satellite-based damage assessments of this specific event stop at visual, qualitative
             interpretation — they show <i>what</i> happened, not whether it is statistically distinguishable
-            from a pre-existing trend. ECOCIDE closes that evidentiary gap: a causally-validated,
-            placebo-tested estimate of conflict-attributable environmental damage, held to the same
+            from a pre-existing trend. ECOCIDE closes that evidentiary gap: a placebo-tested,
+            HAC-robust estimate of conflict-attributable environmental damage, held to the same
             open-source-investigation discipline used by organizations like Bellingcat and Human Rights
             Watch — and honest enough to disclose exactly where its own validation didn't hold up.
         </p>
@@ -140,9 +140,9 @@ with col_right:
             <p style="color:{PALETTE['accent']}; text-transform:uppercase; font-size:0.78rem;
                       letter-spacing:1.5px; font-weight:800; margin-bottom:12px;">Core Finding</p>
             <p style="color:{PALETTE['text_primary']}; font-size:0.95rem; line-height:1.7; margin:0; font-weight:500;">
-                A causally-validated <b>NDVI decline of 0.0703</b> (95% CI [-0.130, -0.010],
+                A statistically significant <b>NDVI decline of 0.0703</b> (95% CI [-0.130, -0.010],
                 HAC-robust p=0.022) was detected in the Kherson conflict zone relative to a
-                matched non-conflict control zone (Danube Delta, Romania) — confirmed through a
+                matched non-conflict control zone (Danube Delta, Romania) — validated through a
                 clean placebo test using a fake pre-event date, which showed no comparable effect
                 (p=0.612).
             </p>
