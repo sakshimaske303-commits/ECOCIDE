@@ -1,28 +1,25 @@
-import geopandas as gpd
+"""Reservoir context figures (documented, not derived here) alongside the
+downstream flood-extent areas computed from UNOSAT layers.
 
-# Pre-breach reservoir extent (approximate, from documented literature:
-# Kakhovka reservoir was 2,155 km² at full capacity before the breach)
-PRE_BREACH_RESERVOIR_AREA_KM2 = 2155
+This script does NOT quantify reservoir water loss from satellite data. The
+reservoir's pre-breach area (~2,155 km²) and volume (~18.2 km³) are
+documented values quoted for scale; the areas printed below are downstream
+floodplain inundation, a different quantity.
+"""
+import eco_flood as ef
 
-# Post-breach flood extent at various dates (already loaded from UNOSAT)
-dates_data = {
-    "2023-06-06": "ST3_20230606_FloodExtent_KhersonskaOblast_UKR.shp",
-    "2023-06-09": "ST3_20230609_FloodExtent_KhersonskaOblast_UKR.shp",
-    "2023-06-21": "ST1_20230621_FloodExtent_KhersonskarOblast_UKR.shp",
-}
+PRE_BREACH_RESERVOIR_AREA_KM2 = 2155   # documented value, quoted for scale only
+PRE_BREACH_RESERVOIR_VOLUME_KM3 = 18.2  # documented value, quoted for scale only
 
-print("Kakhovka Reservoir Water-Loss Quantification\n")
-print(f"Pre-breach reservoir area (documented): {PRE_BREACH_RESERVOIR_AREA_KM2} km²\n")
 
-for date, filename in dates_data.items():
-    path = f"data/ndwi/FL20230606UKR_SHP.zip!FL20230606UKR_SHP/{filename}"
-    gdf = gpd.read_file(path)
-    gdf_equal_area = gdf.to_crs("EPSG:6933")
-    downstream_flood_km2 = gdf_equal_area.geometry.area.sum() / 1_000_000
+def main():
+    print("Kakhovka reservoir (documented, not computed here): "
+          f"{PRE_BREACH_RESERVOIR_AREA_KM2} km², {PRE_BREACH_RESERVOIR_VOLUME_KM3} km³\n")
+    rows, comp = ef.table()
+    for r in rows:
+        print(f"{r['date']}  {r['sensor']:17s} downstream flood extent = {r['flood_km2']:.2f} km²")
+    print(f"UNOSAT 6–9 June cumulative composite = {comp['flood_km2']:.2f} km²")
 
-    print(f"{date}: Downstream flood extent = {downstream_flood_km2:.2f} km²")
 
-print(f"\nNote: This represents downstream floodplain inundation, distinct from")
-print(f"upstream reservoir drainage. The reservoir itself lost approximately")
-print(f"18.2 km³ of water volume (per documented sources), while this")
-print(f"downstream data captures the resulting land-surface flood impact.")
+if __name__ == "__main__":
+    main()

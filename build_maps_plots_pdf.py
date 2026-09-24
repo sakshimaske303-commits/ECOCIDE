@@ -8,80 +8,39 @@ from PIL import Image
 BASE = "outputs"
 OUT_PDF = "ECOCIDE_Maps_and_Plots.pdf"
 
-DARK_BG = HexColor("#0a1628")
-TEXT_WHITE = HexColor("#ffffff")
-TEXT_GREY = HexColor("#B0BEC5")
-ACCENT = HexColor("#00b4d8")
+DARK_BG = HexColor("#FFFFFF")
+TEXT_WHITE = HexColor("#111111")
+TEXT_GREY = HexColor("#444444")
+ACCENT = HexColor("#1F77B4")
 
 FIGURES = [
-    {
-        "num": 1,
-        "path": "plots/study_area_overview.png",
-        "title": "Study Area Overview",
-        "caption": "Treatment zone (Kherson Oblast, Ukraine) and the four-control panel "
-                   "(Tulcea, Galati, Braila, Constanta counties, Romania) used in the "
-                   "Difference-in-Differences design. Boundaries: GADM v4.1.",
-    },
-    {
-        "num": 2,
-        "path": "maps/before_may2023_final.png",
-        "title": "Before the Dam's Destruction (May 2023)",
-        "caption": "Sentinel-2 true-colour imagery of the Kakhovka reservoir immediately before "
-                   "the dam's destruction, showing the full reservoir.",
-    },
-    {
-        "num": 2,
-        "path": "maps/after_july_2023_final.png",
-        "title": "After the Dam's Destruction (July 2023)",
-        "caption": "Sentinel-2 true-colour imagery of the same area after the breach, showing "
-                   "near-complete drainage of the reservoir and exposure of the former lakebed.",
-    },
-    {
-        "num": 3,
-        "path": "plots/flood_extent_map.png",
-        "title": "Verified Flood-Extent Map",
-        "caption": "UNOSAT multi-sensor flood-extent polygons over the Kherson Oblast flood "
-                   "corridor at three dates (6, 9, 21 June 2023), showing the flood's rise, "
-                   "peak, and recession.",
-    },
-    {
-        "num": 4,
-        "path": "plots/flood_hydrograph.png",
-        "title": "Flood Hydrograph",
-        "caption": "Verified flood extent over time: 122.50 km² (6 June) → 464.18 km² "
-                   "peak (9 June) → 21.17 km² (21 June) — a complete rise-peak-recession "
-                   "cycle within two weeks.",
-    },
-    {
-        "num": 5,
-        "path": "plots/ndvi_comparison.png",
-        "title": "NDVI: Treatment vs. Control Over Time",
-        "caption": "Monthly mean NDVI for Kherson (treatment) and Tulcea (control), Jan 2022 "
-                   "– Dec 2024, showing a visible divergence after the dam's destruction.",
-    },
-    {
-        "num": 6,
-        "path": "plots/event_study.png",
-        "title": "Quarterly Event Study",
-        "caption": "Quarterly treatment-effect estimates (Newey-West HAC standard errors) "
-                   "relative to the event date, including the disclosed pre-treatment-quarter "
-                   "signal.",
-    },
-    {
-        "num": 7,
-        "path": "plots/robustness_check.png",
-        "title": "Robustness: Classical vs. HAC Standard Errors",
-        "caption": "Point estimates and 95% confidence intervals for all four causal-inference "
-                   "models under classical OLS versus Newey-West HAC standard errors.",
-    },
-    {
-        "num": 8,
-        "path": "plots/control_panel_comparison.png",
-        "title": "Multi-Control Robustness Check",
-        "caption": "Kherson's NDVI decline tested against each of four control counties "
-                   "individually, plus the pooled four-control estimate. Three of four "
-                   "controls reproduce a significant effect; Constanta does not.",
-    },
+    {"num": 1, "path": "plots/study_area_overview.png", "title": "Study area",
+     "caption": "Treatment zone (Kherson Oblast, Ukraine) and the four Romanian control counties (Tulcea, Galati, "
+                "Braila, Constanta) in their true geographic positions. Boundaries: GADM v4.1."},
+    {"num": 2, "path": "maps/before_may2023_final.png", "title": "Lower Dnipro before the breach (April-May 2023)",
+     "caption": "Sentinel-2 L2A true-colour mosaic, 1 April - 31 May 2023, least-cloud mosaicking, bbox 32.0-33.6E, "
+                "46.3-46.9N. The frame covers the downstream floodplain and only the south-western tip of the reservoir."},
+    {"num": 3, "path": "maps/after_july_2023_final.png", "title": "Lower Dnipro after the breach (July 2023)",
+     "caption": "Same bbox and processing, July 2023. The drained reservoir tip near Nova Kakhovka is visible at "
+                "top right. Context only; not used as statistical evidence."},
+    {"num": 4, "path": "plots/flood_extent_map.png", "title": "UNOSAT flood-extent layers",
+     "caption": "UNOSAT FL20230606UKR layers for 6 June (Sentinel-3), 9 June (Sentinel-3) and 21 June (Sentinel-1). "
+                "Preliminary, not field-validated; layers differ in sensor and analysis extent."},
+    {"num": 5, "path": "plots/flood_hydrograph.png", "title": "UNOSAT flood-extent observations by sensor",
+     "caption": "Mapped flood area in each UNOSAT layer, labelled by sensor. Separate observations, not a continuous "
+                "series; see outputs/flood_extent_table.csv."},
+    {"num": 6, "path": "plots/ndvi_comparison.png", "title": "Monthly NDVI, Kherson vs Tulcea",
+     "caption": "Monthly mean NDVI (Sentinel-2, GADM polygons, SCL masking), January 2022 - November 2024. Descriptive."},
+    {"num": 7, "path": "plots/event_study.png", "title": "Quarterly event study",
+     "caption": "Kherson minus Tulcea NDVI gap by quarter relative to June 2023 (reference Mar-May 2023), Newey-West "
+                "HAC 95% CIs; dagger marks quarters surviving Bonferroni correction."},
+    {"num": 8, "path": "plots/robustness_check.png", "title": "Primary and narrowed-baseline estimates with placebos",
+     "caption": "Classical and Newey-West HAC 95% CIs. Values from outputs/model_results.json."},
+    {"num": 9, "path": "plots/control_panel_comparison.png", "title": "Kherson against each control and pooled",
+     "caption": "DiD estimates against each Romanian control county and their mean, Newey-West HAC 95% CIs."},
+    {"num": 10, "path": "plots/placebo_in_space.png", "title": "Placebo in space",
+     "caption": "Each of the five units assigned 'treated' in turn against the other four; exact randomization "
+                "p-values from Kherson's rank."},
 ]
 
 
@@ -96,7 +55,7 @@ def draw_cover(c, page_w, page_h):
     c.setFillColor(TEXT_GREY)
     c.setFont("Helvetica", 14)
     c.drawCentredString(page_w / 2, page_h - 92 * mm,
-                         "A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes")
+                         "Kakhovka Dam destruction: satellite vegetation and flood evidence")
 
     c.setFillColor(ACCENT)
     c.setFont("Helvetica-Bold", 13)

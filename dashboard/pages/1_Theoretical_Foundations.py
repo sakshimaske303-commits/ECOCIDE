@@ -7,13 +7,13 @@ ROOT_DIR = os.path.dirname(BASE_DIR)                                     # repo 
 sys.path.append(BASE_DIR)
 from styles import apply_custom_style, PALETTE
 
-st.set_page_config(page_title="Fluvial Geomorphology — ECOCIDE", page_icon="🌊", layout="wide")
+st.set_page_config(page_title="Theoretical Foundations — ECOCIDE", page_icon="🌊", layout="wide")
 apply_custom_style()
 
 st.markdown("<h1 style='text-align: center;'>🌊 ANATOMY OF A DAM-BREAK FLOOD</h1>", unsafe_allow_html=True)
 st.markdown(
     f"<h3 style='text-align: center; color: {PALETTE['accent']}; font-weight: 400;'>"
-    "The Fluvial Geomorphology and Coastal Oceanography Behind ECOCIDE's Evidence</h3>",
+    "How a Dam-Break Flood and Reservoir Drainage Can Change Vegetation</h3>",
     unsafe_allow_html=True,
 )
 st.markdown("---")
@@ -25,7 +25,7 @@ IMG_PATH = os.path.join(ROOT_DIR, "outputs", "plots", "imgg1.png")
 col_a, col_b, col_c = st.columns([0.2, 5.9, 0.2])
 with col_b:
     if os.path.exists(IMG_PATH):
-        st.image(IMG_PATH, use_container_width=True)
+        st.image(IMG_PATH, width="stretch")
     else:
         st.warning("Diagram not found at outputs/plots/imgg1.png")
     st.markdown(
@@ -39,64 +39,51 @@ st.markdown("---")
 # ============================================================
 # SECTION 1 — DAM-BREAK HYDRAULICS
 # ============================================================
-st.markdown("### A Reservoir Release Is a Geomorphic Event, Not Just a Hydrological One")
+st.markdown("### Two Opposite Processes Inside One Treatment Zone")
 
 st.markdown("""
-When the Kakhovka Dam failed on 6 June 2023, it did not simply "release water" — it released an
-18.2 km³ reservoir as a **dam-break flood wave**, a discharge event orders of magnitude beyond the
-Dnipro's normal flow, propagating downstream as a steep-fronted surge. The physics of how that
-wave evolves as it travels is governed by unsteady open-channel flow (the shallow-water/Saint-Venant
-equations, in essence a statement of mass and momentum conservation for a flood pulse moving down
-a channel) — the wave attenuates and broadens as it travels, but even hundreds of kilometers
-downstream it still arrives as a genuinely anomalous discharge spike, which is exactly what
-UNOSAT's multi-date flood-extent polygons (used in ECOCIDE's Flood Analysis page) trace: a
-rise–peak–recession cycle rather than a static flooded footprint.
+The dam's failure on 6 June 2023 set off two different landscape changes, and both fall inside the
+Kherson Oblast polygon used for the NDVI analysis:
+
+- **Downstream, the floodplain was inundated.** A dam-break wave travels as an unsteady flood pulse
+  (described by the shallow-water / Saint-Venant equations). Along the roughly 90 km of the lower
+  Dnipro between the dam and the Dnipro–Buh estuary, it covered land for days to weeks — UNOSAT mapped
+  about 620 km² cumulatively over 6–9 June — then receded. Submergence, sediment deposition and
+  debris can suppress vegetation in the flooded strip.
+- **Upstream, the reservoir drained.** Several hundred square kilometres of former reservoir inside
+  the oblast turned from open water into exposed bed that re-vegetated quickly. Water is masked in
+  the NDVI series, so this bed enters the oblast mean as new, increasingly green land.
 """)
 
 st.markdown("---")
 
-# ============================================================
-# SECTION 2 — GEOMORPHIC WORK OF THE FLOOD
-# ============================================================
-st.markdown("### The Flood as a Geomorphic Agent: Erosion, Transport, Deposition")
+st.markdown("### Why This Matters for the Statistics")
 
 st.markdown("""
-A flood of this magnitude does real **geomorphic work** on the landscape it passes through. Near
-the breach, the discharge wave drives intense **bank erosion** and channel widening as flow
-velocities and shear stress on the channel bed spike far above normal. That eroded material,
-along with sediment already resting on the reservoir floor, becomes suspended load carried
-downstream — the "sediment resuspension" stage in the diagram above. Where the flood spreads
-beyond the main channel onto the floodplain, velocities drop and the river deposits that sediment
-as new, often coarser-grained layers on top of the pre-existing floodplain surface: **floodplain
-reworking**. This is the same category of process — just executed catastrophically over days
-rather than gradually over centuries — through which rivers ordinarily build floodplains and
-deltas in the first place.
+The flood covered only about 2% of the oblast. Even a complete loss of vegetation on every flooded
+pixel would move the oblast-wide mean NDVI by roughly 0.02, while reservoir drainage pushes the mean
+in the opposite direction by adding newly vegetated land. A mechanism that could produce an oblast-wide decline would have to act
+far beyond the flooded strip — for example through the loss of irrigation water from the reservoir,
+or through conflict effects unrelated to the dam. The NDVI analysis cannot separate these pathways,
+which is why its statistically significant oblast-wide decline is reported as an association, not
+as a measured flood impact. The decline is largest in the 2024 growing season, which fits slower,
+larger-scale pathways better than the flood itself.
 """)
 
 st.markdown("---")
 
-# ============================================================
-# SECTION 3 — WHERE RIVER MEETS SEA
-# ============================================================
-st.markdown("### Where the River Meets the Sea: A Buoyant Freshwater Plume")
+st.markdown("### At the River Mouth")
 
 st.markdown("""
-The flood's final geomorphic stage is oceanographic rather than fluvial: at the Dnipro's mouth,
-the surge of freshwater is significantly less dense than the surrounding Black Sea saltwater, so
-it spreads out as a **buoyant surface plume** rather than mixing in immediately — the salinity
-gradient depicted in the diagram, from low salinity at the river mouth to full marine salinity
-offshore. This kind of density-stratified freshwater intrusion is a well-studied estuarine and
-coastal-oceanography phenomenon, and it matters directly for ECOCIDE's own evidence: a large,
-sudden freshwater and sediment pulse into a coastal wetland system is a plausible physical
-mechanism for real vegetation stress — via osmotic disruption, turbidity-driven light reduction,
-and sediment burial — independent of, and additional to, direct inundation. This gives the
-project's causally-validated **NDVI decline (−0.0703, p = 0.022)** in the Kherson conflict zone a
-concrete physical pathway, not just a statistical association.
+Where the Dnipro enters the estuary and the Black Sea, the flood released a large pulse of fresh
+water, sediment and pollutants that spread as a buoyant surface plume. Fresh water is not itself an
+osmotic stressor for floodplain plants; the documented concerns are for the brackish estuarine and
+marine ecosystems (salinity drop, turbidity, contamination), which NDVI over land does not measure.
 """)
 
 st.markdown("---")
 
 st.markdown(
-    f"<p class='caption-text' style='text-align:center;'>ECOCIDE — The Geomorphology and Oceanography Behind the Evidence</p>",
+    f"<p class='caption-text' style='text-align:center;'>ECOCIDE — Physical context for the evidence</p>",
     unsafe_allow_html=True,
 )

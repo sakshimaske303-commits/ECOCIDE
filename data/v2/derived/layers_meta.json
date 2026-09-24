@@ -1,0 +1,100 @@
+{
+ "shape": [
+  2590,
+  2881
+ ],
+ "transform": [
+  231.656358,
+  0.0,
+  5685541.994394001,
+  0.0,
+  -231.656358,
+  3254540.1735420004
+ ],
+ "crs": "EPSG:3035",
+ "notes": [],
+ "oblast_names": [
+  "Cherkasy",
+  "Chernihiv",
+  "Chernivtsi",
+  "Crimea",
+  "Dnipropetrovs'k",
+  "Donets'k",
+  "Ivano-Frankivs'k",
+  "Kharkiv",
+  "Kherson",
+  "Khmel'nyts'kyy",
+  "Kiev",
+  "Kiev City",
+  "Kirovohrad",
+  "L'viv",
+  "Luhans'k",
+  "Mykolayiv",
+  "Odessa",
+  "Poltava",
+  "Rivne",
+  "Sevastopol'",
+  "Sumy",
+  "Ternopil'",
+  "Vinnytsya",
+  "Volyn",
+  "Zakarpattia",
+  "Zaporizhia",
+  "Zhytomyr"
+ ],
+ "flood_layers_other": [
+  "ICEYE_20230607_FloodExtent_KhersonskaOblast_UKR.shp",
+  "MODIS_AquaTerra_20230607_FloodExtent_NK_Dam.shp",
+  "ST1_20230621_FloodExtent_KhersonskarOblast_UKR.shp",
+  "ST2_20230608_FloodExtent_KhersonskarOblast_UKR.shp",
+  "ST2_20230613_FloodExtent_KhersonskaOblast_UKR.shp",
+  "ST3_20230606_FloodExtent_KhersonskaOblast_UKR.shp",
+  "ST3_20230609_FloodExtent_KhersonskaOblast_UKR.shp",
+  "SkySat_20230606_FloodExtent_NK_Dam.shp",
+  "WV03_20230608_FloodExtent_HolaPrystanCity_UKR.shp",
+  "WV3_20230617_FloodExtent_HolaPrystan.shp",
+  "WV3_20230617_FloodExtent_Kherson.shp",
+  "WV3_20230617_FloodExtent_Oleshky.shp"
+ ],
+ "reservoir_km2": 1811.9338571663914,
+ "bank_components": {
+  "n": 30,
+  "right_px": 126612,
+  "left_px": 97644,
+  "reassigned_small_px": 106
+ },
+ "kakhovka_network": {
+  "segments": 1879,
+  "km": 3264.0042613220476,
+  "all_segments": 5910
+ },
+ "classes": [
+  "tree",
+  "shrub",
+  "grass",
+  "crop",
+  "built",
+  "bare",
+  "snow",
+  "water",
+  "wetland",
+  "mangrove",
+  "moss"
+ ],
+ "counts_px": {
+  "universe": 3494297,
+  "F": 9324,
+  "excl_partial": 2605,
+  "excl_other": 6380,
+  "reservoir": 33764,
+  "zoneK": 204890,
+  "zoneO": 2059491
+ },
+ "F_km2": 500.36936631380854,
+ "F_by_bank_px": {
+  "right": 2765,
+  "left": 6482,
+  "none": 77
+ },
+ "seconds": 77
+}

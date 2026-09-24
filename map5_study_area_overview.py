@@ -1,51 +1,43 @@
+"""Study-area map: treatment and control zones in their true positions."""
 import geopandas as gpd
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 
-BACKGROUND = "#0a1628"
-TREATMENT_COLOR = "#e63946"
-CONTROL_COLOR = "#00b4d8"
-CONTROL_NULL_COLOR = "#6c757d"  # Constanța — the control that doesn't reproduce the effect
-TEXT_COLOR = "#ffffff"
+import eco_style as st
 
 ZONES = [
-    ("kherson_oblast.gpkg", TREATMENT_COLOR, "KHERSON OBLAST, UKRAINE\n(Treatment — Conflict Zone)"),
-    ("tulcea_county.gpkg", CONTROL_COLOR, "TULCEA COUNTY, ROMANIA\n(Control — Primary)"),
-    ("galati_county.gpkg", CONTROL_COLOR, "GALAȚI COUNTY, ROMANIA\n(Control)"),
-    ("braila_county.gpkg", CONTROL_COLOR, "BRĂILA COUNTY, ROMANIA\n(Control)"),
-    ("constanta_county.gpkg", CONTROL_NULL_COLOR, "CONSTANȚA COUNTY, ROMANIA\n(Control — Null Result)"),
+    ("kherson", "kherson_oblast.gpkg", "Kherson Oblast\n(treatment)"),
+    ("tulcea", "tulcea_county.gpkg", "Tulcea\n(primary control)"),
+    ("galati", "galati_county.gpkg", "Galați"),
+    ("braila", "braila_county.gpkg", "Brăila"),
+    ("constanta", "constanta_county.gpkg", "Constanța"),
 ]
 
 
 def main():
-    fig, axes = plt.subplots(1, 5, figsize=(26, 7.5))
-    fig.patch.set_facecolor(BACKGROUND)
-
-    for ax, (fname, color, label) in zip(axes, ZONES):
-        gdf = gpd.read_file(f"data/boundaries/{fname}")
-        ax.set_facecolor(BACKGROUND)
-        gdf.plot(ax=ax, facecolor=color, edgecolor="white", linewidth=1.5, alpha=0.6)
-        bounds = gdf.total_bounds
-        pad_x = (bounds[2] - bounds[0]) * 0.15
-        pad_y = (bounds[3] - bounds[1]) * 0.15
-        ax.set_xlim(bounds[0] - pad_x, bounds[2] + pad_x)
-        ax.set_ylim(bounds[1] - pad_y, bounds[3] + pad_y)
-        ax.set_axis_off()
-        ax.set_title(label, color=TEXT_COLOR, fontsize=12.5, fontweight="bold", pad=12)
-
-    fig.text(0.5, 0.99, "ECOCIDE — STUDY AREA", fontsize=26, fontweight="bold",
-              color=TEXT_COLOR, ha="center")
-    fig.text(0.5, 0.945,
-              "Difference-in-Differences Design: Kakhovka Dam Destruction (6 June 2023) — "
-              "1 treatment zone, 4-control panel",
-              fontsize=13, color="#cccccc", ha="center")
-
-    plt.figtext(0.5, 0.015, "ECOCIDE — Boundaries: GADM v4.1",
-                ha="center", fontsize=9, color="#888888")
-
-    plt.tight_layout(rect=[0, 0.03, 1, 0.82])
-    plt.savefig("outputs/plots/study_area_overview.png", dpi=200, facecolor=BACKGROUND, bbox_inches="tight")
-    plt.close()
-    print("Saved: outputs/plots/study_area_overview.png")
+    st.apply()
+    fig, ax = plt.subplots(figsize=(10, 5.2))
+    ax.grid(color="#EEEEEE")
+    handles = []
+    for z, f, label in ZONES:
+        g = gpd.read_file(f"data/boundaries/{f}").to_crs(4326)
+        g.plot(ax=ax, color=st.ZONE_COLORS[z], alpha=0.55, edgecolor="#333333", lw=0.6)
+        c = g.union_all().representative_point()
+        dy = -0.35 if z == "kherson" else 0
+        ax.text(c.x, c.y + dy, label, ha="center", va="center", fontsize=8.5, fontweight="bold")
+    ax.plot(33.37, 46.777, marker="*", color="black", ms=12)
+    ax.annotate("Kakhovka Dam", (33.37, 46.777), xytext=(8, 8), textcoords="offset points", fontsize=8, bbox=dict(fc="white", ec="none", alpha=0.8, pad=1))
+    ax.set_xlim(26.8, 35.5)
+    ax.set_ylim(43.5, 48.0)
+    ax.set_aspect(1 / 0.70)
+    ax.set_xlabel("Longitude (°E)")
+    ax.set_ylabel("Latitude (°N)")
+    x0, y0 = 27.0, 43.7
+    ax.plot([x0, x0 + 100 / 78.0], [y0, y0], color="black", lw=3)
+    ax.text(x0 + 50 / 78.0, y0 + 0.08, "100 km", ha="center", fontsize=8)
+    ax.set_title("Study area: Kherson Oblast (Ukraine) and four Romanian control counties")
+    fig.text(0.01, 0.0, "Boundaries: GADM v4.1. Tulcea borders Ukraine's Odesa Oblast along the Danube.", fontsize=7.5, color="#555555")
+    st.save(fig, "outputs/plots/study_area_overview.png")
 
 
 if __name__ == "__main__":

@@ -1,160 +1,135 @@
+"""
+Runs the complete statistical battery once and writes every number used by
+the paper, dashboard and figures to outputs/model_results.json.
+
+    python generate_model_results.py
+
+Re-run this (then build_all_figures.py) whenever the NDVI data changes.
+To analyse a different NDVI folder without touching data/ndvi:
+    ECO_NDVI_DIR=data/ndvi_v3 python generate_model_results.py
+"""
 import json
-import pandas as pd
-import statsmodels.formula.api as smf
+import os
+from datetime import datetime, timezone
 
-TREATMENT_DATE = "2023-06-01"
-NARROWED_PRE_START = "2023-01-01"
-FAKE_DATE_BROAD = "2022-06-01"
-FAKE_DATE_NARROWED = "2023-03-01"
-CONTROL_ZONES = ["tulcea", "galati", "constanta", "braila"]
+import numpy as np
+from scipy import stats
 
-
-def load_ndvi(zone_name, is_treatment):
-    with open(f"data/ndvi/{zone_name}_ndvi_monthly.json") as f:
-        data = json.load(f)
-    rows = []
-    for entry in data["data"]:
-        date = entry["interval"]["from"][:7] + "-01"
-        ndvi = entry["outputs"]["ndvi"]["bands"]["B0"]["stats"]["mean"]
-        rows.append({"date": date, "ndvi": ndvi, "treatment": is_treatment, "zone": zone_name})
-    return pd.DataFrame(rows)
-
-
-def ci95(model, term):
-    lo, hi = model.conf_int().loc[term]
-    return (round(float(lo), 4), round(float(hi), 4))
-
-
-def fit_broad(df, hac=True):
-    kwargs = dict(cov_type="HAC", cov_kwds={"maxlags": 3}) if hac else {}
-    return smf.ols("ndvi ~ treatment + post + did_term + C(month)", data=df).fit(**kwargs)
+import eco_core as ec
 
 
 def main():
-    kherson = load_ndvi("kherson", is_treatment=1)
-    tulcea = load_ndvi("tulcea", is_treatment=0)
-    results = {}
+    data = ec.load_all()
+    R = {"meta": {
+        "ndvi_dir": ec.NDVI_DIR,
+        "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "method": "DiD on monthly treated-minus-control NDVI gap; Newey-West HAC (maxlags=3), t-distribution",
+        "event_month": "2023-06",
+        "window": "2022-01 to 2024-11",
+    }}
 
-    # --- Main DiD (broad baseline) ---
-    df = pd.concat([kherson, tulcea], ignore_index=True)
-    df["date"] = pd.to_datetime(df["date"])
-    df["post"] = (df["date"] >= TREATMENT_DATE).astype(int)
-    df["did_term"] = df["treatment"] * df["post"]
-    df["month"] = df["date"].dt.month.astype(str)
-    m_classic = fit_broad(df, hac=False)
-    m_hac = fit_broad(df, hac=True)
-    results["main_did"] = {
-        "label": "Main DiD\n(broad baseline)",
-        "coef": round(float(m_hac.params["did_term"]), 4),
-        "classic_ci": ci95(m_classic, "did_term"),
-        "hac_ci": ci95(m_hac, "did_term"),
-        "classic_p": round(float(m_classic.pvalues["did_term"]), 4),
-        "hac_p": round(float(m_hac.pvalues["did_term"]), 4),
+    # --- pre-period descriptives (Kherson vs Tulcea) ---
+    pre = {z: data[z][data[z]["date"] < ec.EVENT_DATE] for z in ["kherson", "tulcea"]}
+    R["pre_period"] = {
+        z: {"mean": float(pre[z]["ndvi"].mean()), "sd": float(pre[z]["ndvi"].std()), "n": int(len(pre[z])),
+            "seasonal_amplitude": float(pre[z].groupby(pre[z]["date"].dt.month)["ndvi"].mean().pipe(lambda s: s.max() - s.min()))}
+        for z in pre
     }
+    R["pre_period"]["welch_p"] = float(stats.ttest_ind(pre["kherson"]["ndvi"], pre["tulcea"]["ndvi"], equal_var=False).pvalue)
 
-    # --- Narrowed-baseline DiD ---
-    df_n = pd.concat([kherson, tulcea], ignore_index=True)
-    df_n["date"] = pd.to_datetime(df_n["date"])
-    df_n = df_n[df_n["date"] >= NARROWED_PRE_START]
-    df_n["post"] = (df_n["date"] >= TREATMENT_DATE).astype(int)
-    df_n["did_term"] = df_n["treatment"] * df_n["post"]
-    df_n["month"] = df_n["date"].dt.month.astype(str)
-    n_classic = fit_broad(df_n, hac=False)
-    n_hac = fit_broad(df_n, hac=True)
-    results["narrowed_did"] = {
-        "label": "Narrowed-baseline DiD",
-        "coef": round(float(n_hac.params["did_term"]), 4),
-        "classic_ci": ci95(n_classic, "did_term"),
-        "hac_ci": ci95(n_hac, "did_term"),
-        "classic_p": round(float(n_classic.pvalues["did_term"]), 4),
-        "hac_p": round(float(n_hac.pvalues["did_term"]), 4),
-    }
+    # --- primary + validation models ---
+    R["main_did"] = ec.did(data)
+    R["main_did_seasonal"] = ec.did(data, month_fe=True)
+    R["placebo_broad"] = ec.did(data, event_date="2022-06-01", end="2023-06-01")
+    R["narrowed_did"] = ec.did(data, start="2023-01-01")
+    R["placebo_narrowed"] = ec.did(data, event_date="2023-03-01", start="2023-01-01", end="2023-06-01", maxlags=1)
+    R["main_did"]["pct_of_pre_mean"] = abs(R["main_did"]["coef"]) / R["pre_period"]["kherson"]["mean"]
 
-    # --- Placebo (broad baseline) ---
-    df_p = pd.concat([kherson, tulcea], ignore_index=True)
-    df_p["date"] = pd.to_datetime(df_p["date"])
-    df_p = df_p[df_p["date"] < "2023-06-01"]
-    df_p["post"] = (df_p["date"] >= FAKE_DATE_BROAD).astype(int)
-    df_p["did_term"] = df_p["treatment"] * df_p["post"]
-    df_p["month"] = df_p["date"].dt.month.astype(str)
-    p_classic = fit_broad(df_p, hac=False)
-    p_hac = fit_broad(df_p, hac=True)
-    results["placebo_broad"] = {
-        "label": "Placebo\n(broad baseline)",
-        "coef": round(float(p_hac.params["did_term"]), 4),
-        "classic_ci": ci95(p_classic, "did_term"),
-        "hac_ci": ci95(p_hac, "did_term"),
-        "classic_p": round(float(p_classic.pvalues["did_term"]), 4),
-        "hac_p": round(float(p_hac.pvalues["did_term"]), 4),
-    }
+    # --- multi-control panel ---
+    R["pooled_did"] = ec.did(data, controls=ec.CONTROLS)
+    R["pooled_did_seasonal"] = ec.did(data, controls=ec.CONTROLS, month_fe=True)
+    R["pooled_placebo"] = ec.did(data, controls=ec.CONTROLS, event_date="2022-06-01", end="2023-06-01")
+    R["per_control"] = {z: ec.did(data, controls=[z]) for z in ec.CONTROLS}
 
-    # --- Placebo (narrowed baseline) ---
-    df_pn = pd.concat([kherson, tulcea], ignore_index=True)
-    df_pn["date"] = pd.to_datetime(df_pn["date"])
-    df_pn = df_pn[(df_pn["date"] >= "2023-01-01") & (df_pn["date"] < "2023-06-01")]
-    df_pn["post"] = (df_pn["date"] >= FAKE_DATE_NARROWED).astype(int)
-    df_pn["did_term"] = df_pn["treatment"] * df_pn["post"]
-    pn_classic = smf.ols("ndvi ~ treatment + post + did_term", data=df_pn).fit()
-    pn_hac = smf.ols("ndvi ~ treatment + post + did_term", data=df_pn).fit(
-        cov_type="HAC", cov_kwds={"maxlags": 1}
-    )
-    results["placebo_narrowed"] = {
-        "label": "Placebo\n(narrowed baseline)",
-        "coef": round(float(pn_hac.params["did_term"]), 4),
-        "classic_ci": ci95(pn_classic, "did_term"),
-        "hac_ci": ci95(pn_hac, "did_term"),
-        "classic_p": round(float(pn_classic.pvalues["did_term"]), 4),
-        "hac_p": round(float(pn_hac.pvalues["did_term"]), 4),
-    }
+    # --- placebo in space (randomization inference) ---
+    pis = {z: ec.did(data, treated=z, controls=[c for c in ec.ALL_ZONES if c != z]) for z in ec.ALL_ZONES}
+    k = pis["kherson"]["coef"]
+    one = 1 + sum(1 for z in pis if z != "kherson" and pis[z]["coef"] < k)
+    two = 1 + sum(1 for z in pis if z != "kherson" and abs(pis[z]["coef"]) > abs(k))
+    R["placebo_in_space"] = {"units": pis, "rank_one_sided": one, "rank_two_sided": two,
+                             "p_one_sided": one / 5, "p_two_sided": two / 5}
 
-    # --- Multi-control panel (pooled HAC + per-zone) ---
-    controls = pd.concat([load_ndvi(z, is_treatment=0) for z in CONTROL_ZONES], ignore_index=True)
-    df_mc = pd.concat([kherson, controls], ignore_index=True)
-    df_mc["date"] = pd.to_datetime(df_mc["date"])
-    df_mc["post"] = (df_mc["date"] >= TREATMENT_DATE).astype(int)
-    df_mc["did_term"] = df_mc["treatment"] * df_mc["post"]
-    df_mc["month"] = df_mc["date"].dt.month.astype(str)
-    mc_hac = fit_broad(df_mc, hac=True)
+    # --- control-only divergence check (Kherson excluded) ---
+    R["control_divergence"] = {z: ec.did(data, treated=z, controls=[c for c in ec.CONTROLS if c != z]) for z in ec.CONTROLS}
 
-    per_zone = {}
-    zone_labels = {
-        "tulcea": "Kherson vs. Tulcea\n(primary specification)",
-        "galati": "Kherson vs. Galați",
-        "braila": "Kherson vs. Brăila",
-        "constanta": "Kherson vs. Constanța",
-    }
-    for zone in CONTROL_ZONES:
-        pair = df_mc[df_mc["zone"].isin(["kherson", zone])]
-        m = fit_broad(pair, hac=True)
-        coef = round(float(m.params["did_term"]), 4)
-        pval = round(float(m.pvalues["did_term"]), 4)
-        per_zone[zone] = {
-            "label": zone_labels[zone],
-            "coef": coef,
-            "ci": ci95(m, "did_term"),
-            "p": pval,
-            "null": pval > 0.05,
+    # --- event study + multiple testing ---
+    es = ec.event_study(data)
+    pvals = [r["p"] for r in es]
+    thr, bonf, bh = ec.bonferroni_bh(pvals)
+    for r, b1, b2 in zip(es, bonf, bh):
+        r["bonferroni"] = bool(b1)
+        r["bh"] = bool(b2)
+    R["event_study"] = {"quarters": es, "bonferroni_threshold": thr, "reference": "Mar 2023–May 2023"}
+    R["event_study_pooled"] = ec.event_study(data, controls=ec.CONTROLS)
+
+    # --- specification robustness ---
+    R["lag_sensitivity"] = {str(L): ec.did(data, maxlags=L) for L in range(1, 7)}
+    R["log_ndvi"] = ec.did(data, log=True)
+    R["log_ndvi"]["pct_change"] = float(np.exp(R["log_ndvi"]["coef"]) - 1)
+
+    # --- low-coverage months ---
+    low = {}
+    for thr_v in (0.15, 0.25):
+        flagged = {z: [d.strftime("%Y-%m") for d in data[z].loc[data[z]["valid_frac"] < thr_v, "date"]] for z in ec.ALL_ZONES}
+        low[str(thr_v)] = {
+            "flagged": flagged,
+            "main": ec.did(data, min_valid=thr_v),
+            "pooled": ec.did(data, controls=ec.CONTROLS, min_valid=thr_v),
         }
+    R["low_coverage"] = low
+    R["valid_fraction"] = {z: {"min": float(data[z]["valid_frac"].min()), "max": float(data[z]["valid_frac"].max()),
+                               "min_month": data[z].loc[data[z]["valid_frac"].idxmin(), "date"].strftime("%Y-%m")}
+                           for z in ec.ALL_ZONES}
 
-    results["multi_control_rows"] = [
-        per_zone["tulcea"],
-        per_zone["galati"],
-        per_zone["braila"],
-        per_zone["constanta"],
-        {
-            "label": "Pooled: all 4 controls\n(HAC)",
-            "coef": round(float(mc_hac.params["did_term"]), 4),
-            "ci": ci95(mc_hac, "did_term"),
-            "p": round(float(mc_hac.pvalues["did_term"]), 4),
-            "null": False,
-            "pooled": True,
-        },
-    ]
+    # --- for documenting the change from the earlier stacked specification ---
+    R["legacy_stacked_spec"] = {
+        "main": ec.legacy_stacked_did(data),
+        "pooled": ec.legacy_stacked_did(data, controls=ec.CONTROLS),
+        "note": "stacked OLS + HAC on row order + normal distribution (earlier versions); superseded",
+    }
 
-    with open("outputs/model_results.json", "w") as f:
-        json.dump(results, f, indent=2)
-    print("Saved: outputs/model_results.json")
-    print(json.dumps(results, indent=2))
+    os.makedirs("outputs", exist_ok=True)
+    with open("outputs/model_results.json", "w", encoding="utf-8") as f:
+        json.dump(R, f, indent=2, ensure_ascii=False)
+    print("Saved: outputs/model_results.json\n")
+
+    print("Main DiD (Kherson vs Tulcea):   ", ec.fmt(R["main_did"]))
+    print("  + zone-specific seasonality:  ", ec.fmt(R["main_did_seasonal"]))
+    print("Placebo (fake date Jun 2022):   ", ec.fmt(R["placebo_broad"]))
+    print("Narrowed baseline (Jan 2023+):  ", ec.fmt(R["narrowed_did"]))
+    print("Narrowed placebo (fake Mar 23): ", ec.fmt(R["placebo_narrowed"]))
+    print("Pooled 4-control:               ", ec.fmt(R["pooled_did"]))
+    print("  + zone-specific seasonality:  ", ec.fmt(R["pooled_did_seasonal"]))
+    print("Pooled placebo:                 ", ec.fmt(R["pooled_placebo"]))
+    for z, r in R["per_control"].items():
+        print(f"Kherson vs {z:10s}:          ", ec.fmt(r))
+    print("\nPlacebo in space:")
+    for z, r in pis.items():
+        print(f"  {z:10s}", ec.fmt(r))
+    print(f"  Kherson rank one-sided {one}/5 (p={one/5:.2f}), two-sided {two}/5 (p={two/5:.2f})")
+    print("\nControl-only divergence:")
+    for z, r in R["control_divergence"].items():
+        print(f"  {z:10s}", ec.fmt(r))
+    print("\nEvent study (Kherson - Tulcea gap, ref Mar-May 2023):")
+    for r in es:
+        print(f"  Q{r['quarter']:+d} {r['months']:20s} {r['coef']:+.4f} p={r['p']:.4f} bonf={r['bonferroni']} bh={r['bh']}")
+    print("\nLag sensitivity:", {L: round(v["p"], 3) for L, v in R["lag_sensitivity"].items()})
+    print("log NDVI:", ec.fmt(R["log_ndvi"]), f"≈{R['log_ndvi']['pct_change']*100:.1f}%")
+    for t, v in low.items():
+        print(f"Low coverage <{t}: dropped", {z: m for z, m in v["flagged"].items() if m})
+        print("   main  ", ec.fmt(v["main"]))
+        print("   pooled", ec.fmt(v["pooled"]))
+    print("\nLegacy stacked spec:", R["legacy_stacked_spec"])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,507 @@
+{
+ "design": "triple difference: irrigated vs rainfed cropland, Kakhovka zone K vs outside zone O, 2023\u201324 vs 2016\u201321",
+ "main": {
+  "beta": -0.07394179892200006,
+  "se_cluster": 0.0069189168448235885,
+  "p_cluster": 6.202321557773975e-26,
+  "ci95_cluster": [
+   -0.0875028759378543,
+   -0.06038072190614583
+  ],
+  "delta_war": -0.02223533662068686,
+  "delta_war_se": 0.00505744835362073,
+  "delta_war_p": 1.160112775700113e-05,
+  "n_obs": 14303835,
+  "n_pixels": 1589631,
+  "counts": {
+   "K_irr": 97344,
+   "K_rain": 22926,
+   "O_irr": 1362498,
+   "O_rain": 106863
+  },
+  "clusters": 1917,
+  "pre_mean_K_irrigated": 0.4817824959754944,
+  "beta_pct_of_pre_mean": -15.347547812480316,
+  "wcr": {
+   "t": -10.689693444268823,
+   "p_two_sided": 0.0001,
+   "p_one_sided_negative": 0.0001,
+   "B": 9999,
+   "G": 1917
+  },
+  "se_conley25km": 0.013210245399777241,
+  "p_conley25km": 2.177070083852906e-08
+ },
+ "event_study": {
+  "coefs": [
+   {
+    "year": 2016,
+    "coef": 0.054643184020822175,
+    "se": 0.007595954803227265,
+    "p": 9.005150938432488e-13
+   },
+   {
+    "year": 2017,
+    "coef": 0.07252145845910948,
+    "se": 0.0060358757408348765,
+    "p": 4.0925524227778545e-32
+   },
+   {
+    "year": 2018,
+    "coef": 0.0708143850791751,
+    "se": 0.005878123569294088,
+    "p": 2.8529070434253325e-32
+   },
+   {
+    "year": 2019,
+    "coef": 0.051597337309150365,
+    "se": 0.00584933214143585,
+    "p": 2.495713159485299e-18
+   },
+   {
+    "year": 2020,
+    "coef": 0.05798930830287952,
+    "se": 0.006440094510965273,
+    "p": 5.097588546371779e-19
+   },
+   {
+    "year": 2022,
+    "coef": 0.02896510159151018,
+    "se": 0.006942897028687301,
+    "p": 3.155641235302924e-05
+   },
+   {
+    "year": 2023,
+    "coef": -0.015614454053591065,
+    "se": 0.007353021245594897,
+    "p": 0.0338362350955484
+   },
+   {
+    "year": 2024,
+    "coef": -0.02984524613467083,
+    "se": 0.007667884776907982,
+    "p": 0.00010272137487364139
+   }
+  ],
+  "reference": 2021,
+  "pretrend_joint_F": 39.92688260793839,
+  "pretrend_joint_p": 3.808322522512457e-39,
+  "rambachan_roth": {
+   "theta": -0.02272985009413095,
+   "se": 0.007043819101564908,
+   "Mpre_hat": 0.05798930830287952,
+   "Mpre_upper95": 0.06860999636689095,
+   "steps": 2.5,
+   "bounds": {
+    "0.5": {
+     "identified_set": [
+      -0.09521648547273036,
+      0.04975678528446846
+     ],
+     "robust_ci": [
+      -0.12229797730542714,
+      0.07683827711716525
+     ],
+     "excludes_zero": false
+    },
+    "1.0": {
+     "identified_set": [
+      -0.16770312085132977,
+      0.12224342066306787
+     ],
+     "robust_ci": [
+      -0.20806047276404085,
+      0.16260077257577896
+     ],
+     "excludes_zero": false
+    },
+    "2.0": {
+     "identified_set": [
+      -0.31267639160852856,
+      0.2672166914202667
+     ],
+     "robust_ci": [
+      -0.3795854636812683,
+      0.3341257634930063
+     ],
+     "excludes_zero": false
+    }
+   }
+  }
+ },
+ "classification_by_oblast_zoneO": {
+  "Cherkasy": {
+   "irrigated": 142778,
+   "rainfed": 49
+  },
+  "Dnipropetrovs'k": {
+   "irrigated": 260458,
+   "rainfed": 2130
+  },
+  "Kharkiv": {
+   "irrigated": 56983,
+   "rainfed": 207
+  },
+  "Kherson": {
+   "irrigated": 20567,
+   "rainfed": 29296
+  },
+  "Kiev": {
+   "irrigated": 3698,
+   "rainfed": 0
+  },
+  "Kirovohrad": {
+   "irrigated": 309219,
+   "rainfed": 1389
+  },
+  "Mykolayiv": {
+   "irrigated": 183872,
+   "rainfed": 21077
+  },
+  "Odessa": {
+   "irrigated": 169906,
+   "rainfed": 31761
+  },
+  "Poltava": {
+   "irrigated": 51644,
+   "rainfed": 62
+  },
+  "Vinnytsya": {
+   "irrigated": 84040,
+   "rainfed": 195
+  },
+  "Zaporizhia": {
+   "irrigated": 79397,
+   "rainfed": 21064
+  }
+ },
+ "robustness": {
+  "5a_thresholds_040_030": {
+   "beta": -0.06175158308494094,
+   "se_cluster": 0.007270134916314599,
+   "p_cluster": 3.94609077355951e-17,
+   "ci95_cluster": [
+    -0.07600104752091756,
+    -0.04750211864896433
+   ],
+   "delta_war": -0.025185158452242316,
+   "delta_war_se": 0.006003659578836363,
+   "delta_war_p": 2.853570479028285e-05,
+   "n_obs": 15558349,
+   "n_pixels": 1728988,
+   "counts": {
+    "K_irr": 124456,
+    "K_rain": 9344,
+    "O_irr": 1560268,
+    "O_rain": 34920
+   },
+   "clusters": 1919,
+   "pre_mean_K_irrigated": 0.46286138892173767,
+   "beta_pct_of_pre_mean": -13.341269019823585
+  },
+  "5b_thresholds_050_040": {
+   "beta": -0.09215433704558046,
+   "se_cluster": 0.006881706080578052,
+   "p_cluster": 3.700727890109131e-39,
+   "ci95_cluster": [
+    -0.10564248096351345,
+    -0.07866619312764747
+   ],
+   "delta_war": -0.02408077065892592,
+   "delta_war_se": 0.004687915892837056,
+   "delta_war_p": 3.0788801698356025e-07,
+   "n_obs": 13525390,
+   "n_pixels": 1503179,
+   "counts": {
+    "K_irr": 73070,
+    "K_rain": 43126,
+    "O_irr": 1165718,
+    "O_rain": 221265
+   },
+   "clusters": 1917,
+   "pre_mean_K_irrigated": 0.5021806955337524,
+   "beta_pct_of_pre_mean": -18.350832253245507
+  },
+  "3_no_weather": {
+   "beta": -0.07092612692898904,
+   "se_cluster": 0.006832423058076677,
+   "p_cluster": 1.3424103888109124e-24,
+   "ci95_cluster": [
+    -0.08431767612281933,
+    -0.05753457773515876
+   ],
+   "delta_war": -0.027033081960720084,
+   "delta_war_se": 0.0052309163090511635,
+   "delta_war_p": 2.6132370386408525e-07,
+   "n_obs": 14303835,
+   "n_pixels": 1589631,
+   "counts": {
+    "K_irr": 97344,
+    "K_rain": 22926,
+    "O_irr": 1362498,
+    "O_rain": 106863
+   },
+   "clusters": 1917,
+   "pre_mean_K_irrigated": 0.4817824959754944,
+   "beta_pct_of_pre_mean": -14.721607264992182
+  },
+  "6_evi": {
+   "beta": -0.07209335347490173,
+   "se_cluster": 0.005698535015860479,
+   "p_cluster": 2.722452475720154e-35,
+   "ci95_cluster": [
+    -0.08326248210598827,
+    -0.06092422484381519
+   ],
+   "delta_war": -0.014640587162126182,
+   "delta_war_se": 0.003755891623632625,
+   "delta_war_p": 0.00010031450704440114,
+   "n_obs": 14303835,
+   "n_pixels": 1589631,
+   "counts": {
+    "K_irr": 97344,
+    "K_rain": 22926,
+    "O_irr": 1362498,
+    "O_rain": 106863
+   },
+   "clusters": 1917,
+   "pre_mean_K_irrigated": 0.3131694495677948,
+   "beta_pct_of_pre_mean": -23.02055758452741
+  },
+  "7a_K_Kherson_only": {
+   "beta": -0.10542218383491153,
+   "se_cluster": 0.007720758616960937,
+   "p_cluster": 1.55930623403742e-40,
+   "ci95_cluster": [
+    -0.12055487072415497,
+    -0.0902894969456681
+   ],
+   "delta_war": -0.02771824841798763,
+   "delta_war_se": 0.005577925495593521,
+   "delta_war_p": 7.333186486912911e-07,
+   "n_obs": 13956951,
+   "n_pixels": 1551080,
+   "counts": {
+    "K_irr": 63013,
+    "K_rain": 18706,
+    "O_irr": 1362498,
+    "O_rain": 106863
+   },
+   "clusters": 1871,
+   "pre_mean_K_irrigated": 0.49638068675994873,
+   "beta_pct_of_pre_mean": -21.238171960927648
+  },
+  "7b_K_Zaporizhzhia_only": {
+   "beta": -0.01878599823699247,
+   "se_cluster": 0.01150634009747728,
+   "p_cluster": 0.1027095660384463,
+   "ci95_cluster": [
+    -0.041338424828047934,
+    0.003766428354063
+   ],
+   "delta_war": 0.013862039999205624,
+   "delta_war_se": 0.008546434030510593,
+   "delta_war_p": 0.10498056601122517,
+   "n_obs": 13463842,
+   "n_pixels": 1496267,
+   "counts": {
+    "K_irr": 22956,
+    "K_rain": 3950,
+    "O_irr": 1362498,
+    "O_rain": 106863
+   },
+   "clusters": 1852,
+   "pre_mean_K_irrigated": 0.45478662848472595,
+   "beta_pct_of_pre_mean": -4.130727919504651
+  },
+  "9_excl_within_3km_built": {
+   "beta": -0.0799544120970769,
+   "se_cluster": 0.007665706557271921,
+   "p_cluster": 8.577697794389636e-25,
+   "ci95_cluster": [
+    -0.09497919694932987,
+    -0.06492962724482394
+   ],
+   "delta_war": -0.02531258627357456,
+   "delta_war_se": 0.006055770140361215,
+   "delta_war_p": 3.051390275441086e-05,
+   "n_obs": 11405211,
+   "n_pixels": 1267473,
+   "counts": {
+    "K_irr": 59378,
+    "K_rain": 14181,
+    "O_irr": 1122965,
+    "O_rain": 70949
+   },
+   "clusters": 1863,
+   "pre_mean_K_irrigated": 0.4822632372379303,
+   "beta_pct_of_pre_mean": -16.5789979254899
+  }
+ },
+ "secondary": {
+  "ndvi_jul_aug": {
+   "beta": -0.1077458441770969,
+   "se_cluster": 0.008939595171944911,
+   "p_cluster": 2.679932490345321e-32,
+   "ci95_cluster": [
+    -0.12526745071410894,
+    -0.09022423764008487
+   ],
+   "delta_war": -0.030812194501004878,
+   "delta_war_se": 0.0062369128902918835,
+   "delta_war_p": 8.478032150691508e-07,
+   "n_obs": 14308786,
+   "n_pixels": 1590062,
+   "counts": {
+    "K_irr": 97371,
+    "K_rain": 22980,
+    "O_irr": 1362549,
+    "O_rain": 107162
+   },
+   "clusters": 1917,
+   "pre_mean_K_irrigated": 0.5734689235687256,
+   "beta_pct_of_pre_mean": -18.78843643463523
+  },
+  "ndvi_apr_oct_excl2023": {
+   "beta": -0.04412002937234441,
+   "se_cluster": 0.004869105691423258,
+   "p_cluster": 3.098068592004143e-19,
+   "ci95_cluster": [
+    -0.053663476527534,
+    -0.03457658221715482
+   ],
+   "delta_war": -0.02693745299646318,
+   "delta_war_se": 0.003789972306074632,
+   "delta_war_p": 1.6596682966361105e-12,
+   "n_obs": 12717393,
+   "n_pixels": 1589719,
+   "counts": {
+    "K_irr": 97350,
+    "K_rain": 22942,
+    "O_irr": 1362519,
+    "O_rain": 106908
+   },
+   "clusters": 1917,
+   "pre_mean_K_irrigated": 0.5015032291412354,
+   "beta_pct_of_pre_mean": -8.797556388200075
+  },
+  "cropped_indicator": {
+   "beta": -0.017892779901006663,
+   "se_cluster": 0.008219884014862813,
+   "p_cluster": 0.029619615182400402,
+   "ci95_cluster": [
+    -0.034003752570137775,
+    -0.0017818072318755498
+   ],
+   "delta_war": -0.04516784508714904,
+   "delta_war_se": 0.011967887027831761,
+   "delta_war_p": 0.00016547950492677395,
+   "n_obs": 14307674,
+   "n_pixels": 1589813,
+   "counts": {
+    "K_irr": 97358,
+    "K_rain": 22950,
+    "O_irr": 1362530,
+    "O_rain": 106975
+   },
+   "clusters": 1917,
+   "pre_mean_K_irrigated": 0.980442464351654,
+   "beta_pct_of_pre_mean": -1.824969904056408
+  }
+ },
+ "placebo_zones": {
+  "units": {
+   "Cherkasy": {
+    "skipped": "fewer than 500 irrigated or rainfed pixels"
+   },
+   "Dnipropetrovs'k": {
+    "beta": 0.008558606170986843,
+    "se_cluster": 0.005105097641017398,
+    "p_cluster": 0.09381539363159556,
+    "n_pixels": 1469361,
+    "counts": {
+     "K_irr": 260451,
+     "K_rain": 2129,
+     "O_irr": 1102047,
+     "O_rain": 104734
+    }
+   },
+   "Kharkiv": {
+    "skipped": "fewer than 500 irrigated or rainfed pixels"
+   },
+   "Kherson": {
+    "beta": -0.021557467760616216,
+    "se_cluster": 0.007754540315869339,
+    "p_cluster": 0.00549212342747421,
+    "n_pixels": 1469361,
+    "counts": {
+     "K_irr": 20541,
+     "K_rain": 29069,
+     "O_irr": 1341957,
+     "O_rain": 77794
+    }
+   },
+   "Kiev": {
+    "skipped": "fewer than 500 irrigated or rainfed pixels"
+   },
+   "Kirovohrad": {
+    "beta": -0.035374067699343266,
+    "se_cluster": 0.00987688038217068,
+    "p_cluster": 0.00035059153190911146,
+    "n_pixels": 1469361,
+    "counts": {
+     "K_irr": 309219,
+     "K_rain": 1389,
+     "O_irr": 1053279,
+     "O_rain": 105474
+    }
+   },
+   "Mykolayiv": {
+    "beta": -0.023459774539355226,
+    "se_cluster": 0.00471289559621278,
+    "p_cluster": 7.038661466666802e-07,
+    "n_pixels": 1469361,
+    "counts": {
+     "K_irr": 183868,
+     "K_rain": 21056,
+     "O_irr": 1178630,
+     "O_rain": 85807
+    }
+   },
+   "Odessa": {
+    "beta": 0.006635946505256321,
+    "se_cluster": 0.0042520149409778,
+    "p_cluster": 0.11877792907919295,
+    "n_pixels": 1469361,
+    "counts": {
+     "K_irr": 169882,
+     "K_rain": 31709,
+     "O_irr": 1192616,
+     "O_rain": 75154
+    }
+   },
+   "Poltava": {
+    "skipped": "fewer than 500 irrigated or rainfed pixels"
+   },
+   "Vinnytsya": {
+    "skipped": "fewer than 500 irrigated or rainfed pixels"
+   },
+   "Zaporizhia": {
+    "beta": 0.03654435532067754,
+    "se_cluster": 0.005973729567942068,
+    "p_cluster": 1.1606229624394303e-09,
+    "n_pixels": 1469361,
+    "counts": {
+     "K_irr": 79394,
+     "K_rain": 20998,
+     "O_irr": 1283104,
+     "O_rain": 85865
+    }
+   }
+  },
+  "n_placebos": 6,
+  "p_randomization_one_sided": 0.14285714285714285,
+  "p_randomization_two_sided": 0.14285714285714285
+ },
+ "seconds": 451
+}

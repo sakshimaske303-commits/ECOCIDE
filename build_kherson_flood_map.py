@@ -5,7 +5,7 @@ import os
 import geopandas as gpd
 import folium
 
-SHP_DIR = "data/ndwi/FL20230606UKR_SHP/FL20230606UKR_SHP"
+import eco_flood as ef
 BOUNDARY_PATH = "data/boundaries/kherson_oblast.gpkg"
 OUT_DIR = "dashboard/static/kherson_flood_extent_webmap"
 
@@ -16,9 +16,9 @@ FLOOD_COLORS = {
     "2023-06-21": "#00b4d8",
 }
 FLOOD_LABEL = {
-    "2023-06-06": "Flood Extent — 6 June 2023",
-    "2023-06-09": "Flood Extent — 9 June 2023 (peak)",
-    "2023-06-21": "Flood Extent — 21 June 2023 (recession)",
+    "2023-06-06": "Flood extent — 6 June 2023 (Sentinel-3)",
+    "2023-06-09": "Flood extent — 9 June 2023 (Sentinel-3)",
+    "2023-06-21": "Flood extent — 21 June 2023 (Sentinel-1 SAR)",
 }
 DATES = {
     "2023-06-06": "ST3_20230606_FloodExtent_KhersonskaOblast_UKR.shp",
@@ -46,8 +46,8 @@ def main():
     ).add_to(m)
 
     for date, filename in DATES.items():
-        gdf = gpd.read_file(os.path.join(SHP_DIR, filename))
-        area_ha = gdf["Area_ha"].iloc[0] if "Area_ha" in gdf.columns else None
+        gdf = ef.read(filename)
+        area_ha = ef.area_km2(gdf) * 100
         # Keep geometry only — the source attribute tables carry per-sensor
         # metadata (including a raw Timestamp column) that folium's GeoJson
         # serializer can't handle and this map doesn't need anyway; the date
@@ -57,7 +57,7 @@ def main():
         popup_html = (
             f"<b>{FLOOD_LABEL[date]}</b><br>"
             + (f"Extent: {area_ha:,.0f} ha<br>" if area_ha is not None else "")
-            + "Source: UNOSAT Multi-Sensor Flood Mapping"
+            + "Source: UNOSAT FL20230606UKR (preliminary, not field-validated)"
         )
         folium.GeoJson(
             gdf.__geo_interface__,
@@ -75,9 +75,9 @@ def main():
                 border: 1px solid #2d6a4f;">
       <b>Kherson Oblast — Kakhovka Dam Flood Extent</b><br><br>
       <span style="color:{BOUNDARY_COLOR};">■</span> Kherson Oblast boundary<br>
-      <span style="color:{FLOOD_COLORS['2023-06-06']};">■</span> Flood extent, 6 June<br>
-      <span style="color:{FLOOD_COLORS['2023-06-09']};">■</span> Flood extent, 9 June (peak)<br>
-      <span style="color:{FLOOD_COLORS['2023-06-21']};">■</span> Flood extent, 21 June (recession)
+      <span style="color:{FLOOD_COLORS['2023-06-06']};">■</span> Flood extent, 6 June (Sentinel-3)<br>
+      <span style="color:{FLOOD_COLORS['2023-06-09']};">■</span> Flood extent, 9 June (Sentinel-3)<br>
+      <span style="color:{FLOOD_COLORS['2023-06-21']};">■</span> Flood extent, 21 June (Sentinel-1)<br><br><i>Separate UNOSAT layers from different sensors<br>and analysis extents; not one continuous series.</i>
     </div>
     """
     m.get_root().html.add_child(folium.Element(legend_html))

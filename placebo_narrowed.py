@@ -1,47 +1,20 @@
-import json
-import pandas as pd
-import statsmodels.formula.api as smf
+"""Placebo for the narrowed baseline: fake date March 2023 within Jan–May 2023.
 
-FAKE_TREATMENT_DATE = "2023-03-01"  # arbitrary fake date within the narrowed pre-period
+Same specification as did_model_narrowed.py (gap ~ post). Only 5 months are
+available, so maxlags=1 and the result is fragile in either direction.
 
-def load_ndvi(zone_name, is_treatment):
-    with open(f"data/ndvi/{zone_name}_ndvi_monthly.json") as f:
-        data = json.load(f)
-    rows = []
-    for entry in data["data"]:
-        date = entry["interval"]["from"][:7] + "-01"
-        ndvi = entry["outputs"]["ndvi"]["bands"]["B0"]["stats"]["mean"]
-        rows.append({"date": date, "ndvi": ndvi, "treatment": is_treatment})
-    return pd.DataFrame(rows)
-
+Uses the shared engine in eco_core.py (DiD on the monthly treated-minus-control
+NDVI gap, Newey-West HAC maxlags=3, t-distribution) so this script prints
+exactly the numbers reported in the paper and stored by
+generate_model_results.py.
+"""
+import eco_core as ec
 
 def main():
-    kherson = load_ndvi("kherson", is_treatment=1)
-    tulcea = load_ndvi("tulcea", is_treatment=0)
-
-    df = pd.concat([kherson, tulcea], ignore_index=True)
-    df["date"] = pd.to_datetime(df["date"])
-
-    # Use only the genuinely pre-conflict-event window (Jan 2023 - May
-    # 2023), with a fake mid-window treatment date, to test whether an
-    # arbitrary split within this specific narrowed baseline also shows
-    # a spurious "effect"
-    df = df[(df["date"] >= "2023-01-01") & (df["date"] < "2023-06-01")]
-
-    df["post"] = (df["date"] >= FAKE_TREATMENT_DATE).astype(int)
-    df["did_term"] = df["treatment"] * df["post"]
-
-    # No C(month) here, unlike did_model_narrowed.py: this window is only 5 calendar
-    # months x 2 zones = 10 observations, so 4 month dummies would eat up nearly all
-    # the remaining degrees of freedom. HAC, maxlags=1 (short 10-obs window).
-    # Becomes significant here unlike under classical OLS — real validation failure
-    # for the narrowed baseline, see paper Sec 4.3/4.4.
-    model = smf.ols("ndvi ~ treatment + post + did_term", data=df).fit(
-        cov_type="HAC", cov_kwds={"maxlags": 1}
-    )
-    print("PLACEBO TEST (narrowed window, fake date: March 2023)")
-    print(f"did_term coefficient: {model.params['did_term']:.4f}")
-    print(f"p-value: {model.pvalues['did_term']:.4f}")
+    data = ec.load_all()
+    r = ec.did(data, event_date="2023-03-01", start="2023-01-01", end="2023-06-01", maxlags=1)
+    print("PLACEBO TEST (narrowed window Jan–May 2023, fake date: March 2023)")
+    print("  ", ec.fmt(r))
 
 
 if __name__ == "__main__":

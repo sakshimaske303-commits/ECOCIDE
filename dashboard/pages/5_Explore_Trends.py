@@ -26,7 +26,7 @@ control zone directly.
 
 
 def load_ndvi(zone_name):
-    with open(os.path.join(PROJECT_ROOT, "data", "ndvi", f"{zone_name}_ndvi_monthly.json")) as f:
+    with open(os.path.join(PROJECT_ROOT, "data", "ndvi_v3", f"{zone_name}_ndvi_monthly.json")) as f:
         data = json.load(f)
     rows = []
     for entry in data["data"]:
@@ -41,7 +41,7 @@ ZONES = {
     "Tulcea (Control)": ("tulcea", PALETTE["accent"]),
     "Galați (Control)": ("galati", "#7FB77E"),
     "Brăila (Control)": ("braila", "#E0A458"),
-    "Constanța (Control — null result)": ("constanta", "#8a8a8a"),
+    "Constanța (Control)": ("constanta", "#8a8a8a"),
 }
 
 ndvi_data = {label: load_ndvi(key) for label, (key, _) in ZONES.items()}
@@ -81,7 +81,7 @@ fig.update_layout(
     margin=dict(t=60, b=40, l=40, r=40),
 )
 
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width="stretch")
 
 st.markdown("---")
 
@@ -115,10 +115,11 @@ did_diff = k_diff - c_diff
 c1, c2, c3 = st.columns(3)
 c1.metric("Kherson Change", f"{k_diff:+.4f}")
 c2.metric(f"{control_choice.split(' (')[0]} Change", f"{c_diff:+.4f}")
-c3.metric("Difference-in-Differences", f"{did_diff:+.4f}")
+c3.metric("Difference of the two changes", f"{did_diff:+.4f}")
+st.caption("A simple two-month comparison for exploration only. It ignores seasonality and sampling noise and is not the model estimate reported elsewhere.")
 
 st.markdown("---")
 st.markdown(
-    "<p class='caption-text' style='text-align:center;'>ECOCIDE — Source: Sentinel-2 (Copernicus Data Space Ecosystem)</p>",
+    "<p class='caption-text' style='text-align:center;'>ECOCIDE — Sentinel-2 L2A, GADM polygons, SCL-masked monthly NDVI (data/ndvi)</p>",
     unsafe_allow_html=True,
 )

@@ -1,0 +1,63 @@
+{
+  "layers": [
+    {
+      "date": "2023-06-06",
+      "sensor": "Sentinel-3",
+      "layer": "ST3_20230606_FloodExtent_KhersonskaOblast_UKR.shp",
+      "flood_km2": 122.49864489090568,
+      "flood_in_oblast_km2": 122.49605914706846,
+      "analysis_extent_km2": 18750.52035608001,
+      "cloud_km2": 278.2348023967071
+    },
+    {
+      "date": "2023-06-07",
+      "sensor": "ICEYE (SAR)",
+      "layer": "ICEYE_20230607_FloodExtent_KhersonskaOblast_UKR.shp",
+      "flood_km2": 520.7681539881241,
+      "flood_in_oblast_km2": 494.6561261784722,
+      "analysis_extent_km2": 2098.225979427877,
+      "cloud_km2": 0.0
+    },
+    {
+      "date": "2023-06-08",
+      "sensor": "Sentinel-2",
+      "layer": "ST2_20230608_FloodExtent_KhersonskarOblast_UKR.shp",
+      "flood_km2": 260.92000517784584,
+      "flood_in_oblast_km2": 220.0466316008429,
+      "analysis_extent_km2": 18750.52035608001,
+      "cloud_km2": 0.0
+    },
+    {
+      "date": "2023-06-09",
+      "sensor": "Sentinel-3",
+      "layer": "ST3_20230609_FloodExtent_KhersonskaOblast_UKR.shp",
+      "flood_km2": 464.17795738050717,
+      "flood_in_oblast_km2": 439.2535508630285,
+      "analysis_extent_km2": 18750.52035608001,
+      "cloud_km2": 0.0
+    },
+    {
+      "date": "2023-06-13",
+      "sensor": "Sentinel-2",
+      "layer": "ST2_20230613_FloodExtent_KhersonskaOblast_UKR.shp",
+      "flood_km2": 179.91772763054615,
+      "flood_in_oblast_km2": 164.8011074040965,
+      "analysis_extent_km2": 11030.53219581322,
+      "cloud_km2": 6055.3060241921285
+    },
+    {
+      "date": "2023-06-21",
+      "sensor": "Sentinel-1 (SAR)",
+      "layer": "ST1_20230621_FloodExtent_KhersonskarOblast_UKR.shp",
+      "flood_km2": 21.169627491203425,
+      "flood_in_oblast_km2": 15.947953155307225,
+      "analysis_extent_km2": 10787.508657891747,
+      "cloud_km2": 0.0
+    }
+  ],
+  "composite_6_9_june": {
+    "flood_km2": 616.9982788764205,
+    "flood_in_oblast_km2": 563.9885454994281,
+    "note": "UNOSAT cumulative product: ICEYE 7 Jun, Sentinel-3 6\u20139 Jun, Sentinel-2 8 Jun"
+  }
+}

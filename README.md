@@ -1,144 +1,100 @@
-# ECOCIDE — A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes
+# ECOCIDE — Satellite Evidence and Causal-Inference Testing of the Kakhovka Dam Destruction
 
-[![EarthArXiv](https://img.shields.io/badge/EarthArXiv-Preprint-B7410E.svg)](https://eartharxiv.org/repository/view/14827/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21757974.svg)](https://doi.org/10.5281/zenodo.21757974)
+[![EarthArXiv](https://img.shields.io/badge/EarthArXiv-Preprint%20v1%20(superseded%20results)-B7410E.svg)](https://eartharxiv.org/repository/view/14827/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21757974.svg)](https://doi.org/10.5281/zenodo.21757974)
 
-**Isolating conflict-attributable environmental damage from pre-existing trends, using causal inference rather than qualitative interpretation.**
+**Can a Difference-in-Differences design separate the vegetation impact of the Kakhovka Dam's destruction (6 June 2023) from background change in comparable, unaffected regions?** Kherson's vegetation did decline significantly relative to its controls after June 2023 — but the design cannot attribute that decline to the dam.
 
-## Live Dashboard
+> **Version note.** EarthArXiv preprint v1 (5 September 2026) and Zenodo v1.0.0 report an earlier analysis (bounding-box NDVI, stacked-panel standard errors) with a significant result (−0.0703, p = 0.022). That result is superseded. The numbers below come from the third, corrected NDVI extraction (`data/ndvi_v3`) and the code in this repository.
 
-**[View the interactive dashboard →](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)**
+## Study 2 (main result): pre-registered, exposure-based pixel analysis
 
-## Project Documentation
+Study 2 replaces the oblast-versus-Romania design with 231 m MODIS pixels (2016–2024), treatment defined by physical exposure, and comparisons inside the war zone. Every choice was fixed in [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md) before the analysis; departures are logged in [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md). Paper: [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md). Reproduce: `python v2/analysis/run_all.py` (after the download steps in [`v2/README_v2.md`](./v2/README_v2.md)).
 
-| Document | What's Inside |
+| Hypothesis | Estimate (July–October NDVI) | Pre-registered verdict |
+|---|---|---|
+| H1 flood: flooded vs matched unflooded land, same bank | +0.006 (95% CI −0.014 to 0.026); wild-bootstrap p = 0.60; placebo floodplains p = 0.63 | **not supported** (wetlands: −0.04) |
+| H2 irrigation loss: irrigated vs rainfed, canal zone vs elsewhere | −0.074 (−0.088 to −0.060); wild-bootstrap p < 0.001; placebo zones p = 0.14 (minimum attainable); strong pre-trends | **suggestive** |
+| H3 former reservoir bed (descriptive) | area with NDVI > 0.3: ~95 km² (2016–22) → 906 km² (2023) → 1,574 km² (2024) | — |
+| H4 decomposition of Kherson's 2021→24 change vs zone O (−0.029) | other land −0.024, irrigated canal zone −0.013, flood −0.0004, reservoir bed +0.010 | — |
+
+All Study 2 numbers: `outputs/v2/study2_summary.json`; figures: `outputs/v2/figures/`. The Study 1 results below are kept as the administrative-unit analysis that motivated Study 2.
+
+## Live dashboard
+
+**[ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)** — every number on it is read from `outputs/model_results.json`.
+
+## Documents
+
+| Document | Contents |
 |---|---|
-| [`ECO_Executive_Summary.pdf`](./ECO_Executive_Summary.pdf) | One-page snapshot — question, method, headline finding, robustness checklist, and links (start here) |
-| [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Formal academic paper — literature review, statistical methodology, results, discussion |
-| [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Full technical development log — every bug, debugging session, and methodology iteration |
+| [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Full paper: literature, data, methods, results, limitations |
+| [`ECO_Executive_Summary.md`](./ECO_Executive_Summary.md) | Two-page summary |
+| [`ECO_RESULTS_RECONCILIATION.md`](./ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
+| [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Chronological research diary (historical entries describe the state at that time) |
+| [`ECOCIDE_Maps_and_Plots.pdf`](./ECOCIDE_Maps_and_Plots.pdf) | All figures with captions |
 
----
+## Key findings (current code and data)
 
-The ECOCIDE framework is a geospatial causal-inference approach designed to support the independent verification of environmental degradation resulting from the armed conflict. Both the analysis and the entire pipeline are open for review and are built upon publicly available and third party processed satellite products (Sentinel Hub, UNOSAT), not depending on official government reporting of either country. This project seeks to help fill an identified gap because legislative measures to recognize war-induced environmental damage as an international crime are progressing globally (e.g. International Criminal Court, Trial Chamber of the former Yugoslavia), and because most satellite-based environmental assessments of conflict impacts focus on qualitative visual interpretation and explicitly do not claim causality. Applied to the destruction of the Kakhovka dam, ECOCIDE implements a Difference-in-Differences principle, tested and stress-tested using a placebo experiment and an event-study analysis — with both disclosed limitations and confirmed checks reported below, not just the checks that passed.
+Monthly Sentinel-2 NDVI, January 2022 – November 2024, over each zone's GADM polygon on a common 0.002° grid, with cloud, shadow, cirrus, snow and water masked and each pixel's monthly median over all clear acquisitions (`data/ndvi_v3`). Effects are estimated on the monthly treated-minus-control NDVI gap, with Newey-West HAC standard errors (maxlags = 3, t-distribution).
 
----
-
-## Interactive Maps & Plots
-
-Interactive maps and headline charts are hosted via GitHub Pages:
-
-**Map**
-- [Verified Flood-Extent Map](https://sakshimaske303-commits.github.io/ECOCIDE/dashboard/static/kherson_flood_extent_webmap/index.html)
-
-**Plots**
-- [Event Study — Quarterly Treatment Effect on NDVI](https://sakshimaske303-commits.github.io/ECOCIDE/outputs/plots/interactive/event_study.html)
-- [Multi-Control Robustness Check](https://sakshimaske303-commits.github.io/ECOCIDE/outputs/plots/interactive/control_panel_comparison.html)
-- [Classical vs. HAC Standard Errors](https://sakshimaske303-commits.github.io/ECOCIDE/outputs/plots/interactive/robustness_check.html)
-
-*(All four are also embedded together on the dashboard's Interactive Maps & Plots page.)*
-
----
-
-## What This Project Does
-
-- Tests the environmental effect produced by the destruction of the Kakhovka dam (6 June 2023), isolated from Ukraine's already-elevated, ongoing conflict baseline.
-- Provides a before/after comparison for reference, but does not rely on that for the conclusion; uses a four-county Danube/Black Sea Romanian control panel (Tulcea, Galați, Brăila, Constanța) instead
-- Stress-tests the main finding with placebo testing (phony treatment dates), quarterly event-study analysis, exact randomization inference (placebo-in-space), and a control-only spillover check — not all of them hold up cleanly: the primary result no longer clears conventional significance under the corrected NDVI extraction, and randomization inference shows Kherson is no longer the most extreme of the five geographic units in this design (see Key Findings below)
-- Flood-extent data (UNOSAT) is used directly from its already-verified, multi-sensor product, instead of extracting flood detection from the raw satellite bands myself, as that is a task prone to noisy raw satellite band contamination.
-- Presentations of before/after true-color satellite imagery, programmatically generated for full reproducibleness
-- Clearly states an honest methodological scope of error identified during the validation process, never attempts to cover it up
-- Makes the flood-extent map and the three statistical charts, showing headline information about the flood, clickable and interactive, not just images to sit on a desk
-
-## Key Findings
-
-**Updated after a methodology correction.** An earlier version of this project's NDVI extraction queried Sentinel Hub using each zone's rectangular bounding box rather than its true GADM administrative polygon, and filtered clouds only at the whole-scene level rather than per pixel. Both are now corrected (true polygon geometry + pixel-level Sentinel-2 Scene Classification masking), and the correction materially weakens the headline result below. The numbers and framing here reflect the corrected analysis; see `ECO_RESULTS_RECONCILIATION.md` for the full before/after and `ECO_Research_Paper.md` §3.3 for the technical detail.
-
-A directionally consistent decrease in NDVI in Kherson relative to its main control (Tulcea, Romania) is still present, but it no longer clears the conventional 5% statistical-significance threshold: the coefficient is −0.0747 (95% CI [−0.153, 0.003], HAC-robust p = 0.060), against the originally-reported −0.0703 (p = 0.022). The specification's own broad-window placebo test still comes back clean (near-zero, p = 0.882). Since only two units (treatment/control), the standard errors use Newey-West HAC correction instead of clustering, for which there are insufficient clusters to support cluster-robust inference.
-
-The same model was also fit to the entirety of the four counties that make up the Romanian control panel (Tulcea, Galați, Brăila, Constanța); pooled across all four, the effect shows the same weakening: −0.0661 (HAC p = 0.059, 95% CI [−0.135, 0.003]; cluster-robust p = 0.034 — a cross-check only, since 5 clusters is the bare minimum for cluster-robust inference to be defined). When tested separately, two of the four controls (Galați, Brăila) still produce a significant effect near the primary magnitude; Tulcea is now itself only marginal; Constanța does not, and — unlike in the original analysis — this is no longer treated as an open ecological question: a direct test (below) traces it to Constanța having its own independent shift, unrelated to the dam.
-
-**The most important new finding**: an exact randomization-inference check (placebo-in-space — assigning "treated" status to each of the five geographic units in turn, not just Kherson) shows Kherson is *no longer the most extreme unit* under the corrected data. Two of the four Romanian counties, Brăila and Constanța, show comparable-or-larger "effects" of their own under the identical procedure, with no dam ever having failed near them. A follow-up check, excluding Kherson from the panel entirely, confirms both counties have their own statistically significant post-June-2023 divergence, for reasons this design does not identify. With only five geographic units available, this design cannot statistically distinguish Kherson's real post-event decline from the independent variation already present among the control counties themselves — a materially narrower claim than this project originally made. Dropping the data's lowest-coverage months does not recover the original result either; it weakens it slightly further, ruling out one candidate benign explanation.
-
-A separate, pre-existing complication remains disclosed as before: a calendar-effect analysis shows a significant pre-treatment-quarter effect in the two-zone specification, attributed to Kherson's background conflict already being under way before the dam's destruction, not to a violation of the design around June 2023 specifically. The narrowed-baseline specification's own placebo test, which previously failed once proper HAC standard errors were applied (an outright validation failure), no longer fails under the corrected data — one of the few checks that improved rather than worsened. Running the same quarterly event study on the four-county panel still shows cluster-robust standard errors are numerically degenerate at 5 clusters against ~24 parameters; under the correct HAC specification, the treatment-quarter effect remains not significant when pooled across four heterogeneous controls (p = 0.278), while the one-year-later effect remains significant (p = 0.0001).
-
-UNOSAT flood extent data based on the multi-sensor approach shows a full rise-peak-recession cycle: 122.50 km² (6 June) to 464.18 km² peak (9 June) and 21.17 km² (21 June).
-
-All of the methodology, along with each debugging decision, and revealed limitation are documented in the Methodology page on the dashboard, as well as in the ECO_Research_Paper.md document.
-
-## Architecture
-
-```text
-Satellite APIs (Sentinel Hub, UNOSAT)
-        │
-        ▼
-Acquisition scripts (download_*.py, auth_sentinelhub.py)
-        │
-        ▼
-Preprocessing (NDVI/NDWI extraction, boundary clipping, GADM matching)
-        │
-        ▼
-Causal models (did_model.py, placebo_test.py, event_study.py — HAC-robust SEs)
-        │
-        ▼
-Static figures (map*.py) ──► ECO_Research_Paper.md / ECO_Development_Log.md
-        │
-        ▼
-Streamlit dashboard (dashboard/app.py + 9 pages) ──► Zenodo DOI
-```
-
-## Repository Structure
-
-```text
-ECOCIDE/
-├── dashboard/                       # Streamlit dashboard (9 pages)
-│   └── static/                      # Interactive flood-extent map, built in Python/folium (served via GitHub Pages)
-├── build_interactive_plots.py       # Plotly interactive chart generation
-├── data/
-│   ├── boundaries/, ndvi/, ndwi/
-│   └── satellite_imagery/           # Before/after true-color imagery
-├── outputs/
-│   └── plots/                       # Static visualizations (hydrograph, event study, etc.)
-│       └── interactive/             # Plotly interactive HTML charts
-├── qgis_processing/                 # Original QGIS2Web webmap export
-├── ECO_Research_Paper.md            # Formal academic research paper
-├── ECO_Development_Log.md           # Full technical development log
-├── download_*.py                    # Dataset acquisition scripts
-├── did_model*.py / event_study.py   # Causal inference scripts
-├── map*.py                          # Static visualization scripts
-└── requirements.txt
-```
-
-## Tech Stack
-
-Python · GeoPandas · Matplotlib · Folium · Statsmodels · Streamlit · GitHub Pages · Sentinel Hub API · UNOSAT
-
-## Data Sources
-
-| Dataset | Provider |
+| Check | Result |
 |---|---|
-| NDVI, True-Color Imagery | Sentinel-2, Sentinel Hub (Copernicus Data Space Ecosystem) |
-| Verified Flood Extent | UNOSAT (ICEYE, Landsat-9, SkySat, WorldView-3, MODIS) |
-| Administrative Boundaries | GADM v4.1 |
+| Primary DiD, Kherson vs Tulcea | −0.108, 95% CI [−0.209, −0.007], p = 0.037 |
+| Same, zone-specific seasonality | −0.069, 95% CI [−0.116, −0.023], p = 0.005 |
+| Placebo, fake date June 2022 | +0.012, p = 0.802 — clean |
+| Narrowed baseline (from Jan 2023) | −0.186, p = 0.001, but its own placebo is also significant (p = 0.004) |
+| Kherson vs mean of four Romanian controls | −0.071, p = 0.022 (−0.060, p = 0.004 with seasonality) |
+| Per control: Tulcea / Galați / Brăila / Constanța | −0.108 (p = 0.037) / −0.077 (0.007) / −0.101 (0.003) / +0.001 (0.98) |
+| Placebo in space (5 units) | Kherson ranks 2/5 (exact p = 0.40); Constanța shifts by as much (−0.073 vs −0.071) |
+| Event study | 4 of 5 pre-event quarters deviate; the summer–autumn gap deepens from 2022/2023 to 2024 |
+| HAC lags 1–6 / log NDVI | p = 0.010–0.042 / −25%, p = 0.030 |
 
-## Running Locally
+Taken together: Kherson's NDVI declined relative to comparable unaffected regions after June 2023, robustly to seasonality and specification, most strongly in the 2024 growing season. The design does not attribute that decline to the dam: one control county shifts by as much, pre-event quarters already deviate, and the oblast-wide unit mixes flooding, reservoir drainage and war effects.
+
+**Flood extent (descriptive).** UNOSAT's FL20230606UKR layers map the downstream flood with different sensors: 122.5 km² (6 June, Sentinel-3), 520.8 km² (7 June, ICEYE), 260.9 km² (8 June, Sentinel-2), 464.2 km² (9 June, Sentinel-3), 179.9 km² (13 June, Sentinel-2, 55% of the analysis area cloud-obscured), 21.2 km² (21 June, Sentinel-1); UNOSAT's cumulative 6–9 June composite is 617 km². These are separate preliminary observations, not one continuous series.
+
+## Reproduce
 
 ```bash
 git clone https://github.com/sakshimaske303-commits/ECOCIDE.git
 cd ECOCIDE
 pip install -r requirements.txt
-cd dashboard
-streamlit run app.py
+python generate_model_results.py      # all statistics -> outputs/model_results.json (reads data/ndvi_v3)
+python flood_progression.py           # UNOSAT areas  -> outputs/flood_extent_table.csv
+python build_all_figures.py           # every static + interactive figure and the figure PDF
+cd dashboard && streamlit run app.py
 ```
 
-## Author
+Individual scripts (`did_model.py`, `placebo_test.py`, `event_study.py`, `placebo_in_space_test.py`, …) print the same numbers; all use the shared engine in `eco_core.py`.
 
-**Sakshi D. Maske**
+**NDVI versions.** `data/ndvi_v3` (current, `download_ndvi_polygon_v3.py`): polygon, common 0.002° grid, cloud/shadow/cirrus/snow/water masked, per-pixel monthly median. `data/ndvi` = `data/ndvi_v2` (`download_ndvi_polygon.py`): polygon, default 256 × 256 sampling grid, water not masked, single scene per month. `data/ndvi_old_bbox`: original bounding-box extraction. Any version can be analysed with `ECO_NDVI_DIR=<folder> python generate_model_results.py`. Re-extraction needs Sentinel Hub credentials in `.env` (see `.env.example`).
 
-Independent Geospatial Researcher
+## Repository structure
 
-## License
+```text
+ECOCIDE/
+├── eco_core.py                  # shared estimation engine (gap-series DiD, HAC, event study)
+├── eco_flood.py / eco_style.py  # UNOSAT layer definitions / figure style
+├── generate_model_results.py    # runs every model -> outputs/model_results.json
+├── build_all_figures.py         # regenerates all figures
+├── did_model*.py, placebo*.py, event_study*.py, placebo_in_space_test.py,
+│   control_only_spillover_check.py, specification_robustness_check.py,
+│   low_coverage_month_check.py  # individual checks (thin wrappers on eco_core)
+├── map*.py, build_*.py          # figures, interactive plots, folium map, figure PDF
+├── download_*.py                # data acquisition (Sentinel Hub)
+├── data/                        # boundaries, NDVI (ndvi_v3 current; ndvi, ndvi_v2, ndvi_old_bbox earlier), UNOSAT zip
+├── outputs/                     # model_results.json, flood table, plots, maps
+└── dashboard/                   # Streamlit app (reads outputs/model_results.json)
+```
 
-This project is licensed under [CC BY 4.0](./LICENSE) — you are free to share and adapt this work for any purpose, including commercially, with attribution.
+## Data sources
 
----
+| Dataset | Provider |
+|---|---|
+| NDVI, true-colour imagery | Copernicus Sentinel-2 L2A via Sentinel Hub (Copernicus Data Space Ecosystem) |
+| Flood extent | UNITAR/UNOSAT, FL20230606UKR (Sentinel-1, Sentinel-2, Sentinel-3, ICEYE layers; preliminary) |
+| Administrative boundaries | GADM v4.1 |
 
-*This project's full development process — including every debugging session, methodology iteration, and disclosed limitation — is documented in `ECO_Development_Log.md` for full transparency and reproducibility.*
+## Author and licence
+
+Sakshi D. Maske, independent geospatial researcher. Licensed under [CC BY 4.0](./LICENSE).

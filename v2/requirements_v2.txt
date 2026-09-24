@@ -12,3 +12,9 @@ cdsapi>=0.7
 requests>=2.31
 geopandas>=0.14
 pyarrow>=15
+# analysis (v2/analysis)
+scipy>=1.11
+scikit-image>=0.22
+shapely>=2.0
+pyproj>=3.6
+matplotlib>=3.8

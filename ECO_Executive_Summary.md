@@ -1,79 +1,50 @@
-# ECOCIDE
-### A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes
+# ECOCIDE — Executive Summary
 
-Executive Summary · DOI: 10.5281/zenodo.21757974 · Sakshi D. Maske
+**Satellite evidence and causal-inference testing of the Kakhovka Dam destruction**
 
-# Project Overview
+Sakshi D. Maske · Independent Geospatial Researcher · Code and data: github.com/sakshimaske303-commits/ECOCIDE
 
-I developed ECOCIDE as a geospatial, Causal-inference product, having the primary aim of verifying claims of environmental degradation resulting from armed conflict without having to rely explicitly on the official government reporting, but also without being immune to any forms of human judgment as the data sources used in ECOCIDE are all publicly available and/or processed by third parties (i.e. Sentinel Hub, UNOSAT). International courts have now begun considering "ecocide"—a new kind of crime that goes beyond genocide, war crimes, crimes against humanity and aggression.
+## Question
 
-Even with that evolving, there remains no well accepted or statistically valid means of support for those damage claims. Even the most careful existing geospatial assessments rely on visual, qualitative comparisons of before-and-after imagery, and their own authors are forthright about their inability to make causal inferences from these types of comparisons (hence, responses like that of this blogger about objective scale indicators remaining to be done).
+The Kakhovka Dam on the Dnipro was destroyed on 6 June 2023, draining a reservoir of about 18.2 km³ and flooding the downstream floodplain. Most satellite assessments of the event describe the change visually. This project asks a narrower, testable question: after June 2023, did vegetation greenness (NDVI) in Kherson Oblast change more than in comparable regions outside the war, by more than those regions vary among themselves?
 
-I fill that yawning void right here in a Difference-in-Differences framework that I've validated by placebo testing and an event-study analysis in order to distinguish the conflict-damaged trend from ones that otherwise would occur. The Kakhovka Dam's break on 6 June 2023, where an 18.2 km³ reservoir was drained and hundreds of square kilometres of floodplain below the dam were flooded, is the demonstration case. The control group is a four-county panel of Romania which is situated along the Danube/Black Sea corridor, and has very similar ecological baseline levels before the conflict, but is genuinely non-combatant.
+The difficulty is that Kherson was an active war zone well before the dam failed, so a simple before–after comparison mixes the dam's effect with everything else the war was doing. A Difference-in-Differences design compares Kherson's change with the change in control regions over the same months.
 
-## The Question
+## Data and method
 
-But can a causal-inference model truly account for the heightened wartime risk in Ukraine compared to a dedicated control area and will that distinction hold when compared to more than one set of handpicked control? Behind the current satellite monitoring of events such as the destruction of the Kakhovka dam lies solely visual, qualitative analysis, and it explicitly denies the possibility of establishing statistical causality, but as the legal procedures of this destruction start to be used as a basis for “ecocide” prosecutions, this situation is becoming indistinct.
+- **NDVI:** monthly Sentinel-2 L2A composites, January 2022 – November 2024, over each zone's GADM polygon on a common ~150–220 m grid, with cloud, cloud shadow, cirrus, snow and water masked and each pixel's median over all clear acquisitions in the month (Sentinel Hub Statistical API).
+- **Zones:** Kherson Oblast (treatment); Tulcea County, Romania (primary control); Galați, Brăila and Constanța counties (four-county panel). Controls were chosen by hand for broadly similar delta, steppe and coastal landscapes; no formal matching was done.
+- **Estimation:** the monthly Kherson-minus-control NDVI gap before vs after June 2023, Newey-West HAC standard errors (maxlags = 3, t-distribution).
+- **Checks:** a model with zone-specific seasonality, placebo dates, a quarterly event study with Bonferroni/Benjamini–Hochberg correction, the four-county panel, placebo in space (randomization inference) and a control-only divergence check.
+- **Flood extent:** UNOSAT FL20230606UKR layers, reported descriptively.
 
-But it's not hard to see, there's a real challenge that Kherson was no quiet territory prior to the dam collapse. It was already a battlefield; a comparison before/after alone cannot detect exactly what damage has been done by flooding as there is underlying general degradation affliction during wartime. My approach uses a Difference-in-Differences design where I benchmark Kherson to others counties of similar geographic and demographic characteristics during the same time frame.
+## Findings
 
-Not satisfying more than one (handpicked) comparison is a necessary condition for the result to have any meaning. To see if the effect existed or if it was only the result of the county that was chosen for the control is to test it in all four Romanian counties in the control panel, not just in Tulcea.
-
-## The Method
-
-My core model is a Difference-in-Differences (DiD) model, where I compare the changes in NDVI levels in Kherson, Ukraine, with the changes in comparable NDVI levels in 4 other non-conflict "matched counties" in Romania along the Danube/Black Sea corridor: Tulcea, Galați, Brăila, Constanța — none of which were ever at war, so "prewar" doesn't really apply to them; it's their ecological comparability to Kherson that matters, not a shared conflict timeline. Having a monthly effect in my model removes any regular seasonality, and what remains is the signal due to the conflict.
-
-For my main specification, I compare Kherson and Tulcea only, as I do not meet the criteria for a two-unit design to justify making any cluster-robust inferences. For robustness purposes, I re-estimates the same model using the complete four county panel; for both HAC and cluster-robust specifications. The "flood extent" information is not independent of the various bands of the satellite, but is part of the "available bands" derived by UNOSAT from its verified multi-sensor product composed of ICEYE radar data, Landsat-9, SkySat, WorldView-3, and MODIS.
-
-## The Finding
-
-**Updated after a methodology correction.** An earlier version of this project's NDVI extraction queried Sentinel Hub using each zone's rectangular bounding box rather than its true GADM administrative polygon, and filtered clouds only at the whole-scene level rather than per pixel. Both are now corrected (true polygon geometry + pixel-level Sentinel-2 Scene Classification masking), and the correction weakened the numbers below. See `ECO_RESULTS_RECONCILIATION.md` for the full before/after and `ECO_Research_Paper.md` §3.3 for the technical detail.
-
-−0.0747. That's the corrected NDVI change I observed at Kherson when compared to Tulcea after the dam was destroyed — directionally the same as my original bbox-based estimate (−0.0703), but at HAC p = 0.060 it no longer clears the conventional 5% significance threshold. The broad-window placebo test, run on a fake date before the dam was destroyed, still comes back clean and non-significant, so whatever produces the real-date estimate isn't present at an arbitrary earlier date — but the real-date estimate itself is now only marginal, not clearly significant.
-
-Over the entire four-county panel, the same weakening shows up: −0.0661 (HAC p = 0.059), with only two of the four panel comparisons (Galați, Brăila) still confirming it individually. More importantly, an exact randomization-inference check (placebo-in-space) now shows Kherson is no longer the most extreme of the five geographic units in this design — two of the four Romanian control counties, Brăila and Constanța, independently show comparable-or-larger shifts of their own, unrelated to the dam. I checked whether this was explained by a handful of low-coverage months in the corrected data; it wasn't — dropping them weakened the result slightly further, not less.
-
-
-| Metric | Value |
+| Check | Result |
 |---|---|
-| NDVI DiD Coefficient (primary specification, Tulcea) | -0.0747 |
-| P-value (HAC-robust) | 0.060 — not significant at 5% |
-| 95% Confidence Interval | [-0.153, 0.003] |
-| NDVI DiD Coefficient (four-county panel, pooled robustness check) | -0.0661 |
-| P-value (HAC / cluster-robust) | 0.059 / 0.034 — not significant at 5% (HAC) |
-| Per-control check | 2 of 4 controls confirm (Galați, Brăila); Tulcea now marginal; Constanța does not |
-| Placebo Test #1 (fake date, June 2022, primary specification) | +0.0051, p = 0.882 — clean pass |
-| Placebo Test (four-county panel, fake date) | +0.0421, HAC p = 0.338 — clean pass (cluster p = 0.078, borderline) |
-| Placebo-in-space: Kherson's rank among the 5 geographic units | 2nd of 5 one-sided / 3rd of 5 two-sided — no longer the most extreme (was 1st of 5) |
-| Control-only spillover (Kherson excluded) | Brăila and Constanța both move independently and significantly — up from 1 of 4 originally |
-| Peak Flood Extent (9 June 2023) | 464.18 sq. km (UNOSAT, 5-sensor verified) |
+| Primary DiD, Kherson vs Tulcea | −0.108 NDVI, 95% CI [−0.209, −0.007], p = 0.037 |
+| With zone-specific seasonality | −0.069, p = 0.005 |
+| Placebo, fake date June 2022 | +0.012, p = 0.802 |
+| Narrowed baseline (from January 2023) | −0.186, p = 0.001 — but its own placebo is significant (p = 0.004) |
+| Kherson vs four-county mean | −0.071, p = 0.022 |
+| Per control: Tulcea / Galați / Brăila / Constanța | significant decline against the first three; none against Constanța |
+| Placebo in space | Kherson ranks 2nd of 5 (exact p = 0.40); Constanța shifts by as much |
+| Event study | 4 of 5 pre-event quarters deviate; the summer–autumn gap deepens in 2024 |
+| UNOSAT flood extent, 6–9 June (cumulative) | ≈617 km² |
 
-## Validation & Robustness Checklist
+Kherson's NDVI declined relative to comparable unaffected regions after June 2023. The decline is statistically significant, survives zone-specific seasonality and every specification check, is absent at a placebo date, and is largest in the 2024 growing season. **It cannot, however, be attributed to the dam's destruction with this design:** Constanța shows an equally large shift, pre-event quarters already deviate, and the oblast-wide unit mixes flooding, reservoir drainage and war effects.
 
-- Non-conflict control: County of Tulcea (the principal specification) and the three other counties of the Danube/Black Sea region of Romania—Galați, Brăila, Constanța (full panel is also robustness checked as a pooled check)
-- Standard errors: HAC-robust throughout; cluster-robust also reported alongside HAC for the four-county panel
-- Placebo Test #1 — clean pass on the main specification, and clean pass again on the four-county panel
-- Placebo Test #2 (narrowed baseline) — no longer fails under the corrected data (HAC p = 0.069); this is one of the few checks that improved rather than worsened, though it remains a secondary, illustrative check
-- Placebo-in-space (randomization inference) — Kherson is no longer the most extreme of the five geographic units; disclosed as the most consequential finding of this correction, not smoothed over
-- Control-only spillover — two of the four control counties (Brăila, Constanța) show their own independent post-event shift with Kherson excluded entirely
-- Quarterly event-study check conducted on the main specification; the four-county panel version is reported too, but it is noisier in the quarterly version
-- The seasonal cycles are controlled for by adding month fixed effects.
-- Flood extent data based on multi-sensor verification – UNOSAT, from the combination of 5 independent sensors
+## What changed from the first version
 
-## Honest Limitations
+The first version (EarthArXiv preprint v1; Zenodo v1.0.0) reported −0.0703, p = 0.022, from bounding-box extraction and stacked-panel standard errors. Correcting the geometry and the standard errors gave −0.075, p = 0.16. Correcting the pixel size, masking water and compositing each month over all clear acquisitions gave the current −0.108, p = 0.037. Each technical change moved the headline across the 5% threshold — the reason every step is documented in `ECO_RESULTS_RECONCILIATION.md`.
 
-In my quarterly event study I found a nuisance effect in the pre-treatment quarter (2022 summer) before the dam has been destroyed. This is because Kherson was by then an active theatre of conflict — and a clean before/after design wouldn't really want the pre-conflict period to be as serene as Kherson in Ukraine was then. The effect is bigger (-0.1497 under the corrected data) and statistically significant (p = 0.0004) when I use this "narrowed-baseline" specification — and, unlike in an earlier version of this analysis, the placebo test for that same narrowed specification no longer turns significant under HAC (p = 0.069 now, versus p = 0.001 before). That specific concern is therefore less severe than I previously reported, though I still don't treat the narrowed-baseline result as separate evidence — only as a way to illustrate the pre-treatment-quarter problem.
+## Limitations
 
-I don't have the opportunity to do cluster-robust inference with my treatment vs control zones: there is only one zone of treatment and one zone of control. I tried to do some of this in the four-county panel I built, and the pooled effect is directionally true for the four counties too, but the complications around it are now bigger than I originally reported. The most purely coastal and urbanized of the 4 controls, Constanța doesn't produce the effect (and I now have a more concrete answer than an open ecological question — see below), and Tulcea, my own primary control, is itself only marginal now. 5 clusters (1 treatment, 4 control) is not enough to rely on cluster-robust standard errors confidently – the numbers I used as a guideline for full asymptotic reliability were in the range of 30-40+ clusters, so I consider these as a cross-check and not as a replacement to the primary HAC specification.
+- The NDVI unit is the whole oblast (≈25,500 km²); the mapped flood covered only about 2% of it, so an oblast-wide decline points to slower, larger-scale pathways (irrigation loss, war effects on agriculture) that this design cannot separate.
+- Five geographic units: randomization inference cannot go below p = 0.20, and the controls were chosen by hand.
+- Pre-event quarters deviate from the reference quarter, so parallel trends do not hold cleanly.
+- NDVI measures greenness only.
 
-I report HAC for that model because the thinness of the four-county panel is most noticeable in its quarterly event study, which has around 24 parameters against only 5 clusters, with this being a byproduct of the panel's size rather than an indication that the effect is somehow more precise in that panel.
+## Relevance
 
-**The biggest new limitation**: a direct test with Kherson excluded from the panel entirely shows that Brăila and Constanța both have their own statistically significant, independent shift around the same June 2023 window — for reasons this design does not identify. This is why Kherson is no longer the most extreme unit in the placebo-in-space check above. With only five geographic units total, I cannot currently rule out that Kherson's real decline is, statistically speaking, indistinguishable from the independent variation already present among my own control counties. I'm reporting that plainly rather than only reporting the version of this analysis that clears significance.
-
-## Real-World Relevance
-
-Satellite images have already been admitted as evidence in war-crimes trials, such as Al Mahdi's case, brought before the ICC, and Ukraine's Criminal Code (Article 441 of 2001) already includes a section related to the "mass destruction of flora and fauna" that leads to "ecological disaster." I treat this as I would do in the evaluation of a policy, applying that causal-inference standard to that evidence-based question, as open-source investigators such as Bellingcat and Human Rights Watch do.
-
-GitHub: github.com/sakshimaske303-commits/ECOCIDE | Live Dashboard: ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app | Zenodo DOI: 10.5281/zenodo.21757974
-
-Sakshi D. Maske — Independent Geospatial Researcher
+A standalone crime of ecocide has been proposed for the Rome Statute (Vanuatu, Fiji and Samoa, September 2024) but not adopted; Ukraine's Criminal Code already contains an ecocide offence (Article 441). Any claim that satellite data show conflict-attributable environmental damage will face exactly the tests reported here. This case shows the difference between a statistically significant satellite signal and an event-attributable one — a distinction any such evidence should be tested for before it is relied on.

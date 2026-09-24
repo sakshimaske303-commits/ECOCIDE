@@ -1,3 +1,5 @@
+> **Status (24 Sept 2026): completed and superseded.** Phase 2 was run; `data/ndvi_v2` was promoted to `data/ndvi`. It was followed by `download_ndvi_polygon_v3.py`, whose output (`data/ndvi_v3`) is now the default dataset. Kept for the record.
+
 # Phase 2 — GADM Polygon Extraction + Pixel-Level Cloud Masking
 
 ## Why this has to run on your machine, not in the assistant's sandbox

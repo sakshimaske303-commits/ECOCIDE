@@ -1,63 +1,47 @@
+"""Map of three UNOSAT flood-extent layers (6, 9 and 21 June 2023)."""
 import geopandas as gpd
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 
-BACKGROUND = "#0a1628"
-BOUNDARY_COLOR = "#2d6a4f"
-FLOOD_COLORS = {
-    "2023-06-06": "#fca311",
-    "2023-06-09": "#e63946",
-    "2023-06-21": "#00b4d8",
-}
-TEXT_COLOR = "#ffffff"
+import eco_flood as ef
+import eco_style as st
 
-DATES = {
-    "2023-06-06": "ST3_20230606_FloodExtent_KhersonskaOblast_UKR.shp",
-    "2023-06-09": "ST3_20230609_FloodExtent_KhersonskaOblast_UKR.shp",
-    "2023-06-21": "ST1_20230621_FloodExtent_KhersonskarOblast_UKR.shp",
-}
+STYLE = {"2023-06-09": ("#F4A582", 1), "2023-06-06": ("#CA0020", 2), "2023-06-21": ("#0571B0", 3)}
 
 
 def main():
-    boundary = gpd.read_file("data/boundaries/kherson_oblast.gpkg")
-
-    fig, ax = plt.subplots(figsize=(14, 12))
-    fig.patch.set_facecolor(BACKGROUND)
-    ax.set_facecolor(BACKGROUND)
-
-    boundary.plot(ax=ax, facecolor="none", edgecolor=BOUNDARY_COLOR, linewidth=1.5, zorder=1)
-
-    for date, filename in DATES.items():
-        path = f"data/ndwi/FL20230606UKR_SHP.zip!FL20230606UKR_SHP/{filename}"
-        flood = gpd.read_file(path)
-        flood.plot(ax=ax, facecolor=FLOOD_COLORS[date], edgecolor="white",
-                   linewidth=0.5, alpha=0.75, zorder=3, label=date)
-
-    # Zoom to the flood-affected corridor rather than the full oblast
+    st.apply()
+    boundary = gpd.read_file(ef.BOUNDARY)
+    fig, ax = plt.subplots(figsize=(9, 6.5))
+    ax.grid(False)
+    boundary.boundary.plot(ax=ax, color="#555555", lw=0.8, zorder=0)
+    handles = []
+    sensors = {d: s for d, _, s, _, _ in ef.LAYERS}
+    layers = {d: l for d, l, _, _, _ in ef.LAYERS}
+    for date in ["2023-06-09", "2023-06-06", "2023-06-21"]:   # largest first, so smaller layers stay visible
+        c, z = STYLE[date]
+        ef.read(layers[date]).to_crs(4326).plot(ax=ax, color=c, lw=0, zorder=z)
+        handles.append(Patch(color=c, label=f"{date[8:]} June 2023 — {sensors[date]}"))
     ax.set_xlim(31.9, 33.6)
-    ax.set_ylim(46.2, 47.0)
-    ax.set_axis_off()
-
-    handles = [
-        plt.Rectangle((0, 0), 1, 1, facecolor=FLOOD_COLORS[d], alpha=0.75, label=d)
-        for d in DATES.keys()
-    ]
-    legend = ax.legend(handles=handles, loc="lower left", fontsize=11, frameon=True,
-                        facecolor="#1a1a2e", edgecolor="none", title="Flood Extent Date")
-    legend.get_title().set_color(TEXT_COLOR)
-    for text in legend.get_texts():
-        text.set_color(TEXT_COLOR)
-
-    fig.text(0.5, 0.94, "KAKHOVKA DAM FLOOD EXTENT", fontsize=24, fontweight="bold",
-              color=TEXT_COLOR, ha="center")
-    fig.text(0.5, 0.90, "Verified multi-sensor flood polygons, Kherson Oblast, Ukraine",
-              fontsize=13, color="#cccccc", ha="center")
-
-    plt.figtext(0.5, 0.02, "ECOCIDE — Source: UNOSAT Multi-Sensor Flood Mapping",
-                ha="center", fontsize=9, color="#888888")
-
-    plt.savefig("outputs/plots/flood_extent_map.png", dpi=220, facecolor=BACKGROUND, bbox_inches="tight")
-    plt.close()
-    print("Saved: outputs/plots/flood_extent_map.png")
+    ax.set_ylim(46.3, 47.0)
+    ax.set_aspect(1 / 0.687)  # cos(46.6°) so degrees are shown at true shape
+    ax.set_xlabel("Longitude (°E)")
+    ax.set_ylabel("Latitude (°N)")
+    # 20 km scale bar at 46.6°N: 1° lon ≈ 76.6 km
+    x0, y0 = 31.98, 46.34
+    ax.plot([x0, x0 + 20 / 76.6], [y0, y0], color="black", lw=3)
+    ax.text(x0 + 10 / 76.6, y0 + 0.012, "20 km", ha="center", fontsize=8)
+    ax.annotate("N", xy=(33.52, 46.97), xytext=(33.52, 46.9), ha="center",
+                arrowprops=dict(arrowstyle="-|>", color="black"), fontsize=10, fontweight="bold")
+    ax.plot(33.37, 46.777, marker="*", color="black", ms=11, zorder=5)
+    ax.annotate("Kakhovka Dam", (33.37, 46.777), xytext=(-10, 8), textcoords="offset points", ha="right", fontsize=8)
+    handles.sort(key=lambda h: h.get_label())
+    handles.append(Patch(facecolor="none", edgecolor="#555555", label="Kherson Oblast boundary (GADM 4.1)"))
+    ax.legend(handles=handles, loc="lower right", fontsize=8.5, frameon=True)
+    ax.set_title("UNOSAT flood-extent layers, lower Dnipro, June 2023")
+    fig.text(0.01, 0.0, "Source: UNOSAT FL20230606UKR (preliminary, not field-validated). Layers come from different sensors "
+             "and analysis extents.", fontsize=7.5, color="#555555")
+    st.save(fig, "outputs/plots/flood_extent_map.png")
 
 
 if __name__ == "__main__":

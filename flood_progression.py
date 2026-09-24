@@ -1,20 +1,24 @@
-import geopandas as gpd
+"""Area of every UNOSAT flood-extent layer used in this project, with sensor,
+analysis extent and cloud obstruction, written to outputs/flood_extent_table.csv."""
+import json
 
-DATES = {
-    "2023-06-06": "ST3_20230606_FloodExtent_KhersonskaOblast_UKR.shp",
-    "2023-06-08": "ST2_20230608_FloodExtent_KhersonskarOblast_UKR.shp",
-    "2023-06-09": "ST3_20230609_FloodExtent_KhersonskaOblast_UKR.shp",
-    "2023-06-13": "ST2_20230613_FloodExtent_KhersonskaOblast_UKR.shp",
-    "2023-06-21": "ST1_20230621_FloodExtent_KhersonskarOblast_UKR.shp",
-}
+import pandas as pd
 
-print("Kakhovka Flood Progression:\n")
-for date, filename in DATES.items():
-    try:
-        path = f"data/ndwi/FL20230606UKR_SHP.zip!FL20230606UKR_SHP/{filename}"
-        gdf = gpd.read_file(path)
-        gdf_equal_area = gdf.to_crs("EPSG:6933")
-        area_km2 = gdf_equal_area.geometry.area.sum() / 1_000_000
-        print(f"{date}: {area_km2:.2f} km² ({len(gdf)} feature(s))")
-    except Exception as e:
-        print(f"{date}: FAILED - {e}")
+import eco_flood as ef
+
+
+def main():
+    rows, comp = ef.table()
+    df = pd.DataFrame(rows)
+    df.to_csv("outputs/flood_extent_table.csv", index=False)
+    with open("outputs/flood_extent_table.json", "w") as f:
+        json.dump({"layers": rows, "composite_6_9_june": comp}, f, indent=2)
+    pd.set_option("display.width", 200)
+    print(df[["date", "sensor", "flood_km2", "flood_in_oblast_km2", "analysis_extent_km2", "cloud_km2"]].round(2).to_string(index=False))
+    print(f"\nUNOSAT cumulative 6–9 June composite: {comp['flood_km2']:.2f} km² "
+          f"({comp['flood_in_oblast_km2']:.2f} km² inside Kherson Oblast)")
+    print("Saved: outputs/flood_extent_table.csv / .json")
+
+
+if __name__ == "__main__":
+    main()

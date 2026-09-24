@@ -1,0 +1,156 @@
+{
+ "H3_reservoir_bed": {
+  "pixels": 33764,
+  "area_km2": 1811.9338571663911,
+  "by_year": [
+   {
+    "year": 2016,
+    "pixels_with_valid_outcome": 20347,
+    "mean_ndvi_jul_oct": 0.052777212113142014,
+    "median_ndvi_jul_oct": 0.009700000286102295,
+    "share_ndvi_gt_0_3": 0.08615520715584607,
+    "share_ndvi_gt_0_5": 0.022755197326387182,
+    "area_km2_ndvi_gt_0_3": 94.07416335779776,
+    "mean_ndvi_jul_aug": 0.0021959911100566387
+   },
+   {
+    "year": 2017,
+    "pixels_with_valid_outcome": 14084,
+    "mean_ndvi_jul_oct": 0.014683669432997704,
+    "median_ndvi_jul_oct": -0.058400001376867294,
+    "share_ndvi_gt_0_3": 0.113959102527691,
+    "share_ndvi_gt_0_5": 0.026412950866231185,
+    "area_km2_ndvi_gt_0_3": 86.1317924639278,
+    "mean_ndvi_jul_aug": 0.0031409612856805325
+   },
+   {
+    "year": 2018,
+    "pixels_with_valid_outcome": 16630,
+    "mean_ndvi_jul_oct": 0.05800674110651016,
+    "median_ndvi_jul_oct": 0.01590000092983246,
+    "share_ndvi_gt_0_3": 0.09723391461214673,
+    "share_ndvi_gt_0_5": 0.025736620565243534,
+    "area_km2_ndvi_gt_0_3": 86.77576848234968,
+    "mean_ndvi_jul_aug": 0.05421524867415428
+   },
+   {
+    "year": 2019,
+    "pixels_with_valid_outcome": 15506,
+    "mean_ndvi_jul_oct": 0.014867420308291912,
+    "median_ndvi_jul_oct": -0.05380000174045563,
+    "share_ndvi_gt_0_3": 0.10331484586611635,
+    "share_ndvi_gt_0_5": 0.02721527150780343,
+    "area_km2_ndvi_gt_0_3": 85.97079845932231,
+    "mean_ndvi_jul_aug": 0.00961172766983509
+   },
+   {
+    "year": 2020,
+    "pixels_with_valid_outcome": 18830,
+    "mean_ndvi_jul_oct": 0.05899927765130997,
+    "median_ndvi_jul_oct": 0.023350000381469727,
+    "share_ndvi_gt_0_3": 0.0947424322889007,
+    "share_ndvi_gt_0_5": 0.025544344131704727,
+    "area_km2_ndvi_gt_0_3": 95.73776807205431,
+    "mean_ndvi_jul_aug": 0.035494621843099594
+   },
+   {
+    "year": 2021,
+    "pixels_with_valid_outcome": 14600,
+    "mean_ndvi_jul_oct": 0.07115739583969116,
+    "median_ndvi_jul_oct": 0.014050000347197056,
+    "share_ndvi_gt_0_3": 0.12746575342465755,
+    "share_ndvi_gt_0_5": 0.03910958904109589,
+    "area_km2_ndvi_gt_0_3": 99.86994752359477,
+    "mean_ndvi_jul_aug": 0.03928332403302193
+   },
+   {
+    "year": 2022,
+    "pixels_with_valid_outcome": 16858,
+    "mean_ndvi_jul_oct": 0.052700433880090714,
+    "median_ndvi_jul_oct": -0.0013500000350177288,
+    "share_ndvi_gt_0_3": 0.10446079012931546,
+    "share_ndvi_gt_0_5": 0.031142484280460316,
+    "area_km2_ndvi_gt_0_3": 94.50348070341236,
+    "mean_ndvi_jul_aug": 0.0428200326859951
+   },
+   {
+    "year": 2023,
+    "pixels_with_valid_outcome": 26928,
+    "mean_ndvi_jul_oct": 0.34440118074417114,
+    "median_ndvi_jul_oct": 0.357699990272522,
+    "share_ndvi_gt_0_3": 0.6270796197266786,
+    "share_ndvi_gt_0_5": 0.16020499108734404,
+    "area_km2_ndvi_gt_0_3": 906.1815872560029,
+    "mean_ndvi_jul_aug": 0.22225655615329742
+   },
+   {
+    "year": 2024,
+    "pixels_with_valid_outcome": 33323,
+    "mean_ndvi_jul_oct": 0.5516201853752136,
+    "median_ndvi_jul_oct": 0.608299970626831,
+    "share_ndvi_gt_0_3": 0.8802628814932629,
+    "share_ndvi_gt_0_5": 0.6891036221228581,
+    "area_km2_ndvi_gt_0_3": 1574.1457123641082,
+    "mean_ndvi_jul_aug": 0.5540738701820374
+   }
+  ],
+  "note": "WorldCover 2021 water >= 50 % pixels of the Kakhovka reservoir; no counterfactual (descriptive)."
+ },
+ "H4_decomposition_Kherson": {
+  "oblast_mean_change_2021_2024_all_valid_pixels": -0.09830982238054276,
+  "categories": {
+   "flooded (F)": {
+    "pixels": 8705,
+    "area_share": 0.018289198342731804,
+    "mean_change_2021_2024": -0.022188840433955193,
+    "zoneO_reference_change": -0.0011440938142850987,
+    "relative_change": -0.021044746619670093,
+    "contribution_to_oblast_relative_change": -0.000384891544999681,
+    "reference": "zone O, same dominant WorldCover class mix",
+    "pixels_valid_both_years": 7912
+   },
+   "former reservoir bed": {
+    "pixels": 10122,
+    "area_share": 0.02126631425906161,
+    "mean_change_2021_2024": 0.47167739272117615,
+    "zoneO_reference_change": 0.0,
+    "relative_change": 0.47167739272117615,
+    "contribution_to_oblast_relative_change": 0.01003083966250335,
+    "reference": "no zone-O analogue (open water in 2021): raw change",
+    "pixels_valid_both_years": 7469
+   },
+   "Kakhovka zone, irrigated cropland": {
+    "pixels": 63055,
+    "area_share": 0.13247850677782352,
+    "mean_change_2021_2024": -0.20286399126052856,
+    "zoneO_reference_change": -0.10776563733816147,
+    "relative_change": -0.0950983539223671,
+    "contribution_to_oblast_relative_change": -0.01259848792466417,
+    "reference": "zone O irrigated cropland",
+    "pixels_valid_both_years": 62978
+   },
+   "Kakhovka zone, rainfed cropland": {
+    "pixels": 18763,
+    "area_share": 0.03942104865073829,
+    "mean_change_2021_2024": -0.08333844691514969,
+    "zoneO_reference_change": -0.03198808804154396,
+    "relative_change": -0.05135035887360573,
+    "contribution_to_oblast_relative_change": -0.002024284995389282,
+    "reference": "zone O rainfed cropland",
+    "pixels_valid_both_years": 18649
+   },
+   "all other land": {
+    "pixels": 375319,
+    "area_share": 0.7885449319696448,
+    "mean_change_2021_2024": -0.09412211924791336,
+    "zoneO_reference_change": -0.0639214789477537,
+    "relative_change": -0.030200640300159662,
+    "contribution_to_oblast_relative_change": -0.023814561850929113,
+    "reference": "zone O, same dominant WorldCover class mix",
+    "pixels_valid_both_years": 345275
+   }
+  },
+  "sum_of_contributions": -0.028791386653478898,
+  "note": "Area-weighted; each category's 2021->2024 change minus the same-class change in zone O. Descriptive."
+ }
+}

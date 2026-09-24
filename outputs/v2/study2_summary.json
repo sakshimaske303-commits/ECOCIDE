@@ -1,0 +1,98 @@
+{
+ "decision_rule": [
+  "supported     : beta < 0, Holm-adjusted WCR p < 0.05, randomization p < 0.10, M=1 robust CI excludes 0",
+  "suggestive    : beta < 0, unadjusted p < 0.05, but one of the other conditions fails",
+  "not supported : otherwise"
+ ],
+ "H1_flood": {
+  "beta": 0.005728253005548875,
+  "ci95_cluster": [
+   -0.014442602265457788,
+   0.02589910827655554
+  ],
+  "p_cluster": 0.5803247302068502,
+  "p_wcr": 0.5968,
+  "p_wcr_holm": 0.5968,
+  "se_conley25km": 0.014388786065555563,
+  "p_randomization": 0.6274509803921569,
+  "pretrend_joint_p": 0.7232044565777986,
+  "rr_theta_2023_24_vs_2021": 0.0034031929782354945,
+  "rr_M1_robust_ci": [
+   -0.049999667962916244,
+   0.056806053919387235
+  ],
+  "rr_M1_excludes_zero": false,
+  "n_pixels": 299,
+  "pct_of_pre_mean": 1.109359660118179,
+  "verdict": "not supported",
+  "matched_treated_share": 0.017523087852237745
+ },
+ "H2_irrigation": {
+  "beta": -0.07394179892200006,
+  "ci95_cluster": [
+   -0.0875028759378543,
+   -0.06038072190614583
+  ],
+  "p_cluster": 6.202321557773975e-26,
+  "p_wcr": 0.0001,
+  "p_wcr_holm": 0.0002,
+  "se_conley25km": 0.013210245399777241,
+  "p_randomization": 0.14285714285714285,
+  "pretrend_joint_p": 3.808322522512457e-39,
+  "rr_theta_2023_24_vs_2021": -0.02272985009413095,
+  "rr_M1_robust_ci": [
+   -0.20806047276404085,
+   0.16260077257577896
+  ],
+  "rr_M1_excludes_zero": false,
+  "n_pixels": 1589631,
+  "pct_of_pre_mean": -15.347547812480316,
+  "verdict": "suggestive"
+ },
+ "H3_reservoir_bed": {
+  "2016": {
+   "mean_ndvi_jul_oct": 0.052777212113142014,
+   "km2_ndvi_gt_0_3": 94.07416335779776
+  },
+  "2017": {
+   "mean_ndvi_jul_oct": 0.014683669432997704,
+   "km2_ndvi_gt_0_3": 86.1317924639278
+  },
+  "2018": {
+   "mean_ndvi_jul_oct": 0.05800674110651016,
+   "km2_ndvi_gt_0_3": 86.77576848234968
+  },
+  "2019": {
+   "mean_ndvi_jul_oct": 0.014867420308291912,
+   "km2_ndvi_gt_0_3": 85.97079845932231
+  },
+  "2020": {
+   "mean_ndvi_jul_oct": 0.05899927765130997,
+   "km2_ndvi_gt_0_3": 95.73776807205431
+  },
+  "2021": {
+   "mean_ndvi_jul_oct": 0.07115739583969116,
+   "km2_ndvi_gt_0_3": 99.86994752359477
+  },
+  "2022": {
+   "mean_ndvi_jul_oct": 0.052700433880090714,
+   "km2_ndvi_gt_0_3": 94.50348070341236
+  },
+  "2023": {
+   "mean_ndvi_jul_oct": 0.34440118074417114,
+   "km2_ndvi_gt_0_3": 906.1815872560029
+  },
+  "2024": {
+   "mean_ndvi_jul_oct": 0.5516201853752136,
+   "km2_ndvi_gt_0_3": 1574.1457123641082
+  }
+ },
+ "H4_decomposition": {
+  "flooded (F)": -0.000384891544999681,
+  "former reservoir bed": 0.01003083966250335,
+  "Kakhovka zone, irrigated cropland": -0.01259848792466417,
+  "Kakhovka zone, rainfed cropland": -0.002024284995389282,
+  "all other land": -0.023814561850929113,
+  "total_relative_change": -0.028791386653478898
+ }
+}

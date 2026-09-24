@@ -8,36 +8,23 @@ authors:
 repository-code: "https://github.com/sakshimaske303-commits/ECOCIDE"
 url: "https://github.com/sakshimaske303-commits/ECOCIDE"
 abstract: >-
-  A causal-inference framework applying Difference-in-Differences analysis,
-  placebo testing, quarterly event-study validation, and exact
-  randomization inference to estimate an event-associated vegetation
-  decline following the destruction of Ukraine's Kakhovka Dam (6 June
-  2023). Comparing monthly NDVI in the conflict-affected Kherson Oblast
-  against a matched non-conflict control panel of four Danube/Black Sea
-  Romanian counties (Tulcea, Galați, Brăila, Constanța), the primary
-  specification (Kherson against Tulcea), using NDVI extracted against each
-  zone's true administrative polygon with pixel-level cloud/shadow/snow
-  masking, estimates a directionally consistent vegetation decline
-  (coefficient -0.0747, HAC-robust p = 0.060) that does not clear the
-  conventional 5% significance threshold. A broad-window placebo test
-  remains clean. A companion randomization-inference check finds Kherson is
-  not the most extreme of the five geographic units available to this
-  design, with two of the four Romanian control counties independently
-  showing comparable-or-larger shifts of their own; the project reports
-  this limitation directly rather than the earlier, more confident-sounding
-  version of this result. A verified multi-sensor UNOSAT flood-extent
-  timeline is included alongside the vegetation analysis. The project is
-  designed to fill a specific, acknowledged gap in existing satellite-based
-  assessments of environmental war damage, which rely on qualitative
-  interpretation and explicitly decline to establish statistical causality
-  — including the gap of disclosing when a corrected analysis weakens an
-  earlier, published result.
+  Code and data for a Difference-in-Differences analysis of monthly
+  Sentinel-2 NDVI after the destruction of Ukraine's Kakhovka Dam (6 June
+  2023), comparing Kherson Oblast with four Romanian control counties
+  (Tulcea, Galati, Braila, Constanta), with placebo tests, a quarterly event
+  study, exact randomization inference and a control-only divergence check,
+  alongside UNOSAT flood-extent layers. With cloud- and water-masked monthly
+  composites and HAC inference on the monthly treated-minus-control gap,
+  Kherson's NDVI declined relative to Tulcea by 0.108 (95% CI 0.007 to 0.209,
+  p = 0.037; 0.069 with zone-specific seasonality, p = 0.005). Attribution to
+  the dam is not established: Kherson ranks 2 of 5 in randomization
+  inference and pre-event quarters deviate. Zenodo v1.0.0 and EarthArXiv
+  preprint v1 report an earlier, superseded analysis.
 keywords:
   - ecocide
   - remote sensing
   - causal inference
   - difference-in-differences
-  - war crimes
   - satellite evidence
   - Kakhovka Dam
   - NDVI

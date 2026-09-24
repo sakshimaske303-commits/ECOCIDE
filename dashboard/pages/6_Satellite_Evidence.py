@@ -16,10 +16,10 @@ st.markdown(
 st.markdown("---")
 
 st.markdown("""
-Sentinel-2 true-color imagery (bands B04/B03/B02) was acquired programmatically via the 
-Copernicus Data Space Ecosystem for the exact same bounding box before and after the Kakhovka 
-Dam's destruction — ensuring both images share identical geographic extent for direct visual 
-comparison, rather than being manually selected from differing viewports.
+Sentinel-2 true-colour mosaics (B04/B03/B02) for the same bounding box before and after the
+dam's destruction, acquired through the Sentinel Hub Process API. The frame covers the downstream
+floodplain from the dam to the estuary and only the south-western tip of the former reservoir
+(top right). These images give geographic context; they are not used as statistical evidence.
 """)
 
 st.markdown("---")
@@ -30,12 +30,12 @@ with col1:
     st.markdown(f"""
     <div style="text-align: center; margin-bottom: 12px;">
         <p style="color: {PALETTE['vegetation']}; font-weight: 900; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;">BEFORE</p>
-        <p style="color: {PALETTE['text_secondary']}; font-size: 0.9rem; font-weight: 600;">April – May 2023</p>
+        <p style="color: {PALETTE['text_secondary']}; font-size: 0.9rem; font-weight: 600;">1 April – 31 May 2023 mosaic</p>
     </div>
     """, unsafe_allow_html=True)
-    before_path = os.path.join(PROJECT_ROOT, "data", "satellite_imagery", "before_may2023_v2.png")
+    before_path = os.path.join(PROJECT_ROOT, "outputs", "maps", "before_may2023_final.png")
     if os.path.exists(before_path):
-        st.image(before_path, use_container_width=True)
+        st.image(before_path, width="stretch")
     else:
         st.warning("Before-image not found.")
 
@@ -43,12 +43,12 @@ with col2:
     st.markdown(f"""
     <div style="text-align: center; margin-bottom: 12px;">
         <p style="color: {PALETTE['damage']}; font-weight: 900; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;">AFTER</p>
-        <p style="color: {PALETTE['text_secondary']}; font-size: 0.9rem; font-weight: 600;">July 2023</p>
+        <p style="color: {PALETTE['text_secondary']}; font-size: 0.9rem; font-weight: 600;">1–31 July 2023 mosaic</p>
     </div>
     """, unsafe_allow_html=True)
-    after_path = os.path.join(PROJECT_ROOT, "data", "satellite_imagery", "after_july2023.png")
+    after_path = os.path.join(PROJECT_ROOT, "outputs", "maps", "after_july_2023_final.png")
     if os.path.exists(after_path):
-        st.image(after_path, use_container_width=True)
+        st.image(after_path, width="stretch")
     else:
         st.warning("After-image not found.")
 
@@ -58,10 +58,11 @@ st.markdown(f"""
 <div class="forensic-card">
     <p style="color: {PALETTE['accent']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Acquisition Details</p>
     <p style="color: {PALETTE['text_primary']}; font-size: 0.9rem; margin: 0;">
-        Both images cover an identical bounding box (32.0°E–33.6°E, 46.3°N–46.9°N), acquired via 
-        Sentinel-2 L2A data with cloud-coverage filtering, using Sentinel Hub's Process API for 
-        full reproducibility — the same programmatic acquisition pipeline used throughout this 
-        project, rather than manual satellite-imagery browsing.
+        Bounding box 32.0°E–33.6°E, 46.3°N–46.9°N; Sentinel-2 L2A, least-cloud mosaicking
+        (scene cloud cover ≤40% before, ≤20% after), Sentinel Hub Process API
+        (<code>download_true_color_images.py</code>, <code>redownload_before.py</code>). Shown as the
+        georeferenced QGIS layouts so the frame keeps its true shape. Scattered clouds remain in the
+        July mosaic.
     </p>
 </div>
 """, unsafe_allow_html=True)

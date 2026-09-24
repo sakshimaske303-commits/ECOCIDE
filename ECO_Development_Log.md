@@ -1,5 +1,8 @@
 # ECOCIDE: A Causal Inference Framework for Independently Verifying War Time Environmental Damage
 
+> *Note: entries are a chronological diary and describe what I believed at the time. Early entries (and this introduction) use stronger language — "prove", "conflict attributable" — than the final results support. Current results are in `ECO_RESULTS_RECONCILIATION.md` and Entry 17.*
+
+
 So...I keep detailed notes on almost every research project I take on..... It began as a purely practical habit—something to stop me from waking up the nxt morning completely lost about where I’d stopped or which exact files a
 nd datasets were sitting on my machine.
 
@@ -29,6 +32,8 @@ My ECOCIDE framework fixes this exact missing puzzle piece. I used a strict Diff
 14. [Entry 14](#entry-14)
 15. [Entry 15](#entry-15)
 16. [Entry 16](#entry-16)
+17. [Entry 17](#entry-17)
+18. [Entry 18](#entry-18)
 
 ---
 
@@ -243,3 +248,50 @@ One small honest silver lining in the middle of all this: the narrowed baseline 
 So I went back thru `ECO_Research_Paper.md` top to bottom, Abstract all the way to Conclusion, nd rewrote every section tht touched these numbers to say wht's actually true now instead of wht used to be true, added `ECO_RESULTS_RECONCILIATION.md` to track every single value across every file so nothing gets updated in only one place by accident, nd fixed the README, CITATION.cff abstract, nd the dashboard pages (Vegetation Impact, Statistical Validation, Methodology & Data) to match. Statistical Validation page also got two entirely new sections it never had before, the placebo in space table nd the control only spillover table, since those are honestly the most important findings in this whole entry nd the dashboard had nothing on them at all before this.
 
 Still sitting on my to do list: `data/ndvi_v2/` hasn't been promoted to replace `data/ndvi/` yet, so every other script in this repo (the map*.py files, generate_model_results.py, etc.) would still silently read the old bbox numbers if I ran them today, nd I want to decide tht properly rather than jst renaming a folder nd hoping nothing downstream breaks. ECO_Executive_Summary, this dev log's own PDF export, the Project Report, the EarthArXiv PDF, nd the dashboard's static PDF copies all still show the old, stronger numbers too. Nd I still havent pushed any of this to GitHub main, so right now the published repo is nd the corrected repo on my own machine are telling two different stories, which is nt a place I want to leave this sitting for long. Honestly, this whole entry is exactly why I built all these placebo nd randomization checks into the pipeline in the first place — I jst didn't expect to be the one they caught.
+
+---
+
+## Entry 17
+
+*(24 Sept 2026 — a full audit of the repository, done with an AI assistant; this entry records what it found and what changed.)*
+
+Entry 16's to-do list is done or superseded: `data/ndvi_v2` had already been promoted to `data/ndvi` (the two folders are byte-identical), but a lot of the repository still showed the old numbers.
+
+What the audit found:
+
+1. **The Phase 2 numbers came from a script that was never in the repo**, and it used the t distribution while every repo script used the normal distribution, so `did_model.py` printed p = 0.055 while the paper said 0.060. The "improvement" in the narrowed placebo (0.001 → 0.069) was mostly that switch.
+2. **The HAC standard errors were wrong for a panel.** Both zones were stacked in one table, so the Newey-West lags ran from the last Kherson month into the first Tulcea month, and same-month observations were treated as independent. All models now run on the single monthly Kherson-minus-control gap (`eco_core.py`), which gives the same coefficients with correctly ordered lags. The primary p-value becomes 0.162.
+3. **Seasonality.** Tulcea's seasonal swing is bigger than Kherson's and the post period has two summer–autumns against one, so shared month effects leave a seasonal artefact. With zone-specific seasonality the estimate drops to −0.0324.
+4. **Event study:** three pre-event quarters are significant, not one, and every significant post-event quarter is a June–November quarter.
+5. **Flood data:** the 6/9 June layers are Sentinel-3 and 21 June is Sentinel-1 (from the shapefiles' own attributes) — not the five sensors I had been citing. ICEYE on 7 June maps 520.8 km², more than the "9 June peak"; UNOSAT's cumulative composite is 617 km².
+6. **NDVI sampling:** the Statistical API requests never set a pixel size, so every zone was sampled on a 256 × 256 grid (sampleCount 65,536 everywhere), and water was not masked. `download_ndvi_polygon_v3.py` fixes this; I still need to run it with my credentials.
+7. **Treatment zone:** the flood covers about 2% of the oblast polygon, and several hundred km² of drained reservoir inside it would raise NDVI, not lower it.
+
+What changed: one engine (`eco_core.py`), one results file (`outputs/model_results.json`), every model script and figure regenerated from it, the dashboard reading its numbers straight from the JSON, flood numbers computed from the shapefiles with sensor labels, pinned requirements, and the paper, README, executive summary and CITATION rewritten to the current numbers. The honest result is now clearer than before: the design does not show a statistically significant vegetation effect of the dam's destruction.
+
+---
+
+## Entry 18
+
+*(24 Sept 2026, later the same day.)*
+
+Ran `download_ndvi_polygon_v3.py`. The first run returned only 32 months per zone: the yearly requests ended on 31 December / 30 November, and Sentinel Hub drops a monthly interval that is not complete inside the time range, so Dec 2022, Dec 2023 and Nov 2024 disappeared. With month-boundary end dates the rerun returned all 35 months.
+
+The v3 data (common 0.002° grid, water masked, per-pixel monthly median) change the result again. Primary DiD −0.108, p = 0.037; with zone-specific seasonality −0.069, p = 0.005; the June 2022 placebo is clean; lag lengths, log form and low-coverage checks all hold. So the water pixels and the coarse, zone-dependent sampling had been diluting a real relative decline.
+
+What did not change: Kherson still ranks 2 of 5 in placebo in space — Constanța moves by the same amount — four of five pre-event quarters deviate, and the narrowed placebo fails. The decline is largest in the 2024 season, which looks more like irrigation loss or the war's effect on farming than like the flood. The honest conclusion is now: a significant, seasonally robust decline in Kherson relative to its controls, which this design cannot attribute to the dam.
+
+`data/ndvi_v3` is now the default dataset (`eco_core.py`); everything was regenerated from it.
+
+
+
+## Entry 19
+
+**24 September 2026 — Study 2: pre-registered, exposure-based redesign**
+
+- Wrote `ANALYSIS_PLAN_v2.md` (hypotheses H1–H4, exposure rules, model, inference, decision rules) and committed it before the analysis.
+- Downloaded MODIS MOD13Q1 v061 2016–2024 (204 of 207 composites in the catalogue), ESA WorldCover 2021, ERA5-Land monthly means, OSM canals (`v2/01`–`05`), and built yearly July–October summaries (`v2/06`).
+- Fixed on the way: MODIS STAC items have no single datetime (use start date); Overpass needs a User-Agent; an xarray coordinate round-off in the check script.
+- Ran the full analysis (`v2/analysis/a1`–`a8`). H1 flood: not supported (+0.006; wetlands −0.04). H2 irrigation: suggestive (−0.074, but strong pre-trends and a randomization floor of p = 0.14). H3: ~1,500 km² of the drained reservoir bed became vegetated by 2024. H4: most of Kherson's relative decline came from land outside all exposure groups.
+- Logged 3 deviations and all implementation choices in `v2/DEVIATIONS.md`, including the H1 caliper leaving 1.8% of flooded pixels matched and the H2 irrigation rule mislabelling summer crops in northern oblasts.
+- Wrote `ECO_Research_Paper_v2.md` with Study 2 as the main result and Study 1 as motivation.

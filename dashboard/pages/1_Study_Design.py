@@ -5,6 +5,7 @@ import os
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(PROJECT_ROOT)
+sys.path.append(os.path.join(PROJECT_ROOT, "dashboard"))
 from styles import apply_custom_style, PALETTE
 
 apply_custom_style()
@@ -19,10 +20,9 @@ st.markdown("---")
 st.markdown("""
 ### The Research Question
 
-Does the destruction of the Kakhovka Dam produce a statistically significant, quantifiable 
-increase in environmental degradation beyond what a comparable non-conflict region would have 
-experienced over the same period — isolated from pre-existing conflict trends and seasonal 
-vegetation cycles?
+After the destruction of the Kakhovka Dam, did vegetation greenness (NDVI) in Kherson Oblast change
+more than in comparable, unaffected regions over the same period — and can that difference be
+statistically distinguished from ordinary variation among those regions?
 """)
 
 st.markdown("---")
@@ -40,9 +40,9 @@ with col1:
             46.777°N, 33.370°E — Kakhovka Dam and Dnipro River floodplain
         </p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
-            Dam destroyed <b>6 June 2023</b>. Flood-affected analysis zone spans approximately
-            10,800 km² (dam to river mouth — my own estimated corridor, not a published UNOSAT
-            figure). Region under active conflict since February 2022.
+            Dam destroyed <b>6 June 2023</b>. The NDVI analysis uses the whole oblast polygon
+            (GADM, ≈25,500 km²); the mapped flood covered roughly 620 km² at most, and part of the
+            drained reservoir also lies inside the oblast. Active conflict since February 2022.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -56,9 +56,9 @@ with col2:
             45.200°N, 29.500°E — Danube Delta
         </p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
-            Selected for a comparable pre-conflict ecological baseline — river-delta wetland, 
-            steppe, agricultural floodplain, similar continental climate — while being genuinely 
-            <b>non-combatant</b>.
+            Chosen by hand for broadly similar landscape — river-delta wetland, steppe,
+            agricultural floodplain, continental climate — outside the war zone. No formal matching
+            was performed; Tulcea borders Ukraine's Odesa Oblast along the Danube.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -84,7 +84,7 @@ if os.path.exists(interactive_map_path):
 else:
     image_path = os.path.join(PROJECT_ROOT, "outputs", "plots", "study_area_overview.png")
     if os.path.exists(image_path):
-        st.image(image_path, use_container_width=True)
+        st.image(image_path, width="stretch")
     else:
         st.warning("Study area overview image not found.")
 
@@ -99,7 +99,7 @@ and demographic effects (supply disruption, displacement) could contaminate a co
 without direct conflict in that specific area. The Ukrainian side of the Danube Delta itself 
 (Odesa Oblast) was also ruled out, since it has been affected by war-related strikes on Danube 
 port infrastructure. Tulcea County, Romania — a genuinely non-combatant NATO/EU member with a 
-matching river-delta ecology — was selected instead.
+similar river-delta landscape — was selected instead.
 """)
 
 st.markdown("---")
@@ -109,27 +109,25 @@ st.markdown("### Methodology at a Glance")
 st.markdown("""
 1. **Boundary Acquisition** — Administrative boundaries for both zones sourced from GADM v4.1.
 
-2. **Multi-Temporal NDVI** — Monthly vegetation index data (Sentinel-2) acquired for both zones, 
-   spanning January 2022 through November 2024.
+2. **Monthly NDVI** — Sentinel-2 L2A, Sentinel Hub Statistical API, each zone's GADM polygon,
+   pixel-level cloud/shadow/cirrus/snow masking, January 2022 – November 2024.
 
-3. **Verified Flood Extent** — UNOSAT multi-sensor flood-extent polygons (ICEYE, Landsat-9, 
-   SkySat, WorldView-3, MODIS) across 5 dates in June 2023.
+3. **Flood Extent** — UNOSAT FL20230606UKR layers (Sentinel-3, ICEYE, Sentinel-2, Sentinel-1),
+   6–21 June 2023; preliminary products, reported descriptively.
 
-4. **Difference-in-Differences Model** — Statistical comparison of treatment-zone versus 
-   control-zone NDVI change, with month fixed effects to control for seasonal cycles.
+4. **Difference-in-Differences** — the monthly Kherson-minus-control NDVI gap before vs after
+   June 2023, Newey-West HAC standard errors; a second version allows zone-specific seasonality.
 
-5. **Placebo Validation** — Fake treatment dates tested to confirm the real effect is genuine, 
-   not a general pre-existing trend.
+5. **Placebo Tests** — fake treatment dates (June 2022; March 2023 in the narrowed window).
 
-6. **Quarterly Event Study** — Testing whether the effect is genuinely concentrated around the
-   June 2023 event, disclosed transparently including any limitations found.
+6. **Quarterly Event Study** — the gap quarter by quarter, with multiple-testing correction.
 
-7. **Multi-Control Robustness Check** — The same causal model run against a four-county
-   Danube/Black Sea panel, testing whether the result depends on the choice of a single control zone.
+7. **Four-County Panel, Placebo in Space, Control-Only Divergence** — whether the result depends on
+   the control chosen, and whether Kherson stands out from the controls themselves.
 """)
 
 st.markdown("---")
 st.markdown(
-    "<p class='caption-text' style='text-align:center;'>ECOCIDE — A Satellite-Based Evidentiary Framework</p>",
+    "<p class='caption-text' style='text-align:center;'>ECOCIDE — Kakhovka Dam study</p>",
     unsafe_allow_html=True,
 )

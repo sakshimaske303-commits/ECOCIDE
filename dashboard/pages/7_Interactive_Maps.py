@@ -17,9 +17,9 @@ st.markdown(
 st.markdown("---")
 
 st.markdown("""
-Interactive map of verified UNOSAT flood-extent polygons across three dates (6 June, 9 June,
-21 June 2023), built directly in Python (folium), plus the three headline statistical charts
-as hoverable, toggleable plots instead of flat images.
+Interactive map of three UNOSAT flood-extent layers (6 June and 9 June: Sentinel-3; 21 June:
+Sentinel-1), built in Python with folium, plus three statistical charts whose numbers are read from
+the project's results file.
 """)
 
 st.markdown("---")
@@ -34,9 +34,9 @@ st.markdown(f"""
     <p style="color: {PALETTE['accent']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px;">Map Legend</p>
     <p style="color: {PALETTE['text_primary']}; font-size: 0.9rem; margin: 0;">
         Mint outline — Kherson Oblast boundary &nbsp;|&nbsp;
-        Orange — Flood extent, 6 June &nbsp;|&nbsp;
-        Red — Flood extent, 9 June (peak) &nbsp;|&nbsp;
-        Cyan — Flood extent, 21 June (recession)
+        Orange — 6 June (Sentinel-3) &nbsp;|&nbsp;
+        Red — 9 June (Sentinel-3) &nbsp;|&nbsp;
+        Cyan — 21 June (Sentinel-1). Layers differ in sensor and analysis extent.
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -47,8 +47,8 @@ st.markdown("<h3 style='text-align: center; color: #B0BEC5;'>Interactive Plots</
 
 PLOTS = {
     "Event Study — Quarterly Treatment Effect on NDVI": "outputs/plots/interactive/event_study.html",
-    "Multi-Control Robustness Check": "outputs/plots/interactive/control_panel_comparison.html",
-    "Classical vs. HAC Standard Errors": "outputs/plots/interactive/robustness_check.html",
+    "Kherson vs Each Control and Pooled": "outputs/plots/interactive/control_panel_comparison.html",
+    "Primary and Placebo Estimates (Classical vs HAC)": "outputs/plots/interactive/robustness_check.html",
 }
 
 plot_choice = st.selectbox("Select a chart", list(PLOTS.keys()))

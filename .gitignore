@@ -3,4 +3,18 @@
 .env.txt
 *.json.key
 
+# Python build artefacts
+__pycache__/
+*.pyc
+
+# Large rasters
 *.tif
+
+# Study 2 large data (regenerate with v2/01-06 and v2/analysis/run_all.py)
+data/v2/modis/
+data/v2/annual/
+data/v2/worldcover_parts/
+data/v2/derived/*.npz
+data/v2/derived/*.npy
+data/v2/derived/h2_npy/
+data/v2/sample_kherson.nc

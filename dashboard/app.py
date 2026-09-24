@@ -8,6 +8,7 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(BASE_DIR)
 from styles import apply_custom_style, PALETTE
 from doc_viewer import render_doc_viewer
+from results import R, FLOOD, p, c, ci, sig
 
 st.set_page_config(
     page_title="ECOCIDE",
@@ -21,7 +22,7 @@ apply_custom_style()
 st.markdown("<h1 style='text-align: center;'>🛰️ ECOCIDE</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700; margin-top: -10px;'>"
-    "A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes</h3>",
+    "Satellite Evidence and Causal-Inference Testing of the Kakhovka Dam Destruction</h3>",
     unsafe_allow_html=True,
 )
 
@@ -44,11 +45,11 @@ st.markdown(
             ">
                 <div style="text-align:left;">
                     <div style="color:{PALETTE['accent']}; font-family:'Inter',sans-serif; font-weight:800; font-size:1.05rem; letter-spacing:0.4px; display:flex; align-items:center; gap:8px;">
-                        <span>PREPRINT ON EARTHARXIV</span>
+                        <span>PREPRINT v1 ON EARTHARXIV</span>
                         <span style="opacity:0.8; font-size:0.95rem;">↗</span>
                     </div>
                     <div style="color:{PALETTE['text_primary']}; font-family:'Inter',sans-serif; font-weight:900; font-size:1.35rem; margin-top:2px;">
-                        Read the preprint
+                        v1 — superseded results
                     </div>
                 </div>
             </div>
@@ -84,11 +85,11 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.metric("STUDY EVENT", "Kakhovka Dam", "6 June 2023")
 with col2:
-    st.metric("PEAK FLOOD", "464.18 km²", "9 June 2023")
+    st.metric("UNOSAT FLOOD (6–9 JUNE)", f"{FLOOD['composite_6_9_june']['flood_km2']:.0f} km²", "cumulative, multi-sensor")
 with col3:
-    st.metric("NDVI EFFECT", "-0.0747", "p = 0.060 (HAC) — marginal")
+    st.metric("NDVI DiD (vs TULCEA)", c(R["main_did"]), f"HAC p = {p(R['main_did']['p'])} — {sig(R['main_did']['p'])}")
 with col4:
-    st.metric("VALIDATION", "Placebo-Tested", "Not sig. at 5% level")
+    st.metric("PLACEBO IN SPACE", f"Rank {R['placebo_in_space']['rank_one_sided']} of 5", f"exact p = {R['placebo_in_space']['p_one_sided']:.2f}")
 
 st.markdown("---")
 
@@ -100,15 +101,14 @@ st.markdown(
         <p style="color:{PALETTE['accent']}; text-transform:uppercase; letter-spacing:1.5px;
                   font-weight:800; font-size:0.85rem; margin-bottom:8px;">Why This Matters</p>
         <p style="color:{PALETTE['text_primary']}; font-size:1rem; line-height:1.6; margin:0;">
-            International courts have already accepted satellite evidence in war-crimes prosecutions —
-            the ICC's <i>Al Mahdi</i> case was built on satellite imagery of cultural-heritage destruction
-            — and legal bodies are now considering "ecocide" itself as a prosecutable international crime.
-            But most satellite-based damage assessments of this specific event stop at visual, qualitative
-            interpretation — they show <i>what</i> happened, not whether it is statistically distinguishable
-            from a pre-existing trend. ECOCIDE closes that evidentiary gap: a placebo-tested,
-            HAC-robust estimate of an event-associated environmental effect, held to the same
-            open-source-investigation discipline used by organizations like Bellingcat and Human Rights
-            Watch — and honest enough to disclose exactly where its own validation didn't hold up.
+            Satellite imagery is already used in international criminal proceedings as supporting
+            evidence (for example, UNOSAT imagery in the ICC's <i>Al Mahdi</i> case on the destruction of
+            cultural heritage in Timbuktu), and a standalone crime of "ecocide" has been <i>proposed</i> as an
+            amendment to the Rome Statute (Vanuatu, Fiji and Samoa, September 2024). Most satellite assessments
+            of the Kakhovka Dam destruction describe what changed; this project asks a narrower question:
+            is the post-event vegetation change in Kherson statistically distinguishable from change in
+            comparable, unaffected regions — and can it be attributed to the dam? The first answer is yes;
+            the second, with this design, is no. The pages below show why.
         </p>
     </div>
     """,
@@ -121,17 +121,15 @@ with col_left:
     st.markdown("""
     ### What Is ECOCIDE?
 
-    On **6 June 2023**, the Kakhovka Dam on Ukraine's Dnipro River was destroyed, draining an 
-    18.2 km³ reservoir and flooding hundreds of square kilometers of downstream floodplain. 
-    International legal bodies have begun formally considering "ecocide" — mass environmental 
-    destruction — as a prosecutable international crime.
+    On **6 June 2023**, the Kakhovka Dam on Ukraine's Dnipro River was destroyed, draining a
+    reservoir of about 18.2 km³ and flooding the downstream floodplain (UNOSAT mapped roughly
+    620 km² cumulatively over 6–9 June). A standalone international crime of "ecocide" has been
+    proposed but does not yet exist in the Rome Statute.
 
-    Existing satellite assessments of this event rely on **visual, qualitative interpretation**
-    and explicitly decline to establish statistical causality. This project fills that gap:
-    applying a **Difference-in-Differences causal-inference framework**, checked against a
-    placebo test and several robustness checks, to estimate an event-associated vegetation
-    decline relative to a matched control zone — while disclosing, not hiding, the places where
-    the design's own assumptions hold up less cleanly (see Honest Validation below).
+    This project applies a **Difference-in-Differences** design to monthly Sentinel-2 NDVI,
+    comparing Kherson Oblast with four Romanian counties, and stress-tests the result with
+    placebo tests, an event study, randomization inference and a control-only divergence check.
+    Every number on this dashboard is read from one results file produced by the repository's code.
     """)
 
 with col_right:
@@ -141,16 +139,13 @@ with col_right:
             <p style="color:{PALETTE['accent']}; text-transform:uppercase; font-size:0.78rem;
                       letter-spacing:1.5px; font-weight:800; margin-bottom:12px;">Core Finding</p>
             <p style="color:{PALETTE['text_primary']}; font-size:0.95rem; line-height:1.7; margin:0; font-weight:500;">
-                A directionally consistent <b>NDVI decline of 0.0747</b> (95% CI [-0.153, 0.003],
-                HAC-robust p=0.060) was detected in the Kherson conflict zone relative to a
-                matched non-conflict control zone (Danube Delta, Romania) — just outside
-                conventional significance. A broad-window placebo test using a fake pre-event
-                date still shows no comparable effect (p=0.882), but an exact
-                randomization-inference check finds Kherson is no longer the most extreme of
-                the five geographic units in this design: two of the four Romanian control
-                counties independently show comparable-or-larger shifts of their own, unrelated
-                to the dam. This is disclosed directly on the Statistical Validation page rather
-                than only in the underlying paper.
+                After June 2023 Kherson's NDVI fell relative to Tulcea by {c(R["main_did"])}
+                (95% CI {ci(R["main_did"])}, HAC p = {p(R["main_did"]["p"])}); allowing each zone its own
+                seasonal cycle gives {c(R["main_did_seasonal"])} (p = {p(R["main_did_seasonal"]["p"])}), and a
+                placebo date a year earlier shows nothing. But attribution to the dam is not established:
+                in an exact randomization check Kherson ranks {R["placebo_in_space"]["rank_one_sided"]} of 5
+                (p = {R["placebo_in_space"]["p_one_sided"]:.2f}) because Constanța shifts by as much, pre-event
+                quarters already deviate, and the oblast-wide unit mixes flooding, reservoir drainage and war effects.
             </p>
         </div>
         """, unsafe_allow_html=True
@@ -167,8 +162,8 @@ with m1:
     <div class="forensic-card" style="min-height: 190px;">
         <p style="color: {PALETTE['water']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Flood Evidence</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
-            Multi-sensor UNOSAT verified flood-extent polygons (ICEYE, Landsat-9, SkySat, 
-            WorldView-3) tracked across 5 dates, revealing a complete rise-peak-recession cycle.
+            UNOSAT flood-extent layers (Sentinel-3, ICEYE, Sentinel-2, Sentinel-1) for 6–21 June 2023 —
+            preliminary products, each with its own sensor and analysis extent.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -178,8 +173,8 @@ with m2:
     <div class="forensic-card" style="min-height: 190px;">
         <p style="color: {PALETTE['vegetation']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Causal Inference</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
-            Difference-in-Differences model comparing Kherson (treatment) against a matched 
-            non-conflict control zone, with month fixed effects and quarterly event-study validation.
+            Difference-in-Differences on the monthly Kherson-minus-control NDVI gap, Newey-West HAC
+            standard errors, placebo tests, event study and randomization inference.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -189,8 +184,8 @@ with m3:
     <div class="forensic-card" style="min-height: 190px;">
         <p style="color: {PALETTE['damage']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Honest Validation</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
-            Every result stress-tested with placebo dates and sensitivity analysis. Ambiguous 
-            findings are disclosed transparently, not selectively reported.
+            Every check is reported with its actual result, including the ones that weaken the
+            headline — they are listed on the Statistical Validation page.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -201,14 +196,14 @@ st.markdown("### Explore the Evidence")
 
 nav_items = [
     ("Study Design", "Treatment/control zones, methodology"),
-    ("Theoretical Foundations", "The flood physics and coastal oceanography behind the evidence"),
-    ("Flood Analysis", "Hydrograph, verified flood extent"),
+    ("Theoretical Foundations", "How a dam-break flood and reservoir drainage could affect vegetation"),
+    ("Flood Analysis", "UNOSAT flood-extent layers by sensor"),
     ("Vegetation Impact", "NDVI causal analysis, DiD results"),
     ("Statistical Validation", "Placebo tests, event study, limitations"),
     ("Explore Trends", "Interactive NDVI time series, live difference calculator"),
     ("Satellite Evidence", "Before/after true-color imagery"),
-    ("Interactive Maps & Plots", "Live geospatial exploration plus the three headline charts"),
-    ("Methodology & Data", "Full transparency, data sources, honest limitations"),
+    ("Interactive Maps & Plots", "Flood map plus three interactive charts"),
+    ("Methodology & Data", "Data sources, corrections, limitations"),
 ]
 
 cols = st.columns(3)
