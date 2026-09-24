@@ -58,10 +58,22 @@ def main():
     gbox = grid.coarse_geobox()
 
     client = pystac_client.Client.open(STAC)
-    items = []
+    items = {}
     for y in args.years:
         s = client.search(collections=[COLLECTION], bbox=grid.BBOX_LONLAT, datetime=f"{y}-01-01/{y}-12-31")
-        items += [it for it in s.items() if it.id.upper().startswith("MOD13Q1")]  # Terra only
+        for it in s.items():
+            if not it.id.upper().startswith("MOD13Q1"):  # Terra only
+                continue
+            # MODIS composites carry start_datetime/end_datetime and datetime = null.
+            # Use the composite START date as the item's date (odc.stac groups on it too).
+            if it.datetime is None:
+                start = it.common_metadata.start_datetime
+                if start is None:
+                    continue
+                it.datetime = start
+            if it.datetime.year in args.years:  # a Dec–Jan composite is returned by two year searches
+                items[it.id] = it
+    items = list(items.values())
     by_date = defaultdict(list)
     for it in items:
         by_date[it.datetime.strftime("%Y-%m-%d")].append(it)
