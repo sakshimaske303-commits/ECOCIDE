@@ -1,0 +1,14 @@
+# Extra packages for the v2 pixel-level study (install on top of ../requirements.txt)
+pystac-client>=0.8
+planetary-computer>=1.0
+odc-stac>=0.3.10
+odc-geo>=0.4
+rasterio>=1.3
+rioxarray>=0.15
+xarray>=2024.1
+netCDF4>=1.6
+dask>=2024.1
+cdsapi>=0.7
+requests>=2.31
+geopandas>=0.14
+pyarrow>=15
