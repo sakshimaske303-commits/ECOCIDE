@@ -91,6 +91,25 @@ python v2/analysis/run_all.py             # ~20 minutes, needs ~6 GB free RAM
 
 Every departure from the plan and every implementation choice is in `v2/DEVIATIONS.md`.
 
+## Registered Revision 1 (`ANALYSIS_PLAN_v2_ADDENDUM_1.md`)
+
+Commit and push the addendum BEFORE any of the downloads below:
+
+```powershell
+git add ANALYSIS_PLAN_v2_ADDENDUM_1.md v2/
+git commit -m "Register Revision 1 (addendum) before extra downloads and analyses"
+git push
+```
+
+Then:
+
+```powershell
+python v2/01_download_modis.py --years 2010 2011 2012 2013 2014 2015   # ~138 files, ~1 hour (R1)
+python v2/06_annual_composites.py --years 2010 2011 2012 2013 2014 2015
+python v2/07_download_io_lulc.py                                        # annual water share 2017-2024 (R5)
+python v2/08_download_conflict.py                                       # VIINA / UCDP conflict data (R4)
+```
+
 ## Disk and time
 
 About 4–6 GB on disk. Steps 1 and 2 can run while you do other work; the laptop must stay awake and online.
