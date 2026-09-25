@@ -108,6 +108,10 @@ def build(H, treat, w, outcome="ndvi_jo", use_weather=True, event=False, sub=Non
              "strat": np.repeat((H["bank"][u].astype(int) * 100 + H["dom"][u].astype(int))[:, None], T, 1).astype(float),
              "blk": np.repeat(H["block"][u][:, None], T, 1).astype(float),
              "w": np.repeat(w[u][:, None], T, 1)}
+    if "band" in H:   # Registered Revision 1 (R4): distance-to-channel band
+        extra["band"] = np.repeat(H["band"][u][:, None], T, 1).astype(float)
+    if "CI" in H:     # Registered Revision 1 (R4): conflict intensity
+        extra["CI"] = H["CI"][u]
     lf = L.long_format(Yu, extra)
     yrs = lf["yr"].astype(int)
     if event:
@@ -123,9 +127,14 @@ def build(H, treat, w, outcome="ndvi_jo", use_weather=True, event=False, sub=Non
     if use_weather:
         cols += [lf["P"] / 100.0, lf["Tm"]]
         names += ["precip_100mm", "temp_C"]
+    if "CI" in lf and np.any(lf["CI"] != 0):
+        cols.append(lf["CI"])
+        names.append("conflict_log1p_events_5km")
     X = np.column_stack(cols)
     ys = np.unique(lf["strat"].astype(int) * 10000 + yrs, return_inverse=True)[1]
     groups = [lf["unit"], ys]
+    if "band" in lf:
+        groups.append(np.unique(lf["band"].astype(int) * 10000 + yrs, return_inverse=True)[1])
     return lf, X, names, groups, u
 
 

@@ -295,3 +295,14 @@ What did not change: Kherson still ranks 2 of 5 in placebo in space — Constan�
 - Ran the full analysis (`v2/analysis/a1`–`a8`). H1 flood: not supported (+0.006; wetlands −0.04). H2 irrigation: suggestive (−0.074, but strong pre-trends and a randomization floor of p = 0.14). H3: ~1,500 km² of the drained reservoir bed became vegetated by 2024. H4: most of Kherson's relative decline came from land outside all exposure groups.
 - Logged 3 deviations and all implementation choices in `v2/DEVIATIONS.md`, including the H1 caliper leaving 1.8% of flooded pixels matched and the H2 irrigation rule mislabelling summer crops in northern oblasts.
 - Wrote `ECO_Research_Paper_v2.md` with Study 2 as the main result and Study 1 as motivation.
+
+
+## Entry 20
+
+**24–25 September 2026 — Registered Revision 1**
+
+- Wrote `ANALYSIS_PLAN_v2_ADDENDUM_1.md` (R1–R5) to address five problems found in the pre-registered analysis; committed 22:53 IST, before the extra downloads.
+- Downloaded MODIS 2010–2015, Impact Observatory annual land cover (fixed a previous-year mix-up before use) and VIINA conflict and control data (fixed a Git LFS pointer issue).
+- Ran `r1_prepare`, `r1_h1`, `a5_h1_placebo --r1`, `r1_h2`, `r1_h3_h4`, `r1_summary`, `r1_figures`.
+- Result: H1 still not supported (flooded land greener, wetlands lower); H2 still "suggestive" by rule, but the revised event study shows the canal-zone divergence happened between 2020 and 2021 and nothing changed after the breach.
+- Paper v2 updated (Section 4.9, 5.5, Discussion, Limitations, Conclusion).

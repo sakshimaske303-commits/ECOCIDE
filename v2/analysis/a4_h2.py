@@ -52,6 +52,10 @@ def build(H, irr, rain, outcome="ndvi_jo", use_weather=True, event=False, sub=No
     rep = lambda a: np.repeat(a[u].astype(np.float32)[:, None], T, 1)  # noqa: E731
     extra = {"I": rep(irr), "K": rep(Kz), "ob": rep(H["oblast"]), "blk": rep(H["block"]),
              "yr": np.tile(np.array(L.YEARS, np.float32)[None, :], (N, 1)), "P": H["P"][u], "Tm": H["T"][u]}
+    if "occ" in H:    # Registered Revision 1 (R4): occupation per pixel-year
+        extra["occ"] = H["occ"][u].astype(np.float32)
+    if "CI" in H:     # Registered Revision 1 (R4): conflict intensity
+        extra["CI"] = H["CI"][u]
     lf = L.long_format(Yu, extra)
     yrs = lf["yr"].astype(int)
     IK = lf["I"] * lf["K"]
@@ -67,12 +71,17 @@ def build(H, irr, rain, outcome="ndvi_jo", use_weather=True, event=False, sub=No
     if use_weather:
         cols += [lf["P"] / 100.0, lf["Tm"]]
         names += ["precip_100mm", "temp_C"]
+    if "CI" in lf and np.any(lf["CI"] != 0):
+        cols.append(lf["CI"])
+        names.append("conflict_log1p_events_5km")
     X = np.column_stack(cols).astype(np.float32)
     del cols
     g_ob = np.unique(lf["ob"].astype(int) * 10000 + yrs, return_inverse=True)[1]
     g_ir = np.unique(lf["I"].astype(int) * 10000 + yrs, return_inverse=True)[1]
     g_k = np.unique(lf["K"].astype(int) * 10000 + yrs, return_inverse=True)[1]
     groups = [lf["unit"], g_ob, g_ir, g_k]
+    if "occ" in lf:
+        groups.append(np.unique((lf["I"].astype(int) * 2 + lf["occ"].astype(int)) * 10000 + yrs, return_inverse=True)[1])
     w = np.ones(len(lf["y"]))
     return lf, X, names, groups, u, w
 

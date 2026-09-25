@@ -23,6 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import grid  # noqa: E402
 import v2lib as L  # noqa: E402
 import a3_h1 as H1  # noqa: E402
+import r1_h1 as R1H1  # noqa: E402
 
 RES = grid.RES
 OUT = "outputs/v2"
@@ -56,9 +57,15 @@ def trace(water, pts, tr0, tr1):
     return np.array(path)
 
 
-def main():
+def main(revision=False):
+    """revision=True: Registered Revision 1 — adds year x 2 km band of distance to the placebo
+    river's line (analogue of distance to the Dnipro channel), conflict intensity, and the
+    annual-water rule where water data exist; compares with outputs/v2/r1_h1_results.json."""
     t0 = time.time()
     A = L.layers()
+    if revision:
+        R = dict(np.load(f"{L.D}/derived/r1_layers.npz"))
+        dline_all = {}
     shape = A["F"].shape
     tr = json.load(open(f"{L.D}/derived/layers_meta.json"))["transform"]
     tr0, tr1 = tr[2], tr[5]
@@ -116,6 +123,8 @@ def main():
         # store floodplain mask (excluded from controls) and side per river
         seg_meta.setdefault("_rivers", {})[river] = {"path_km": float(steps[-1]), "segments": int(n_seg)}
         A[f"fp_{river}"] = (drw <= FP_KM)
+        if revision:
+            dline_all[river] = dline.astype(np.float32)
         A[f"side_{river}"] = np.zeros(shape, np.int8)
         A[f"side_{river}"][rr, cc] = side
     print("placebo units:", uid, "built in", round(time.time() - t0), "s")
@@ -139,6 +148,10 @@ def main():
         rr_, cc_ = np.unravel_index(idx, shape)
         Hp = {"ndvi_jo": Y, "P": P, "T": Tm, "bank": np.full(len(idx), m["side"]), "dom": A["dom"].ravel()[idx],
               "block": A["block"].ravel()[idx], "row": rr_, "col": cc_}
+        if revision:
+            Hp["band"] = (dline_all[river].ravel()[idx] // 2).astype(int)
+            Hp["CI"] = np.stack([R["conflict"][k].ravel()[idx] for k in range(len(L.YEARS))], 1)
+            Hp["ndvi_jo"] = R1H1.water_rule(Y, R, idx)
         treat = T.ravel()[idx]
         ctrl = C.ravel()[idx]
         try:
@@ -154,7 +167,7 @@ def main():
         if u % 10 == 0:
             print(u, river, round(time.time() - t0), "s", flush=True)
 
-    h1 = json.load(open(f"{OUT}/h1_results.json"))
+    h1 = json.load(open(f"{OUT}/{'r1_h1_results' if revision else 'h1_results'}.json"))
     b_main = h1["main"]["beta"]
     b_nm = h1["robustness"]["1_no_matching"]["beta"]
     pm = [v["matched"]["beta"] for v in results.values() if isinstance(v, dict) and "matched" in v and "beta" in v["matched"]]
@@ -171,11 +184,12 @@ def main():
                         "placebo_quantiles": np.quantile(pn, [0.05, 0.5, 0.95]).tolist() if pn else None},
         "seconds": round(time.time() - t0),
     }
-    with open(f"{OUT}/h1_placebo.json", "w") as fh:
+    with open(f"{OUT}/{'r1_h1_placebo' if revision else 'h1_placebo'}.json", "w") as fh:
         json.dump(out, fh, indent=1, default=str)
-    np.save(f"{L.D}/derived/placebo_units.npy", lab_all)
+    if not revision:
+        np.save(f"{L.D}/derived/placebo_units.npy", lab_all)
     print(json.dumps({k: v for k, v in out.items() if k != "units"}, indent=1, default=str))
 
 
 if __name__ == "__main__":
-    main()
+    main(revision="--r1" in sys.argv)

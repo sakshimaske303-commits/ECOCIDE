@@ -1,0 +1,539 @@
+{
+ "label": "registered revision (Addendum 1)",
+ "occupation_source": "VIINA territorial control, 1 August, nearest settlement within 10 km",
+ "conflict_source": "VIINA (GEO_PRECISION ADM3/STREET, t_mil >= 0.5)",
+ "classification_counts": {
+  "K_irr": 86730,
+  "K_rain": 7421,
+  "O_irr": 491018,
+  "O_rain": 23719
+ },
+ "main": {
+  "beta": -0.05271370468618141,
+  "se_cluster": 0.010622885765191435,
+  "p_cluster": 8.073186765218647e-07,
+  "ci95_cluster": [
+   -0.07353456078595662,
+   -0.0318928485864062
+  ],
+  "delta_war": -0.04932918436319426,
+  "delta_war_se": 0.007828204820631486,
+  "delta_war_p": 4.2648184206821027e-10,
+  "n_obs": 5476772,
+  "n_pixels": 608627,
+  "counts": {
+   "K_irr": 86693,
+   "K_rain": 7390,
+   "O_irr": 490950,
+   "O_rain": 23594
+  },
+  "clusters": 1096,
+  "pre_mean_K_irrigated": 0.4729706346988678,
+  "beta_pct_of_pre_mean": -11.145238376108342,
+  "wcr": {
+   "t": -4.964544456416752,
+   "p_two_sided": 0.0001,
+   "p_one_sided_negative": 0.0001,
+   "B": 9999,
+   "G": 1096
+  },
+  "se_conley25km": 0.018766402176069452,
+  "p_conley25km": 0.00497048519229933
+ },
+ "event_study": {
+  "coefs": [
+   {
+    "year": 2016,
+    "coef": 0.057051006976858394,
+    "se": 0.008659426066141823,
+    "p": 6.895926719195123e-11
+   },
+   {
+    "year": 2017,
+    "coef": 0.07329246753288504,
+    "se": 0.007942712261644632,
+    "p": 1.386156460040585e-19
+   },
+   {
+    "year": 2018,
+    "coef": 0.05566253217070193,
+    "se": 0.007156023775832866,
+    "p": 1.6890626351908012e-14
+   },
+   {
+    "year": 2019,
+    "coef": 0.028505971406832413,
+    "se": 0.007674036745737456,
+    "p": 0.00021379533729958257
+   },
+   {
+    "year": 2020,
+    "coef": 0.04101047594416516,
+    "se": 0.008857546247272814,
+    "p": 4.094427009717094e-06
+   },
+   {
+    "year": 2022,
+    "coef": -0.006743601043028463,
+    "se": 0.008570453385762386,
+    "p": 0.43154405174173044
+   },
+   {
+    "year": 2023,
+    "coef": -0.014410462363320092,
+    "se": 0.010749394538398252,
+    "p": 0.18033372735699035
+   },
+   {
+    "year": 2024,
+    "coef": -0.005786359997802323,
+    "se": 0.012621134646389762,
+    "p": 0.6467087234177108
+   }
+  ],
+  "reference": 2021,
+  "pretrend_joint_F": 24.364301509110984,
+  "pretrend_joint_p": 2.5960734833123835e-23,
+  "rambachan_roth": {
+   "theta": -0.010098411180561206,
+   "se": 0.010876645286867201,
+   "Mpre_hat": 0.04101047594416516,
+   "Mpre_upper95": 0.05558647360688906,
+   "steps": 2.5,
+   "bounds": {
+    "0.5": {
+     "identified_set": [
+      -0.061361506110767655,
+      0.04116468374964524
+     ],
+     "robust_ci": [
+      -0.10089933622404956,
+      0.08070251386292715
+     ],
+     "excludes_zero": false
+    },
+    "1.0": {
+     "identified_set": [
+      -0.1126246010409741,
+      0.09242777867985169
+     ],
+     "robust_ci": [
+      -0.17038242823266087,
+      0.15018560587153845
+     ],
+     "excludes_zero": false
+    },
+    "2.0": {
+     "identified_set": [
+      -0.215150790901387,
+      0.1949539685402646
+     ],
+     "robust_ci": [
+      -0.3093486122498835,
+      0.2891517898887611
+     ],
+     "excludes_zero": false
+    }
+   }
+  }
+ },
+ "robustness": {
+  "3_no_weather": {
+   "beta": -0.05214244012747876,
+   "se_cluster": 0.010453965209067955,
+   "p_cluster": 7.096747915865543e-07,
+   "ci95_cluster": [
+    -0.07263221193725194,
+    -0.03165266831770557
+   ],
+   "delta_war": -0.0486596833131056,
+   "delta_war_se": 0.007816341622743162,
+   "delta_war_p": 6.832397068872079e-10,
+   "n_obs": 5476772,
+   "n_pixels": 608627,
+   "counts": {
+    "K_irr": 86693,
+    "K_rain": 7390,
+    "O_irr": 490950,
+    "O_rain": 23594
+   },
+   "clusters": 1096,
+   "pre_mean_K_irrigated": 0.4729706346988678,
+   "beta_pct_of_pre_mean": -11.024456129433267
+  },
+  "5a_thresholds_040_030": {
+   "beta": -0.03579459568912372,
+   "se_cluster": 0.013068044402142922,
+   "p_cluster": 0.006260716112632917,
+   "ci95_cluster": [
+    -0.06140796271732385,
+    -0.010181228660923594
+   ],
+   "delta_war": -0.05696063428559567,
+   "delta_war_se": 0.010816607559896553,
+   "delta_war_p": 1.6767393966907766e-07,
+   "n_obs": 7164147,
+   "n_pixels": 796120,
+   "counts": {
+    "K_irr": 118542,
+    "K_rain": 1742,
+    "O_irr": 671035,
+    "O_rain": 4801
+   },
+   "clusters": 1098,
+   "pre_mean_K_irrigated": 0.45346105098724365,
+   "beta_pct_of_pre_mean": -7.893642819200069
+  },
+  "5b_thresholds_050_040": {
+   "beta": -0.07561676447876112,
+   "se_cluster": 0.009714887422150466,
+   "p_cluster": 1.627169422633376e-14,
+   "ci95_cluster": [
+    -0.09465794382617602,
+    -0.05657558513134621
+   ],
+   "delta_war": -0.05159795672857679,
+   "delta_war_se": 0.00720768942374128,
+   "delta_war_p": 1.4914903975888894e-12,
+   "n_obs": 4251349,
+   "n_pixels": 472492,
+   "counts": {
+    "K_irr": 60369,
+    "K_rain": 20454,
+    "O_irr": 323155,
+    "O_rain": 68514
+   },
+   "clusters": 1094,
+   "pre_mean_K_irrigated": 0.49414336681365967,
+   "beta_pct_of_pre_mean": -15.302596282199216
+  },
+  "6_evi": {
+   "beta": -0.04383601569579615,
+   "se_cluster": 0.008789093926064587,
+   "p_cluster": 7.106375702916822e-07,
+   "ci95_cluster": [
+    -0.061062639790882736,
+    -0.026609391600709558
+   ],
+   "delta_war": -0.03208090988788099,
+   "delta_war_se": 0.005722012444769736,
+   "delta_war_p": 2.6112058460992323e-08,
+   "n_obs": 5476772,
+   "n_pixels": 608627,
+   "counts": {
+    "K_irr": 86693,
+    "K_rain": 7390,
+    "O_irr": 490950,
+    "O_rain": 23594
+   },
+   "clusters": 1096,
+   "pre_mean_K_irrigated": 0.3030446171760559,
+   "beta_pct_of_pre_mean": -14.465201891485604
+  },
+  "7a_K_Kherson_only": {
+   "beta": -0.08186956223318709,
+   "se_cluster": 0.010928687832472764,
+   "p_cluster": 1.4532393754211215e-13,
+   "ci95_cluster": [
+    -0.1032897903848337,
+    -0.060449334081540476
+   ],
+   "delta_war": -0.05144767289748368,
+   "delta_war_se": 0.008689778921024972,
+   "delta_war_p": 4.354637158888526e-09,
+   "n_obs": 5187286,
+   "n_pixels": 576459,
+   "counts": {
+    "K_irr": 55494,
+    "K_rain": 6421,
+    "O_irr": 490950,
+    "O_rain": 23594
+   },
+   "clusters": 1042,
+   "pre_mean_K_irrigated": 0.4895617663860321,
+   "beta_pct_of_pre_mean": -16.723030239381647
+  },
+  "7b_K_Zaporizhzhia_only": {
+   "beta": 0.000809951367162133,
+   "se_cluster": 0.01311905889965396,
+   "p_cluster": 0.9507831537037083,
+   "ci95_cluster": [
+    -0.024903404076159628,
+    0.026523306810483895
+   ],
+   "delta_war": -0.036250720357880156,
+   "delta_war_se": 0.01300207154123437,
+   "delta_war_p": 0.005400822570356008,
+   "n_obs": 4809986,
+   "n_pixels": 534519,
+   "counts": {
+    "K_irr": 19099,
+    "K_rain": 876,
+    "O_irr": 490950,
+    "O_rain": 23594
+   },
+   "clusters": 1021,
+   "pre_mean_K_irrigated": 0.44000691175460815,
+   "beta_pct_of_pre_mean": 0.1840769645941023
+  },
+  "9_excl_within_3km_built": {
+   "beta": -0.05172826093653103,
+   "se_cluster": 0.011199485339494811,
+   "p_cluster": 4.341055095052659e-06,
+   "ci95_cluster": [
+    -0.07367925220194085,
+    -0.029777269671121202
+   ],
+   "delta_war": -0.045472058367358605,
+   "delta_war_se": 0.009085236702030623,
+   "delta_war_p": 6.55204908954275e-07,
+   "n_obs": 3964241,
+   "n_pixels": 440532,
+   "counts": {
+    "K_irr": 50996,
+    "K_rain": 4909,
+    "O_irr": 368549,
+    "O_rain": 16078
+   },
+   "clusters": 1044,
+   "pre_mean_K_irrigated": 0.47390830516815186,
+   "beta_pct_of_pre_mean": -10.91524676238304
+  },
+  "R2_sensitivity_add_Dnipropetrovsk": {
+   "beta": -0.04088822191279753,
+   "se_cluster": 0.00992508055266011,
+   "p_cluster": 4.0212669149628794e-05,
+   "ci95_cluster": [
+    -0.06034137979601134,
+    -0.021435064029583714
+   ],
+   "delta_war": -0.047857286260321714,
+   "delta_war_se": 0.007669121056505059,
+   "delta_war_p": 5.812852816148427e-10,
+   "n_obs": 7649239,
+   "n_pixels": 850041,
+   "counts": {
+    "K_irr": 86693,
+    "K_rain": 7390,
+    "O_irr": 731963,
+    "O_rain": 23995
+   },
+   "clusters": 1370,
+   "pre_mean_K_irrigated": 0.4729706346988678,
+   "beta_pct_of_pre_mean": -8.64498108615778
+  }
+ },
+ "secondary": {
+  "ndvi_jul_aug": {
+   "beta": -0.07484711620298065,
+   "se_cluster": 0.0139796939045616,
+   "p_cluster": 1.0476578515304774e-07,
+   "ci95_cluster": [
+    -0.10224731625592139,
+    -0.04744691615003992
+   ],
+   "delta_war": -0.04338437131744494,
+   "delta_war_se": 0.008852124462244567,
+   "delta_war_p": 1.097137365173821e-06,
+   "n_obs": 5478128,
+   "n_pixels": 608783,
+   "counts": {
+    "K_irr": 86708,
+    "K_rain": 7415,
+    "O_irr": 490996,
+    "O_rain": 23664
+   },
+   "clusters": 1097,
+   "pre_mean_K_irrigated": 0.555998682975769,
+   "beta_pct_of_pre_mean": -13.46174343478482
+  }
+ },
+ "placebo_raions": {
+  "units": {
+   "Kherson / Bilozers'kyi": {
+    "beta": -0.031158768436460246,
+    "se_cluster": 0.00876044363402082,
+    "p_cluster": 0.0003932782224317969,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 3779,
+     "K_rain": 520,
+     "O_irr": 487171,
+     "O_rain": 23074
+    }
+   },
+   "Kherson / Chaplyns'kyi": {
+    "beta": -0.12916319292803558,
+    "se_cluster": 0.0298689808247517,
+    "p_cluster": 1.685131955796382e-05,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 583,
+     "K_rain": 306,
+     "O_irr": 490367,
+     "O_rain": 23288
+    }
+   },
+   "Kherson / Ivanivs'kyi": {
+    "beta": -0.10980186125475067,
+    "se_cluster": 0.015876637760462674,
+    "p_cluster": 8.336562841362776e-12,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 698,
+     "K_rain": 1069,
+     "O_irr": 490252,
+     "O_rain": 22525
+    }
+   },
+   "Kherson / Novotro\u2039ts'kyi": {
+    "beta": -0.11212002584332274,
+    "se_cluster": 0.02181008038753417,
+    "p_cluster": 3.298041352187846e-07,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 466,
+     "K_rain": 1166,
+     "O_irr": 490484,
+     "O_rain": 22428
+    }
+   },
+   "Kherson / Nyzhn'osirohoz'kyi": {
+    "beta": -0.08263567386162399,
+    "se_cluster": 0.02746385750437579,
+    "p_cluster": 0.002688558283279274,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 788,
+     "K_rain": 1673,
+     "O_irr": 490162,
+     "O_rain": 21921
+    }
+   },
+   "Mykolayiv / Berezans'kyi": {
+    "beta": -0.0004870201275010487,
+    "se_cluster": 0.009480569304984185,
+    "p_cluster": 0.9590407975542707,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 1465,
+     "K_rain": 1201,
+     "O_irr": 489485,
+     "O_rain": 22393
+    }
+   },
+   "Mykolayiv / Ochakivs'kyi": {
+    "beta": -0.011243112984050774,
+    "se_cluster": 0.012164162996879281,
+    "p_cluster": 0.3555653604679531,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 732,
+     "K_rain": 666,
+     "O_irr": 490218,
+     "O_rain": 22928
+    }
+   },
+   "Mykolayiv / Snihurivs'kyi": {
+    "beta": 0.00918827474929362,
+    "se_cluster": 0.00618675831868599,
+    "p_cluster": 0.13782262049481367,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 6121,
+     "K_rain": 443,
+     "O_irr": 484829,
+     "O_rain": 23151
+    }
+   },
+   "Odessa / Artsyz'kyi": {
+    "beta": -0.0002674286473239476,
+    "se_cluster": 0.00813369770382316,
+    "p_cluster": 0.9737776416588365,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 5293,
+     "K_rain": 676,
+     "O_irr": 485657,
+     "O_rain": 22918
+    }
+   },
+   "Odessa / Bilhorod-Dnistrovs'kyi": {
+    "beta": -0.023635818212833344,
+    "se_cluster": 0.00903179658793314,
+    "p_cluster": 0.009007276055354682,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 5677,
+     "K_rain": 1217,
+     "O_irr": 485273,
+     "O_rain": 22377
+    }
+   },
+   "Odessa / Sarats'kyi": {
+    "beta": 0.016202660636819372,
+    "se_cluster": 0.007307229454459597,
+    "p_cluster": 0.026826343443217302,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 2836,
+     "K_rain": 1638,
+     "O_irr": 488114,
+     "O_rain": 21956
+    }
+   },
+   "Odessa / Tarutyns'kyi": {
+    "beta": -0.05317376838160817,
+    "se_cluster": 0.017930144302620143,
+    "p_cluster": 0.00309349712847214,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 10518,
+     "K_rain": 596,
+     "O_irr": 480432,
+     "O_rain": 22998
+    }
+   },
+   "Odessa / Tatarbunars'kyi": {
+    "beta": -0.011037096291177962,
+    "se_cluster": 0.007818164952362025,
+    "p_cluster": 0.1583458981231263,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 2582,
+     "K_rain": 1097,
+     "O_irr": 488368,
+     "O_rain": 22497
+    }
+   },
+   "Zaporizhia / Melitopol's'kyi": {
+    "beta": 0.017993192445777847,
+    "se_cluster": 0.012951274762623036,
+    "p_cluster": 0.16505488442934618,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 3935,
+     "K_rain": 433,
+     "O_irr": 487015,
+     "O_rain": 23161
+    }
+   },
+   "Zaporizhia / Pryazovs'kyi": {
+    "beta": 0.03366235740089217,
+    "se_cluster": 0.008764416850345305,
+    "p_cluster": 0.0001304489271510017,
+    "n_pixels": 514544,
+    "counts": {
+     "K_irr": 4712,
+     "K_rain": 2281,
+     "O_irr": 486238,
+     "O_rain": 21313
+    }
+   }
+  },
+  "n_placebos": 15,
+  "p_randomization_one_sided": 0.375,
+  "p_randomization_two_sided": 0.375
+ },
+ "seconds": 260
+}

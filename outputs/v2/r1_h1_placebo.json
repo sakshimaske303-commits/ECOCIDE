@@ -1,0 +1,2115 @@
+{
+ "units": {
+  "1": {
+   "river": "Southern Buh",
+   "segment": 0,
+   "side": 1,
+   "treated_px": 1131,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.023576675537071663,
+    "se_cluster": 0.016450317136438894,
+    "n_pixels": 14490
+   }
+  },
+  "2": {
+   "river": "Southern Buh",
+   "segment": 0,
+   "side": 2,
+   "treated_px": 609,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.005927538652825577,
+    "se_cluster": 0.013014079395383377,
+    "n_pixels": 6988
+   }
+  },
+  "3": {
+   "river": "Southern Buh",
+   "segment": 1,
+   "side": 1,
+   "treated_px": 627,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.04436320898395683,
+    "se_cluster": 0.014186204663361623,
+    "n_pixels": 10398
+   }
+  },
+  "4": {
+   "river": "Southern Buh",
+   "segment": 1,
+   "side": 2,
+   "treated_px": 439,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.04971437649167602,
+    "se_cluster": 0.010279673253675152,
+    "n_pixels": 6185
+   }
+  },
+  "5": {
+   "river": "Southern Buh",
+   "segment": 2,
+   "side": 1,
+   "treated_px": 576,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.035948389890099595,
+    "se_cluster": 0.0061753031714310005,
+    "n_pixels": 7754
+   }
+  },
+  "6": {
+   "river": "Southern Buh",
+   "segment": 2,
+   "side": 2,
+   "treated_px": 543,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.03954745634205624,
+    "se_cluster": 0.009411563818113576,
+    "n_pixels": 8522
+   }
+  },
+  "7": {
+   "river": "Southern Buh",
+   "segment": 3,
+   "side": 1,
+   "treated_px": 363,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.01860364120196556,
+    "se_cluster": 0.0028136342845359,
+    "n_pixels": 7201
+   }
+  },
+  "8": {
+   "river": "Southern Buh",
+   "segment": 3,
+   "side": 2,
+   "treated_px": 679,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.03499407980051163,
+    "se_cluster": 0.011260862886484813,
+    "n_pixels": 9191
+   }
+  },
+  "9": {
+   "river": "Southern Buh",
+   "segment": 4,
+   "side": 1,
+   "treated_px": 617,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.021999604814593742,
+    "se_cluster": 0.01622953332792656,
+    "n_pixels": 9114
+   }
+  },
+  "10": {
+   "river": "Southern Buh",
+   "segment": 4,
+   "side": 2,
+   "treated_px": 389,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.026274644999727034,
+    "se_cluster": 0.01617124312908563,
+    "n_pixels": 7579
+   }
+  },
+  "11": {
+   "river": "Southern Buh",
+   "segment": 5,
+   "side": 1,
+   "treated_px": 335,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.018929275976529377,
+    "se_cluster": 0.013171012278180004,
+    "n_pixels": 5837
+   }
+  },
+  "12": {
+   "river": "Southern Buh",
+   "segment": 5,
+   "side": 2,
+   "treated_px": 593,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.027455003409416312,
+    "se_cluster": 0.011002884915637692,
+    "n_pixels": 11573
+   }
+  },
+  "13": {
+   "river": "Southern Buh",
+   "segment": 6,
+   "side": 1,
+   "treated_px": 532,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.00564246968892435,
+    "se_cluster": 0.009754583647990806,
+    "n_pixels": 7718
+   }
+  },
+  "14": {
+   "river": "Southern Buh",
+   "segment": 6,
+   "side": 2,
+   "treated_px": 475,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.013074378555149898,
+    "se_cluster": 0.009713417461279813,
+    "n_pixels": 9413
+   }
+  },
+  "15": {
+   "river": "Southern Buh",
+   "segment": 7,
+   "side": 1,
+   "treated_px": 541,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.01969719538229415,
+    "se_cluster": 0.011545207864066091,
+    "n_pixels": 9752
+   }
+  },
+  "16": {
+   "river": "Southern Buh",
+   "segment": 7,
+   "side": 2,
+   "treated_px": 444,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.009473746464141652,
+    "se_cluster": 0.01940579016232143,
+    "n_pixels": 7814
+   }
+  },
+  "17": {
+   "river": "Southern Buh",
+   "segment": 8,
+   "side": 1,
+   "treated_px": 483,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.004517621868803891,
+    "se_cluster": 0.0178120938122127,
+    "n_pixels": 9312
+   }
+  },
+  "18": {
+   "river": "Southern Buh",
+   "segment": 8,
+   "side": 2,
+   "treated_px": 509,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.02509468666532163,
+    "se_cluster": 0.010991466652514808,
+    "n_pixels": 7936
+   }
+  },
+  "19": {
+   "river": "Southern Buh",
+   "segment": 9,
+   "side": 1,
+   "treated_px": 426,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.032722972020133134,
+    "se_cluster": 0.0061449145930923205,
+    "n_pixels": 8092
+   }
+  },
+  "20": {
+   "river": "Southern Buh",
+   "segment": 9,
+   "side": 2,
+   "treated_px": 584,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.028565882257988846,
+    "se_cluster": 0.015178168234694329,
+    "n_pixels": 8896
+   }
+  },
+  "21": {
+   "river": "Southern Buh",
+   "segment": 10,
+   "side": 1,
+   "treated_px": 437,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.04537444283419287,
+    "se_cluster": 0.026149286416382454,
+    "n_pixels": 7532
+   }
+  },
+  "22": {
+   "river": "Southern Buh",
+   "segment": 10,
+   "side": 2,
+   "treated_px": 124,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.016710264449989732,
+    "se_cluster": 0.020554773465044324,
+    "n_pixels": 5885
+   }
+  },
+  "23": {
+   "river": "Southern Buh",
+   "segment": 11,
+   "side": 1,
+   "treated_px": 556,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.033970835933868265,
+    "se_cluster": 0.01312352772083975,
+    "n_pixels": 11578
+   }
+  },
+  "24": {
+   "river": "Southern Buh",
+   "segment": 11,
+   "side": 2,
+   "treated_px": 365,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.02538931482975468,
+    "se_cluster": 0.011399070751697589,
+    "n_pixels": 4711
+   }
+  },
+  "25": {
+   "river": "Southern Buh",
+   "segment": 12,
+   "side": 1,
+   "treated_px": 635,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.058718186676614194,
+    "se_cluster": 0.018578806430621958,
+    "n_pixels": 12701
+   }
+  },
+  "26": {
+   "river": "Southern Buh",
+   "segment": 12,
+   "side": 2,
+   "treated_px": 366,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.0035314649042589184,
+    "se_cluster": 0.01293707797451154,
+    "n_pixels": 3329
+   }
+  },
+  "27": {
+   "river": "Southern Buh",
+   "segment": 13,
+   "side": 1,
+   "treated_px": 355,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.019697065859232244,
+    "se_cluster": 0.018891946934910583,
+    "n_pixels": 8004
+   }
+  },
+  "28": {
+   "river": "Southern Buh",
+   "segment": 13,
+   "side": 2,
+   "treated_px": 593,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.0353217046204864,
+    "se_cluster": 0.017838609951578918,
+    "n_pixels": 7893
+   }
+  },
+  "29": {
+   "river": "Southern Buh",
+   "segment": 14,
+   "side": 1,
+   "treated_px": 406,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.008399093564380705,
+    "se_cluster": 0.019433614837417856,
+    "n_pixels": 8120
+   }
+  },
+  "30": {
+   "river": "Southern Buh",
+   "segment": 14,
+   "side": 2,
+   "treated_px": 509,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.006079489354776288,
+    "se_cluster": 0.0160314380594237,
+    "n_pixels": 8320
+   }
+  },
+  "31": {
+   "river": "Southern Buh",
+   "segment": 15,
+   "side": 1,
+   "treated_px": 445,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.04758755817551667,
+    "se_cluster": 0.021550371292687803,
+    "n_pixels": 7535
+   }
+  },
+  "32": {
+   "river": "Southern Buh",
+   "segment": 15,
+   "side": 2,
+   "treated_px": 462,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.05210357818766238,
+    "se_cluster": 0.019647416750539017,
+    "n_pixels": 9250
+   }
+  },
+  "33": {
+   "river": "Southern Buh",
+   "segment": 16,
+   "side": 1,
+   "treated_px": 545,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.021395727056043673,
+    "se_cluster": 0.008602560918687037,
+    "n_pixels": 8581
+   }
+  },
+  "34": {
+   "river": "Southern Buh",
+   "segment": 16,
+   "side": 2,
+   "treated_px": 392,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.037353141722849155,
+    "se_cluster": 0.008602627029655596,
+    "n_pixels": 7959
+   }
+  },
+  "35": {
+   "river": "Southern Buh",
+   "segment": 17,
+   "side": 1,
+   "treated_px": 504,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.03015335113520491,
+    "se_cluster": 0.006166846395224964,
+    "n_pixels": 8192
+   }
+  },
+  "36": {
+   "river": "Southern Buh",
+   "segment": 17,
+   "side": 2,
+   "treated_px": 529,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.018306279909604383,
+    "se_cluster": 0.010752033984449216,
+    "n_pixels": 9100
+   }
+  },
+  "37": {
+   "river": "Southern Buh",
+   "segment": 18,
+   "side": 1,
+   "treated_px": 463,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.038545631905092526,
+    "se_cluster": 0.008807666887906133,
+    "n_pixels": 6765
+   }
+  },
+  "38": {
+   "river": "Southern Buh",
+   "segment": 18,
+   "side": 2,
+   "treated_px": 580,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.006186503029527565,
+    "se_cluster": 0.01624491149338475,
+    "n_pixels": 10674
+   }
+  },
+  "39": {
+   "river": "Southern Buh",
+   "segment": 19,
+   "side": 1,
+   "treated_px": 429,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.03422067409159411,
+    "se_cluster": 0.01696709570539025,
+    "n_pixels": 5899
+   }
+  },
+  "40": {
+   "river": "Southern Buh",
+   "segment": 19,
+   "side": 2,
+   "treated_px": 515,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 2.911628870093559e-06,
+    "se_cluster": 0.0060915180351919125,
+    "n_pixels": 10525
+   }
+  },
+  "41": {
+   "river": "Southern Buh",
+   "segment": 20,
+   "side": 1,
+   "treated_px": 483,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.06660995704305647,
+    "se_cluster": 0.022878244186644813,
+    "n_pixels": 8847
+   }
+  },
+  "42": {
+   "river": "Southern Buh",
+   "segment": 20,
+   "side": 2,
+   "treated_px": 477,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.027340955814866372,
+    "se_cluster": 0.0066030307646617785,
+    "n_pixels": 8083
+   }
+  },
+  "43": {
+   "river": "Southern Buh",
+   "segment": 21,
+   "side": 1,
+   "treated_px": 606,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.05530965611134541,
+    "se_cluster": 0.0080013714712432,
+    "n_pixels": 11290
+   }
+  },
+  "44": {
+   "river": "Southern Buh",
+   "segment": 21,
+   "side": 2,
+   "treated_px": 326,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.023605860088555593,
+    "se_cluster": 0.008737415947634913,
+    "n_pixels": 5293
+   }
+  },
+  "45": {
+   "river": "Southern Buh",
+   "segment": 22,
+   "side": 1,
+   "treated_px": 380,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.009610178007128635,
+    "se_cluster": 0.01577776974496082,
+    "n_pixels": 7683
+   }
+  },
+  "46": {
+   "river": "Southern Buh",
+   "segment": 22,
+   "side": 2,
+   "treated_px": 515,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.008727779357386127,
+    "se_cluster": 0.007058076739270146,
+    "n_pixels": 7872
+   }
+  },
+  "47": {
+   "river": "Southern Buh",
+   "segment": 23,
+   "side": 1,
+   "treated_px": 227,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.023281481219182103,
+    "se_cluster": 0.022749285371040765,
+    "n_pixels": 6132
+   }
+  },
+  "48": {
+   "river": "Southern Buh",
+   "segment": 23,
+   "side": 2,
+   "treated_px": 557,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.024747677835020687,
+    "se_cluster": 0.020545103537007288,
+    "n_pixels": 9484
+   }
+  },
+  "49": {
+   "river": "Southern Buh",
+   "segment": 24,
+   "side": 1,
+   "treated_px": 587,
+   "matched": {
+    "beta": -7.044857513398496e-28,
+    "se_cluster": 8.748030268993939e-23,
+    "n_pixels": 26
+   },
+   "no_matching": {
+    "beta": 0.006648335703624977,
+    "se_cluster": 0.024870956475513267,
+    "n_pixels": 8323
+   }
+  },
+  "50": {
+   "river": "Southern Buh",
+   "segment": 24,
+   "side": 2,
+   "treated_px": 216,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.044844211385547596,
+    "se_cluster": 0.003979683487488282,
+    "n_pixels": 7290
+   }
+  },
+  "51": {
+   "river": "Southern Buh",
+   "segment": 25,
+   "side": 1,
+   "treated_px": 384,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.015506041152260265,
+    "se_cluster": 0.00646054632709337,
+    "n_pixels": 6117
+   }
+  },
+  "52": {
+   "river": "Southern Buh",
+   "segment": 25,
+   "side": 2,
+   "treated_px": 616,
+   "matched": {
+    "beta": 5.538584310707835e-28,
+    "se_cluster": NaN,
+    "n_pixels": 20
+   },
+   "no_matching": {
+    "beta": 0.0036914368276653904,
+    "se_cluster": 0.01153167353117886,
+    "n_pixels": 11017
+   }
+  },
+  "53": {
+   "river": "Southern Buh",
+   "segment": 26,
+   "side": 1,
+   "treated_px": 416,
+   "matched": {
+    "beta": 0.0823557242604915,
+    "se_cluster": 0.002132403665335402,
+    "n_pixels": 23
+   },
+   "no_matching": {
+    "beta": 0.01686193496475451,
+    "se_cluster": 0.006127008568453447,
+    "n_pixels": 6448
+   }
+  },
+  "54": {
+   "river": "Southern Buh",
+   "segment": 26,
+   "side": 2,
+   "treated_px": 440,
+   "matched": {
+    "beta": 0.02713804636516482,
+    "se_cluster": 0.013834309446448988,
+    "n_pixels": 38
+   },
+   "no_matching": {
+    "beta": -0.004388238079177196,
+    "se_cluster": 0.013691042388402177,
+    "n_pixels": 9456
+   }
+  },
+  "55": {
+   "river": "Southern Buh",
+   "segment": 27,
+   "side": 1,
+   "treated_px": 598,
+   "matched": {
+    "beta": 0.004945975139184595,
+    "se_cluster": 0.012527493977592811,
+    "n_pixels": 78
+   },
+   "no_matching": {
+    "beta": -0.0021850398999297095,
+    "se_cluster": 0.014125145595071775,
+    "n_pixels": 9396
+   }
+  },
+  "56": {
+   "river": "Southern Buh",
+   "segment": 27,
+   "side": 2,
+   "treated_px": 415,
+   "matched": {
+    "beta": 0.06435594905643344,
+    "se_cluster": 0.015592492743795075,
+    "n_pixels": 43
+   },
+   "no_matching": {
+    "beta": -0.018745604957913605,
+    "se_cluster": 0.019045798824517814,
+    "n_pixels": 7495
+   }
+  },
+  "57": {
+   "river": "Southern Buh",
+   "segment": 28,
+   "side": 1,
+   "treated_px": 434,
+   "matched": {
+    "beta": -0.028394504133670503,
+    "se_cluster": 0.016435365108426997,
+    "n_pixels": 33
+   },
+   "no_matching": {
+    "beta": -0.0017944145062636827,
+    "se_cluster": 0.015209929690860173,
+    "n_pixels": 9512
+   }
+  },
+  "58": {
+   "river": "Southern Buh",
+   "segment": 28,
+   "side": 2,
+   "treated_px": 525,
+   "matched": {
+    "beta": -6.095183268859587e-05,
+    "se_cluster": 0.0018808586497668577,
+    "n_pixels": 95
+   },
+   "no_matching": {
+    "beta": 0.03341420479829759,
+    "se_cluster": 0.021402087283775118,
+    "n_pixels": 6831
+   }
+  },
+  "59": {
+   "river": "Southern Buh",
+   "segment": 29,
+   "side": 1,
+   "treated_px": 585,
+   "matched": {
+    "beta": 0.008296336745848,
+    "se_cluster": 0.029403035953438232,
+    "n_pixels": 90
+   },
+   "no_matching": {
+    "beta": 0.017723743841814212,
+    "se_cluster": 0.01469145687997766,
+    "n_pixels": 11943
+   }
+  },
+  "60": {
+   "river": "Southern Buh",
+   "segment": 29,
+   "side": 2,
+   "treated_px": 387,
+   "matched": {
+    "beta": -0.0394351730165341,
+    "se_cluster": 0.041797414367853884,
+    "n_pixels": 79
+   },
+   "no_matching": {
+    "beta": 0.017542820735032518,
+    "se_cluster": 0.02866811266347573,
+    "n_pixels": 5364
+   }
+  },
+  "61": {
+   "river": "Southern Buh",
+   "segment": 30,
+   "side": 1,
+   "treated_px": 498,
+   "matched": {
+    "beta": -3.282109265333025e-29,
+    "se_cluster": NaN,
+    "n_pixels": 32
+   },
+   "no_matching": {
+    "beta": -0.048716181948127844,
+    "se_cluster": 0.01758505703980879,
+    "n_pixels": 9658
+   }
+  },
+  "62": {
+   "river": "Southern Buh",
+   "segment": 30,
+   "side": 2,
+   "treated_px": 417,
+   "matched": {
+    "beta": 0.0063555417622633125,
+    "se_cluster": 0.016595207737756877,
+    "n_pixels": 32
+   },
+   "no_matching": {
+    "beta": 0.0063408310592756026,
+    "se_cluster": 0.00862557481818971,
+    "n_pixels": 7088
+   }
+  },
+  "63": {
+   "river": "Southern Buh",
+   "segment": 31,
+   "side": 1,
+   "treated_px": 388,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.010481304916992115,
+    "se_cluster": 0.007987431229667559,
+    "n_pixels": 6688
+   }
+  },
+  "64": {
+   "river": "Southern Buh",
+   "segment": 31,
+   "side": 2,
+   "treated_px": 606,
+   "matched": {
+    "beta": 0.010986083378443734,
+    "se_cluster": 0.010324373192477228,
+    "n_pixels": 100
+   },
+   "no_matching": {
+    "beta": 0.009678558047625149,
+    "se_cluster": 0.019146695210911616,
+    "n_pixels": 10118
+   }
+  },
+  "65": {
+   "river": "Southern Buh",
+   "segment": 32,
+   "side": 1,
+   "treated_px": 474,
+   "matched": {
+    "beta": -6.287126244791435e-18,
+    "se_cluster": 4.62124425184624e-18,
+    "n_pixels": 25
+   },
+   "no_matching": {
+    "beta": 0.025290416326339292,
+    "se_cluster": 0.010614343939910831,
+    "n_pixels": 7716
+   }
+  },
+  "66": {
+   "river": "Southern Buh",
+   "segment": 32,
+   "side": 2,
+   "treated_px": 435,
+   "matched": {
+    "beta": -1.8517406269503292e-28,
+    "se_cluster": 0.0,
+    "n_pixels": 31
+   },
+   "no_matching": {
+    "beta": 0.016903625421075444,
+    "se_cluster": 0.021604865029919453,
+    "n_pixels": 8132
+   }
+  },
+  "67": {
+   "river": "Southern Buh",
+   "segment": 33,
+   "side": 1,
+   "treated_px": 553,
+   "matched": {
+    "beta": 0.06304292970621286,
+    "se_cluster": 0.007310134083570372,
+    "n_pixels": 21
+   },
+   "no_matching": {
+    "beta": 0.009982217831646354,
+    "se_cluster": 0.01213486329029006,
+    "n_pixels": 9784
+   }
+  },
+  "68": {
+   "river": "Southern Buh",
+   "segment": 33,
+   "side": 2,
+   "treated_px": 423,
+   "matched": {
+    "beta": -0.007488350316776438,
+    "se_cluster": 0.003289122839314141,
+    "n_pixels": 54
+   },
+   "no_matching": {
+    "beta": 0.01214564711254029,
+    "se_cluster": 0.00822332293647969,
+    "n_pixels": 6946
+   }
+  },
+  "69": {
+   "river": "Southern Buh",
+   "segment": 34,
+   "side": 1,
+   "treated_px": 525,
+   "matched": {
+    "beta": -0.039107165687694345,
+    "se_cluster": 0.004873741329379311,
+    "n_pixels": 78
+   },
+   "no_matching": {
+    "beta": -0.023268168122449008,
+    "se_cluster": 0.014626626148453108,
+    "n_pixels": 8819
+   }
+  },
+  "70": {
+   "river": "Southern Buh",
+   "segment": 34,
+   "side": 2,
+   "treated_px": 459,
+   "matched": {
+    "beta": -7.379630116903464e-28,
+    "se_cluster": 1.181932190165613e-22,
+    "n_pixels": 38
+   },
+   "no_matching": {
+    "beta": 0.0049283843957413295,
+    "se_cluster": 0.008409254567655058,
+    "n_pixels": 8496
+   }
+  },
+  "71": {
+   "river": "Southern Buh",
+   "segment": 35,
+   "side": 1,
+   "treated_px": 415,
+   "matched": {
+    "beta": 0.023432611172700856,
+    "se_cluster": 0.017919166538301657,
+    "n_pixels": 31
+   },
+   "no_matching": {
+    "beta": 0.04263348897666395,
+    "se_cluster": 0.018818097128832378,
+    "n_pixels": 5591
+   }
+  },
+  "72": {
+   "river": "Southern Buh",
+   "segment": 35,
+   "side": 2,
+   "treated_px": 558,
+   "matched": {
+    "beta": -4.403747520643314e-20,
+    "se_cluster": NaN,
+    "n_pixels": 36
+   },
+   "no_matching": {
+    "beta": -0.01715015890748481,
+    "se_cluster": 0.013386640220428684,
+    "n_pixels": 11535
+   }
+  },
+  "73": {
+   "river": "Southern Buh",
+   "segment": 36,
+   "side": 1,
+   "treated_px": 480,
+   "matched": {
+    "beta": 0.0041650193574172935,
+    "se_cluster": 0.0023962274312173985,
+    "n_pixels": 77
+   },
+   "no_matching": {
+    "beta": 0.02238647859485176,
+    "se_cluster": 0.006824778688341022,
+    "n_pixels": 6588
+   }
+  },
+  "74": {
+   "river": "Southern Buh",
+   "segment": 36,
+   "side": 2,
+   "treated_px": 542,
+   "matched": {
+    "beta": 1.2812969610195319e-27,
+    "se_cluster": NaN,
+    "n_pixels": 55
+   },
+   "no_matching": {
+    "beta": 0.02019849040808597,
+    "se_cluster": 0.013983053617662486,
+    "n_pixels": 9844
+   }
+  },
+  "75": {
+   "river": "Southern Buh",
+   "segment": 37,
+   "side": 1,
+   "treated_px": 570,
+   "matched": {
+    "beta": 0.020953490760850926,
+    "se_cluster": 0.01744338031925906,
+    "n_pixels": 161
+   },
+   "no_matching": {
+    "beta": 0.03619287802916061,
+    "se_cluster": 0.0165507168822838,
+    "n_pixels": 10571
+   }
+  },
+  "76": {
+   "river": "Southern Buh",
+   "segment": 37,
+   "side": 2,
+   "treated_px": 428,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.021893145340560666,
+    "se_cluster": 0.007090724092028286,
+    "n_pixels": 6076
+   }
+  },
+  "77": {
+   "river": "Southern Buh",
+   "segment": 38,
+   "side": 1,
+   "treated_px": 557,
+   "matched": {
+    "beta": -0.018340569701827986,
+    "se_cluster": 0.005452639036260075,
+    "n_pixels": 78
+   },
+   "no_matching": {
+    "beta": 0.00339486765228504,
+    "se_cluster": 0.013081590801389043,
+    "n_pixels": 11347
+   }
+  },
+  "78": {
+   "river": "Southern Buh",
+   "segment": 38,
+   "side": 2,
+   "treated_px": 452,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.06353954157118644,
+    "se_cluster": 0.026313601323485404,
+    "n_pixels": 6170
+   }
+  },
+  "79": {
+   "river": "Southern Buh",
+   "segment": 39,
+   "side": 1,
+   "treated_px": 519,
+   "matched": {
+    "beta": 0.010142797569063368,
+    "se_cluster": 0.0261572029112189,
+    "n_pixels": 115
+   },
+   "no_matching": {
+    "beta": -0.014996888548102157,
+    "se_cluster": 0.030648810358342646,
+    "n_pixels": 9342
+   }
+  },
+  "80": {
+   "river": "Southern Buh",
+   "segment": 39,
+   "side": 2,
+   "treated_px": 421,
+   "matched": {
+    "beta": 0.03751807686840045,
+    "se_cluster": 0.001033314342256466,
+    "n_pixels": 51
+   },
+   "no_matching": {
+    "beta": -0.03319056598383561,
+    "se_cluster": 0.0034613954108346804,
+    "n_pixels": 7873
+   }
+  },
+  "81": {
+   "river": "Southern Buh",
+   "segment": 40,
+   "side": 1,
+   "treated_px": 393,
+   "matched": {
+    "beta": -9.317738092800211e-28,
+    "se_cluster": NaN,
+    "n_pixels": 52
+   },
+   "no_matching": {
+    "beta": -0.012398660310624723,
+    "se_cluster": 0.015477395990766805,
+    "n_pixels": 7017
+   }
+  },
+  "82": {
+   "river": "Southern Buh",
+   "segment": 40,
+   "side": 2,
+   "treated_px": 547,
+   "matched": {
+    "beta": 5.275018488582692e-19,
+    "se_cluster": NaN,
+    "n_pixels": 196
+   },
+   "no_matching": {
+    "beta": 0.015214684452329768,
+    "se_cluster": 0.015885535505416246,
+    "n_pixels": 11034
+   }
+  },
+  "83": {
+   "river": "Lower Dniester",
+   "segment": 0,
+   "side": 1,
+   "treated_px": 441,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.005659936630874606,
+    "se_cluster": 0.0027127506859453486,
+    "n_pixels": 2269
+   }
+  },
+  "84": {
+   "river": "Lower Dniester",
+   "segment": 0,
+   "side": 2,
+   "treated_px": 905,
+   "matched": {
+    "beta": 0.04785409252927962,
+    "se_cluster": 0.007473599007963176,
+    "n_pixels": 37
+   },
+   "no_matching": {
+    "beta": -0.02903677972347708,
+    "se_cluster": 0.032041836122990296,
+    "n_pixels": 12516
+   }
+  },
+  "85": {
+   "river": "Lower Dniester",
+   "segment": 1,
+   "side": 1,
+   "treated_px": 432,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.004596127511979419,
+    "se_cluster": 0.003561259782662739,
+    "n_pixels": 2881
+   }
+  },
+  "86": {
+   "river": "Lower Dniester",
+   "segment": 1,
+   "side": 2,
+   "treated_px": 517,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.07504062507513985,
+    "se_cluster": 0.026606937019197117,
+    "n_pixels": 9760
+   }
+  },
+  "87": {
+   "river": "Lower Dniester",
+   "segment": 2,
+   "side": 1,
+   "treated_px": 407,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.02865540654438334,
+    "se_cluster": 0.006470983479213259,
+    "n_pixels": 3213
+   }
+  },
+  "88": {
+   "river": "Lower Dniester",
+   "segment": 2,
+   "side": 2,
+   "treated_px": 395,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.04967501578317254,
+    "se_cluster": 0.02269592399506541,
+    "n_pixels": 5647
+   }
+  },
+  "89": {
+   "river": "Lower Dniester",
+   "segment": 3,
+   "side": 1,
+   "treated_px": 446,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.028617163351854755,
+    "se_cluster": 0.008143608749264331,
+    "n_pixels": 2782
+   }
+  },
+  "90": {
+   "river": "Lower Dniester",
+   "segment": 3,
+   "side": 2,
+   "treated_px": 548,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.05839566911726141,
+    "se_cluster": 0.024281595385079468,
+    "n_pixels": 4848
+   }
+  },
+  "91": {
+   "river": "Lower Dniester",
+   "segment": 4,
+   "side": 1,
+   "treated_px": 533,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.04421949454132816,
+    "se_cluster": 0.006908460316430877,
+    "n_pixels": 4324
+   }
+  },
+  "92": {
+   "river": "Lower Dniester",
+   "segment": 4,
+   "side": 2,
+   "treated_px": 110,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.009005666016681624,
+    "se_cluster": 0.023550607041638673,
+    "n_pixels": 3932
+   }
+  },
+  "93": {
+   "river": "Lower Dniester",
+   "segment": 5,
+   "side": 1,
+   "treated_px": 103,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.01019288099251191,
+    "se_cluster": 0.008483862775906726,
+    "n_pixels": 2015
+   }
+  },
+  "94": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 0,
+   "side": 1,
+   "treated_px": 1040,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.005892357914071274,
+    "se_cluster": 0.00808090210113974,
+    "n_pixels": 10877
+   }
+  },
+  "95": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 0,
+   "side": 2,
+   "treated_px": 1228,
+   "matched": {
+    "beta": -2.0742203828680216e-18,
+    "se_cluster": NaN,
+    "n_pixels": 55
+   },
+   "no_matching": {
+    "beta": 0.00045085282130739293,
+    "se_cluster": 0.008987989894804848,
+    "n_pixels": 12731
+   }
+  },
+  "96": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 1,
+   "side": 1,
+   "treated_px": 397,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.011304928855394773,
+    "se_cluster": 0.007803916249299835,
+    "n_pixels": 6928
+   }
+  },
+  "97": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 1,
+   "side": 2,
+   "treated_px": 783,
+   "matched": {
+    "beta": -6.356921568474317e-28,
+    "se_cluster": NaN,
+    "n_pixels": 22
+   },
+   "no_matching": {
+    "beta": 0.027179451617346067,
+    "se_cluster": 0.02142912101744576,
+    "n_pixels": 9020
+   }
+  },
+  "98": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 2,
+   "side": 1,
+   "treated_px": 772,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.007739919487090012,
+    "se_cluster": 0.004697961136492871,
+    "n_pixels": 12640
+   }
+  },
+  "99": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 2,
+   "side": 2,
+   "treated_px": 286,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.040163389599953296,
+    "se_cluster": 0.01597846484563417,
+    "n_pixels": 3833
+   }
+  },
+  "100": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 3,
+   "side": 1,
+   "treated_px": 518,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.017328864928507832,
+    "se_cluster": 0.0058027655123771985,
+    "n_pixels": 8570
+   }
+  },
+  "101": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 3,
+   "side": 2,
+   "treated_px": 933,
+   "matched": {
+    "beta": 0.07335240051954903,
+    "se_cluster": 0.06387262221231747,
+    "n_pixels": 25
+   },
+   "no_matching": {
+    "beta": 0.023341258564892855,
+    "se_cluster": 0.008395941787878907,
+    "n_pixels": 9326
+   }
+  },
+  "102": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 4,
+   "side": 1,
+   "treated_px": 426,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.008925200989499848,
+    "se_cluster": 0.009866456681904983,
+    "n_pixels": 5391
+   }
+  },
+  "103": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 4,
+   "side": 2,
+   "treated_px": 837,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.0039495591416427445,
+    "se_cluster": 0.00742378497007941,
+    "n_pixels": 12863
+   }
+  },
+  "104": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 5,
+   "side": 1,
+   "treated_px": 482,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.019201104938714617,
+    "se_cluster": 0.01178697511667741,
+    "n_pixels": 6908
+   }
+  },
+  "105": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 5,
+   "side": 2,
+   "treated_px": 806,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.018806342535060756,
+    "se_cluster": 0.013449333357648635,
+    "n_pixels": 10168
+   }
+  },
+  "106": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 6,
+   "side": 1,
+   "treated_px": 504,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.0038510030133655777,
+    "se_cluster": 0.00824119207421751,
+    "n_pixels": 7837
+   }
+  },
+  "107": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 6,
+   "side": 2,
+   "treated_px": 594,
+   "matched": {
+    "beta": 2.227559025794101e-17,
+    "se_cluster": NaN,
+    "n_pixels": 26
+   },
+   "no_matching": {
+    "beta": 0.028300290753907175,
+    "se_cluster": 0.016941703949090278,
+    "n_pixels": 9149
+   }
+  },
+  "108": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 7,
+   "side": 1,
+   "treated_px": 541,
+   "matched": {
+    "beta": -0.010419834766799757,
+    "se_cluster": 0.006404775289833899,
+    "n_pixels": 21
+   },
+   "no_matching": {
+    "beta": 0.0011705095354137007,
+    "se_cluster": 0.0071305049091528235,
+    "n_pixels": 7221
+   }
+  },
+  "109": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 7,
+   "side": 2,
+   "treated_px": 667,
+   "matched": {
+    "beta": 0.0016442578118333702,
+    "se_cluster": 0.007517480420834817,
+    "n_pixels": 51
+   },
+   "no_matching": {
+    "beta": -0.0006196418014960179,
+    "se_cluster": 0.005956942395144364,
+    "n_pixels": 10618
+   }
+  },
+  "110": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 8,
+   "side": 1,
+   "treated_px": 459,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.0045744648470989035,
+    "se_cluster": 0.024853431107362878,
+    "n_pixels": 6145
+   }
+  },
+  "111": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 8,
+   "side": 2,
+   "treated_px": 718,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.010986370029243565,
+    "se_cluster": 0.006865092841494061,
+    "n_pixels": 12012
+   }
+  },
+  "112": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 9,
+   "side": 1,
+   "treated_px": 400,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.003481551719024314,
+    "se_cluster": 0.022220465803752063,
+    "n_pixels": 6644
+   }
+  },
+  "113": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 9,
+   "side": 2,
+   "treated_px": 647,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.01121498594158406,
+    "se_cluster": 0.005811219060146719,
+    "n_pixels": 9951
+   }
+  },
+  "114": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 10,
+   "side": 1,
+   "treated_px": 696,
+   "matched": {
+    "beta": -0.0031502160552022563,
+    "se_cluster": 0.011302035784912722,
+    "n_pixels": 51
+   },
+   "no_matching": {
+    "beta": -0.013303509916955175,
+    "se_cluster": 0.0061748492474255675,
+    "n_pixels": 10688
+   }
+  },
+  "115": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 10,
+   "side": 2,
+   "treated_px": 395,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.01338154679024276,
+    "se_cluster": 0.00688062438486744,
+    "n_pixels": 6752
+   }
+  },
+  "116": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 11,
+   "side": 1,
+   "treated_px": 376,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.01341671052799036,
+    "se_cluster": 0.002848218629334407,
+    "n_pixels": 8135
+   }
+  },
+  "117": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 11,
+   "side": 2,
+   "treated_px": 577,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.018473498719473715,
+    "se_cluster": 0.00357505481723798,
+    "n_pixels": 7730
+   }
+  },
+  "118": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 12,
+   "side": 1,
+   "treated_px": 884,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.0026397072102645578,
+    "se_cluster": 0.010442897302052277,
+    "n_pixels": 11947
+   }
+  },
+  "119": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 12,
+   "side": 2,
+   "treated_px": 378,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.003973829097037969,
+    "se_cluster": 0.0024220199701864443,
+    "n_pixels": 7209
+   }
+  },
+  "120": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 13,
+   "side": 1,
+   "treated_px": 678,
+   "matched": {
+    "beta": 8.690863211832409e-18,
+    "se_cluster": NaN,
+    "n_pixels": 25
+   },
+   "no_matching": {
+    "beta": -0.028767368171380717,
+    "se_cluster": 0.005789500579758213,
+    "n_pixels": 10553
+   }
+  },
+  "121": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 13,
+   "side": 2,
+   "treated_px": 444,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.007722386019964398,
+    "se_cluster": 0.006604644020199669,
+    "n_pixels": 8177
+   }
+  },
+  "122": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 14,
+   "side": 1,
+   "treated_px": 478,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.0019139235400507841,
+    "se_cluster": 0.0049003337240432,
+    "n_pixels": 8340
+   }
+  },
+  "123": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 14,
+   "side": 2,
+   "treated_px": 652,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.01250664197897458,
+    "se_cluster": 0.007134746958297341,
+    "n_pixels": 9649
+   }
+  },
+  "124": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 15,
+   "side": 1,
+   "treated_px": 664,
+   "matched": {
+    "beta": 0.017329310414968612,
+    "se_cluster": 0.007749908957846978,
+    "n_pixels": 31
+   },
+   "no_matching": {
+    "beta": 0.009034808978512074,
+    "se_cluster": 0.0029289348594832656,
+    "n_pixels": 8696
+   }
+  },
+  "125": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 15,
+   "side": 2,
+   "treated_px": 430,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.017968910145457456,
+    "se_cluster": 0.006467426389025914,
+    "n_pixels": 8532
+   }
+  },
+  "126": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 16,
+   "side": 1,
+   "treated_px": 502,
+   "matched": {
+    "beta": -4.3433272795977145e-18,
+    "se_cluster": 4.325882991652278e-18,
+    "n_pixels": 31
+   },
+   "no_matching": {
+    "beta": 0.00820920203402667,
+    "se_cluster": 0.005045873927234904,
+    "n_pixels": 7198
+   }
+  },
+  "127": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 16,
+   "side": 2,
+   "treated_px": 489,
+   "matched": {
+    "beta": 0.11323962880741174,
+    "se_cluster": 0.03674931566037622,
+    "n_pixels": 45
+   },
+   "no_matching": {
+    "beta": 0.019532942904056844,
+    "se_cluster": 0.00362981104409517,
+    "n_pixels": 9645
+   }
+  },
+  "128": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 17,
+   "side": 1,
+   "treated_px": 1096,
+   "matched": {
+    "beta": 0.0321155571300181,
+    "se_cluster": 0.008997979548117577,
+    "n_pixels": 241
+   },
+   "no_matching": {
+    "beta": -0.00047755529572350596,
+    "se_cluster": 0.004722900123333796,
+    "n_pixels": 12300
+   }
+  },
+  "129": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 17,
+   "side": 2,
+   "treated_px": 113,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.0352299572213191,
+    "se_cluster": 0.01307469058998905,
+    "n_pixels": 6054
+   }
+  },
+  "130": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 18,
+   "side": 1,
+   "treated_px": 479,
+   "matched": {
+    "beta": 0.09327429189737017,
+    "se_cluster": 0.03444791049073815,
+    "n_pixels": 47
+   },
+   "no_matching": {
+    "beta": -0.0044112984915107055,
+    "se_cluster": 0.0070506664425324045,
+    "n_pixels": 7759
+   }
+  },
+  "131": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 18,
+   "side": 2,
+   "treated_px": 537,
+   "matched": {
+    "beta": -0.04814819768426313,
+    "se_cluster": 0.0011049549510436549,
+    "n_pixels": 38
+   },
+   "no_matching": {
+    "beta": 0.007078969735216269,
+    "se_cluster": 0.006824227444911851,
+    "n_pixels": 9106
+   }
+  },
+  "132": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 19,
+   "side": 1,
+   "treated_px": 621,
+   "matched": {
+    "beta": -2.6789013663258372e-18,
+    "se_cluster": 7.70679817323494e-18,
+    "n_pixels": 23
+   },
+   "no_matching": {
+    "beta": 0.028182963922016514,
+    "se_cluster": 0.005098994198109682,
+    "n_pixels": 7522
+   }
+  },
+  "133": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 19,
+   "side": 2,
+   "treated_px": 360,
+   "matched": {
+    "beta": 4.178251087319538e-18,
+    "se_cluster": 1.9586804251826297e-17,
+    "n_pixels": 22
+   },
+   "no_matching": {
+    "beta": 0.03765519656319127,
+    "se_cluster": 0.004037272252866609,
+    "n_pixels": 8448
+   }
+  },
+  "134": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 20,
+   "side": 1,
+   "treated_px": 870,
+   "matched": {
+    "beta": -0.01579700985904006,
+    "se_cluster": 0.009195213868452278,
+    "n_pixels": 80
+   },
+   "no_matching": {
+    "beta": -0.0071047167386427725,
+    "se_cluster": 0.005014922857203804,
+    "n_pixels": 11028
+   }
+  },
+  "135": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 20,
+   "side": 2,
+   "treated_px": 430,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": -0.019925662060076302,
+    "se_cluster": 0.006284736381705139,
+    "n_pixels": 8603
+   }
+  },
+  "136": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 21,
+   "side": 1,
+   "treated_px": 404,
+   "matched": {
+    "beta": 0.03374840936023031,
+    "se_cluster": 0.009658439823214906,
+    "n_pixels": 27
+   },
+   "no_matching": {
+    "beta": 0.01163783755090487,
+    "se_cluster": 0.008511550623550754,
+    "n_pixels": 8327
+   }
+  },
+  "137": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 21,
+   "side": 2,
+   "treated_px": 534,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.011300213572273843,
+    "se_cluster": 0.010764925752431454,
+    "n_pixels": 9294
+   }
+  },
+  "138": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 22,
+   "side": 1,
+   "treated_px": 631,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.037268698500413186,
+    "se_cluster": 0.0063738935191566225,
+    "n_pixels": 9861
+   }
+  },
+  "139": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 22,
+   "side": 2,
+   "treated_px": 466,
+   "matched": {
+    "beta": 1.1654237315955219e-27,
+    "se_cluster": NaN,
+    "n_pixels": 36
+   },
+   "no_matching": {
+    "beta": 0.005974578344680156,
+    "se_cluster": 0.008318938543864632,
+    "n_pixels": 8602
+   }
+  },
+  "140": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 23,
+   "side": 1,
+   "treated_px": 766,
+   "matched": {
+    "skipped": "fewer than 10 matched treated"
+   },
+   "no_matching": {
+    "beta": 0.014456982285323995,
+    "se_cluster": 0.010958561461595713,
+    "n_pixels": 9486
+   }
+  },
+  "141": {
+   "river": "Dnipro above Zaporizhzhia",
+   "segment": 23,
+   "side": 2,
+   "treated_px": 231,
+   "matched": {
+    "beta": -7.436307690360173e-19,
+    "se_cluster": 2.329343142997063e-18,
+    "n_pixels": 22
+   },
+   "no_matching": {
+    "beta": 0.002288290728022204,
+    "se_cluster": 0.006721461478078247,
+    "n_pixels": 7587
+   }
+  }
+ },
+ "rivers": {
+  "Southern Buh": {
+   "path_km": 407.2180646239974,
+   "segments": 41
+  },
+  "Lower Dniester": {
+   "path_km": 115.87805356601483,
+   "segments": 12
+  },
+  "Dnipro above Zaporizhzhia": {
+   "path_km": 232.23023384347118,
+   "segments": 24
+  }
+ },
+ "matched": {
+  "n_placebos": 50,
+  "beta_real": 0.05517128747825876,
+  "p_one_sided": 0.8823529411764706,
+  "p_two_sided": 0.13725490196078433,
+  "placebo_quantiles": [
+   -0.03428646798838361,
+   2.6375092506978305e-19,
+   0.07830422857706736
+  ]
+ },
+ "no_matching": {
+  "n_placebos": 141,
+  "beta_real": 0.012194868194153717,
+  "p_one_sided": 0.676056338028169,
+  "p_two_sided": 0.6197183098591549,
+  "placebo_quantiles": [
+   -0.044844211385547596,
+   0.0036914368276653904,
+   0.03765519656319127
+  ]
+ },
+ "seconds": 317
+}

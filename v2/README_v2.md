@@ -107,8 +107,12 @@ Then:
 python v2/01_download_modis.py --years 2010 2011 2012 2013 2014 2015   # ~138 files, ~1 hour (R1)
 python v2/06_annual_composites.py --years 2010 2011 2012 2013 2014 2015
 python v2/07_download_io_lulc.py                                        # annual water share 2017-2024 (R5)
-python v2/08_download_conflict.py                                       # VIINA / UCDP conflict data (R4)
+python v2/07_io_lulc_fixed.py                                           # annual water share (R5; fixed version)
+python v2/08_conflict_fixed.py                                          # VIINA conflict + control data (R4; fixed version)
+python v2/analysis/run_revision.py                                      # all revision analyses (~15 min)
 ```
+
+Results: `outputs/v2/r1_*.json`, summary `outputs/v2/r1_summary.json`, figure `outputs/v2/figures/s2_fig7_revision_event_studies.png`.
 
 ## Disk and time
 

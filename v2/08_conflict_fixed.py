@@ -5,7 +5,7 @@ folder through the GitHub API and downloads the event and control files. If that
 fails, tries UCDP GED (events only). Everything goes to data/v2/conflict/ and a
 manifest (conflict_manifest.json) records what was obtained.
 
-    python v2/08_download_conflict.py
+    python v2/08_conflict_fixed.py
 """
 import json
 import os

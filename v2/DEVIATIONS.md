@@ -35,3 +35,18 @@ Every change to the pre-registered plan is recorded here with its date, the reas
 | 2026-09-24 | OSM canals | Downloaded 24 Sept 2026 via the Overpass API (fallback server overpass.private.coffee): 5,910 `waterway=canal` ways. OSM reflects current mapping, not a dated pre-war snapshot. |
 | 2026-09-24 | ERA5-Land | 120 monthly means (Jan 2015–Dec 2024), 0.1°; `tp` is a daily mean in metres, converted to monthly totals in mm (× days in month × 1000). |
 | 2026-09-24 | H2 classification check | In zone O the rule labels 93 % of cropland "irrigated": in the wetter northern oblasts (e.g. Kirovohrad, Cherkasy, Vinnytsia) rainfed summer crops are green in July–August, so the plan's premise ("in this dry steppe, rainfed crops … senesce by July") holds only in the southern oblasts. The rule was not changed; the paper reports this as a limitation of the H2 exposure measure. |
+
+## 4. Registered Revision 1 (ANALYSIS_PLAN_v2_ADDENDUM_1.md, commit 30e3840, 24 Sept 2026 22:53 IST)
+
+Committed after the pre-registered results were known and before the MODIS 2010–2015, Impact Observatory and VIINA data were downloaded (first 2010 MODIS file written 23:27 IST). Implementation notes:
+
+| Item | Implementation |
+|---|---|
+| R4 conflict events | VIINA `event_info` + `event_labels` 2022–2024, events located at settlement or street level (GEO_PRECISION ADM3 or STREET) and classified as war-related (t_mil ≥ 0.5): 105,838 / 48,086 / 42,444 events in 2022 / 2023 / 2024. The t_mil filter is an implementation choice (the addendum says "events"). |
+| R4 occupation | VIINA `control_latest` status on 1 August of each year for the nearest settlement (`gn_UA_tess.geojson` points) within 10 km; RU = occupied, UA and CONTESTED = not occupied; 7,194 universe pixels have no settlement within 10 km and are coded unoccupied. |
+| R4 download | The VIINA repository stores data with Git LFS; files were fetched from media.githubusercontent.com (script `v2/08_conflict_fixed.py`). |
+| R5 annual water | Impact Observatory `io-lulc-annual-v02` maps for 2017–2023 (the first download mistakenly took the previous year's map because each item spans 1 Jan–1 Jan; fixed in `v2/07_io_lulc_fixed.py` and re-downloaded before any revised analysis). No 2024 map is published; 2024 uses 2023. The 2023 annual map still shows 68 % water on the reservoir because it covers the months before the breach. |
+| R5 consequence for H4 | Every reservoir-bed pixel changes water share by more than 10 points, so the rule removes the reservoir bed from the revised H4 by construction. |
+| H1 placebo (revision) | Distance-to-channel bands for each placebo use the distance to that placebo river's traced line; annual water is only available in the lower-Dnipro window, so the water rule does not apply to placebo rivers outside it. |
+| H2 placebo raions | 15 districts qualified (≥ 300 irrigated and ≥ 300 rainfed pixels under R1). |
+| Classification finding | In the restricted zone O the R1 rule still labels 490,950 pixels irrigated and 23,594 rainfed: in the steppe, too, the NDVI rule separates summer from winter cropping rather than irrigated from rainfed land. Reported as a limitation; the rule was not changed. |

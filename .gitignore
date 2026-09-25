@@ -18,3 +18,5 @@ data/v2/derived/*.npz
 data/v2/derived/*.npy
 data/v2/derived/h2_npy/
 data/v2/sample_kherson.nc
+data/v2/conflict/*.zip
+data/v2/conflict/*.geojson

@@ -1,0 +1,150 @@
+{
+ "label": "registered revision (Addendum 1)",
+ "water_years_used": {
+  "2017": 2017,
+  "2018": 2018,
+  "2019": 2019,
+  "2020": 2020,
+  "2021": 2021,
+  "2022": 2022,
+  "2023": 2023,
+  "2024": 2023
+ },
+ "H3_reservoir_bed_land_only": [
+  {
+   "year": 2017,
+   "water_map_year": 2017,
+   "land_pixels": 54,
+   "land_km2": 2.897892082898505,
+   "land_pixels_with_outcome": 54,
+   "mean_ndvi_jul_oct_land": 0.5600666999816895,
+   "share_land_ndvi_gt_0_3": 0.9814814814814815,
+   "km2_land_ndvi_gt_0_3": 2.844227414696681
+  },
+  {
+   "year": 2018,
+   "water_map_year": 2018,
+   "land_pixels": 24,
+   "land_km2": 1.28795203684378,
+   "land_pixels_with_outcome": 24,
+   "mean_ndvi_jul_oct_land": 0.5554166436195374,
+   "share_land_ndvi_gt_0_3": 0.9583333333333334,
+   "km2_land_ndvi_gt_0_3": 1.2342873686419558
+  },
+  {
+   "year": 2019,
+   "water_map_year": 2019,
+   "land_pixels": 30,
+   "land_km2": 1.609940046054725,
+   "land_pixels_with_outcome": 30,
+   "mean_ndvi_jul_oct_land": 0.5083067417144775,
+   "share_land_ndvi_gt_0_3": 1.0,
+   "km2_land_ndvi_gt_0_3": 1.609940046054725
+  },
+  {
+   "year": 2020,
+   "water_map_year": 2020,
+   "land_pixels": 51,
+   "land_km2": 2.7368980782930326,
+   "land_pixels_with_outcome": 51,
+   "mean_ndvi_jul_oct_land": 0.5473137497901917,
+   "share_land_ndvi_gt_0_3": 0.9803921568627451,
+   "km2_land_ndvi_gt_0_3": 2.6832334100912085
+  },
+  {
+   "year": 2021,
+   "water_map_year": 2021,
+   "land_pixels": 39,
+   "land_km2": 2.0929220598711424,
+   "land_pixels_with_outcome": 39,
+   "mean_ndvi_jul_oct_land": 0.5783205032348633,
+   "share_land_ndvi_gt_0_3": 1.0,
+   "km2_land_ndvi_gt_0_3": 2.0929220598711424
+  },
+  {
+   "year": 2022,
+   "water_map_year": 2022,
+   "land_pixels": 26,
+   "land_km2": 1.3952813732474283,
+   "land_pixels_with_outcome": 26,
+   "mean_ndvi_jul_oct_land": 0.5619961619377136,
+   "share_land_ndvi_gt_0_3": 0.9615384615384616,
+   "km2_land_ndvi_gt_0_3": 1.3416167050456043
+  },
+  {
+   "year": 2023,
+   "water_map_year": 2023,
+   "land_pixels": 4548,
+   "land_km2": 244.0669109818963,
+   "land_pixels_with_outcome": 2809,
+   "mean_ndvi_jul_oct_land": 0.3690927028656006,
+   "share_land_ndvi_gt_0_3": 0.6432894268422926,
+   "km2_land_ndvi_gt_0_3": 96.97205544069627
+  },
+  {
+   "year": 2024,
+   "water_map_year": 2023,
+   "land_pixels": 4548,
+   "land_km2": 244.0669109818963,
+   "land_pixels_with_outcome": 4312,
+   "mean_ndvi_jul_oct_land": 0.5470356941223145,
+   "share_land_ndvi_gt_0_3": 0.9121057513914657,
+   "km2_land_ndvi_gt_0_3": 211.06314003777445
+  }
+ ],
+ "H4_decomposition_Kherson": {
+  "categories": {
+   "flooded (F)": {
+    "pixels": 8705,
+    "area_share": 0.018289198342731804,
+    "mean_change_2021_2024": -0.02366003952920437,
+    "zoneO_reference_change": -0.0009240144725711369,
+    "relative_change": -0.022736025056633233,
+    "contribution": -0.0004158236717860853,
+    "pixels_valid_both_years": 6944,
+    "reference": "restricted zone O, same dominant-class mix"
+   },
+   "former reservoir bed": {
+    "pixels": 10122,
+    "area_share": 0.02126631425906161,
+    "mean_change_2021_2024": NaN,
+    "zoneO_reference_change": 0.0,
+    "relative_change": NaN,
+    "contribution": null,
+    "pixels_valid_both_years": 0,
+    "reference": "no zone-O analogue: raw change (land pixel-years only)"
+   },
+   "Kakhovka zone, irrigated cropland": {
+    "pixels": 55531,
+    "area_share": 0.11667058853190578,
+    "mean_change_2021_2024": -0.18290111422538757,
+    "zoneO_reference_change": -0.08330179005861282,
+    "relative_change": -0.09959932416677475,
+    "contribution": -0.011620311767917675,
+    "pixels_valid_both_years": 55263,
+    "reference": "restricted zone O, irrigated (R1)"
+   },
+   "Kakhovka zone, rainfed cropland": {
+    "pixels": 6450,
+    "area_share": 0.013551445067273996,
+    "mean_change_2021_2024": -0.11142632365226746,
+    "zoneO_reference_change": -0.06016026809811592,
+    "relative_change": -0.051266055554151535,
+    "contribution": -0.0006947291356579014,
+    "pixels_valid_both_years": 6394,
+    "reference": "restricted zone O, rainfed (R1)"
+   },
+   "all other land": {
+    "pixels": 395156,
+    "area_share": 0.8302224537990268,
+    "mean_change_2021_2024": -0.09945032000541687,
+    "zoneO_reference_change": -0.05273833200521034,
+    "relative_change": -0.04671198800020653,
+    "contribution": -0.038781341299362164,
+    "pixels_valid_both_years": 355908,
+    "reference": "restricted zone O, same dominant-class mix"
+   }
+  },
+  "sum_of_contributions": -0.051512205874723827
+ }
+}

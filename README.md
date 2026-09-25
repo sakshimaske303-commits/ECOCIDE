@@ -17,6 +17,8 @@ Study 2 replaces the oblast-versus-Romania design with 231 m MODIS pixels (2016�
 | H3 former reservoir bed (descriptive) | area with NDVI > 0.3: ~95 km² (2016–22) → 906 km² (2023) → 1,574 km² (2024) | — |
 | H4 decomposition of Kherson's 2021→24 change vs zone O (−0.029) | other land −0.024, irrigated canal zone −0.013, flood −0.0004, reservoir bed +0.010 | — |
 
+**Registered revision** ([`ANALYSIS_PLAN_v2_ADDENDUM_1.md`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), committed before its extra data were downloaded: irrigation from 2010–15, steppe-only comparison zone, raion placebos, VIINA occupation and conflict, annual water masks). H1: flooded land greener than matched controls (+0.055), still **not supported**; wetlands −0.061. H2: β = −0.053 but the event study shows **no change after the breach relative to 2021** (−0.006 to −0.014, n.s.); 15 placebo districts p = 0.38; verdict **suggestive** by rule. Numbers: `outputs/v2/r1_summary.json`.
+
 All Study 2 numbers: `outputs/v2/study2_summary.json`; figures: `outputs/v2/figures/`. The Study 1 results below are kept as the administrative-unit analysis that motivated Study 2.
 
 ## Live dashboard

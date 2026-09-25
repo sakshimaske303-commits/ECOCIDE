@@ -6,7 +6,7 @@ Only the lower-Dnipro / reservoir window is processed (31.4–35.4 °E, 46.2–4
 Output: data/v2/io_lulc/io_water_YYYY.nc with water_pct, floodveg_pct, valid_pct (0–100),
 on the same 231.66 m grid (v2/grid.py). Resumable.
 
-    python v2/07_download_io_lulc.py
+    python v2/07_io_lulc_fixed.py
 """
 import json
 import os
