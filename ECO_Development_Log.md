@@ -283,26 +283,93 @@ What did not change: Kherson still ranks 2 of 5 in placebo in space — Constan�
 
 `data/ndvi_v3` is now the default dataset (`eco_core.py`); everything was regenerated from it.
 
-
-
 ## Entry 19
 
-**24 September 2026 — Study 2: pre-registered, exposure-based redesign**
+**24 September 2026 — Study 2: a new design, planned in advance**
 
-- Wrote `ANALYSIS_PLAN_v2.md` (hypotheses H1–H4, exposure rules, model, inference, decision rules) and committed it before the analysis.
-- Downloaded MODIS MOD13Q1 v061 2016–2024 (204 of 207 composites in the catalogue), ESA WorldCover 2021, ERA5-Land monthly means, OSM canals (`v2/01`–`05`), and built yearly July–October summaries (`v2/06`).
-- Fixed on the way: MODIS STAC items have no single datetime (use start date); Overpass needs a User-Agent; an xarray coordinate round-off in the check script.
-- Ran the full analysis (`v2/analysis/a1`–`a8`). H1 flood: not supported (+0.006; wetlands −0.04). H2 irrigation: suggestive (−0.074, but strong pre-trends and a randomization floor of p = 0.14). H3: ~1,500 km² of the drained reservoir bed became vegetated by 2024. H4: most of Kherson's relative decline came from land outside all exposure groups.
-- Logged 3 deviations and all implementation choices in `v2/DEVIATIONS.md`, including the H1 caliper leaving 1.8% of flooded pixels matched and the H2 irrigation rule mislabelling summer crops in northern oblasts.
-- Wrote `ECO_Research_Paper_v2.md` with Study 2 as the main result and Study 1 as motivation.
+Study 1 could not answer the real question, so I started again. Before downloading anything, I wrote `ANALYSIS_PLAN_v2.md` and pushed it to GitHub at 15:33 (commit 521672f). The plan fixes everything in advance:
 
+- the four questions (flood, irrigation, reservoir bed, and what made up Kherson's change);
+- how each exposed group is defined;
+- the outcome (July–October NDVI);
+- the models and tests;
+- nine robustness checks;
+- the words I will use for each result.
+
+Then I downloaded the data:
+
+- MODIS NDVI for 2016–2024 (204 of 207 composites were in the catalogue);
+- ESA WorldCover 2021;
+- ERA5-Land weather;
+- OpenStreetMap canals.
+
+I then built one summary file per year. A few things broke on the way:
+
+- the MODIS catalogue items have no single date;
+- the Overpass server wanted a User-Agent;
+- two grids differed by a tiny rounding error.
+
+I fixed each one.
+
+I ran the full analysis:
+
+- **Flood (H1):** not supported. Flooded land did not lose greenness (+0.006), except wetlands (about −0.04).
+- **Irrigation (H2):** "suggestive" by my rule (−0.074). But the canal-zone farmland was already moving before the war, and with only six placebo oblasts the placebo test could not go below p = 0.14.
+- **Reservoir bed (H3):** about 1,500 km² turned green by 2024.
+- **Kherson's change (H4):** most of the oblast's decline came from land outside all three pathways.
+
+Two things in my own plan caused trouble, and I kept both as written:
+
+- the matching rule kept only 1.8% of the flooded pixels;
+- the irrigation rule labels summer crops in the north as irrigated.
 
 ## Entry 20
 
-**24–25 September 2026 — Registered Revision 1**
+**24–25 September 2026 — Registered revision**
 
-- Wrote `ANALYSIS_PLAN_v2_ADDENDUM_1.md` (R1–R5) to address five problems found in the pre-registered analysis; committed 22:53 IST, before the extra downloads.
-- Downloaded MODIS 2010–2015, Impact Observatory annual land cover (fixed a previous-year mix-up before use) and VIINA conflict and control data (fixed a Git LFS pointer issue).
-- Ran `r1_prepare`, `r1_h1`, `a5_h1_placebo --r1`, `r1_h2`, `r1_h3_h4`, `r1_summary`, `r1_figures`.
-- Result: H1 still not supported (flooded land greener, wetlands lower); H2 still "suggestive" by rule, but the revised event study shows the canal-zone divergence happened between 2020 and 2021 and nothing changed after the breach.
-- Paper v2 updated (Section 4.9, 5.5, Discussion, Limitations, Conclusion).
+The first results showed five problems:
+
+1. Irrigation status came from the same years as the outcome.
+2. The irrigation rule failed outside the dry south.
+3. The placebo test had a floor of p = 0.14.
+4. There was no control for war or occupation.
+5. Each pixel's water share was fixed at 2021.
+
+I wrote `ANALYSIS_PLAN_v2_ADDENDUM_1.md` to fix these and pushed it at 22:53 (commit 30e3840). That was before I downloaded any of the extra data.
+
+The extra data were:
+
+- MODIS for 2010–2015;
+- Impact Observatory yearly land cover;
+- VIINA war events and territorial control.
+
+Two downloads needed fixing:
+
+- the land-cover script first took the previous year's map;
+- the VIINA files came as Git LFS pointers.
+
+I fixed both before running anything.
+
+Results of the revision:
+
+- **Flood:** still not supported. Flooded land was greener than its matches (+0.055), and wetlands still declined (−0.061).
+- **Irrigation:** still "suggestive" by the rule (−0.053). But the year-by-year results show that the canal-zone decline happened between 2020 and 2021. It did not change after the breach.
+- **Irrigation measure:** even with 2010–2015 data, the NDVI rule mostly picks up summer crops, not irrigation.
+
+## Entry 21
+
+**28 September 2026 — Rewriting the paper around one message**
+
+I rewrote `ECO_Research_Paper_v2.md` in first person and in plain English. The paper now carries one message: the three pathways of the dam behave very differently, and an oblast average hides this. The main changes are:
+
+- **Abstract.** It is now about 230 words, and each finding is stated once.
+- **H2 wording.** The rule's label stays "suggestive", but the text now says directly that I found no change after the breach.
+- **Literature.** I added the missing work:
+  - the field and satellite study of the reservoir bed (Kuzemko et al., 2025);
+  - the irrigation maps for Kherson and Zaporizhzhia (Baber et al., 2026) and the NASA Harvest analysis that irrigated area fell by about 90%;
+  - studies of war and farmland (Kussul et al., 2025; Wagner et al., 2025);
+  - the satellite study of the dam before it failed (Yang et al., 2024).
+- **New section on the irrigation gap (6.2).** It explains why my design did not see the irrigation loss that other data show. My "irrigated" group is mostly summer-cropped land, and the trend was already moving before the war.
+
+I also rewrote the executive summary to match.
+

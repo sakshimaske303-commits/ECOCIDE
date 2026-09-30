@@ -1,50 +1,76 @@
 # ECOCIDE — Executive Summary
 
-**Satellite evidence and causal-inference testing of the Kakhovka Dam destruction**
+**What did the destruction of the Kakhovka Dam do to vegetation? Separating flood, reservoir and irrigation effects with satellite data**
 
-Sakshi D. Maske · Independent Geospatial Researcher · Code and data: github.com/sakshimaske303-commits/ECOCIDE
+Sakshi D. Maske · Independent Geospatial Researcher · Code and data: github.com/sakshimaske303-commits/ECOCIDE · Full paper: `ECO_Research_Paper_v2.md`
 
-## Question
+## The question
 
-The Kakhovka Dam on the Dnipro was destroyed on 6 June 2023, draining a reservoir of about 18.2 km³ and flooding the downstream floodplain. Most satellite assessments of the event describe the change visually. This project asks a narrower, testable question: after June 2023, did vegetation greenness (NDVI) in Kherson Oblast change more than in comparable regions outside the war, by more than those regions vary among themselves?
+The Kakhovka Dam was destroyed on 6 June 2023. This could have changed vegetation in three ways:
 
-The difficulty is that Kherson was an active war zone well before the dam failed, so a simple before–after comparison mixes the dam's effect with everything else the war was doing. A Difference-in-Differences design compares Kherson's change with the change in control regions over the same months.
+- the flood below the dam;
+- the draining of the reservoir;
+- the loss of water for the irrigation canals.
 
-## Data and method
+All three happened inside an active war zone. I wanted to know which of them left a mark on vegetation that can be separated from the war itself.
 
-- **NDVI:** monthly Sentinel-2 L2A composites, January 2022 – November 2024, over each zone's GADM polygon on a common ~150–220 m grid, with cloud, cloud shadow, cirrus, snow and water masked and each pixel's median over all clear acquisitions in the month (Sentinel Hub Statistical API).
-- **Zones:** Kherson Oblast (treatment); Tulcea County, Romania (primary control); Galați, Brăila and Constanța counties (four-county panel). Controls were chosen by hand for broadly similar delta, steppe and coastal landscapes; no formal matching was done.
-- **Estimation:** the monthly Kherson-minus-control NDVI gap before vs after June 2023, Newey-West HAC standard errors (maxlags = 3, t-distribution).
-- **Checks:** a model with zone-specific seasonality, placebo dates, a quarterly event study with Bonferroni/Benjamini–Hochberg correction, the four-county panel, placebo in space (randomization inference) and a control-only divergence check.
-- **Flood extent:** UNOSAT FL20230606UKR layers, reported descriptively.
+## Why I needed a second study
 
-## Findings
+My first study (Study 1) compared the average greenness (NDVI) of the whole of Kherson Oblast with four counties in Romania. Kherson became less green after June 2023 (−0.108, p = 0.037). But I could not show that the dam caused this:
 
-| Check | Result |
-|---|---|
-| Primary DiD, Kherson vs Tulcea | −0.108 NDVI, 95% CI [−0.209, −0.007], p = 0.037 |
-| With zone-specific seasonality | −0.069, p = 0.005 |
-| Placebo, fake date June 2022 | +0.012, p = 0.802 |
-| Narrowed baseline (from January 2023) | −0.186, p = 0.001 — but its own placebo is significant (p = 0.004) |
-| Kherson vs four-county mean | −0.071, p = 0.022 |
-| Per control: Tulcea / Galați / Brăila / Constanța | significant decline against the first three; none against Constanța |
-| Placebo in space | Kherson ranks 2nd of 5 (exact p = 0.40); Constanța shifts by as much |
-| Event study | 4 of 5 pre-event quarters deviate; the summer–autumn gap deepens in 2024 |
-| UNOSAT flood extent, 6–9 June (cumulative) | ≈617 km² |
+- the flood covered only 2% of the oblast;
+- the two areas were already moving apart before the event;
+- when each area was treated as the "affected" one in turn, Kherson ranked only second of five (p = 0.40).
 
-Kherson's NDVI declined relative to comparable unaffected regions after June 2023. The decline is statistically significant, survives zone-specific seasonality and every specification check, is absent at a placebo date, and is largest in the 2024 growing season. **It cannot, however, be attributed to the dam's destruction with this design:** Constanța shows an equally large shift, pre-event quarters already deviate, and the oblast-wide unit mixes flooding, reservoir drainage and war effects.
+## What I did in Study 2
 
-## What changed from the first version
+- **Data.** I used MODIS NDVI at 250 m for 2016–2024 (2010–2015 for the revision) and looked at each pixel.
+- **Exposure groups.** I defined each group by what physically happened to the land: flooded land (UNOSAT maps), the drained reservoir bed, and farmland near the reservoir's canals (OpenStreetMap).
+- **Comparisons.** I compared each group with similar land in the same war zone:
+  - flooded land with matched unflooded land on the same river bank;
+  - irrigated with rainfed farmland, inside and outside the canal zone.
+- **Plan fixed in advance.** I wrote the full analysis plan, including the words I would use for each result, and made it public on GitHub before downloading any data (commit 521672f).
+- **Registered revision.** When the first results showed five problems, I wrote a second plan and made it public before collecting the extra data it needed (commit 30e3840). It added:
+  - irrigation status from 2010–2015;
+  - a comparison zone limited to the steppe oblasts;
+  - district-level placebo tests;
+  - occupation and war intensity from VIINA;
+  - yearly water masks.
+- **Tests.** I used clustered and spatial standard errors, a wild cluster bootstrap, placebo tests, the Holm correction, and Rambachan–Roth sensitivity bounds.
 
-The first version (EarthArXiv preprint v1; Zenodo v1.0.0) reported −0.0703, p = 0.022, from bounding-box extraction and stacked-panel standard errors. Correcting the geometry and the standard errors gave −0.075, p = 0.16. Correcting the pixel size, masking water and compositing each month over all clear acquisitions gave the current −0.108, p = 0.037. Each technical change moved the headline across the 5% threshold — the reason every step is documented in `ECO_RESULTS_RECONCILIATION.md`.
+## What I found
 
-## Limitations
+| Pathway | Main plan | Revision | What it means |
+|---|---|---|---|
+| **Flood**: flooded vs matched unflooded land | +0.006 NDVI (95% CI −0.014 to 0.026); placebo p = 0.63 | +0.055 (flooded land greener) | No lasting loss of greenness |
+| Floodplain wetlands | −0.041 | −0.061 | Wetlands did lose greenness |
+| **Irrigated farmland**: canal zone vs elsewhere | −0.074, but already falling before the war | −0.053; no change after the breach compared with 2021 (−0.006 to −0.014, not significant); placebo p = 0.38 | The decline came before the war; no effect of the breach detected |
+| **Reservoir bed** | Area with NDVI above 0.3: about 95 km² before the breach, 906 km² in 2023, 1,574 km² in 2024 | Same path on land-only pixels | Largest and clearest change |
+| **Kherson Oblast, 2021 to 2024** | −0.029 overall; −0.024 of it from land not exposed to any pathway | −0.052 (reservoir bed removed by the water rule) | Most of the decline is not from the dam |
 
-- The NDVI unit is the whole oblast (≈25,500 km²); the mapped flood covered only about 2% of it, so an oblast-wide decline points to slower, larger-scale pathways (irrigation loss, war effects on agriculture) that this design cannot separate.
-- Five geographic units: randomization inference cannot go below p = 0.20, and the controls were chosen by hand.
-- Pre-event quarters deviate from the reference quarter, so parallel trends do not hold cleanly.
-- NDVI measures greenness only.
+By the naming rule in my plan, the flood result is "not supported" and the irrigation result is "suggestive". In plain terms: **I found no loss of greenness on flooded land (except wetlands), and no change on canal-zone farmland after the breach.**
 
-## Relevance
+## What this means
 
-A standalone crime of ecocide has been proposed for the Rome Statute (Vanuatu, Fiji and Samoa, September 2024) but not adopted; Ukraine's Criminal Code already contains an ecocide offence (Article 441). Any claim that satellite data show conflict-attributable environmental damage will face exactly the tests reported here. This case shows the difference between a statistically significant satellite signal and an event-attributable one — a distinction any such evidence should be tested for before it is relied on.
+1. **The reservoir bed changed the most.** About 1,500 km² became green within two seasons. Field studies report the same (Kuzemko et al., 2025).
+2. **The flood did not cause a lasting loss of summer greenness, except in wetlands.** The wetland loss may come from the lower, unregulated river after the dam's loss rather than from the flood itself.
+3. **The irrigation loss was not detected by my design, even though it happened.** Other work shows that irrigated area fell by about 90% (Baber et al., 2026; NASA Harvest). My NDVI-based "irrigated" group mostly captures summer crops, and the farmland trend was already moving before the war. Field-level irrigation maps are needed for this question.
+4. **Study 1's decline across Kherson Oblast was real, but mostly not caused by the dam.** An oblast average mixes effects with opposite signs. To link change to one act, the analysis has to follow the physical footprint of each pathway.
+
+## Main limitations
+
+- **Irrigation measure.** Irrigation status is based on NDVI and is weak.
+- **Parallel trends.** Pre-trend tests fail in most specifications.
+- **Small flood samples.** Few unflooded pixels look like the flooded floodplain, so the matched flood samples are small.
+- **Timing of the revision.** It was written after the first results were known. I report it next to them, not instead of them.
+- **Water maps.** The yearly water maps are coarse for 2023 and missing for 2024.
+- **War data.** VIINA is based on news reports.
+- **What NDVI shows.** NDVI measures greenness only.
+
+## How to reproduce
+
+- Data: `v2/01`–`08`.
+- Main plan: `python v2/analysis/run_all.py`.
+- Revision: `python v2/analysis/run_revision.py`.
+- Results: `outputs/v2/study2_summary.json` and `outputs/v2/r1_summary.json`.
+- All changes to the plans: `v2/DEVIATIONS.md`.
