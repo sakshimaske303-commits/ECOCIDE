@@ -23,6 +23,7 @@ Every change to the pre-registered plan is recorded here with its date, the reas
 | Weather covariates (§6) | Each pixel takes the nearest ERA5-Land land cell; July–October precipitation total (per 100 mm) and mean 2 m temperature (°C). |
 | Wild cluster bootstrap (§6) | Restricted (WCR), Rademacher, 9,999 draws, computed from cluster-level scores after partialling out all fixed effects and other regressors. Two-sided p is used for the Holm correction. |
 | Rambachan–Roth (§6) | Relative-magnitudes restriction with the reference year 2021 normalised to 0, so the violation in year t is bounded by (t − 2021)·M̄·M_pre; target = mean of the 2023 and 2024 event-study effects. The robust interval widens the bound by the 95th percentile of M_pre from 20,000 parametric draws of the event-study coefficients (conservative; not the HonestDiD FLCI). |
+| Decision rule, "unadjusted p" (§7) | The plan does not say which unadjusted p-value to use for the *suggestive* branch. `a7_summary.py` and `r1_summary.py` use the cluster-robust p-value (`p_cluster`); the *supported* branch uses the Holm-adjusted wild-bootstrap p-value. For both H1 and H2 the verdict is the same with either choice. |
 | H4 reference for the reservoir bed | No zone-O analogue exists (open water in 2021), so its raw change is used. |
 
 ## 3. Data notes

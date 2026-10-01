@@ -193,12 +193,12 @@ In both models:
 - Placebo tests compare the real estimate with the estimates for the placebo units.
 - The Holm (1979) correction adjusts for testing two main questions.
 - Pre-trends are tested jointly on the 2016–2020 coefficients.
-- I used the approach of Rambachan and Roth (2023) to ask how large a break from parallel trends would be needed to explain the result.
+- I used the relative-magnitudes idea of Rambachan and Roth (2023) to ask how large a break from parallel trends would be needed to explain the result. I wrote my own, more conservative version of this step; it is not the HonestDiD software (details in `v2/DEVIATIONS.md`).
 
 ### 4.7 Rule for naming results (fixed in the plan)
 
 - **Supported:** β is negative; the Holm-adjusted bootstrap p is below 0.05; the placebo p is below 0.10; and the sensitivity interval at M̄ = 1 excludes zero.
-- **Suggestive:** β is negative with p below 0.05, but one of the other conditions fails.
+- **Suggestive:** β is negative with p below 0.05, but one of the other conditions fails. Here p is the cluster-robust p-value.
 - **Not supported:** all other cases.
 
 ### 4.8 What the registered revision changed
@@ -238,7 +238,7 @@ The first results showed five problems, and the revision addressed each one.
 
 The result is **not supported**: flooded land did not lose greenness.
 
-**All flooded pixels.** Without matching, using all 8,626 flooded pixels, the estimate is +0.011 (95% CI −0.004 to 0.025; p = 0.15; placebo p = 0.70 among 141 strips). The other planned checks point the same way:
+**All flooded pixels.** Without matching, using all 8,626 flooded pixels, the estimate is +0.011 (95% CI −0.004 to 0.025; p = 0.15; placebo p = 0.70 among 141 strips). None of the other planned checks shows a decline. One of them, the wider comparison band, shows a significant increase:
 
 | Check | β | p | Matched flooded pixels |
 |---|---|---|---|

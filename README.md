@@ -23,7 +23,7 @@ All Study 2 numbers: `outputs/v2/study2_summary.json`; figures: `outputs/v2/figu
 
 ## Live dashboard
 
-**[ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)** — every number on it is read from `outputs/model_results.json`.
+**[ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)** — numbers are read from `outputs/v2/study2_summary.json` and `outputs/v2/r1_summary.json` (Study 2) and `outputs/model_results.json` (Study 1).
 
 ## Documents
 
@@ -86,7 +86,7 @@ ECOCIDE/
 ├── download_*.py                # data acquisition (Sentinel Hub)
 ├── data/                        # boundaries, NDVI (ndvi_v3 current; ndvi, ndvi_v2, ndvi_old_bbox earlier), UNOSAT zip
 ├── outputs/                     # model_results.json, flood table, plots, maps
-└── dashboard/                   # Streamlit app (reads outputs/model_results.json)
+└── dashboard/                   # Streamlit app (reads outputs/v2/*.json and outputs/model_results.json)
 ```
 
 ## Data sources

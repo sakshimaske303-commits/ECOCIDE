@@ -373,3 +373,34 @@ I rewrote `ECO_Research_Paper_v2.md` in first person and in plain English. The p
 
 I also rewrote the executive summary to match.
 
+
+## Entry 22
+
+**1 October 2026 — Checking an outside review of the repository**
+
+I checked an outside review of the repository point by point against the actual files.
+
+**What was right, and what I fixed:**
+
+- **Dashboard home page.** It said Study 2 was the main result but showed Study 1 numbers. It now shows the Study 2 numbers:
+  - the flood estimate;
+  - the canal farmland change in 2023 compared with 2021;
+  - the reservoir bed area.
+- **"One results file" claim.** `README.md` and `dashboard/results.py` said every dashboard number comes from one file. Study 2 reads `outputs/v2/*.json`, so both now say which file each study uses.
+- **Citation DOI.** `CITATION.cff` pointed its DOI at the old v1.0.0 Zenodo archive. That DOI is now listed only as the earlier, superseded version, until a new release exists.
+- **Figure build.** `build_all_figures.py` no longer runs the superseded duplicate `map7_control_zone_expansion.py`.
+- **Flood check wording.** The paper said the other flood checks "point the same way". The 5–25 km comparison band gives a significant increase (+0.024, p = 0.007), so the sentence now says that no check shows a decline and that one shows an increase.
+- **Rambachan–Roth step.** The paper now says that this step is my own conservative version, not the HonestDiD software.
+- **Decision rule.** The paper and `v2/DEVIATIONS.md` now say that the "suggestive" branch uses the cluster-robust p-value. The verdicts are the same with the bootstrap p-value.
+
+**Still to do outside the code:**
+
+- remove `__pycache__` files from git tracking;
+- change the old credentials, because `.env` files are in the git history.
+
+**What was not right:**
+
+- `dashboard/pages/1_Theoretical_Foundations.py` does not contain the old −0.0703 / p = 0.022 result.
+- `ECO_Project_Report.md` no longer exists.
+
+Both claims came from the old audit list in `ECO_SUBMISSION_GUIDELINES.md`, which describes the repository as it was on 11 September. That file and `PHASE2_INSTRUCTIONS.md` are out of date, so I am removing them from the repository.

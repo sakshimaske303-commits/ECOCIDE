@@ -8,7 +8,7 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(BASE_DIR)
 from styles import apply_custom_style, PALETTE
 from doc_viewer import render_doc_viewer
-from results import R, FLOOD, p, c, ci, sig
+from results import R, FLOOD, S2, R1, p, c, ci, sig
 
 st.set_page_config(
     page_title="ECOCIDE",
@@ -88,14 +88,19 @@ st.markdown(
 st.markdown("---")
 
 col1, col2, col3, col4 = st.columns(4)
+_h1, _h2r, _h3 = S2["H1_flood"], R1["H2_irrigation"], S2["H3_reservoir_bed"]
 with col1:
-    st.metric("STUDY EVENT", "Kakhovka Dam", "6 June 2023")
-with col2:
     st.metric("UNOSAT FLOOD (6–9 JUNE)", f"{FLOOD['composite_6_9_june']['flood_km2']:.0f} km²", "cumulative, multi-sensor")
+with col2:
+    st.metric("FLOODED LAND (H1)", f"{_h1['beta']:+.3f} NDVI", f"{_h1['verdict']} — no loss of greenness", delta_color="off")
 with col3:
-    st.metric("NDVI DiD (vs TULCEA)", c(R["main_did"]), f"HAC p = {p(R['main_did']['p'])} — {sig(R['main_did']['p'])}")
+    st.metric("CANAL FARMLAND, 2023 vs 2021 (H2)", f"{_h2r['event_study']['2023']:+.3f} NDVI",
+              "no change after the breach (revision)", delta_color="off")
 with col4:
-    st.metric("PLACEBO IN SPACE", f"Rank {R['placebo_in_space']['rank_one_sided']} of 5", f"exact p = {R['placebo_in_space']['p_one_sided']:.2f}")
+    st.metric("RESERVOIR BED, NDVI > 0.3 (H3)", f"{_h3['2024']['km2_ndvi_gt_0_3']:,.0f} km²",
+              f"2024; {_h3['2021']['km2_ndvi_gt_0_3']:.0f} km² in 2021", delta_color="off")
+st.caption("Headline numbers are from Study 2 (outputs/v2/study2_summary.json and r1_summary.json). "
+           "Study 1 numbers (Kherson vs Romania) are on the Study 1 pages.")
 
 st.markdown("---")
 
@@ -111,10 +116,9 @@ st.markdown(
             evidence (for example, UNOSAT imagery in the ICC's <i>Al Mahdi</i> case on the destruction of
             cultural heritage in Timbuktu), and a standalone crime of "ecocide" has been <i>proposed</i> as an
             amendment to the Rome Statute (Vanuatu, Fiji and Samoa, September 2024). Most satellite assessments
-            of the Kakhovka Dam destruction describe what changed; this project asks a narrower question:
-            is the post-event vegetation change in Kherson statistically distinguishable from change in
-            comparable, unaffected regions — and can it be attributed to the dam? The first answer is yes;
-            the second, with this design, is no. The pages below show why.
+            of the Kakhovka Dam destruction describe what changed. This project asks which change can be
+            linked to the dam: the flood, the drained reservoir, or the loss of canal irrigation, each compared
+            with similar land inside the same war zone.
         </p>
     </div>
     """,
@@ -132,10 +136,14 @@ with col_left:
     620 km² cumulatively over 6–9 June). A standalone international crime of "ecocide" has been
     proposed but does not yet exist in the Rome Statute.
 
-    This project applies a **Difference-in-Differences** design to monthly Sentinel-2 NDVI,
-    comparing Kherson Oblast with four Romanian counties, and stress-tests the result with
-    placebo tests, an event study, randomization inference and a control-only divergence check.
-    Every number on this dashboard is read from one results file produced by the repository's code.
+    **Study 2 (main)** uses MODIS NDVI at 250 m for 2016–2024. Land is grouped by what physically
+    happened to it (flooded, drained reservoir bed, canal-irrigated farmland) and compared with similar
+    land in the same war zone. The analysis plan was made public before any data were downloaded.
+
+    **Study 1 (earlier)** compared the whole of Kherson Oblast with four Romanian counties. It found a
+    decline but could not link it to the dam.
+
+    Every number on this dashboard is read from the results files written by the repository's code.
     """)
 
 with col_right:
@@ -145,13 +153,13 @@ with col_right:
             <p style="color:{PALETTE['accent']}; text-transform:uppercase; font-size:0.78rem;
                       letter-spacing:1.5px; font-weight:800; margin-bottom:12px;">Core Finding</p>
             <p style="color:{PALETTE['text_primary']}; font-size:0.95rem; line-height:1.7; margin:0; font-weight:500;">
-                After June 2023 Kherson's NDVI fell relative to Tulcea by {c(R["main_did"])}
-                (95% CI {ci(R["main_did"])}, HAC p = {p(R["main_did"]["p"])}); allowing each zone its own
-                seasonal cycle gives {c(R["main_did_seasonal"])} (p = {p(R["main_did_seasonal"]["p"])}), and a
-                placebo date a year earlier shows nothing. But attribution to the dam is not established:
-                in an exact randomization check Kherson ranks {R["placebo_in_space"]["rank_one_sided"]} of 5
-                (p = {R["placebo_in_space"]["p_one_sided"]:.2f}) because Constanța shifts by as much, pre-event
-                quarters already deviate, and the oblast-wide unit mixes flooding, reservoir drainage and war effects.
+                The drained reservoir bed changed the most: land with NDVI above 0.3 grew from
+                {S2["H3_reservoir_bed"]["2021"]["km2_ndvi_gt_0_3"]:.0f} km² in 2021 to
+                {S2["H3_reservoir_bed"]["2024"]["km2_ndvi_gt_0_3"]:,.0f} km² in 2024. Flooded land did not lose
+                summer greenness ({S2["H1_flood"]["beta"]:+.3f} NDVI), except floodplain wetlands. Canal-zone
+                farmland declined relative to other farmland, but the decline came before the war and did not
+                change after the breach. Most of Kherson Oblast's overall decline came from land outside all
+                three pathways.
             </p>
         </div>
         """, unsafe_allow_html=True
@@ -179,8 +187,9 @@ with m2:
     <div class="forensic-card" style="min-height: 190px;">
         <p style="color: {PALETTE['vegetation']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Causal Inference</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
-            Difference-in-Differences on the monthly Kherson-minus-control NDVI gap, Newey-West HAC
-            standard errors, placebo tests, event study and randomization inference.
+            Study 2: pixel-level difference-in-differences with matching, placebo rivers and districts,
+            wild cluster bootstrap, a pre-registered plan and a registered revision. Study 1: monthly
+            Kherson-minus-control NDVI gap with HAC standard errors.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -201,11 +210,12 @@ st.markdown("---")
 st.markdown("### Explore the Evidence")
 
 nav_items = [
-    ("Study Design", "Treatment/control zones, methodology"),
+    ("Study 2 Main Results", "Flood, irrigation and reservoir results (main study)"),
+    ("Study Design", "Study 1: treatment and control zones"),
     ("Theoretical Foundations", "How a dam-break flood and reservoir drainage could affect vegetation"),
     ("Flood Analysis", "UNOSAT flood-extent layers by sensor"),
-    ("Vegetation Impact", "NDVI causal analysis, DiD results"),
-    ("Statistical Validation", "Placebo tests, event study, limitations"),
+    ("Vegetation Impact", "Study 1: NDVI DiD results"),
+    ("Statistical Validation", "Study 1: placebo tests, event study, limitations"),
     ("Explore Trends", "Interactive NDVI time series, live difference calculator"),
     ("Satellite Evidence", "Before/after true-color imagery"),
     ("Interactive Maps & Plots", "Flood map plus three interactive charts"),

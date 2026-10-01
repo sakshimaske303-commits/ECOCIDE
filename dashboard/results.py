@@ -1,7 +1,10 @@
-"""Loads the single results file every dashboard page reads its numbers from
-(outputs/model_results.json, written by generate_model_results.py) and the
-UNOSAT flood table (outputs/flood_extent_table.json, written by
-flood_progression.py). No statistical number is typed into any page."""
+"""Loads the results files the dashboard reads its numbers from. No statistical
+number is typed into any page.
+
+  R      Study 1 (Kherson vs Romania): outputs/model_results.json (generate_model_results.py)
+  S2     Study 2, pre-registered:      outputs/v2/study2_summary.json (v2/analysis/run_all.py)
+  R1     Study 2, registered revision: outputs/v2/r1_summary.json (v2/analysis/run_revision.py)
+  FLOOD  UNOSAT flood table:          outputs/flood_extent_table.json (flood_progression.py)"""
 import json
 import os
 
@@ -15,6 +18,8 @@ def _load(rel):
 
 R = _load("outputs/model_results.json")
 FLOOD = _load("outputs/flood_extent_table.json")
+S2 = _load("outputs/v2/study2_summary.json")
+R1 = _load("outputs/v2/r1_summary.json")
 NAMES = {"kherson": "Kherson", "tulcea": "Tulcea", "galati": "Galați", "braila": "Brăila", "constanta": "Constanța"}
 
 

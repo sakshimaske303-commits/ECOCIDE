@@ -12,7 +12,6 @@ SCRIPTS = [
     "map5_study_area_overview.py",
     "map6_robustness_check.py",
     "map7_control_panel_comparison.py",
-    "map7_control_zone_expansion.py",
     "map8_placebo_in_space.py",
     "build_interactive_plots.py",
     "build_kherson_flood_map.py",
