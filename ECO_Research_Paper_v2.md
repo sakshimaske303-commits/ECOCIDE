@@ -346,7 +346,7 @@ In the revision, the water rule removes the whole reservoir bed by design, becau
 
 ### 6.1 Three pathways, three different answers
 
-**The reservoir bed.** This is the largest and clearest change. About 1,500 km² became green within two seasons. Whether this is recovery or a new risk, for example from polluted sediment, needs field work (Kuzemko et al., 2025; Shumilova et al., 2025). NDVI only measures greenness.
+**The reservoir bed.** This is the largest change I measured. It is a description only: there is no comparison group, so it is not tested in the same way as the flood and irrigation results. About 1,500 km² became green within two seasons. Whether this is recovery or a new risk, for example from polluted sediment, needs field work (Kuzemko et al., 2025; Shumilova et al., 2025). NDVI only measures greenness.
 
 **The flood.** The flood did not leave a lasting loss of summer greenness on the land it covered. In 2024 flooded land was, if anything, greener than similar land nearby, which fits a short flood that left moisture and sediment. Floodplain wetlands are the exception: their greenness fell in every version of the analysis. After the dam's loss the river below it is no longer regulated, and its level dropped. This may have dried the wetlands more than the flood itself harmed them. My design cannot separate these two causes.
 
@@ -478,4 +478,4 @@ Yang, Q., Shen, X., He, K., Zhang, Q., Helfrich, S., Straka III, W., Kellndorfer
 
 Zanaga, D., Van De Kerchove, R., Daems, D., et al. (2022). *ESA WorldCover 10 m 2021 v200* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.7254221
 
-Zhukov, Y. M. (2023). Near-real time analysis of war and economic activity during Russia's invasion of Ukraine. *Journal of Comparative Economics*. VIINA data: https://github.com/zhukovyuri/VIINA
+Zhukov, Y. M. (2023). Near-real time analysis of war and economic activity during Russia's invasion of Ukraine. *Journal of Comparative Economics*, 51(4), 1232–1243. https://doi.org/10.1016/j.jce.2023.06.003. VIINA data: https://github.com/zhukovyuri/VIINA

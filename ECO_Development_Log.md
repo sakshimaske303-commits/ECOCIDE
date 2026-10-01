@@ -404,3 +404,17 @@ I checked an outside review of the repository point by point against the actual 
 - `ECO_Project_Report.md` no longer exists.
 
 Both claims came from the old audit list in `ECO_SUBMISSION_GUIDELINES.md`, which describes the repository as it was on 11 September. That file and `PHASE2_INSTRUCTIONS.md` are out of date, so I am removing them from the repository.
+
+## Entry 23
+
+**1 October 2026 — Checking a second outside review**
+
+I checked a second outside review against the current repository. It found no mismatch between the code, the results files, the dashboard, the README and the paper. I fixed the small points it raised:
+
+- **Reservoir bed wording.** The paper called the reservoir bed "the largest and clearest change". H3 is a description with no comparison group, so the paper and the summary now say that.
+- **Dashboard note.** The home page said "every number" comes from the results files. Background facts (dates, reservoir volume, UNOSAT flood area) come from cited sources, so the note now says that.
+- **VIINA reference.** I added the volume, pages and DOI of Zhukov (2023).
+- **Citation version.** `CITATION.cff` now says version 2.0.1, dated 1 October 2026, because the files changed after 2.0.0.
+- **Old figure.** `outputs/plots/control_zone_expansion.png` was made by the removed script. I am removing it from the repository.
+
+I did not change the files in `submission/`. They are outside the scope of this work.

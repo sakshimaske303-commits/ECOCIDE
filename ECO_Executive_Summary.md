@@ -45,14 +45,14 @@ My first study (Study 1) compared the average greenness (NDVI) of the whole of K
 | **Flood**: flooded vs matched unflooded land | +0.006 NDVI (95% CI −0.014 to 0.026); placebo p = 0.63 | +0.055 (flooded land greener) | No lasting loss of greenness |
 | Floodplain wetlands | −0.041 | −0.061 | Wetlands did lose greenness |
 | **Irrigated farmland**: canal zone vs elsewhere | −0.074, but already falling before the war | −0.053; no change after the breach compared with 2021 (−0.006 to −0.014, not significant); placebo p = 0.38 | The decline came before the war; no effect of the breach detected |
-| **Reservoir bed** | Area with NDVI above 0.3: about 95 km² before the breach, 906 km² in 2023, 1,574 km² in 2024 | Same path on land-only pixels | Largest and clearest change |
+| **Reservoir bed** | Area with NDVI above 0.3: about 95 km² before the breach, 906 km² in 2023, 1,574 km² in 2024 | Same path on land-only pixels | Largest change (description only, no comparison group) |
 | **Kherson Oblast, 2021 to 2024** | −0.029 overall; −0.024 of it from land not exposed to any pathway | −0.052 (reservoir bed removed by the water rule) | Most of the decline is not from the dam |
 
 By the naming rule in my plan, the flood result is "not supported" and the irrigation result is "suggestive". In plain terms: **I found no loss of greenness on flooded land (except wetlands), and no change on canal-zone farmland after the breach.**
 
 ## What this means
 
-1. **The reservoir bed changed the most.** About 1,500 km² became green within two seasons. Field studies report the same (Kuzemko et al., 2025).
+1. **The reservoir bed changed the most.** About 1,500 km² became green within two seasons. This is a description, not a tested effect, because there is no comparison area. Field studies report the same (Kuzemko et al., 2025).
 2. **The flood did not cause a lasting loss of summer greenness, except in wetlands.** The wetland loss may come from the lower, unregulated river after the dam's loss rather than from the flood itself.
 3. **The irrigation loss was not detected by my design, even though it happened.** Other work shows that irrigated area fell by about 90% (Baber et al., 2026; NASA Harvest). My NDVI-based "irrigated" group mostly captures summer crops, and the farmland trend was already moving before the war. Field-level irrigation maps are needed for this question.
 4. **Study 1's decline across Kherson Oblast was real, but mostly not caused by the dam.** An oblast average mixes effects with opposite signs. To link change to one act, the analysis has to follow the physical footprint of each pathway.

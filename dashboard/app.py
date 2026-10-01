@@ -143,7 +143,7 @@ with col_left:
     **Study 1 (earlier)** compared the whole of Kherson Oblast with four Romanian counties. It found a
     decline but could not link it to the dam.
 
-    Every number on this dashboard is read from the results files written by the repository's code.
+    All analysis results on this dashboard are read from the results files written by the repository's code. Background facts (dates, reservoir volume, flood area from UNOSAT) come from the cited sources.
     """)
 
 with col_right:
