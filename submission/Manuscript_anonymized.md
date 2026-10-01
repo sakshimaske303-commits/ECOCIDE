@@ -1,213 +1,435 @@
-# Can Satellite Vegetation Data Attribute War-Time Environmental Damage to a Single Event? A Difference-in-Differences Test of the Kakhovka Dam Destruction
+# Flood, Irrigation Loss or War? A Pre-Registered, Exposure-Based Satellite Test of the Vegetation Effects of the Kakhovka Dam Destruction
 
 ## Abstract
 
-Satellite imagery is increasingly proposed as evidence of conflict-related environmental harm, yet most assessments describe change rather than test whether it exceeds background variation. This study tests whether vegetation greenness in Kherson Oblast, Ukraine, declined after the destruction of the Kakhovka Dam on 6 June 2023 by more than in four Romanian counties outside the war. Monthly Sentinel-2 NDVI composites (January 2022–November 2024), with clouds and water masked, were analysed with a Difference-in-Differences design on the monthly treated-minus-control gap, using Newey–West standard errors. Kherson's NDVI declined relative to its primary control by 0.108 (95% CI 0.007 to 0.209; p = 0.037) and by 0.069 after allowing zone-specific seasonality (p = 0.005); the decline was largest in the second post-event growing season, and a placebo date showed no effect. Attribution to the dam nevertheless remains unsupported: in an exact randomization test Kherson ranked second of five units (p = 0.40), four of five pre-event quarters already deviated, and the oblast-scale unit mixes flooding, reservoir drainage and war effects. The case shows that a statistically significant satellite signal and an event-attributable one are different claims.
+Satellite vegetation indices are increasingly offered as evidence of environmental damage in armed conflict, but most analyses compare administrative areas before and after an event and cannot separate the event from the war around it. We revisit the destruction of the Kakhovka Dam (6 June 2023) with a design fixed in a public analysis plan before any data were downloaded. MODIS NDVI (250 m, 2016–2024) was analysed at the pixel level, with treatment defined by exposure and comparisons made inside the war zone. We tested whether (H1) land flooded after the breach and (H2) cropland irrigated from the reservoir's canal network lost July–October greenness, relative to comparable unexposed land and to 2016–2021. We also described (H3) the drained reservoir bed and (H4) decomposed the oblast-wide change. H1 was not supported. Flooded pixels did not decline relative to matched unflooded pixels on the same river bank (+0.006 NDVI, 95% CI −0.014 to 0.026). This held across 141 placebo floodplains (randomization p = 0.63), although floodplain wetlands declined (−0.04). H2 was only suggestive. The triple-difference estimate was large (−0.074, wild-bootstrap p < 0.001), but irrigated cropland was already diverging before the war. A registered revision, committed before any further data were obtained, reclassified irrigation from 2010–2015 imagery, restricted comparisons to the steppe, and added occupation, conflict intensity and annual water masks. Under it, the canal-zone contrast did not change after the breach relative to 2021 (−0.006 to −0.014, not significant), and the canal zone was unremarkable among 15 placebo districts (p = 0.38); flooded land was, if anything, greener than matched controls (+0.055). The clearest effect was the reservoir bed. The area with NDVI above 0.3 grew from about 95 km² to 1,574 km² by 2024. Land outside every dam-exposure group accounted for most of Kherson Oblast's relative decline. Exposure-based, pre-registered designs can separate what a single aggregate signal cannot.
 
-**Keywords**: ecocide, remote sensing, Difference-in-Differences, NDVI, randomization inference, armed conflict, Kakhovka Dam
+**Keywords**: Kakhovka Dam, armed conflict, environmental damage, NDVI, MODIS, pre-registration, difference-in-differences, randomization inference, irrigation, ecocide
 
 ---
 
 ## 1. Introduction
 
-On 6 June 2023 the Kakhovka Dam on the Dnipro River was destroyed. The reservoir behind it, about 18.2 km³ at full capacity (Vyshnevskyi et al., 2023), drained within days, and the downstream floodplain between the dam and the Dnipro–Buh estuary was inundated. The event is among the largest environmental disasters of the war in Ukraine (Shumilova et al., 2025), and it is frequently cited in debates about recognising "ecocide" as an international crime.
+The Kakhovka Dam on the lower Dnipro was destroyed on 6 June 2023. Its reservoir, about 18 km³ at full capacity (Vyshnevskyi et al., 2023), drained within days, the floodplain between the dam and the Dnipro–Buh estuary was inundated, and the intake of the canal system that irrigated much of southern Ukraine's steppe was left above the water (Shumilova et al., 2025). The event is among the most cited examples of war-time environmental harm and features prominently in debates about recognising ecocide as an international crime.
 
-Any claim that a specific act caused specific environmental damage faces a basic evidential problem: the affected region was changing anyway. Kherson Oblast had been an active war zone since February 2022, and vegetation varies strongly with season and weather. A comparison of "before" and "after" imagery cannot separate the effect of one dated event from these background changes. Causal-inference designs developed for policy evaluation address this problem by comparing the affected unit with unaffected units over the same period.
+Evidence that a specific act caused specific environmental damage must separate that act from everything else that changed at the same time. In southern Ukraine the "everything else" is large: the region had been a battlefield since February 2022, its agriculture was disrupted, the left bank of the Dnipro was occupied, and vegetation varies from year to year with weather. An earlier version of this study (Study 1, summarised in Section 3) compared the monthly mean NDVI of Kherson Oblast with four Romanian counties and found a statistically significant relative decline after June 2023. It could not attribute that decline to the dam. The treated unit was a whole oblast of which the flood covered 2%. Pre-event trends already diverged. The controls lay in another country, and five units cannot support a meaningful randomization test.
 
-This paper asks whether such a design can do that job here. It applies a Difference-in-Differences (DiD) design to monthly Sentinel-2 NDVI, comparing Kherson Oblast with four Romanian counties, and subjects the estimate to placebo tests, an event study, randomization inference and a check for independent movement among the controls. The answer has two parts. Kherson's vegetation did decline relative to its controls after June 2023, by an amount that is statistically significant, robust to seasonality and absent at a placebo date. But the checks that ask whether this decline is specific to Kherson and to June 2023 do not support attributing it to the dam. The paper also reports how the result changed across three versions of the analysis, because the sensitivity of satellite-derived evidence to technical choices is itself relevant to its use in accountability processes.
+This paper replaces that design. Treatment is defined by exposure at 231 m resolution: flooded land, the drained reservoir bed, and cropland served by the reservoir's canal network. Exposed land is compared with unexposed land inside the same war zone. The record starts in 2016, six years before the full-scale invasion. Every analytical choice, including the decision rule used to label a hypothesis as supported, was fixed in a plan committed to the public repository before any Study 2 data were downloaded (`ANALYSIS_PLAN_v2.md`, commit 521672f). Deviations and implementation choices are listed in `v2/DEVIATIONS.md` and reported below.
+
+The results separate mechanisms that an oblast-wide series merges. The flood itself left no persistent loss of summer greenness on the land it covered, except in floodplain wetlands. Cropland in the Kakhovka canal zone lost greenness relative to comparable cropland elsewhere, but a registered revision shows that this divergence happened between 2020 and 2021, before the invasion, and did not deepen after the breach. Within two seasons, most of the drained reservoir bed became vegetated land. Most of Kherson Oblast's relative decline came from land outside all three exposure groups.
 
 ## 2. Background
 
-### 2.1 Ecocide in international and domestic law
+### 2.1 Legal and evidential context
 
-Environmental damage in armed conflict is already addressed in international criminal law, most directly by Article 8(2)(b)(iv) of the Rome Statute, which criminalises "intentionally launching an attack in the knowledge that such attack will cause … widespread, long-term and severe damage to the natural environment which would be clearly excessive in relation to the concrete and direct overall military advantage anticipated" (Rome Statute, 1998). A standalone crime of ecocide does not yet exist in the Statute. In September 2024 Vanuatu, Fiji and Samoa formally proposed an amendment adding one, based on the definition drafted by an independent expert panel convened by the Stop Ecocide Foundation in 2021 (Stop Ecocide International, 2024). Several states have domestic provisions: Ukraine's Criminal Code includes an ecocide offence (Article 441), and Belgium adopted one in its 2024 criminal-code reform (Atılgan Pazvantoğlu, 2025). How far such a crime could apply in wartime remains contested (Killean, 2025). Whatever form the law takes, prosecutions will need evidence that links environmental change to a specific act.
+Environmental damage in armed conflict is addressed in international criminal law by Article 8(2)(b)(iv) of the Rome Statute, which requires "widespread, long-term and severe damage to the natural environment" that is clearly excessive in relation to the anticipated military advantage (Rome Statute, 1998). A standalone crime of ecocide was formally proposed as an amendment in September 2024 (Stop Ecocide International, 2024). Ukraine's Criminal Code already contains one (Article 441), and Belgium adopted one in 2024 (Atılgan Pazvantoğlu, 2025). How far such a crime would apply in wartime is contested (Killean, 2025). In any form, prosecution needs evidence that links environmental change to a specific act. Satellite imagery has supported international proceedings, for example *Prosecutor v. Al Mahdi* (2016), but mostly as corroboration and without agreed standards for quantitative interpretation (Kroker, 2015; Wang et al., 2013).
 
-### 2.2 Satellite imagery as evidence
+### 2.2 What the dam's destruction could do to vegetation
 
-Satellite imagery has supported international criminal proceedings for more than a decade, including the International Criminal Court's case on the destruction of cultural heritage in Timbuktu (*Prosecutor v. Al Mahdi*, 2016). It has mostly served to corroborate witness testimony rather than as stand-alone proof, and commentators have repeatedly pointed to the lack of agreed forensic standards for interpreting it (Kroker, 2015; Wang et al., 2013). The recurring weakness is the reliability of the analysis rather than of the imagery: interpretation is largely expert and qualitative, and rarely states how likely the observed change would be without the alleged act.
+Three pathways differ in place and timing:
 
-### 2.3 Existing assessments of the Kakhovka event
+1. **The flood.** It inundated about 600 km² of floodplain for days to weeks in June 2023 (UNITAR/UNOSAT, 2023). It could kill vegetation, deposit sediment and contaminants, or, once the water receded, favour regrowth.
+2. **The reservoir bed.** About 2,000 km² became exposed land, where vegetation can colonise.
+3. **The canals.** The reservoir fed irrigation canals serving farmland in Kherson and Zaporizhzhia oblasts and Crimea. Losing it removes the water that kept summer crops green in a dry steppe.
 
-The consequences of the dam's destruction have been documented with field data, remote sensing and modelling, including reservoir drainage, downstream flooding, contamination of the exposed reservoir bed and effects on estuarine and marine systems (Shumilova et al., 2025; Vyshnevskyi et al., 2023). A recent geospatial assessment of war-related ecosystem destruction in Ukraine, which includes the lower Dnipro, combines multi-temporal imagery with qualitative synthesis and explicitly does not attribute observed changes causally (Leal Filho et al., 2026). UNOSAT mapped the flood extent from several sensors within days of the event (UNITAR/UNOSAT, 2023). To the author's knowledge, none of these studies estimates the event's effect on vegetation against unaffected control regions with a counterfactual design; that is the gap this paper addresses.
+Superimposed on all three are the war's own effects: occupation, mining, shelling, displacement, and disrupted input and grain markets (Krampe et al., 2025). Existing assessments document these consequences with field, remote-sensing and modelling data (Shumilova et al., 2025; Vyshnevskyi et al., 2023; Leal Filho et al., 2026). To our knowledge none separates the pathways with a counterfactual design.
 
-### 2.4 Environment and security
+## 3. Study 1: why an administrative-unit design is not enough
 
-Armed conflict degrades environmental performance for years after fighting ends (Krampe et al., 2025), and the destruction of water infrastructure affects food and water security well beyond the flooded area. Quantitative, event-specific evidence is relevant to recovery planning as well as to accountability, provided its uncertainty is stated honestly.
+Study 1 (an earlier analysis; reference withheld for anonymous review) compared monthly Sentinel-2 NDVI of Kherson Oblast with four Romanian counties from January 2022 to November 2024. Kherson declined relative to its primary control by 0.108 NDVI (95% CI 0.007 to 0.209; p = 0.037), or 0.069 with zone-specific seasonality (p = 0.005), and a June 2022 placebo date showed no effect. Three checks undermined attribution:
 
-## 3. Data and Methods
+- In a randomization test across the five units Kherson ranked second (p = 0.40).
+- Four of five pre-event quarters already deviated from the reference quarter.
+- The estimate changed across three versions of the data extraction.
 
-### 3.1 Study design and zones
+The flood covered about 2% of the oblast. Even a total loss of vegetation on every flooded pixel would have moved the oblast mean by about 0.02, a fraction of the estimated decline. Study 1 therefore showed a real relative decline without showing what caused it. Its ten design limitations (plan §1) motivated every element of Study 2.
 
-The treated unit is Kherson Oblast, Ukraine (GADM v4.1 polygon, ≈25,500 km²). The primary control is Tulcea County, Romania, which contains most of the Danube Delta; the four-county panel adds Galați, Brăila and Constanța counties (Figure 1). The controls were chosen by the author for broadly similar delta, steppe and coastal landscapes and a continental climate outside the war zone; no formal matching was performed. Within-Ukraine controls were rejected because war effects reach far beyond the front line, and the Ukrainian part of the Danube Delta (Odesa Oblast) because its Danube ports were attacked during the study period. Tulcea County nevertheless borders Odesa Oblast.
+## 4. Data and Methods
 
-Two features of the treated unit matter for interpretation. First, the mapped flood covered at most about 564 km² of the oblast (Section 4.1), roughly 2% of its area. Second, the southern part of the former reservoir lies inside the oblast: the pre-breach water extent upstream of the dam inside the polygon is about 556 km² (UNOSAT water-extent layer, 3–5 June 2023). Water pixels are masked in the NDVI extraction (Section 3.3), so the drained bed enters the series as it becomes land. The NDVI outcome therefore averages downstream flooding, vegetation change on the former reservoir bed, any loss of reservoir-fed irrigation, and war effects unrelated to the dam.
+### 4.1 Pre-registration
 
-![](../outputs/plots/study_area_overview.png)
+The analysis plan (`ANALYSIS_PLAN_v2.md`, version 1.0) was committed to the public GitHub repository at 15:33 IST on 24 September 2026 (commit 521672f), before the first Study 2 data file was downloaded (the first MODIS composite was written about 20 minutes later). The plan has not been changed since. It fixes:
 
-*Figure 1. Treatment zone and the four Romanian control counties (GADM v4.1). Star: Kakhovka Dam.*
+- the hypotheses
+- the exposure definitions
+- outcomes and periods
+- the estimating equations
+- the inference procedures
+- nine robustness checks
+- the decision rule that maps results to the words *supported*, *suggestive* and *not supported*
 
-### 3.2 Data
+Three deviations and eleven implementation choices were logged during analysis (`v2/DEVIATIONS.md`; Section 4.8). Analyses not in the plan are labelled exploratory.
 
-| Variable | Source |
-|---|---|
-| NDVI, monthly | Sentinel-2 L2A via the Sentinel Hub Statistical API (Copernicus Data Space Ecosystem) |
-| Flood extent | UNITAR/UNOSAT (2023), product FL20230606UKR: Sentinel-1, Sentinel-2, Sentinel-3 and ICEYE layers |
-| True-colour imagery | Sentinel-2 L2A via the Sentinel Hub Process API (context only) |
-| Boundaries | GADM v4.1 (GADM, 2022) |
+### 4.2 Data and grid
 
-### 3.3 NDVI extraction
+All data were placed on one equal-area grid: EPSG:3035, 231.656 m pixels (the MODIS 250 m product's true pixel size), covering 29.0–36.5 °E and 45.3–49.3 °N. The grid spans the lower Dnipro, the former reservoir, the Dnipro reservoirs upstream, the Southern Buh and the lower Dniester.
 
-For each zone and month from January 2022 to November 2024 (35 months), NDVI = (B08 − B04)/(B08 + B04) was computed for every Sentinel-2 L2A acquisition over the zone's GADM polygon on a common 0.002° grid (≈150 m × 220 m at these latitudes, identical for all zones). Pixels classified by the Sentinel-2 Scene Classification (SCL) as no data, saturated, cloud shadow, water, medium- or high-probability cloud, thin cirrus or snow were masked; scenes with more than 80% cloud cover were skipped. For each pixel, the median NDVI of all valid acquisitions in the month was taken, and these values were averaged over the polygon. The share of grid cells with at least one valid acquisition ranged from 25% to 49% for Kherson, whose polygon occupies about half of its bounding box.
+| Dataset | Use | Source |
+|---|---|---|
+| MODIS Terra MOD13Q1 v061, 16-day, 250 m, 2016–2024 (NDVI, EVI, pixel reliability, composite day-of-year) | outcomes | Didan (2021), via Microsoft Planetary Computer |
+| ESA WorldCover 2021 v200, 10 m | land-cover fractions per pixel | Zanaga et al. (2022) |
+| UNOSAT FL20230606UKR | flood exposure; pre-breach water extent | UNITAR/UNOSAT (2023) |
+| ERA5-Land monthly means, 2015–2024 | July–October precipitation and temperature | Muñoz-Sabater et al. (2021) |
+| OpenStreetMap `waterway=canal` | irrigation network | OpenStreetMap contributors (2026) |
+| GADM v4.1 | country and oblast boundaries | GADM (2022) |
 
-This is the third version of the extraction. The first, used in a preprint of this study, queried each zone's bounding box with scene-level cloud filtering only. The second queried the polygon with pixel-level cloud masking but left the pixel size unspecified, so the API sampled each zone on a 256 × 256 grid (≈880 m over Kherson, ≈335 m over Brăila), kept water pixels, and used a single scene per pixel per month. The results under each version are reported in the code repository; Section 5 discusses how they differ.
+The Planetary Computer catalogue contained 204 of the 207 expected MODIS composites. One of the three missing composites (12 August 2024) falls in the outcome window.
 
-### 3.4 Estimation
+**Pixel universe.** Pixels inside Ukraine, excluding Crimea and Sevastopol, with at least 90% valid WorldCover coverage: 3.49 million pixels.
 
-For each comparison, the monthly gap between the treated zone and the mean of its control zone(s) was formed, gₜ = NDVIₜ(treated) − NDVIₜ(controls), and the DiD effect was estimated as
+### 4.3 Outcomes
 
-gₜ = α + β·Postₜ + εₜ,
+**Primary outcome.** The mean July–October NDVI of each pixel in each year. Only observations with MODIS pixel reliability 0 (good) or 1 (marginal) are used, and each observation is assigned to the season by its own composite day-of-year. A pixel-year is missing if fewer than five valid observations remain. The July–October window keeps 2023 entirely after the breach.
 
-where Postₜ = 1 from June 2023. For balanced data β is identical to the interaction coefficient of the conventional two-way model NDVIᵢₜ = γ·Treatedᵢ + δ·Postₜ + β·(Treatedᵢ × Postₜ) + month effects + εᵢₜ. Estimating it on the gap series matters for inference. With one treated unit, cluster-robust standard errors are unusable, and with five units they are unreliable (Cameron & Miller, 2015). The alternative, Newey–West heteroskedasticity- and autocorrelation-consistent (HAC) standard errors (Newey & West, 1987), requires the observations to be ordered in time. On the gap series they are: the lag window covers consecutive calendar months. In a stacked two-zone table, used in the earlier versions of this study, the window runs across the join between zones and treats same-month observations of the two zones as independent. All results use HAC standard errors with three lags and the t distribution; classical OLS results are shown for comparison.
+**Secondary outcomes.**
 
-The primary specification includes no month-of-year terms, because month effects shared by both zones cancel in the gap. A second specification adds month-of-year dummies to the gap regression, allowing each zone its own seasonal cycle. This matters because the pre-period (January 2022–May 2023) contains two January–May seasons and one June–December season, while the post-period contains two June–November seasons; if the zones' seasonal amplitudes differ, shared month effects leave a seasonal difference that loads onto Post.
+- July–August mean NDVI
+- April–October mean NDVI, excluding 2023
+- July–October mean EVI
+- for cropland, a "cropped" indicator: 90th-percentile April–October NDVI ≥ 0.5
 
-### 3.5 Validation checks
+**Periods.** 2016–2021 are pre-war, 2022 is the war year before the breach, and 2023–2024 are post-breach.
 
-- *Placebo in time*: a fake event date of June 2022, using pre-event data only.
-- *Narrowed baseline*: the model restricted to January 2023 onward, with its own placebo (fake date March 2023 within January–May 2023, one HAC lag).
-- *Event study*: the gap regressed on quarter dummies relative to June 2023 (quarter 0 = June–August 2023), with March–May 2023 as reference; eleven coefficients, corrected with the Bonferroni and Benjamini–Hochberg (1995) procedures.
-- *Four-county panel*: Kherson against the mean of all four controls and against each separately.
-- *Placebo in space*: each of the five units assigned "treated" status in turn against the other four; Kherson's rank gives an exact randomization p-value (Conley & Taber, 2011), whose minimum with five units is 0.20.
-- *Control-only divergence*: each Romanian county treated against the other three, with Kherson excluded.
-- *Specification checks*: HAC lag lengths of one to six months, log(NDVI), and exclusion of zone-months with less than 15% or 25% valid coverage.
+**Fixed panel.** A pixel enters an analysis only if it has the outcome in at least seven of the nine years.
 
-All estimates are produced by a single script and stored in one results file (see Data and Code Availability).
+### 4.4 Exposure groups (Figure 1)
 
-### 3.6 Pre-event comparability
+**Flooded (F; H1).**
 
-Over the pre-event period, mean NDVI was 0.376 in Kherson (SD 0.076, n = 17 months) and 0.404 in Tulcea (SD 0.120); the difference is not significant (Welch t-test, p = 0.43). Seasonal amplitude, the range of the monthly means, was 0.202 in Kherson and 0.333 in Tulcea. Similar levels with different seasonal amplitudes are the situation in which shared month effects are insufficient (Section 3.4).
+- Definition: at least 50% of the pixel inside UNOSAT's cumulative 6–9 June 2023 flood polygon, and less than 20% permanent water. This gives 9,247 pixels, or 500 km².
+- Excluded: pixels 10–50% flooded, and pixels flooded only in other June layers.
+- Candidate controls: pixels 0% flooded in all 13 June 2023 UNOSAT flood layers, 2–15 km from a flooded pixel, less than 20% water, and on the same bank.
 
-## 4. Results
+**River banks.** The Dnipro main channel was traced as the least-cost path through pre-breach water, from the Zaporizhzhia dam to the estuary mouth. Land within 30 km of the flood was split along it into right bank (unoccupied after November 2022) and left bank (occupied). Of the flooded pixels, 2,765 lie on the right bank and 6,482 on the left.
 
-### 4.1 Flood extent
+**Matching.** Within each bank × dominant-land-cover stratum, each flooded pixel was matched to three controls (with replacement). Matching used the Mahalanobis distance on the six 2016–2021 values of the outcome, with a caliper of 0.25 SD of the treated–control distance distribution.
 
-UNOSAT's layers map the downstream flood on six dates with four sensors (Table 1; Figures 2 and 3). The largest single-sensor extent is ICEYE radar on 7 June, 520.8 km² within a 2,098 km² analysis area; Sentinel-3 maps 122.5 km² on 6 June and 464.2 km² on 9 June at coarser resolution; UNOSAT's cumulative 6–9 June composite is 617 km², of which 564 km² lies inside Kherson Oblast. By 21 June, Sentinel-1 radar maps 21.2 km². The layers differ in sensor, resolution, analysis extent and cloud obstruction, so they document the flood's rise and recession qualitatively rather than as a continuous series; UNOSAT describes them as preliminary and not yet validated in the field.
+**Former reservoir bed (H3).** The largest connected body of at least 50% WorldCover water between the Kakhovka and Zaporizhzhia dams: 1,812 km² on the grid.
 
-*Table 1. UNOSAT flood-extent layers (areas computed in an equal-area projection).*
+**Kakhovka canal zone (K) and comparison zone (O; H2).**
 
-| Date (2023) | Sensor | Flood extent (km²) | Inside Kherson Oblast (km²) | Analysis extent (km²) |
-|---|---|---|---|---|
-| 6 June | Sentinel-3 | 122.5 | 122.5 | 18,751 |
-| 7 June | ICEYE | 520.8 | 494.7 | 2,098 |
-| 8 June | Sentinel-2 | 260.9 | 220.1 | 18,751 |
-| 9 June | Sentinel-3 | 464.2 | 439.3 | 18,751 |
-| 13 June | Sentinel-2 | 179.9 | 164.8 | 11,031 (55% cloud-obscured) |
-| 21 June | Sentinel-1 | 21.2 | 16.0 | 10,788 |
-| 6–9 June composite | multiple | 617.0 | 564.0 | — |
+- Network: OpenStreetMap canals within 2 km of the reservoir or of the Dnipro within 5 km below the dam, plus every canal connected to them. This gives 1,879 canal segments totalling 3,264 km.
+- Zone K: cropland (WorldCover crop ≥ 60%) within 5 km of that network.
+- Zone O: cropland more than 30 km from the reservoir and more than 5 km from the network.
+- Irrigated before the war: mean July–August NDVI ≥ 0.45 in at least three of 2017–2021.
+- Rainfed: mean July–August NDVI < 0.35 in at least four of those years.
+- Other cropland is excluded.
+- Resulting groups: 97,344 irrigated and 22,926 rainfed pixels in K; 1,362,498 irrigated and 106,863 rainfed pixels in O.
 
-![](../outputs/plots/flood_extent_map.png)
+**Placebo units.**
 
-*Figure 2. UNOSAT flood-extent layers for 6, 9 and 21 June 2023.*
+- H1: floodplains within 3 km of permanent river water along the Southern Buh (407 km of river), the lower Dniester (116 km) and the Dnipro above Zaporizhzhia (232 km). These were cut into 10 km segments per river side, giving 141 units. Each was treated as if flooded and put through the H1 pipeline.
+- H2: each oblast of zone O in turn was treated as if it were zone K.
 
-![](../outputs/plots/flood_hydrograph.png)
+### 4.5 Estimation
 
-*Figure 3. Flood extent in each UNOSAT layer, by sensor. Points are separate observations.*
+**H1 (matched flood design).**
 
-Sentinel-2 true-colour mosaics of the lower Dnipro before (April–May 2023) and after (July 2023) the breach are provided with the code as geographic context. The frame covers the downstream floodplain and only the south-western tip of the former reservoir.
+Y<sub>iy</sub> = α<sub>i</sub> + λ<sub>y,s</sub> + β·F<sub>i</sub>·Post<sub>y</sub> + δ·F<sub>i</sub>·War<sub>y</sub> + γ′W<sub>iy</sub> + ε<sub>iy</sub>
 
-### 4.2 NDVI and the primary estimate
+where:
 
-Monthly NDVI in Kherson and Tulcea is similar in spring but diverges in summer and autumn, when Tulcea stays greener (Figure 4). The divergence widens after June 2023 and is largest in the 2024 growing season, when Kherson's June–November NDVI stayed between about 0.26 and 0.34 while Tulcea's stayed above 0.45. The primary DiD estimate is −0.108 NDVI (95% CI −0.209 to −0.007; HAC p = 0.037; classical p = 0.001), equal to 29% of Kherson's pre-event mean NDVI — a scale reference, not a measured loss of vegetation.
+- α<sub>i</sub>: pixel fixed effects
+- λ<sub>y,s</sub>: year × stratum (bank × dominant class) effects
+- W: July–October ERA5-Land precipitation and temperature of the pixel's 0.1° cell
+- Matched controls are weighted by Σ1/k over the flooded pixels they serve.
 
-![](../outputs/plots/ndvi_comparison.png)
+**H2 (triple difference).**
 
-*Figure 4. Monthly mean NDVI, Kherson Oblast and Tulcea County (cloud- and water-masked monthly median composites).*
+Y<sub>iy</sub> = α<sub>i</sub> + λ<sub>y,oblast</sub> + μ<sub>y,irrigated</sub> + κ<sub>y,zone</sub> + β·Irr<sub>i</sub>·K<sub>i</sub>·Post<sub>y</sub> + δ·Irr<sub>i</sub>·K<sub>i</sub>·War<sub>y</sub> + γ′W<sub>iy</sub> + ε<sub>iy</sub>
 
-### 4.3 Seasonality
+In both models β is the primary estimand and δ separates the war year. The event-study versions replace the Post and War terms with year dummies, with 2021 as reference. Fixed effects were removed by an exact projection: within-pixel demeaning, then partialling out the low-dimensional effects (Frisch–Waugh–Lovell). Each estimate was checked against an explicit dummy-variable regression on a subsample.
 
-Allowing each zone its own seasonal cycle reduces the estimate to −0.069 (95% CI −0.116 to −0.023; p = 0.005). About a third of the primary estimate is therefore attributable to the different seasonal amplitudes of the two zones combined with the different seasonal composition of the pre- and post-event windows; the remainder is not.
+### 4.6 Inference
 
-### 4.4 Placebo tests and the narrowed baseline
+- Standard errors are clustered on 10 km × 10 km blocks.
+- Wild cluster bootstrap p-values: restricted, Rademacher weights, 9,999 draws (Cameron et al., 2008).
+- Conley (1999) spatial standard errors with a 25 km Bartlett kernel.
+- Randomization p-values from the placebo units: the share of placebo estimates at least as negative as the real one.
+- The two primary hypotheses are corrected for multiplicity with the Holm (1979) procedure.
+- Pre-trends: a joint F-test that the 2016–2020 event-study coefficients are zero.
+- Sensitivity to parallel-trends violations uses the relative-magnitudes restriction of Rambachan and Roth (2023). The post-breach violation may change per year by at most M̄ times the largest pre-period year-to-year change, for M̄ = 0.5, 1 and 2. The target is the average 2023–2024 effect relative to 2021.
 
-The placebo with a fake event date of June 2022 returns +0.012 (95% CI −0.086 to 0.109; p = 0.802): no comparable shift appears a year earlier. Restricting the window to January 2023 onward gives a larger estimate, −0.186 (95% CI −0.280 to −0.092; p = 0.001), but that window's own placebo, a fake date of March 2023 within January–May 2023, is also significant (−0.103; p = 0.004). With five months the placebo is fragile, but it means the narrowed estimate cannot be read as a cleaner measure of the event (Figure 5).
+### 4.7 Decision rule (fixed in advance)
 
-![](../outputs/plots/robustness_check.png)
+- **Supported:** β < 0, Holm-adjusted wild-bootstrap p < 0.05, randomization p < 0.10, and the M̄ = 1 robust interval excludes zero.
+- **Suggestive:** β < 0 with unadjusted p < 0.05 but one of the other conditions fails.
+- **Not supported:** otherwise.
 
-*Figure 5. Primary and narrowed-baseline estimates with their placebo tests; classical and HAC 95% confidence intervals.*
+### 4.8 Deviations
 
-### 4.5 Event study
+Three deviations from the plan are logged in `v2/DEVIATIONS.md`:
 
-After the event, the gap is significantly more negative than in the reference quarter in five of six quarters (Figure 6): June–August 2023 (−0.137), September–November 2023 (−0.156), March–May 2024 (−0.078, p = 0.011), June–August 2024 (−0.245) and September–November 2024 (−0.236); all but March–May 2024 have p < 0.001 and survive Bonferroni correction (threshold p < 0.0045). Only December 2023–February 2024 is close to zero (−0.017, p = 0.15).
+1. **Conley kernel.** The plan did not name one. A flat kernel gave a near-zero variance in the small H1 matched sample, so a Bartlett kernel was used.
+2. **H2 placebo zones.** Five oblasts of zone O have almost no rainfed cropland and cannot form a placebo. The six that remain make the minimum attainable randomization p equal to 1/7 = 0.14. H2 could therefore not reach "supported" by construction, a fact we discovered only when running the analysis.
+3. **H1 placebo units.** Formed per river side. Those with fewer than ten matched pixels are dropped from the matched test (50 of 141 remain).
 
-Before the event, four of five quarters also differ significantly from the reference quarter: January–February 2022 (−0.038, p = 0.018), March–May 2022 (−0.050, p = 0.001), June–August 2022 (−0.159, p < 0.001) and December 2022–February 2023 (+0.080, p < 0.001). Part of the post-event pattern is therefore seasonal: June–August is strongly negative in 2022 as well. The comparison that the seasonal pattern cannot explain is between the same seasons in different years: the summer–autumn gap was −0.159 and −0.054 in 2022, −0.137 and −0.156 in 2023, and −0.245 and −0.236 in 2024. The decline grows in the second post-event season rather than appearing as a single step in June 2023. The pre-event deviations nonetheless violate the parallel-trends assumption on which the DiD estimate rests; the pre-existing conflict in Kherson may explain them, but it does not remove the violation.
+The caliper wording in the plan was ambiguous. Our reading was coded before results were seen, and its consequences are reported in Section 5.1.
 
-![](../outputs/plots/event_study.png)
+### 4.9 Registered revision
 
-*Figure 6. Quarterly event study of the Kherson–Tulcea NDVI gap; 95% HAC confidence intervals; † survives Bonferroni correction.*
+The pre-registered analyses exposed five problems:
 
-### 4.6 Four-county panel
+1. H2 irrigation status came from the same years as the outcome's pre-period.
+2. The irrigation rule labelled rainfed summer crops as irrigated outside the dry south.
+3. The H2 placebo test had a floor of p = 0.14.
+4. Neither model accounted for war intensity or occupation.
+5. The water share of each pixel was fixed at 2021, although river levels changed after the breach.
 
-Against the mean of all four Romanian counties the estimate is −0.071 (95% CI −0.132 to −0.011; p = 0.022), and −0.060 with zone-specific seasonality (p = 0.004); the June 2022 placebo is +0.031 (p = 0.223). Against individual controls the estimate is −0.108 for Tulcea (p = 0.037), −0.077 for Galați (p = 0.007), −0.101 for Brăila (p = 0.003) and +0.001 for Constanța (p = 0.98) (Figure 7). Three of four comparisons agree in sign and significance; Constanța, the most coastal and urbanised control, shows no difference.
+A registered revision (`ANALYSIS_PLAN_v2_ADDENDUM_1.md`) was committed at 22:53 IST on 24 September 2026 (commit 30e3840). This was after the pre-registered results were known, but before the additional data it needed were downloaded and before any revised analysis was run. It specifies:
 
-![](../outputs/plots/control_panel_comparison.png)
+- **R1:** irrigated and rainfed status from July–August NDVI 2010–2015 (irrigated: ≥ 0.45 in ≥ 4 of 6 years; rainfed: < 0.35 in ≥ 5 of 6).
+- **R2:** comparison zone restricted to the four steppe oblasts (Odesa, Mykolaiv, Kherson, Zaporizhzhia), with Dnipropetrovsk added as a sensitivity check.
+- **R3:** placebo units at district (raion) level: districts with at least 300 irrigated and 300 rainfed pixels.
+- **R4:** occupation and conflict intensity from VIINA (Zhukov, 2023).
+  - Occupation: each pixel takes the 1 August control status of the nearest settlement within 10 km.
+  - Conflict intensity: log(1 + war-related events located at settlement level within 5 km, 1 March–31 October).
+  - Added to H1: year × 2 km distance-to-channel fixed effects and the conflict term.
+  - Added to H2: year × irrigated × occupied fixed effects and the conflict term.
+- **R5:** annual water share from Impact Observatory 10 m land cover, 2017–2023 (Karra et al., 2021); 2024 uses 2023, the latest published map. Pixel-years with water > 10%, or a change of more than 10 points from 2021, are removed.
 
-*Figure 7. Kherson against each control county and the four-county mean; 95% HAC confidence intervals.*
+The plan's decision rule is applied unchanged, and results are labelled "registered revision". Two implementation choices were made and logged: counting only VIINA events classified as military (t_mil ≥ 0.5), and treating contested settlements as unoccupied.
 
-### 4.7 Placebo in space
+## 5. Results
 
-When each of the five units is treated in turn against the other four at the real June 2023 date, Kherson's estimate (−0.071) is almost exactly matched by Constanța's (−0.073), and it is the second largest in absolute value, after Constanța (Figure 8). The exact randomization p-value is 0.40, one-sided and two-sided. By this test, a post-June-2023 decline of Kherson's size relative to the other units is not unusual among these five units.
+![](outputs/v2/figures/s2_fig1_exposure_map.png)
 
-![](../outputs/plots/placebo_in_space.png)
+*Figure 1. Exposure groups on the 231 m analysis grid.*
 
-*Figure 8. Placebo in space: each unit assigned "treated" status against the other four.*
+### 5.1 H1: the flood
 
-### 4.8 Control-only divergence
+**Common support.** Before 2022, flooded land was far greener in July–October than unflooded land 2–15 km away: the standardised difference was about 2.0 in every pre-war year. Most flooded pixels are floodplain wetland or riparian forest, and almost nothing like them lies outside the flood on the same bank (right-bank wetland: 1,171 flooded pixels, 24 candidate controls). The pre-registered caliper therefore matched only 148 of the 8,446 flooded pixels with complete pre-war data (1.8%). In that sample balance is excellent (standardised differences ≤ 0.02).
 
-Excluding Kherson and treating each Romanian county against the other three, Constanța shows a borderline decline of its own (−0.097, p = 0.084) and Brăila a small significant rise (+0.040, p = 0.045); Tulcea (+0.049, p = 0.18) and Galați (+0.008, p = 0.63) show no significant shift. The control counties are therefore not uniformly stable over the study window, and Constanța in particular moves in the same direction as Kherson. This check does not show why; regional spillover, changes in Black Sea shipping and grain markets, weather and local land use are all possible.
+**Main estimate.**
 
-### 4.9 Specification checks
+- β = +0.006 NDVI (95% CI −0.014 to 0.026). Cluster p = 0.58, wild-bootstrap p = 0.60 (Holm 0.60), Conley SE 0.014.
+- Pre-war trends are flat (joint p = 0.72).
+- The randomization test places the real estimate in the middle of 50 placebo floodplains (p = 0.63; Figure 4).
+- The Rambachan–Roth interval at M̄ = 1 is −0.050 to 0.057.
 
-Across HAC lag lengths of one to six months, the p-value of the primary estimate ranges from 0.010 to 0.042. In logs, the estimate is −0.291 log points, about −25% (p = 0.030). Excluding zone-months with less than 15% or 25% valid coverage (February 2023 in Galați and Brăila) leaves the primary estimate unchanged, as neither month belongs to its zones, and moves the pooled estimate to −0.069 (p = 0.023).
+H1 is **not supported**.
 
-## 5. Discussion
+**The full flooded area.** The pre-registered robustness check without matching uses all 8,626 flooded pixels in the fixed panel. It gives β = +0.011 (−0.004 to 0.025; p = 0.15; randomization p = 0.70 among 141 placebos). The other pre-registered checks are listed below; in every sample the flood's effect is small or positive.
 
-The dam's destruction is not in doubt, nor is the flooding it caused (Section 4.1). What this study tests is whether monthly NDVI over Kherson Oblast changed after June 2023 in a way that a counterfactual design can attribute to the event. The results separate two claims that are easily conflated. The first — that Kherson's vegetation declined relative to comparable unaffected regions after June 2023 — is supported: the decline is statistically significant against the primary control and the pooled panel, survives zone-specific seasonality, lag-length and functional-form choices, and is absent at a placebo date a year earlier. The second — that the decline is specific to the dam's destruction — is not established. With five units, Kherson's movement is matched by Constanța's, so randomization inference gives p = 0.40; the parallel-trends assumption is violated before the event; and the decline builds up over the second growing season instead of appearing as a step in June 2023.
+| Check | β | p | Matched flooded pixels |
+|---|---|---|---|
+| Control band 5–25 km | +0.024 | 0.007 | 163 |
+| No weather covariates | +0.004 | 0.68 | 148 |
+| Flood threshold 25% | +0.011 | 0.24 | 186 |
+| Flood threshold 75% | +0.004 | 0.74 | 137 |
+| EVI | +0.006 | 0.30 | 224 |
+| Right bank only | +0.001 | 0.95 | 21 |
+| Left bank only | +0.006 | 0.61 | 127 |
+| Excluding land within 3 km of built-up areas | +0.000 | 0.98 | 8 |
 
-The timing and scale of the decline are informative about mechanism, though this design cannot test mechanisms. The mapped flood covered about 2% of the oblast; even total loss of vegetation on every flooded pixel would move the oblast mean by roughly 0.02, far less than the estimated decline. A decline that deepens in the 2024 season and spans the whole oblast is more consistent with slower, larger-scale pathways — the loss of reservoir-fed irrigation water for southern Kherson's farmland, or the war's continuing effects on agriculture — than with the flood itself. Distinguishing these pathways requires treated units that match the footprint of each one, which an oblast-wide mean cannot provide.
+**Where the flood did matter.** Two patterns stand out:
 
-The history of this analysis carries a further lesson. The first version (bounding-box extraction, stacked-panel standard errors) reported a significant decline of −0.070 (p = 0.022). Correcting the extraction geometry and the standard errors reduced the estimate to −0.075 with p = 0.16. Correcting the pixel size, masking water and compositing each month over all clear acquisitions then produced the estimate reported here, −0.108 with p = 0.037. Each change was technical, and each moved the headline conclusion across the conventional significance threshold. Satellite-derived evidence intended for accountability processes should therefore be released with the code that produces it and with the falsification checks used here, so that results can be reproduced and challenged.
+- **Wetlands declined.** In floodplain wetland, flooded pixels lost greenness in the matched sample (−0.059, p = 0.004; 44 matched pixels). The unmatched, exploratory estimate over all 4,899 flooded wetland pixels is −0.041 (95% CI −0.062 to −0.020). Flooded grassland, cropland, trees and built-up land show zero or positive estimates.
+- **A short dip, then regrowth.** The exploratory match without caliper (all 8,446 pixels, residual standardised differences about 0.3) shows a significant dip in 2023 (−0.026, p = 0.001) followed by greener-than-baseline vegetation in 2024 (+0.025, p < 0.001; Figure 2). This matches the pre-registered secondary outcome: April–October NDVI excluding 2023 is higher on flooded land (+0.050, p < 0.001). That sample's pre-trend test rejects (p = 0.003), so the pattern is descriptive.
 
-For the legal framing in Section 2.1, the implication is limited but concrete. The flood record documents the extent of inundation, and the NDVI analysis documents a statistically detectable relative decline in vegetation across the oblast that persisted for at least eighteen months, which bears on the "widespread", "severe" and "long-term" elements of Article 8(2)(b)(iv) only as descriptive evidence. It does not establish that the decline was caused by the dam's destruction rather than by other war-related or regional factors, and nothing in this study bears on intent, proportionality or responsibility.
+![](outputs/v2/figures/s2_fig2_h1_event_study.png)
 
-## 6. Limitations
+*Figure 2. H1 event studies relative to 2021. Left: pre-registered caliper matching (148 flooded pixels). Right: exploratory matching without caliper (8,446 pixels). 95% cluster-robust intervals.*
 
-- **Unit of analysis.** The treated unit is the whole oblast, which mixes flooding, the former reservoir bed, possible irrigation loss and war effects unrelated to the dam (Section 3.1).
-- **Few units and hand-picked controls.** Five units limit randomization inference to p ≥ 0.20; the controls were not formally matched, and Constanța moves in the same direction as Kherson.
-- **Parallel trends.** Four of five pre-event quarters deviate significantly from the reference quarter.
-- **Valid coverage.** Monthly composites rest on 25–49% of Kherson's grid cells; the rest is cloud, water or outside the polygon.
-- **Temporal resolution.** The June 2023 value pools five pre-event days with 25 post-event days.
-- **Single indicator.** NDVI measures greenness only, not soil contamination, salinity, water quality or biodiversity.
-- **Flood data.** UNOSAT layers are preliminary, come from different sensors and analysis extents, and are used descriptively.
+### 5.2 H2: loss of irrigation water
 
-## 7. Conclusion
+**Main estimate.** The triple difference is large and precisely estimated:
 
-After the destruction of the Kakhovka Dam, monthly Sentinel-2 NDVI over Kherson Oblast declined relative to Romanian control counties by an amount that is statistically significant (primary estimate −0.108, 95% CI −0.209 to −0.007; −0.069 after allowing zone-specific seasonality), largest in the second post-event growing season and absent at a placebo date. The design does not, however, attribute that decline to the dam: one control county shows an equally large shift, pre-event quarters already deviate, and the oblast-wide unit mixes several mechanisms. A statistically significant satellite signal and an event-attributable one are different claims, and studies offered as evidence of conflict-related environmental damage should report the tests that distinguish them.
+- β = −0.074 NDVI (95% CI −0.088 to −0.060), 15% of the pre-war mean of irrigated cropland in zone K (0.48).
+- Wild-bootstrap p < 0.001 (Holm 0.0002), Conley SE 0.013; 1.59 million pixels in 1,917 clusters.
+- The war-year term is also negative (δ = −0.022, p < 0.001).
+- Every pre-registered robustness check keeps the sign and significance except one:
+
+| Check | β | p |
+|---|---|---|
+| Classification thresholds 0.40 / 0.30 | −0.062 | < 0.001 |
+| Classification thresholds 0.50 / 0.40 | −0.092 | < 0.001 |
+| No weather covariates | −0.071 | < 0.001 |
+| EVI | −0.072 | < 0.001 |
+| Excluding land within 3 km of built-up areas | −0.080 | < 0.001 |
+| Kherson part of zone K only | −0.105 | < 0.001 |
+| Zaporizhzhia part of zone K only | −0.019 | 0.10 |
+
+**Secondary outcomes.** July–August NDVI falls more (−0.108), April–October less (−0.044). The share of pixels that were cropped at all falls by 1.8 percentage points (p = 0.03).
+
+**Why the attribution is weaker than the estimate.** The event study (Figure 3) shows that the irrigated–rainfed contrast in zone K was 0.05–0.07 higher relative to zone O in every year 2016–2020 than in 2021. It was +0.029 in 2022, −0.016 in 2023 (p = 0.03) and −0.030 in 2024 (p < 0.001).
+
+- Pre-trends are strongly rejected (joint p < 10⁻³⁸).
+- Much of the main estimate reflects the drop from the 2016–2020 level to 2021, before the war and the breach.
+- Relative to 2021, the post-breach effect averages −0.023 (SE 0.007).
+- The Rambachan–Roth interval already includes zero at M̄ = 0.5 (−0.122 to 0.077).
+- In the placebo-zone test the Kakhovka zone has the most negative estimate of seven (Figure 4), but with six placebos the smallest attainable p is 0.14.
+
+Under the pre-registered rule H2 is **suggestive**. The estimate, its robustness, its concentration in the Kherson part of the canal zone and its July–August timing are consistent with irrigation loss. The pre-existing divergence and the limited placebo set mean the design cannot rule out that irrigated farmland in the canal zone was already on a different path.
+
+A further limitation concerns the exposure measure itself. The irrigation rule assumes that rainfed crops senesce by July, as they do in the dry south. In the wetter northern oblasts of zone O, 93% of cropland passes the "irrigated" threshold, so "irrigated" there largely means summer crops. The rule was applied as registered; the Kherson-only and threshold checks bound its influence.
+
+![](outputs/v2/figures/s2_fig3_h2_event_study.png)
+
+*Figure 3. H2 event study (irrigated minus rainfed cropland, zone K minus zone O), relative to 2021; 95% cluster-robust intervals.*
+
+![](outputs/v2/figures/s2_fig4_randomization_inference.png)
+
+*Figure 4. Randomization inference. Left: H1 estimate (red line) against 50 placebo floodplain segments. Right: H2 estimate against six placebo zones.*
+
+### 5.3 H3: the former reservoir bed
+
+Before 2023, the reservoir pixels had a mean July–October NDVI of 0.01–0.07 (open water), and only about 86–100 km² exceeded NDVI 0.3, mostly shallow margins and islands.
+
+| | Mean July–October NDVI | Area with NDVI > 0.3 |
+|---|---|---|
+| 2016–2022 | 0.01–0.07 | about 86–100 km² |
+| 2023 | 0.34 | 906 km² |
+| 2024 | 0.55 | 1,574 km² (88% of valid pixels) |
+
+This is descriptive, with no counterfactual. Within two growing seasons most of the drained bed became vegetated land (Figure 5).
+
+![](outputs/v2/figures/s2_fig5_h3_reservoir_bed.png)
+
+*Figure 5. The former Kakhovka reservoir bed: mean July–October NDVI and area with NDVI above 0.3.*
+
+### 5.4 H4: what drove Kherson Oblast's change
+
+Between 2021 and 2024, Kherson Oblast's mean July–October NDVI changed by −0.029 relative to the same land-cover classes in zone O. Area-weighted contributions:
+
+| Category | Contribution (NDVI) | Share of the negative part |
+|---|---|---|
+| Land outside every exposure group | −0.024 | 61% |
+| Irrigated cropland in the canal zone | −0.013 | 32% |
+| Rainfed cropland in the canal zone | −0.002 | 5% |
+| Flooded land | −0.0004 | 1% |
+| Greening reservoir bed | +0.010 | offsets part of the decline |
+
+The flood contributed almost nothing, consistent with its 2% area share and the H1 result. Irrigated canal-zone cropland accounts for about a third of the decline, although Section 5.5 shows that its divergence predates the breach. Most of it came from land that neither flooded nor depended on the reservoir (Figure 6).
+
+![](outputs/v2/figures/s2_fig6_h4_decomposition.png)
+
+*Figure 6. Contributions to Kherson Oblast's 2021→2024 change in July–October NDVI, relative to zone O.*
+
+### 5.5 Registered revision
+
+![](outputs/v2/figures/s2_fig7_revision_event_studies.png)
+
+*Figure 7. Event studies under the registered revision, relative to 2021; 95% cluster-robust intervals.*
+
+**H1.**
+
+- **Sample.** The water rule removed 13,109 pixel-years. The matched sample shrank to 100 flooded pixels (balance ≤ 0.02 SD).
+- **Main estimate.** Flooded land was *greener* than matched controls after the breach: β = +0.055 (95% CI 0.034 to 0.076). Wild-bootstrap p = 0.0002, Conley SE 0.012. The effect appears in both 2023 and 2024 (+0.051 each).
+- **Why the verdict stays negative.** The pre-registered test is for a decline, so H1 remains **not supported**. The randomization test places the estimate among 50 placebo floodplains with p = 0.88 for a decline.
+- **All flooded pixels.** Without matching (7,681 flooded pixels), the estimate is +0.012 (p = 0.13).
+- **Wetlands.** Floodplain wetland still declined (−0.061, 95% CI −0.081 to −0.041; 4,258 pixels). Fixing water shares, occupation and front-line distance did not remove this decline.
+
+**H2.**
+
+- **Classification counts.** Zone K: 86,693 irrigated and 7,390 rainfed pixels. Restricted zone O: 490,950 irrigated and 23,594 rainfed.
+- **Main estimate.** β = −0.053 (95% CI −0.074 to −0.032). Wild-bootstrap p = 0.0001 (Holm 0.0002), Conley SE 0.019. The war-year term is δ = −0.049 (p < 0.001).
+- **The event study reverses the reading of β.** The contrast was 0.03–0.07 higher in 2016–2020 than in 2021, and it did not move after the breach: −0.007 (2022), −0.014 (2023, p = 0.18), −0.006 (2024, p = 0.65). Relative to 2021 the post-breach effect is −0.010, and the Rambachan–Roth interval at M̄ = 1 is −0.170 to 0.150.
+- **Placebo districts.** Among 15 placebo districts (estimates −0.129 to +0.034) the canal zone ranks sixth (randomization p = 0.38).
+- **Robustness.**
+  - The sign of β holds across the registered checks: thresholds, EVI, weather, built-up land, and adding Dnipropetrovsk (−0.036 to −0.076).
+  - It holds in the Kherson part of the canal zone (−0.082).
+  - It does not hold in the Zaporizhzhia part (+0.001, p = 0.95).
+
+By the plan's rule H2 remains **suggestive** (β < 0 and Holm p < 0.05, but the randomization and sensitivity conditions fail). Substantively, the revision locates the canal-zone divergence **before** the invasion, between 2020 and 2021. After that, 2022–2024 add no further relative loss.
+
+**H3 and H4.** Impact Observatory's annual map for 2023 still classifies most of the former reservoir as water, because the reservoir was full for five months of that year. The land-only H3 series therefore covers 244 km².
+
+- **H3 (land-only).** On this land, July–October NDVI was 0.37 in 2023 and 0.55 in 2024, the same trajectory as the full bed.
+- **H4 (with the water rule).** By construction the rule removes the whole reservoir bed from H4, since every pixel's water share changed. The Kherson decomposition then totals −0.052 relative to the steppe zone O. Contributions:
+  - other land: −0.039
+  - irrigated canal-zone cropland: −0.012
+  - rainfed canal-zone cropland: −0.001
+  - flooded land: −0.0004
+
+## 6. Discussion
+
+### 6.1 Three mechanisms, three answers
+
+**The flood.** It did not leave a lasting loss of summer vegetation on the land it covered. The land was greener than baseline in 2024, as expected from sediment and moisture after a short inundation. The exception is floodplain wetland, where greenness fell. Wetlands are also the class most affected by the post-breach drop in river level: the Dnipro below the dam is no longer regulated by the reservoir, so the pattern may reflect the loss of the dam rather than the flood itself. The design cannot separate the two.
+
+**Irrigation loss.** The pre-registered estimate pointed to a large relative decline of canal-zone farmland, strongest in Kherson and in mid-summer. The registered revision shows that this decline is not a post-breach change. With irrigation status measured before 2016, comparisons confined to the steppe, and occupation and conflict held fixed, the canal-zone contrast fell between 2020 and 2021 and then stayed flat through 2022–2024. Losing Kakhovka water after June 2023 may still have mattered for particular farms. But a NDVI-based irrigation class cannot show it: in the steppe the class captures summer cropping rather than irrigation, and district-level placebos move as much as the canal zone.
+
+**The reservoir bed.** Its change is the largest and least ambiguous: about 1,500 km² of new vegetation within two seasons. Whether this is ecological recovery or a new ecological and contamination risk is a question for field studies (Shumilova et al., 2025); NDVI measures greenness only.
+
+### 6.2 Why the oblast-level result was misleading
+
+Study 1's significant oblast-wide decline was real. H4 shows that most of it was driven by land outside every dam-exposure pathway, and that it was partly masked by reservoir-bed greening. An aggregate signal combines a flood effect near zero, a canal-zone divergence that predates the breach, a large positive reservoir effect and a war-wide decline. Its sign and size depend on the unit boundaries more than on the event. For accountability purposes this is the central methodological point: attribution requires treatment units that match the physical footprint of each pathway.
+
+### 6.3 Why pre-registration mattered
+
+Two outcomes of this study would have been easy to change after seeing them.
+
+- **The H1 caliper** left 1.8% of the flooded area in the main estimate. A looser caliper, chosen after the fact, would have produced a different headline: a significant 2023 dip, reported in Section 5.1 as exploratory.
+- **The H2 decision rule** required a randomization p-value that the available placebo zones could not produce. Relaxing it would have turned "suggestive" into "supported".
+
+Keeping both as registered, and reporting the alternatives separately, is what makes the conclusions credible.
+
+### 6.4 Implications for legal use
+
+The results bear on the descriptive elements of Article 8(2)(b)(iv) at the level of mechanisms:
+
+- The reservoir bed's transformation is widespread and well documented.
+- The flood's direct effect on vegetation was short-lived, except in wetlands.
+- A post-breach loss of greenness on canal-irrigated farmland could not be detected once pre-war trends, occupation and conflict were accounted for.
+
+Nothing here bears on intent, proportionality or responsibility.
+
+## 7. Limitations
+
+- **Exposure measures.**
+  - The flood polygon is a preliminary multi-sensor product.
+  - Irrigation status is inferred from NDVI itself and misclassifies summer crops in wetter oblasts.
+  - OSM canals reflect current mapping.
+  - Land cover is from 2021 only.
+- **Common support (H1).** Flooded floodplain has few unflooded look-alikes, so the pre-registered matched sample is small (148 pixels) and not representative of the flooded area.
+- **Parallel trends (H2).** Pre-war trends differ strongly in both the pre-registered and the revised analysis; the post-breach effect relative to 2021 is much smaller than β.
+- **Irrigation measure (H2).** Even with the 2010–2015 classification, the NDVI rule labels 95% of the classified steppe cropland outside the canal zone "irrigated". It captures summer cropping, not irrigation. An independent irrigation map would be needed.
+- **Randomization inference (H2).** Six placebo oblasts (pre-registered) set a floor of p = 0.14. Only 15 districts qualified as placebos under the revision.
+- **Annual water (revision).** Impact Observatory's annual map mixes the months before and after the breach in 2023 and has no 2024 edition. The land-only H3 series is therefore small, and the reservoir bed drops out of the revised H4.
+- **Timing of the revision.** The revision was registered after the pre-registered results were known. It is reported alongside them, never instead of them.
+- **Indicator.** NDVI and EVI measure greenness, not crop yield, biodiversity, soil contamination or salinity. July–October means miss spring crops.
+- **Sensor and years.**
+  - MODIS 250 m mixes land covers at field edges.
+  - One composite in the 2024 outcome window is missing from the catalogue.
+  - Only two post-breach seasons are observed.
+- **War exposure.** The revision adds VIINA occupation and conflict intensity. VIINA is built from news reports, so events in less-reported areas are undercounted. Mining and land abandonment are not observed.
+
+## 8. Conclusion
+
+Using a design fixed before the data were seen, and a registered revision fixed before its additional data were obtained, we find that the Kakhovka Dam's destruction:
+
+- did not cause a lasting loss of summer vegetation on the flooded land, except in floodplain wetlands;
+- is associated with a large relative decline on irrigated canal-zone farmland in the pre-registered analysis, but the registered revision dates that decline to 2020–2021, before the invasion, and finds no further change after the breach;
+- turned about 1,500 km² of reservoir bed into vegetated land within two seasons.
+
+Most of Kherson Oblast's relative decline came from land outside all three pathways. Satellite evidence of war-time environmental damage is most informative when treatment is defined by physical exposure, comparisons stay inside the conflict zone, and the analysis is fixed in advance.
 
 ## Data and Code Availability
 
-All code, derived data and figures are available in a public repository [link removed for anonymous review]. `generate_model_results.py` reproduces every estimate in this paper from the NDVI files in `data/ndvi_v3` and writes them to `outputs/model_results.json`; `download_ndvi_polygon_v3.py` re-extracts those files from Sentinel Hub; `flood_progression.py` reproduces Table 1 from the UNOSAT layers. Sentinel-2 data are available from the Copernicus Data Space Ecosystem, UNOSAT layers from UNITAR/UNOSAT, and boundaries from GADM. An earlier version of this work with superseded results was posted as a preprint (details supplied to the editorial office).
+All code, the analysis plan, the deviation log and derived results are at [repository URL withheld for anonymous review].
+
+- `v2/01`–`06` download and summarise the data.
+- `v2/analysis/run_all.py` reproduces every Study 2 number and figure. Results are written to `outputs/v2/*.json`; `outputs/v2/study2_summary.json` applies the decision rules.
+- Study 1 is reproduced by `generate_model_results.py`.
+
+MODIS, WorldCover and ERA5-Land are openly available from the Microsoft Planetary Computer and the Copernicus Climate Data Store; UNOSAT layers from UNITAR/UNOSAT; canals from OpenStreetMap (ODbL).
 
 ## References
 
 Atılgan Pazvantoğlu, C. (2025). Ecocide as a separate crime under the Rome Statute: A legal analysis of the discourse. *Environmental Policy and Law*, 55(2–3), 57–67. https://doi.org/10.1177/18785395251351171
 
-Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B (Methodological)*, 57(1), 289–300. https://doi.org/10.1111/j.2517-6161.1995.tb02031.x
+Cameron, A. C., Gelbach, J. B., & Miller, D. L. (2008). Bootstrap-based improvements for inference with clustered errors. *The Review of Economics and Statistics*, 90(3), 414–427. https://doi.org/10.1162/rest.90.3.414
 
-Cameron, A. C., & Miller, D. L. (2015). A practitioner's guide to cluster-robust inference. *Journal of Human Resources*, 50(2), 317–372. https://doi.org/10.3368/jhr.50.2.317
+Conley, T. G. (1999). GMM estimation with cross sectional dependence. *Journal of Econometrics*, 92(1), 1–45. https://doi.org/10.1016/S0304-4076(98)00084-0
 
-Conley, T. G., & Taber, C. R. (2011). Inference with "difference in differences" with a small number of policy changes. *The Review of Economics and Statistics*, 93(1), 113–125. https://doi.org/10.1162/REST_a_00049
+Didan, K. (2021). *MODIS/Terra Vegetation Indices 16-Day L3 Global 250m SIN Grid V061* [Data set]. NASA EOSDIS Land Processes DAAC. https://doi.org/10.5067/MODIS/MOD13Q1.061
 
 GADM. (2022). *GADM database of global administrative areas, version 4.1*. https://gadm.org
+
+Holm, S. (1979). A simple sequentially rejective multiple test procedure. *Scandinavian Journal of Statistics*, 6(2), 65–70.
+
+Karra, K., Kontgis, C., Statman-Weil, Z., Mazzariello, J. C., Mathis, M., & Brumby, S. P. (2021). Global land use/land cover with Sentinel 2 and deep learning. In *2021 IEEE International Geoscience and Remote Sensing Symposium (IGARSS)* (pp. 4704–4707). https://doi.org/10.1109/IGARSS47720.2021.9553499
 
 Killean, R. (2025). Ecocide's evolving relationship with war. *Environment and Security*. Advance online publication. https://doi.org/10.1177/27538796251347111
 
@@ -217,18 +439,28 @@ Kroker, P. (2015, April 23). Satellite imagery as evidence for international cri
 
 Leal Filho, W., Fedoruk, M., Kunyk, O., Semak, U., Yaroshenko, N., Ruda, M., Eustachio, J. H. P. P., Dinis, M. A. P., & Luetz, J. M. (2026). Ecocide in Ukraine: An assessment of geospatial and environmental evidence of war-related ecosystem destruction in Ukraine. *Frontiers in Environmental Science*. https://doi.org/10.3389/fenvs.2026.1823887
 
-Newey, W. K., & West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. *Econometrica*, 55(3), 703–708. https://doi.org/10.2307/1913610
+Muñoz-Sabater, J., Dutra, E., Agustí-Panareda, A., et al. (2021). ERA5-Land: A state-of-the-art global reanalysis dataset for land applications. *Earth System Science Data*, 13(9), 4349–4383. https://doi.org/10.5194/essd-13-4349-2021
+
+OpenStreetMap contributors. (2026). *OpenStreetMap* [Data set, extracted 24 September 2026 via the Overpass API]. https://www.openstreetmap.org
 
 *Prosecutor v. Ahmad Al Faqi Al Mahdi*, ICC-01/12-01/15, Judgment and Sentence (International Criminal Court, Trial Chamber VIII, 27 September 2016).
 
+Rambachan, A., & Roth, J. (2023). A more credible approach to parallel trends. *The Review of Economic Studies*, 90(5), 2555–2591. https://doi.org/10.1093/restud/rdad018
+
 Rome Statute of the International Criminal Court, July 17, 1998, 2187 U.N.T.S. 90.
 
-Shumilova, O., Sukhodolov, A., Osadcha, N., Oreshchenko, A., Constantinescu, G., Afanasyev, S., Koken, M., Osadchyi, V., Rhoads, B., Tockner, K., Monaghan, M. T., Schröder, B., Nabyvanets, J., Wolter, C., Lietytska, O., van de Koppel, J., Magas, N., Jähnig, S. C., Lakisova, V., … Grossart, H. P. (2025). Environmental effects of the Kakhovka Dam destruction by warfare in Ukraine. *Science*, 387(6739), 1181–1186. https://doi.org/10.1126/science.adn8655
+Shumilova, O., Sukhodolov, A., Osadcha, N., et al. (2025). Environmental effects of the Kakhovka Dam destruction by warfare in Ukraine. *Science*, 387(6739), 1181–1186. https://doi.org/10.1126/science.adn8655
 
 Stop Ecocide International. (2024, September 9). *Mass destruction of nature reaches International Criminal Court (ICC) as Pacific island states propose recognition of "ecocide" as international crime*. https://www.stopecocide.earth/2024/mass-destruction-of-nature-reaches-international-criminal-court-icc-as-pacific-island-states-propose-recognition-of-ecocide-as-international-crime
+
+Stuart, E. A. (2010). Matching methods for causal inference: A review and a look forward. *Statistical Science*, 25(1), 1–21. https://doi.org/10.1214/09-STS313
 
 UNITAR/UNOSAT. (2023). *Flood extent analysis following the destruction of the Nova Kakhovka dam, Khersonska Oblast, Ukraine (event code FL20230606UKR)* [Data set]. United Nations Institute for Training and Research. https://unosat.org
 
 Vyshnevskyi, V., Shevchuk, S., Komorin, V., et al. (2023). The destruction of the Kakhovka dam and its consequences. *Water International*, 48(5). https://doi.org/10.1080/02508060.2023.2247679
 
 Wang, B. Y., Raymond, N., Gould, G., & Baker, I. (2013). Problems from hell, solution in the heavens? Identifying obstacles and opportunities for employing geospatial technologies to document and mitigate mass atrocities. *Stability: International Journal of Security and Development*, 2(3), Article 53. https://doi.org/10.5334/sta.cn
+
+Zanaga, D., Van De Kerchove, R., Daems, D., et al. (2022). *ESA WorldCover 10 m 2021 v200* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.7254221
+
+Zhukov, Y. M. (2023). Near-real time analysis of war and economic activity during Russia's invasion of Ukraine. *Journal of Comparative Economics*. VIINA data: https://github.com/zhukovyuri/VIINA

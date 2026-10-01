@@ -1,5 +1,30 @@
 # ECOCIDE — Results Reconciliation (current-state manifest)
 
+> **Main result is now Study 2** (versions E and F below). Everything in this file below the Study 2 section refers to **Study 1** (versions A–D: Kherson Oblast vs Romanian counties), kept as the analysis that motivated Study 2.
+
+## Study 2 (pixel-level, exposure-based)
+
+| Version | Design | Plan | Scripts | Results |
+|---|---|---|---|---|
+| **E — pre-registered** | MODIS 250 m 2016–2024; H1 matched flood design, H2 triple difference, H3/H4 descriptive | `ANALYSIS_PLAN_v2.md` (commit 521672f, before any download) | `v2/analysis/run_all.py` | `outputs/v2/study2_summary.json` |
+| **F — registered revision** | + irrigation from 2010–15, steppe-only comparison zone, raion placebos, VIINA occupation and conflict, annual water masks | `ANALYSIS_PLAN_v2_ADDENDUM_1.md` (commit 30e3840, before its extra downloads) | `v2/analysis/run_revision.py` | `outputs/v2/r1_summary.json` |
+
+| Quantity | E (pre-registered) | F (revision) | JSON key |
+|---|---|---|---|
+| H1 flood β (matched) | +0.0057, CI [−0.014, 0.026], WCR p = 0.60, RI p = 0.63 | +0.0552, CI [0.034, 0.076], RI p (decline) = 0.88 | `H1_flood` |
+| H1 without matching | +0.0105, p = 0.15 | +0.0122, p = 0.13 | `robustness.1_no_matching` |
+| H1 wetlands (unmatched) | −0.041 | −0.061 | `exploratory` / `robustness.8_class_wetland_no_matching` |
+| H2 irrigation β | −0.0739, WCR Holm p = 0.0002, RI p = 0.14 (6 oblasts) | −0.0527, Holm p = 0.0002, RI p = 0.375 (15 raions) | `H2_irrigation` |
+| H2 event study 2023 / 2024 (vs 2021) | −0.016 / −0.030 | −0.014 / −0.006 (n.s.) | `event_study` |
+| H2 pre-trend joint p | 4 × 10⁻³⁹ | 3 × 10⁻²³ | `pretrend_joint_p` |
+| Verdicts | H1 not supported, H2 suggestive | H1 not supported, H2 suggestive | `verdict` |
+| H3 reservoir bed, km² NDVI > 0.3 (2021 → 2023 → 2024) | 100 → 906 → 1,574 | land-only: 244 km² land in 2023–24, NDVI 0.37 → 0.55 | `H3_*` |
+| H4 Kherson 2021→2024 vs zone O | −0.029 (other land −0.024) | −0.052 (reservoir excluded by the water rule) | `H4*` |
+
+Every departure from the plans: `v2/DEVIATIONS.md`.
+
+# Study 1 (Kherson Oblast vs Romanian counties)
+
 Every headline number in the paper, README, executive summary, CITATION.cff and dashboard is produced by `generate_model_results.py` and stored in `outputs/model_results.json`. The dashboard reads that file directly; the documents quote it. If the data change, re-run `generate_model_results.py` and `build_all_figures.py`, then update the documents from the JSON.
 
 ## Four versions of the analysis

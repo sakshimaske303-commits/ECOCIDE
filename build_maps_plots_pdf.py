@@ -13,7 +13,27 @@ TEXT_WHITE = HexColor("#111111")
 TEXT_GREY = HexColor("#444444")
 ACCENT = HexColor("#1F77B4")
 
-FIGURES = [
+STUDY2 = [
+    {"num": "S2-1", "path": "v2/figures/s2_fig1_exposure_map.png", "title": "Study 2 exposure groups",
+     "caption": "Flooded land (UNOSAT 6-9 June 2023 composite), former reservoir bed, Kakhovka canal zone (K) and "
+                "comparison cropland (O), placebo floodplains; 231 m grid, EPSG:3035."},
+    {"num": "S2-2", "path": "v2/figures/s2_fig2_h1_event_study.png", "title": "H1 flood: event studies",
+     "caption": "Flooded minus matched unflooded pixels, relative to 2021. Left: pre-registered caliper matching; "
+                "right: exploratory matching without caliper. 95% cluster-robust CIs."},
+    {"num": "S2-3", "path": "v2/figures/s2_fig3_h2_event_study.png", "title": "H2 irrigation: event study (pre-registered)",
+     "caption": "Irrigated minus rainfed cropland, canal zone minus comparison zone, relative to 2021."},
+    {"num": "S2-4", "path": "v2/figures/s2_fig4_randomization_inference.png", "title": "Randomization inference",
+     "caption": "H1 estimate against 50 placebo floodplain segments; H2 estimate against six placebo oblasts."},
+    {"num": "S2-5", "path": "v2/figures/s2_fig5_h3_reservoir_bed.png", "title": "H3 former reservoir bed",
+     "caption": "Mean July-October NDVI and area with NDVI above 0.3 on the former Kakhovka reservoir bed, 2016-2024."},
+    {"num": "S2-6", "path": "v2/figures/s2_fig6_h4_decomposition.png", "title": "H4 decomposition of Kherson's change",
+     "caption": "Area-weighted contributions to Kherson Oblast's 2021-2024 change in July-October NDVI relative to zone O."},
+    {"num": "S2-7", "path": "v2/figures/s2_fig7_revision_event_studies.png", "title": "Registered revision: event studies",
+     "caption": "H1 matched and unmatched, and H2 triple difference under Registered Revision 1 (2010-15 irrigation "
+                "classification, steppe comparison zone, VIINA occupation and conflict, annual water masks)."},
+]
+
+FIGURES = STUDY2 + [
     {"num": 1, "path": "plots/study_area_overview.png", "title": "Study area",
      "caption": "Treatment zone (Kherson Oblast, Ukraine) and the four Romanian control counties (Tulcea, Galati, "
                 "Braila, Constanta) in their true geographic positions. Boundaries: GADM v4.1."},
@@ -59,19 +79,19 @@ def draw_cover(c, page_w, page_h):
 
     c.setFillColor(ACCENT)
     c.setFont("Helvetica-Bold", 13)
-    c.drawCentredString(page_w / 2, page_h - 110 * mm, "Maps and Plots — Complete Figure Set")
+    c.drawCentredString(page_w / 2, page_h - 110 * mm, "Maps and Plots — Study 2 (main) and Study 1")
 
     c.setFillColor(TEXT_WHITE)
-    c.setFont("Helvetica", 11)
-    y = page_h - 135 * mm
+    c.setFont("Helvetica", 10)
+    y = page_h - 125 * mm
     seen = set()
     for fig in FIGURES:
-        label = f"Figure {fig['num']}"
+        label = f"Figure {fig['num']}" if isinstance(fig["num"], str) else f"Figure S1-{fig['num']}"
         if label in seen:
             continue
         seen.add(label)
         c.drawCentredString(page_w / 2, y, f"{label} — {fig['title']}")
-        y -= 7 * mm
+        y -= 5.5 * mm
 
     c.setFillColor(TEXT_GREY)
     c.setFont("Helvetica", 10)
@@ -104,7 +124,8 @@ def draw_figure_page(c, fig):
 
     c.setFillColor(TEXT_WHITE)
     c.setFont("Helvetica-Bold", 15)
-    c.drawCentredString(page_w / 2, page_h - margin - 8, f"Figure {fig['num']} — {fig['title']}")
+    lab = fig["num"] if isinstance(fig["num"], str) else f"S1-{fig['num']}"
+    c.drawCentredString(page_w / 2, page_h - margin - 8, f"Figure {lab} — {fig['title']}")
 
     c.drawImage(img_path, x, y, width=draw_w, height=draw_h, preserveAspectRatio=True, mask="auto")
 

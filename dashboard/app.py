@@ -26,6 +26,12 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.success(
+    "**Main result: Study 2.** This is a pre-registered, pixel-level analysis in which treatment is defined by exposure "
+    "(flood, reservoir bed, canal irrigation). Open **Study 2 Main Results** in the sidebar. The other pages show "
+    "Study 1, the Kherson-vs-Romania analysis that motivated it."
+)
+
 st.markdown(
     f"""
     <style>
@@ -233,7 +239,8 @@ st.markdown(
 
 _all_docs = [
     {"label": "Executive Summary", "filename": "ECO_Executive_Summary.pdf"},
-    {"label": "Research Paper", "filename": "ECO_Research_Paper.pdf"},
+    {"label": "Research Paper (Study 2, main)", "filename": "ECO_Research_Paper_v2.pdf"},
+    {"label": "Research Paper (Study 1)", "filename": "ECO_Research_Paper.pdf"},
     {"label": "Development Log", "filename": "ECO_Development_Log.pdf"},
 ]
 _docs = [d for d in _all_docs if os.path.exists(os.path.join(BASE_DIR, "static", d["filename"]))]

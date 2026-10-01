@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or its findings, please cite it using the metadata below."
-title: "ECOCIDE: A Satellite-Based Evidentiary Framework for War-Time Environmental Crimes"
+title: "ECOCIDE: Pre-registered, exposure-based satellite analysis of the vegetation effects of the Kakhovka Dam destruction"
 type: software
 authors:
   - family-names: "Maske"
@@ -8,19 +8,21 @@ authors:
 repository-code: "https://github.com/sakshimaske303-commits/ECOCIDE"
 url: "https://github.com/sakshimaske303-commits/ECOCIDE"
 abstract: >-
-  Code and data for a Difference-in-Differences analysis of monthly
-  Sentinel-2 NDVI after the destruction of Ukraine's Kakhovka Dam (6 June
-  2023), comparing Kherson Oblast with four Romanian control counties
-  (Tulcea, Galati, Braila, Constanta), with placebo tests, a quarterly event
-  study, exact randomization inference and a control-only divergence check,
-  alongside UNOSAT flood-extent layers. With cloud- and water-masked monthly
-  composites and HAC inference on the monthly treated-minus-control gap,
-  Kherson's NDVI declined relative to Tulcea by 0.108 (95% CI 0.007 to 0.209,
-  p = 0.037; 0.069 with zone-specific seasonality, p = 0.005). Attribution to
-  the dam is not established: Kherson ranks 2 of 5 in randomization
-  inference and pre-event quarters deviate. Zenodo v1.0.0 and EarthArXiv
-  preprint v1 report an earlier, superseded analysis.
+  Code, analysis plans and results for a pre-registered, pixel-level test of
+  the vegetation effects of the Kakhovka Dam destruction (6 June 2023) using
+  MODIS NDVI (250 m, 2010-2024). Treatment is defined by exposure (flooded
+  land, drained reservoir bed, canal-irrigated cropland) and comparisons are
+  made inside the war zone, with a registered revision adding VIINA occupation
+  and conflict data and annual water masks. Flooded land did not lose summer
+  greenness (except floodplain wetlands); the relative decline of canal-zone
+  farmland predates the invasion and did not deepen after the breach; about
+  1,500 km2 of the former reservoir became vegetated by 2024. Study 1
+  (Kherson Oblast vs Romanian counties, monthly Sentinel-2 NDVI) is retained.
+  Zenodo v1.0.0 and EarthArXiv preprint v1 report an earlier, superseded
+  analysis.
 keywords:
+  - pre-registration
+  - MODIS
   - ecocide
   - remote sensing
   - causal inference
@@ -35,5 +37,5 @@ identifiers:
     description: "Zenodo archive of ECOCIDE v1.0.0"
 doi: "10.5281/zenodo.21757974"
 license: CC-BY-4.0
-version: 1.0.0
-date-released: "2026-08-02"
+version: 2.0.0
+date-released: "2026-09-28"
