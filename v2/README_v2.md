@@ -63,7 +63,7 @@ python v2/04_download_osm_canals.py
 python v2/05_check_and_sample.py
 ```
 
-This writes `data/v2/CHECK_REPORT.json` and `data/v2/sample_kherson.nc`. Tell Claude when it is done; those two small files are all that is needed for the next round. The large files stay on your computer.
+This writes `data/v2/CHECK_REPORT.json` and `data/v2/sample_kherson.nc`. Those two small files are all that is needed for the next round. The large files stay on your computer.
 
 ## Step 6 — yearly summaries
 

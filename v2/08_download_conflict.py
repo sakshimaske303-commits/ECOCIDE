@@ -77,7 +77,7 @@ def main():
     json.dump(man, open(os.path.join(OUT, "conflict_manifest.json"), "w"), indent=1)
     print(json.dumps(man, indent=1))
     if not man["files"]:
-        print("Nothing downloaded — tell Claude; the fallback occupation proxy (Addendum R4) will be used.")
+        print("Nothing downloaded; the fallback occupation proxy (Addendum R4) will be used.")
 
 
 if __name__ == "__main__":

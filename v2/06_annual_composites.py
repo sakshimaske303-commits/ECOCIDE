@@ -177,7 +177,7 @@ def main():
     a = ap.parse_args()
     for y in a.years:
         process_year(y)
-    print("\nDone. Tell Claude when finished; the files in data/v2/annual are what it needs next.")
+    print("\nDone. The files in data/v2/annual are what is needed next.")
 
 
 if __name__ == "__main__":

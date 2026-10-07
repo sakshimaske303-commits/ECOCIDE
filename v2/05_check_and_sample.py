@@ -1,5 +1,5 @@
 """Step 5 — checks everything downloaded in steps 1–4 and writes two SMALL
-files for Claude to inspect (they are safe to share; no credentials):
+files to inspect (they are safe to share; no credentials):
 
     data/v2/CHECK_REPORT.json   — what was downloaded, sizes, value ranges, gaps
     data/v2/sample_kherson.nc   — two MODIS composites + land cover, lower-Dnipro window only

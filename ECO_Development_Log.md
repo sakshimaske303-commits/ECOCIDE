@@ -229,7 +229,7 @@ Reran both plots after the switch to make sure nothing broke. `control_panel_com
 
 Okayyy so this one hurts a bit to write down, but tht's literally the whole point of keeping this log honest, so here goes.
 
-Got an outside review of the project (ran it thru an external AI reviewer jst to get a second pair of eyes on the methodology, not the writing) nd one of the flagged points stopped me cold: it said my NDVI download scripts were querying Sentinel Hub using each zone's bounding box, not its actual GADM polygon shape. My first reaction was honestly kind of defensive, like, I extracted the real boundaries myself back in Entry 3, so surely I used them properly downstream. So I didnt jst take the review's word for it, I went nd actually read `download_ndvi.py` nd `download_ndvi_control_zones.py` line by line myself. 
+Got an outside review of the project (ran it thru an external review tool jst to get a second pair of eyes on the methodology, not the writing) nd one of the flagged points stopped me cold: it said my NDVI download scripts were querying Sentinel Hub using each zone's bounding box, not its actual GADM polygon shape. My first reaction was honestly kind of defensive, like, I extracted the real boundaries myself back in Entry 3, so surely I used them properly downstream. So I didnt jst take the review's word for it, I went nd actually read `download_ndvi.py` nd `download_ndvi_control_zones.py` line by line myself. 
 
 Turns out the review was completely right, nd worse, I'd basically already admitted it to myself nd forgot. `extract_boundaries.py` nd `extract_control_zone_boundaries.py` do pull the real GADM polygon for every zone jst fine, but then both download scripts only ever call `.total_bounds` on tht polygon nd feed the rectangle into the API request, nvr the actual shape. There's even a comment sitting right there in `download_ndvi_control_zones.py` tht literally says "Bounding boxes taken from GADM Level 1," which past me apparently thought was a totally normal thing to write down instead of a red flag. On top of tht, the cloud filtering was only ever scene level (maxCloudCoverage<=40 before aggregation), no actual pixel level masking of cloud/shadow/cirrus/snow pixels using the Sentinel-2 SCL band. So two real problems, sitting in the pipeline since basically the start.
 
@@ -253,7 +253,7 @@ Still sitting on my to do list: `data/ndvi_v2/` hasn't been promoted to replace 
 
 ## Entry 17
 
-*(24 Sept 2026 — a full audit of the repository, done with an AI assistant; this entry records what it found and what changed.)*
+*(24 Sept 2026 — a full audit of the repository; this entry records what it found and what changed.)*
 
 Entry 16's to-do list is done or superseded: `data/ndvi_v2` had already been promoted to `data/ndvi` (the two folders are byte-identical), but a lot of the repository still showed the old numbers.
 

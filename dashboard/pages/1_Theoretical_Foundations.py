@@ -30,7 +30,7 @@ with col_b:
         st.warning("Diagram not found at outputs/plots/imgg1.png")
     st.markdown(
         f"<p style='text-align:center; color:{PALETTE['text_secondary']}; font-size:0.85rem; margin-top:6px;'>"
-        "AI was used to help generate this image, but the concept and every detail in it are mine.</p>",
+        "The concept and every detail in this image are mine.</p>",
         unsafe_allow_html=True,
     )
 

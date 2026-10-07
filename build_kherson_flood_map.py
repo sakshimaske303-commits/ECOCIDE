@@ -32,7 +32,7 @@ def main():
     boundary = gpd.read_file(BOUNDARY_PATH)
     minx, miny, maxx, maxy = boundary.total_bounds
 
-    m = folium.Map(location=[46.63, 32.7], tiles="CartoDB dark_matter")
+    m = folium.Map(location=[46.63, 32.7], tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", attr="Tiles &copy; Esri — Esri, HERE, Garmin, &copy; OpenStreetMap contributors", max_native_zoom=16)
     # Zoom to the flood-affected corridor, matching the static map's own framing,
     # not the full oblast (most of the oblast never floods).
     m.fit_bounds([[46.2, 31.9], [47.0, 33.6]])
