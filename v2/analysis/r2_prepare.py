@@ -19,6 +19,7 @@ import numpy as np
 import rasterio
 import xarray as xr
 from rasterio.warp import Resampling, reproject
+from rasterio.windows import Window
 from scipy import ndimage as ndi
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -37,16 +38,20 @@ FIELD_MIN = 0.05        # "contains a mapped field": irrigated fraction >= 5 % i
 
 def semantics(path):
     """How a map stores 'irrigated'. Binary (values within {0, 1} apart from no-data) -> value 1;
-    probabilities (float within [0, 1]) -> p >= 0.5. Anything else stops the run (a new rule would
-    be a deviation that must be written down before continuing)."""
+    probabilities (float within [0, 1]) -> p >= 0.5. The Baber et al. files carry no no-data tag but use
+    -999 outside the mapped area; a negative integer sentinel is therefore read as no-data. Anything else
+    stops the run (a new rule would be a deviation that must be written down before continuing)."""
     with rasterio.open(path) as src:
         nd = src.nodata
         a = src.read(1, out_shape=(min(src.height, 2000), min(src.width, 2000)))
     v = a[np.isfinite(a)] if a.dtype.kind == "f" else a.ravel()
     if nd is not None:
         v = v[v != nd]
-    u = np.unique(v[: 5_000_000])
-    if u.size <= 3 and set(np.round(u, 6).tolist()) <= {0.0, 1.0}:
+    u = np.unique(v)
+    if nd is None and a.dtype.kind == "i" and u.size and u.min() < 0 and set(u[u < 0].tolist()) == {int(u.min())}:
+        nd = int(u.min())
+        u = u[u != nd]
+    if u.size <= 2 and set(np.round(u, 6).tolist()) <= {0.0, 1.0}:
         return {"kind": "binary", "nodata": nd, "values": u.tolist()}
     if a.dtype.kind == "f" and u.min() >= 0 and u.max() <= 1:
         return {"kind": "probability", "nodata": nd, "range": [float(u.min()), float(u.max())]}
@@ -54,24 +59,31 @@ def semantics(path):
              "stop and record a deviation before continuing.")
 
 
-def to_grid(path, sem, shape, tr):
-    """Irrigated fraction and map coverage on the analysis grid (area-weighted average)."""
+def to_grid(path, sem, shape, tr, rows=1024):
+    """Irrigated fraction and map coverage on the analysis grid (area-weighted average). The 30 m map is
+    read in row bands into two uint8 arrays (irrigated 0/1 with 255 = no data; covered 0/1) to keep memory low."""
     with rasterio.open(path) as src:
-        a = src.read(1)
         nd = sem["nodata"]
-        valid = np.isfinite(a) if a.dtype.kind == "f" else np.ones(a.shape, bool)
-        if nd is not None:
-            valid &= a != nd
-        irr = (a == 1) if sem["kind"] == "binary" else (a >= 0.5)
-        src_arr = np.where(valid, irr.astype(np.float32), np.nan).astype(np.float32)
-        cov_src = valid.astype(np.float32)
+        irr8 = np.empty((src.height, src.width), np.uint8)
+        cov8 = np.empty((src.height, src.width), np.uint8)
+        for r0 in range(0, src.height, rows):
+            h = min(rows, src.height - r0)
+            a = src.read(1, window=Window(0, r0, src.width, h))
+            valid = np.isfinite(a) if a.dtype.kind == "f" else np.ones(a.shape, bool)
+            if nd is not None:
+                valid &= a != nd
+            if a.dtype.kind == "i":
+                valid &= a >= 0          # negative sentinels (-999) are no-data even where the sample missed them
+            irr = (a == 1) if sem["kind"] == "binary" else (a >= 0.5)
+            irr8[r0:r0 + h] = np.where(valid, irr, 255).astype(np.uint8)
+            cov8[r0:r0 + h] = valid
         frac = np.full(shape, np.nan, np.float32)
         cov = np.zeros(shape, np.float32)
         kw = dict(src_transform=src.transform, src_crs=src.crs, dst_transform=tr, dst_crs=grid.CRS,
                   resampling=Resampling.average)
-        reproject(src_arr, frac, src_nodata=np.nan, dst_nodata=np.nan, **kw)
-        reproject(cov_src, cov, **kw)
-    del a, src_arr, cov_src
+        reproject(irr8, frac, src_nodata=255, dst_nodata=np.nan, **kw)
+        reproject(cov8, cov, **kw)
+    del irr8, cov8
     return frac, cov
 
 

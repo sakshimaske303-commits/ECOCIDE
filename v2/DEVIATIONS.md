@@ -77,3 +77,4 @@ later change to the addendum must be recorded here as a deviation, with a new ch
 | Item | Implementation |
 |---|---|
 | Code written before data | `v2/09_download_irrigation_maps.py`, `10_download_dem.py`, `11_download_s2_reservoir.py`, `v2/analysis/r2_*.py`, `run_revision2.py`, `tests/test_r2lib.py`; checked only on a synthetic world with known effects (H2 effect −0.050 recovered as −0.053; flood effect −0.020 recovered as −0.020; placebo-in-time test detects the regression-to-the-mean bias built into that world). |
+| Map values (after download, before any analysis) | The 2019–2022 RF v6 files are 32-bit integers with values 0, 1 and −999 and no no-data tag; the 2024–2025 RF v7 files are 16-bit with 0 and 1. As the addendum's definitions say (value 1 = irrigated; no-data cells left out), −999 is read as no-data. Checked on 16 Oct 2026 by decoding sample tiles; no outcome data were looked at. |
