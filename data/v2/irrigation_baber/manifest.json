@@ -1,0 +1,37 @@
+{
+ "record": "https://zenodo.org/api/records/22036773",
+ "title": "Irrigation of Kherson and Zaporizhzhia 2019 - 2025",
+ "license": "cc-by-4.0",
+ "files": {
+  "ukraine_irrigation_outputs_irrig_result_postburst-2024_RF_v7_thresholded.tif": {
+   "year": 2024,
+   "md5": "8679044fa62ccbafe310e07ec21fc327",
+   "bytes": 2863410
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2021-30m_resampled_aeti_RF_v6.tif": {
+   "year": 2021,
+   "md5": "c7443b9d54737e58c0cb3d4b0f23e0fc",
+   "bytes": 13283185
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2022-30m_resampled_aeti_RF_v6.tif": {
+   "year": 2022,
+   "md5": "64500314ce0599a1f5523b7aedc1bd08",
+   "bytes": 13159251
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2025_RF_v7_thresholded.tif": {
+   "year": 2025,
+   "md5": "48edf53e1c0e8848e02eb8289ac1644e",
+   "bytes": 2336091
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2019-30m_resampled_aeti_RF_v6.tif": {
+   "year": 2019,
+   "md5": "41147037eae19e6003e15b5c12e59433",
+   "bytes": 13179498
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2020-30m_resampled_aeti_RF_v6.tif": {
+   "year": 2020,
+   "md5": "2d19b14b5b3d34bfeea4236b4dab72b7",
+   "bytes": 13335084
+  }
+ }
+}
