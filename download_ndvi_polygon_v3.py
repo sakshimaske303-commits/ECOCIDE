@@ -1,6 +1,6 @@
 """
 NDVI extraction, version 3 — fixes three issues in download_ndvi_polygon.py
-(the version that produced data/ndvi, a.k.a. data/ndvi_v2):
+(the version that produced data/ndvi_v2):
 
 1. RESOLUTION. v2 sent no resx/resy, so Sentinel Hub sampled every zone on
    a default 256 x 256 grid (sampleCount = 65,536 for every zone). That is
@@ -17,7 +17,7 @@ NDVI extraction, version 3 — fixes three issues in download_ndvi_polygon.py
    the median NDVI of all clear acquisitions in the month, then the API
    averages those pixels over the polygon.
 
-Output goes to data/ndvi_v3/ — data/ndvi is NOT touched. After running:
+Output goes to data/ndvi_v3/ — data/ndvi_v2 is NOT touched. After running:
 
     python download_ndvi_polygon_v3.py
     ECO_NDVI_DIR=data/ndvi_v3 python generate_model_results.py      (Linux/macOS)

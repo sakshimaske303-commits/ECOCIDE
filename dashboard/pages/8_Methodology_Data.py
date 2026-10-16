@@ -5,16 +5,17 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(PROJECT_ROOT)
 sys.path.append(os.path.join(PROJECT_ROOT, "dashboard"))
-from results import R, FLOOD, p, c, ci
+from results import R, FLOOD, p, c, ci, pv
 from styles import apply_custom_style, PALETTE
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>📖 METHODOLOGY & DATA</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>📖 STUDY 1 — METHODOLOGY & DATA</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Full Transparency and Reproducibility</h3>",
     unsafe_allow_html=True,
 )
+st.info("**Study 1 (background study):** Kherson Oblast compared with four Romanian counties, monthly Sentinel-2 NDVI. It motivated the main study; the main results, and Study 2's methods and data, are on the **Study 2** pages.")
 st.markdown("---")
 
 # Proof-of-work popovers next to each data source/script — screenshots live in outputs/proof_screenshots/
@@ -62,7 +63,7 @@ with col1:
     st.markdown("""
     - **NDVI** — Sentinel-2 L2A via the Sentinel Hub Statistical API (Copernicus Data Space
       Ecosystem), monthly, Jan 2022 – Nov 2024, each zone's GADM v4.1 polygon, pixel-level
-      Scene Classification masking of cloud, cloud shadow, cirrus and snow.
+      Scene Classification masking of cloud, cloud shadow, cirrus, snow and water; per-pixel monthly median on a 0.002° grid.
     - **True-colour imagery** — Sentinel-2 L2A via the Sentinel Hub Process API (context only).
     - **Boundaries** — GADM v4.1.
     """)
@@ -121,7 +122,7 @@ with st.expander("**Third correction: pixel size, water mask and monthly composi
     (≈880 m over Kherson, ≈335 m over Brăila), water pixels were kept, and each pixel's monthly value came
     from a single scene. `download_ndvi_polygon_v3.py` uses a common 0.002° grid (≈150–220 m), masks water,
     and takes each pixel's median over all clear acquisitions in the month. With these data the primary
-    estimate became {c(R['main_did'])} (p = {p(R['main_did']['p'])}), from −0.0747 (p = 0.162).
+    estimate became {c(R['main_did'])} ({pv(R['main_did']['p'])}), from −0.0747 (p = 0.162).
     """)
 
 with st.expander("**Optical NDWI flood detection was replaced by UNOSAT layers**"):
@@ -142,16 +143,18 @@ st.warning(f"""
   attributed to the flood itself.
 - **Valid coverage.** Monthly composites rest on {100*R['valid_fraction']['kherson']['min']:.0f}–{100*R['valid_fraction']['kherson']['max']:.0f}% of Kherson's grid cells.
 - **Few units.** One treated oblast and four hand-picked control counties; randomization inference
-  cannot reach p < 0.20, and two controls diverge on their own.
+  cannot reach p < 0.20, and the controls are not all stable on their own (Brăila shifts significantly,
+  Constanța borderline).
 - **Pre-trends and seasonality.** Significant pre-event quarters and a seasonal pattern in the gap.
 - **Single index.** NDVI measures greenness only — not soil, water quality or biodiversity.
 """)
 
 st.error(f"""
-**Bottom line.** Primary DiD {c(R['main_did'])} (95% CI {ci(R['main_did'])}, HAC p = {p(R['main_did']['p'])}).
+**Bottom line.** Primary DiD {c(R['main_did'])} (95% CI {ci(R['main_did'])}, HAC {pv(R['main_did']['p'])}).
 Kherson's vegetation declined relative to its controls after June 2023, but the design does not
 attribute that decline to the dam: randomization rank {R['placebo_in_space']['rank_one_sided']} of 5, and pre-event quarters already deviate.
-Code: `generate_model_results.py` reproduces every number on this dashboard.
+Code: `generate_model_results.py` reproduces every Study 1 number on this dashboard; Study 2 numbers come
+from `v2/analysis/run_all.py`, `run_revision.py` and `x1_review_diagnostics.py`.
 """)
 
 st.markdown("---")

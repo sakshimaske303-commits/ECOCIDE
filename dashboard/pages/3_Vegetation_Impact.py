@@ -5,16 +5,17 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(PROJECT_ROOT)
 sys.path.append(os.path.join(PROJECT_ROOT, "dashboard"))
-from results import R, p, c, ci, sig
+from results import R, p, c, ci, sig, pv
 from styles import apply_custom_style, PALETTE
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>🌿 VEGETATION IMPACT</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>🌿 STUDY 1 — VEGETATION IMPACT</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Difference-in-Differences Analysis</h3>",
     unsafe_allow_html=True,
 )
+st.info("**Study 1 (background study):** Kherson Oblast compared with four Romanian counties, monthly Sentinel-2 NDVI. It motivated the main study; the main results are on the **Study 2** pages.")
 st.markdown("---")
 
 st.markdown("""
@@ -44,7 +45,7 @@ with col1:
     <div class="forensic-card" style="border-left: 4px solid {PALETTE['warning']}; min-height: 200px;">
         <p style="color: {PALETTE['warning']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Primary result</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 2rem; font-weight: 900; margin-bottom: 4px;">{c(m)}</p>
-        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin-bottom: 12px;">95% CI {ci(m)} · HAC p = {p(m['p'])} · {sig(m['p'])}</p>
+        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin-bottom: 12px;">95% CI {ci(m)} · HAC {pv(m['p'])} · {sig(m['p'])}</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.85rem; margin: 0;">
             Kherson's NDVI fell relative to Tulcea after June 2023. The estimate is
             {100*m['pct_of_pre_mean']:.0f}% of Kherson's pre-period mean NDVI — a scale reference,
@@ -57,7 +58,7 @@ with col2:
     <div class="forensic-card" style="border-left: 4px solid {PALETTE['accent']}; min-height: 200px;">
         <p style="color: {PALETTE['accent']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">With zone-specific seasonality</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 2rem; font-weight: 900; margin-bottom: 4px;">{c(ms)}</p>
-        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin-bottom: 12px;">95% CI {ci(ms)} · HAC p = {p(ms['p'])}</p>
+        <p style="color: {PALETTE['text_secondary']}; font-size: 0.85rem; margin-bottom: 12px;">95% CI {ci(ms)} · HAC {pv(ms['p'])}</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.85rem; margin: 0;">
             Tulcea's seasonal swing is larger than Kherson's, and the post period contains more
             summer–autumn months than the pre period. Letting each zone keep its own seasonal
@@ -67,10 +68,10 @@ with col2:
     """, unsafe_allow_html=True)
 
 st.info(f"""
-A narrowed baseline (Jan 2023 onward) gives a larger estimate ({c(n)}, p = {p(n['p'])}), but its own
-placebo test on the same five pre-event months is also significant (p = {p(R['placebo_narrowed']['p'])}),
+A narrowed baseline (Jan 2023 onward) gives a larger estimate ({c(n)}, {pv(n['p'])}), but its own
+placebo test on the same five pre-event months is also significant ({pv(R['placebo_narrowed']['p'])}),
 so it is not treated as evidence. Against the four-county panel the pooled estimate is
-{c(R['pooled_did'])} (p = {p(R['pooled_did']['p'])}). See **Statistical Validation** for all checks.
+{c(R['pooled_did'])} ({pv(R['pooled_did']['p'])}). See **Statistical Validation** for all checks.
 """)
 
 st.markdown("---")

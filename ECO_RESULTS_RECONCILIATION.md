@@ -8,17 +8,21 @@
 |---|---|---|---|---|
 | **E — pre-registered** | MODIS 250 m 2016–2024; H1 matched flood design, H2 triple difference, H3/H4 descriptive | `ANALYSIS_PLAN_v2.md` (commit 521672f, before any download) | `v2/analysis/run_all.py` | `outputs/v2/study2_summary.json` |
 | **F — registered revision** | + irrigation from 2010–15, steppe-only comparison zone, raion placebos, VIINA occupation and conflict, annual water masks | `ANALYSIS_PLAN_v2_ADDENDUM_1.md` (commit 30e3840, before its extra downloads) | `v2/analysis/run_revision.py` | `outputs/v2/r1_summary.json` |
+| X — exploratory review checks | zone-K July–October weather; H2 event studies vs rainfall; placebo districts' overlap with the canal zone | none (written 16 Oct 2026, after all results were known) | `v2/analysis/x1_review_diagnostics.py` | `outputs/v2/x1_review_diagnostics.json` |
 
 | Quantity | E (pre-registered) | F (revision) | JSON key |
 |---|---|---|---|
 | H1 flood β (matched) | +0.0057, CI [−0.014, 0.026], WCR p = 0.60, RI p = 0.63 | +0.0552, CI [0.034, 0.076], RI p (decline) = 0.88 | `H1_flood` |
-| H1 without matching | +0.0105, p = 0.15 | +0.0122, p = 0.13 | `robustness.1_no_matching` |
-| H1 wetlands (unmatched) | −0.041 | −0.061 | `exploratory` / `robustness.8_class_wetland_no_matching` |
+| H1 without matching (all flooded pixels) | +0.0105 (reported +0.010), CI [−0.004, 0.025], p = 0.15 | +0.0122, p = 0.13 | `robustness.1_no_matching` |
+| H1 wetlands (unmatched) | −0.041, CI [−0.061, −0.020] | −0.061, CI [−0.081, −0.041] | `exploratory` / `robustness.8_class_wetland_no_matching` |
 | H2 irrigation β | −0.0739, WCR Holm p = 0.0002, RI p = 0.14 (6 oblasts) | −0.0527, Holm p = 0.0002, RI p = 0.375 (15 raions) | `H2_irrigation` |
 | H2 event study 2023 / 2024 (vs 2021) | −0.016 / −0.030 | −0.014 / −0.006 (n.s.) | `event_study` |
 | H2 pre-trend joint p | 4 × 10⁻³⁹ | 3 × 10⁻²³ | `pretrend_joint_p` |
 | Verdicts | H1 not supported, H2 suggestive | H1 not supported, H2 suggestive | `verdict` |
-| H3 reservoir bed, km² NDVI > 0.3 (2021 → 2023 → 2024) | 100 → 906 → 1,574 | land-only: 244 km² land in 2023–24, NDVI 0.37 → 0.55 | `H3_*` |
+| H2 placebo p without districts adjoining the canals (X) | — | 0.18 (10 placebos) | `x1: D3_placebo_districts` |
+| Zone-K July–October rain 2021 / 2023 / 2024 (X) | 161 / 67 / 94 mm (2021 wettest of 2016–24) | | `x1: D1_weather_jul_oct` |
+| r(H2 event study 2016–21, zone-K rain) (X) | −0.94 | −0.97 | `x1: D2_h2_event_study_vs_zoneK_rain` |
+| H3 reservoir bed, km² NDVI > 0.3 (2016–22 range → 2023 → 2024) | 86–100 (2021: 99.9) → 906 → 1,574 | land-only: 244 km² land in 2023–24, NDVI 0.37 → 0.55 | `H3_*` |
 | H4 Kherson 2021→2024 vs zone O | −0.029 (other land −0.024) | −0.052 (reservoir excluded by the water rule) | `H4*` |
 
 Every departure from the plans: `v2/DEVIATIONS.md`.
@@ -32,7 +36,7 @@ Every headline number in the paper, README, executive summary, CITATION.cff and 
 | Version | NDVI extraction | Inference | Where it appears |
 |---|---|---|---|
 | A — original | Bounding box, scene-level cloud filter (`data/ndvi_old_bbox`) | Stacked OLS, HAC on row order, normal dist. | EarthArXiv preprint v1, Zenodo v1.0.0 |
-| B — Phase 2 | GADM polygon + pixel SCL mask, default 256 × 256 grid, water kept, single scene (`data/ndvi` = `data/ndvi_v2`) | Stacked OLS, HAC on row order, t dist. (external script) | Repo drafts, 11–23 Sept 2026 |
+| B — Phase 2 | GADM polygon + pixel SCL mask, default 256 × 256 grid, water kept, single scene (`data/ndvi_v2`; an identical copy in `data/ndvi` was removed on 16 Oct 2026) | Stacked OLS, HAC on row order, t dist. (external script) | Repo drafts, 11–23 Sept 2026 |
 | C — inference fix | Same data as B | Monthly gap series, HAC maxlags 3, t dist. (`eco_core.py`) | Repo, 24 Sept 2026 (morning) |
 | **D — current** | **Polygon, common 0.002° grid, cloud/shadow/cirrus/snow/water masked, per-pixel monthly median (`data/ndvi_v3`)** | **Same as C** | **Everything in this repo now** |
 
@@ -74,4 +78,5 @@ Earlier versions attributed all dates to "ICEYE, Landsat-9, SkySat, WorldView-3,
 ## Still outside this repository
 
 - EarthArXiv preprint v1 and Zenodo v1.0.0 show version A. Post a new EarthArXiv version and a new Zenodo release once the paper is final.
-- Sentinel Hub / CDSE credentials were once committed (`.env`, `.env.txt`); rotate them.
+- Sentinel Hub / CDSE credentials were once committed (`.env`, `.env.txt`, commits `ad88ce3` and `14b88ec`) and are still in the public git history; rotate them.
+- `outputs/v2/x1_review_diagnostics.json` was first generated from an independent reconstruction of the derived layers; re-run `x1_review_diagnostics.py` after `run_all.py` and `run_revision.py` to regenerate it from the pipeline's own layers.

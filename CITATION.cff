@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or its findings, please cite it using the metadata below."
-title: "ECOCIDE: Pre-registered, exposure-based satellite analysis of the vegetation effects of the Kakhovka Dam destruction"
+title: "ECOCIDE — What Did the Destruction of the Kakhovka Dam Do to Vegetation? Separating Flood, Reservoir and Irrigation Effects with Satellite Data"
 type: software
 authors:
   - family-names: "Maske"
@@ -13,10 +13,11 @@ abstract: >-
   MODIS NDVI (250 m, 2010-2024). Treatment is defined by exposure (flooded
   land, drained reservoir bed, canal-irrigated cropland) and comparisons are
   made inside the war zone, with a registered revision adding VIINA occupation
-  and conflict data and annual water masks. Flooded land did not lose summer
-  greenness (except floodplain wetlands); the relative decline of canal-zone
-  farmland predates the invasion and did not deepen after the breach; about
-  1,500 km2 of the former reservoir became vegetated by 2024. Study 1
+  and conflict data and annual water masks. No lasting loss of July-October
+  greenness was detected on flooded land (except floodplain wetlands); about
+  1,500 km2 of the former reservoir became vegetated by 2024; the relative
+  decline of canal-zone farmland began before the invasion, and the design
+  cannot attribute it to the loss of canal water. Study 1
   (Kherson Oblast vs Romanian counties, monthly Sentinel-2 NDVI) is retained.
   Zenodo v1.0.0 and EarthArXiv preprint v1 report an earlier, superseded
   analysis.
@@ -35,6 +36,8 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.21757974"
     description: "Zenodo archive of the earlier ECOCIDE v1.0.0 (superseded analysis); not this version"
-license: CC-BY-4.0
-version: 2.0.1
-date-released: "2026-10-01"
+license:
+  - MIT
+  - CC-BY-4.0
+version: 2.1.0
+date-released: "2026-10-16"

@@ -1,6 +1,6 @@
-# ECOCIDE: A Causal Inference Framework for Independently Verifying War Time Environmental Damage
+# ECOCIDE — Development Log
 
-> *Note: entries are a chronological diary and describe what I believed at the time. Early entries (and this introduction) use stronger language — "prove", "conflict attributable" — than the final results support. Current results are in `ECO_RESULTS_RECONCILIATION.md` and Entry 17.*
+> *Note: entries are a chronological diary and describe what I believed at the time. Early entries (and this introduction) use stronger language — "prove", "conflict attributable" — than the final results support. Current results are in `ECO_Research_Paper_v2.md` and `ECO_RESULTS_RECONCILIATION.md`; the latest state is described in Entry 24.*
 
 
 So...I keep detailed notes on almost every research project I take on..... It began as a purely practical habit—something to stop me from waking up the nxt morning completely lost about where I’d stopped or which exact files a
@@ -34,6 +34,12 @@ My ECOCIDE framework fixes this exact missing puzzle piece. I used a strict Diff
 16. [Entry 16](#entry-16)
 17. [Entry 17](#entry-17)
 18. [Entry 18](#entry-18)
+19. [Entry 19](#entry-19)
+20. [Entry 20](#entry-20)
+21. [Entry 21](#entry-21)
+22. [Entry 22](#entry-22)
+23. [Entry 23](#entry-23)
+24. [Entry 24](#entry-24)
 
 ---
 
@@ -418,3 +424,18 @@ I checked a second outside review against the current repository. It found no mi
 - **Old figure.** `outputs/plots/control_zone_expansion.png` was made by the removed script. I am removing it from the repository.
 
 I did not change the files in `submission/`. They are outside the scope of this work.
+
+## Entry 24
+
+**16 October 2026 — A full forensic review, and what changed because of it**
+
+I had the whole project reviewed again, this time including re-running parts of it: the Study 1 statistics (all reproduced exactly), the Study 2 estimation engine (checked against direct calculations on simulated data), the reservoir-bed numbers and the UNOSAT flood areas (both reproduced exactly). The numbers in the results files and the documents agree. The review found three problems with what I was *saying* about them.
+
+1. **The irrigation result was compared with the wettest summer.** My year-by-year H2 results use 2021 as the reference year. In the canal zone, 2021 had 161 mm of July–October rain, the most of 2016–2024; 2023 had 67 mm and 2024 had 94 mm. Before the war the irrigated–rainfed contrast followed summer rain very closely (r = −0.97), because rainfed crops stay green in wet summers. My models only add rainfall as a separate term, so they cannot allow for this. "No change after the breach" therefore only means that the contrast stayed at the level of the wettest year while the summers became the driest.
+2. **Some of my comparison land is irrigated from the same canals.** The four placebo districts with the largest declines lie next to the canal network (up to 86% of their cropland is in my canal zone). Without the districts that adjoin the network, the canal zone ranks second of eleven (p = 0.18), not sixth of sixteen.
+3. **The matched flood sample is matched on the values its pre-trend test checks.** So its flat pre-trend is expected and is not separate evidence, and the positive revised estimate may partly be regression to the mean.
+
+I wrote these checks as `v2/analysis/x1_review_diagnostics.py` and labelled them exploratory: they came after all registered results were known and change no verdict. What changed is the wording. The paper, executive summary, README, CITATION and dashboard no longer say that canal-zone farmland showed "no change after the breach" or that "most of the decline is not from the dam". They now say that this design cannot test the irrigation pathway, and why. I also used one title everywhere, fixed several small number and rounding errors (the flood estimate over all pixels is +0.010, not +0.011; the 141 vs 50 placebo floodplains; the reservoir baseline is 86–100 km² per year), rebuilt the PDFs from the current text, and added `tests/test_v2lib.py`.
+
+What is still to do: change the old Sentinel Hub credentials that are in the git history; register a second addendum (weather × irrigation interactions, comparison land outside the whole irrigation command area, an independent irrigation map, and a non-outcome matching for the flood) before running it; and clean out duplicate scripts and files.
+

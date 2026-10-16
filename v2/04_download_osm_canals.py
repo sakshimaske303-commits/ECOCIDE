@@ -5,7 +5,7 @@ Used to identify the irrigation network fed by the Kakhovka reservoir
 
 Output: data/v2/osm_canals.geojson
 
-    python v2/04_download_osm_canals.py   (fixed copy: python v2/04b_osm_canals.py)
+    python v2/04_download_osm_canals.py
 """
 import json
 import os

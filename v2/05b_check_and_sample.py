@@ -4,7 +4,8 @@ files to inspect (they are safe to share; no credentials):
     data/v2/CHECK_REPORT.json   — what was downloaded, sizes, value ranges, gaps
     data/v2/sample_kherson.nc   — two MODIS composites + land cover, lower-Dnipro window only
 
-    python v2/05b_check_and_sample.py   (fixed copy of 05_check_and_sample.py)
+    python v2/05b_check_and_sample.py   (fixed version of the first check script, 05_check_and_sample.py, removed
+    on 16 Oct 2026; it is in git history up to commit 47093cc)
 """
 import glob
 import json
@@ -35,7 +36,13 @@ def main():
                     "per_year": {y: sum(d.startswith(str(y)) for d in dates) for y in range(2016, 2025)}}
     if os.path.exists(f"{D}/modis_assets.json"):
         expected = json.load(open(f"{D}/modis_assets.json"))["dates"]
-        rep["modis"]["missing_dates"] = sorted(set(expected) - set(dates))
+        rep["modis"]["missing_dates"] = sorted(set(expected) - set(dates))  # in the catalogue but not downloaded
+    # MOD13Q1 composites start on 1 January and every 16 days after it (23 per year);
+    # composites the catalogue did not return are listed separately.
+    import datetime as _dt
+    full = [(_dt.date(y, 1, 1) + _dt.timedelta(days=16 * k)).isoformat()
+            for y in sorted({int(d[:4]) for d in dates}) for k in range(23)]
+    rep["modis"]["missing_from_catalogue"] = sorted(set(full) - set(dates))
     bb = window_xy()
     samples = []
     if files:

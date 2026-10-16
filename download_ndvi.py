@@ -4,7 +4,9 @@ import requests
 from auth_sentinelhub import get_sentinelhub_token
 
 STATISTICAL_API_URL = "https://sh.dataspace.copernicus.eu/api/v1/statistics"
-OUTPUT_DIR = "data/ndvi"
+# Legacy bounding-box extraction (Study 1, version A). It writes to data/ndvi_old_bbox so that
+# re-running it cannot overwrite data/ndvi_v2. The current data are data/ndvi_v3.
+OUTPUT_DIR = "data/ndvi_old_bbox"
 
 ZONES = {
     "kherson": (31.51, 45.90, 35.10, 47.58),

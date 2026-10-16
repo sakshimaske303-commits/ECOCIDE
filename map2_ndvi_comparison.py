@@ -1,5 +1,5 @@
 """Monthly mean NDVI, Kherson vs Tulcea (descriptive; the DiD estimate is in
-generate_model_results.py). Reads the same data/ndvi files as the models."""
+generate_model_results.py). Reads the same NDVI folder as the models (eco_core.NDVI_DIR)."""
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pandas as pd

@@ -51,3 +51,29 @@ Committed after the pre-registered results were known and before the MODIS 2010�
 | H1 placebo (revision) | Distance-to-channel bands for each placebo use the distance to that placebo river's traced line; annual water is only available in the lower-Dnipro window, so the water rule does not apply to placebo rivers outside it. |
 | H2 placebo raions | 15 districts qualified (≥ 300 irrigated and ≥ 300 rainfed pixels under R1). |
 | Classification finding | In the restricted zone O the R1 rule still labels 490,950 pixels irrigated and 23,594 rainfed: in the steppe, too, the NDVI rule separates summer from winter cropping rather than irrigated from rainfed land. Reported as a limitation; the rule was not changed. |
+
+## 5. Exploratory checks after an external review (16 Oct 2026; not registered)
+
+Written after all pre-registered and registered-revision results were known. They change no registered estimate or verdict; they change how H2 and H4 are interpreted in the paper.
+
+| Item | Implementation / finding |
+|---|---|
+| Script | `v2/analysis/x1_review_diagnostics.py` → `outputs/v2/x1_review_diagnostics.json`. The first version of the JSON was generated from an independent reconstruction of `layers.npz` and `r1_layers.npz` (zone K within 0.1 % of the pipeline's); re-run the script after `run_all.py` and `run_revision.py`. |
+| Weather (D1, D2) | Pixel-mean July–October ERA5-Land rainfall in zone K (same nearest-cell rule as `v2lib.weather`): 2016–2024 = 131, 115, 129, 141, 131, 161, 118, 67, 94 mm. The H2 reference year 2021 is the wettest and coolest; 2023 the driest; 2024 the hottest. The 2016–2021 H2 event-study coefficients correlate with this rainfall at r = −0.94 (plan) and −0.97 (revision). The plan's models include weather only additively (§6), so they cannot absorb a weather-dependent irrigated–rainfed contrast. |
+| Placebo districts (D3) | The four most negative revision placebo districts (Chaplynskyi, Novotroitskyi, Ivanivskyi, Nyzhnosirohozkyi) adjoin the Kakhovka network: 86 %, 77 %, 48 % and 2 % of their cropland is in zone K. Excluding the five districts with ≥ 1 % of cropland in zone K or a median zone-O distance to the network ≤ 20 km (the four plus Melitopolskyi), the one-sided randomization p is 0.18 (10 placebos) instead of 0.375. |
+| Confidence intervals | All reported 95 % CIs are β ± 1.96·SE (normal), while p-values use t(G − 1). For the H1 matched estimate (G = 50) the t interval is −0.015 to 0.026 instead of −0.014 to 0.026. Not changed in the code, so that every registered output stays as produced. |
+
+## 6. Registered Revision 2 (ANALYSIS_PLAN_v2_ADDENDUM_2.md, version 1.0, approved 16 Oct 2026)
+
+Approved by the author on 16 October 2026 and committed to the local repository before any of its data were
+downloaded. Not deposited with an independent registry (author's decision); the repository is pushed to GitHub only
+when the project is finished, so the git commit is the only record of the date.
+
+Addendum 2 SHA-256 (line endings normalised to LF): `0777f2c1871e2309ec616098e97fd7397ab612f9564e0c93268272d25c23f563`
+
+`v2/analysis/run_revision2.py` and every `r2_*.py` script stop if the file's checksum differs from this value. Any
+later change to the addendum must be recorded here as a deviation, with a new checksum, before the analysis is run.
+
+| Item | Implementation |
+|---|---|
+| Code written before data | `v2/09_download_irrigation_maps.py`, `10_download_dem.py`, `11_download_s2_reservoir.py`, `v2/analysis/r2_*.py`, `run_revision2.py`, `tests/test_r2lib.py`; checked only on a synthetic world with known effects (H2 effect −0.050 recovered as −0.053; flood effect −0.020 recovered as −0.020; placebo-in-time test detects the regression-to-the-mean bias built into that world). |

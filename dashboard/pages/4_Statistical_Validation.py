@@ -6,15 +6,16 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(_
 sys.path.append(PROJECT_ROOT)
 sys.path.append(os.path.join(PROJECT_ROOT, "dashboard"))
 from styles import apply_custom_style, PALETTE
-from results import R, NAMES, p, c, ci, sig
+from results import R, NAMES, p, c, ci, sig, pv
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>📊 STATISTICAL VALIDATION</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>📊 STUDY 1 — STATISTICAL VALIDATION</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Every Check, With Its Actual Result</h3>",
     unsafe_allow_html=True,
 )
+st.info("**Study 1 (background study):** Kherson Oblast compared with four Romanian counties, monthly Sentinel-2 NDVI. It motivated the main study; the main results are on the **Study 2** pages.")
 st.markdown("---")
 
 st.error(f"""
@@ -26,16 +27,16 @@ st.error(f"""
    one scene per month; the current data use a common ~150–220 m grid, mask water, and take each
    pixel's median over all clear acquisitions in the month.
 
-Current primary estimate: {c(R['main_did'])} (95% CI {ci(R['main_did'])}, HAC p = {p(R['main_did']['p'])})
+Current primary estimate: {c(R['main_did'])} (95% CI {ci(R['main_did'])}, HAC {pv(R['main_did']['p'])})
 — **{sig(R['main_did']['p'])}**. The checks below show why that still does not attribute the decline to the dam.
 """)
 
 m = R["main_did"]
 checks = [
-    ("✓" if m["p"] < 0.05 else "!", PALETTE["vegetation"] if m["p"] < 0.05 else PALETTE["warning"], f"Primary DiD — {sig(m['p'])} (p = {p(m['p'])})"),
-    ("✓" if R["main_did_seasonal"]["p"] < 0.05 else "!", PALETTE["vegetation"] if R["main_did_seasonal"]["p"] < 0.05 else PALETTE["warning"], f"Zone-specific seasonality — {c(R['main_did_seasonal'])} (p = {p(R['main_did_seasonal']['p'])})"),
-    ("✓", PALETTE["vegetation"], f"Placebo, fake date Jun 2022 — clean (p = {p(R['placebo_broad']['p'])})"),
-    ("!", PALETTE["warning"], f"Narrowed-baseline placebo — significant (p = {p(R['placebo_narrowed']['p'])})"),
+    ("✓" if m["p"] < 0.05 else "!", PALETTE["vegetation"] if m["p"] < 0.05 else PALETTE["warning"], f"Primary DiD — {sig(m['p'])} ({pv(m['p'])})"),
+    ("✓" if R["main_did_seasonal"]["p"] < 0.05 else "!", PALETTE["vegetation"] if R["main_did_seasonal"]["p"] < 0.05 else PALETTE["warning"], f"Zone-specific seasonality — {c(R['main_did_seasonal'])} ({pv(R['main_did_seasonal']['p'])})"),
+    ("✓", PALETTE["vegetation"], f"Placebo, fake date Jun 2022 — clean ({pv(R['placebo_broad']['p'])})"),
+    ("!", PALETTE["warning"], f"Narrowed-baseline placebo — significant ({pv(R['placebo_narrowed']['p'])})"),
     ("!", PALETTE["warning"], "Event study — significant pre-event quarters"),
     ("!", PALETTE["warning"], f"Placebo in space — Kherson rank {R['placebo_in_space']['rank_one_sided']}/5"),
     ("!", PALETTE["warning"], "Control-only check — controls not all stable (Constanța moves like Kherson)"),
@@ -139,9 +140,9 @@ lag = R["lag_sensitivity"]
 lc = R["low_coverage"]
 st.markdown(f"""
 - **HAC lag length 1–6:** p ranges from {min(v['p'] for v in lag.values()):.3f} to {max(v['p'] for v in lag.values()):.3f}.
-- **log(NDVI):** {c(R['log_ndvi'], 3)} log points ≈ {100*R['log_ndvi']['pct_change']:.0f}% (p = {p(R['log_ndvi']['p'])}).
-- **Dropping low-coverage zone-months:** <15% valid → {c(lc['0.15']['main'])} (p = {p(lc['0.15']['main']['p'])});
-  <25% valid → {c(lc['0.25']['main'])} (p = {p(lc['0.25']['main']['p'])}).
+- **log(NDVI):** {c(R['log_ndvi'], 3)} log points ≈ {100*R['log_ndvi']['pct_change']:.0f}% ({pv(R['log_ndvi']['p'])}).
+- **Dropping low-coverage zone-months:** <15% valid → {c(lc['0.15']['main'])} ({pv(lc['0.15']['main']['p'])});
+  <25% valid → {c(lc['0.25']['main'])} ({pv(lc['0.25']['main']['p'])}).
 """)
 
 st.markdown("---")

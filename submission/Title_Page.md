@@ -1,12 +1,12 @@
 # Title Page
 
-**Title:** Flood, Irrigation Loss or War? A Pre-Registered, Exposure-Based Satellite Test of the Vegetation Effects of the Kakhovka Dam Destruction
+**Title:** What Did the Destruction of the Kakhovka Dam Do to Vegetation? Separating Flood, Reservoir and Irrigation Effects with Satellite Data
 
 **Author:** Sakshi D. Maske, Independent Researcher, Nagpur, India
 
 **Corresponding author:** Sakshi D. Maske — [postal address] — [phone] — sakshimaske303@gmail.com — ORCID: [0000-0000-0000-0000]
 
-**Word count:** abstract 308; main text ≈5,250 (Introduction to Conclusion, including tables and figure captions, excluding references)
+**Word count:** [to be recounted after the final revision]
 
 **Pre-registration:** analysis plan `ANALYSIS_PLAN_v2.md` (GitHub commit 521672f, 24 September 2026, before any data download); registered revision `ANALYSIS_PLAN_v2_ADDENDUM_1.md` (commit 30e3840, 24 September 2026, before its additional data were downloaded).
 

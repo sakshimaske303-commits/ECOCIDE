@@ -11,15 +11,15 @@ apply_custom_style()
 
 st.markdown("<h1 style='text-align: center;'>🗺️ INTERACTIVE MAPS &amp; PLOTS</h1>", unsafe_allow_html=True)
 st.markdown(
-    "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Explore Verified Flood Extent and Headline Charts Live</h3>",
+    "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>UNOSAT Flood-Extent Layers (preliminary) and Study 1 Charts</h3>",
     unsafe_allow_html=True,
 )
 st.markdown("---")
 
 st.markdown("""
 Interactive map of three UNOSAT flood-extent layers (6 June and 9 June: Sentinel-3; 21 June:
-Sentinel-1), built in Python with folium, plus three statistical charts whose numbers are read from
-the project's results file.
+Sentinel-1), built in Python with folium, plus three Study 1 statistical charts whose numbers are read
+from the project's results file.
 """)
 
 st.markdown("---")

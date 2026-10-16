@@ -21,13 +21,17 @@ STUDY2 = [
      "caption": "Flooded minus matched unflooded pixels, relative to 2021. Left: pre-registered caliper matching; "
                 "right: exploratory matching without caliper. 95% cluster-robust CIs."},
     {"num": "S2-3", "path": "v2/figures/s2_fig3_h2_event_study.png", "title": "H2 irrigation: event study (pre-registered)",
-     "caption": "Irrigated minus rainfed cropland, canal zone minus comparison zone, relative to 2021."},
+     "caption": "Irrigated minus rainfed cropland, canal zone minus comparison zone, relative to 2021. The reference "
+                "year 2021 was the wettest July-October of 2016-2024 in the canal zone, and the contrast moves with "
+                "summer rainfall, so post-breach values relative to 2021 cannot be read as 'no change'."},
     {"num": "S2-4", "path": "v2/figures/s2_fig4_randomization_inference.png", "title": "Randomization inference",
      "caption": "H1 estimate against 50 placebo floodplain segments; H2 estimate against six placebo oblasts."},
     {"num": "S2-5", "path": "v2/figures/s2_fig5_h3_reservoir_bed.png", "title": "H3 former reservoir bed",
      "caption": "Mean July-October NDVI and area with NDVI above 0.3 on the former Kakhovka reservoir bed, 2016-2024."},
     {"num": "S2-6", "path": "v2/figures/s2_fig6_h4_decomposition.png", "title": "H4 decomposition of Kherson's change",
-     "caption": "Area-weighted contributions to Kherson Oblast's 2021-2024 change in July-October NDVI relative to zone O."},
+     "caption": "Area-weighted contributions to Kherson Oblast's 2021-2024 change in July-October NDVI relative to zone O. "
+                "'All other land' is land outside the exposure definitions; it includes irrigated land more than 5 km "
+                "from the mapped canals. Descriptive, no uncertainty estimate."},
     {"num": "S2-7", "path": "v2/figures/s2_fig7_revision_event_studies.png", "title": "Registered revision: event studies",
      "caption": "H1 matched and unmatched, and H2 triple difference under Registered Revision 1 (2010-15 irrigation "
                 "classification, steppe comparison zone, VIINA occupation and conflict, annual water masks)."},
@@ -75,7 +79,7 @@ def draw_cover(c, page_w, page_h):
     c.setFillColor(TEXT_GREY)
     c.setFont("Helvetica", 14)
     c.drawCentredString(page_w / 2, page_h - 92 * mm,
-                         "Kakhovka Dam destruction: satellite vegetation and flood evidence")
+                         "What did the destruction of the Kakhovka Dam do to vegetation?")
 
     c.setFillColor(ACCENT)
     c.setFont("Helvetica-Bold", 13)

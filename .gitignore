@@ -20,3 +20,8 @@ data/v2/derived/h2_npy/
 data/v2/sample_kherson.nc
 data/v2/conflict/*.zip
 data/v2/conflict/*.geojson
+
+# GADM boundaries may not be redistributed (https://gadm.org/license.html);
+# recreate with download_gadm.py and the extract_* scripts
+data/boundaries/*.gpkg
+data/boundaries/geometries/

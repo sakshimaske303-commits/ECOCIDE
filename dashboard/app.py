@@ -8,7 +8,7 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(BASE_DIR)
 from styles import apply_custom_style, PALETTE
 from doc_viewer import render_doc_viewer
-from results import R, FLOOD, S2, R1, p, c, ci, sig
+from results import R, FLOOD, S2, R1, H1R, p, c, ci, sig
 
 st.set_page_config(
     page_title="ECOCIDE",
@@ -22,14 +22,17 @@ apply_custom_style()
 st.markdown("<h1 style='text-align: center;'>🛰️ ECOCIDE</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700; margin-top: -10px;'>"
-    "Satellite Evidence and Causal-Inference Testing of the Kakhovka Dam Destruction</h3>",
+    "What Did the Destruction of the Kakhovka Dam Do to Vegetation?<br>"
+    "<span style='font-weight:500; font-size:0.85em;'>Separating flood, reservoir and irrigation effects with satellite data</span></h3>",
     unsafe_allow_html=True,
 )
 
 st.success(
-    "**Main result: Study 2.** This is a pre-registered, pixel-level analysis in which treatment is defined by exposure "
-    "(flood, reservoir bed, canal irrigation). Open **Study 2 Main Results** in the sidebar. The other pages show "
-    "Study 1, the Kherson-vs-Romania analysis that motivated it."
+    "**Research question.** Which physical pathway of the dam's destruction — the flood, the drained reservoir or the "
+    "loss of canal irrigation — left a detectable mark on vegetation, compared with similar land in the same war zone?\n\n"
+    "**Main result: Study 2**, a pre-registered, pixel-level analysis in which treatment is defined by exposure. Open "
+    "**Study 2 Main Results** and **Study 2 Methods and Data** in the sidebar. The pages marked *Study 1* show the "
+    "Kherson-vs-Romania analysis that motivated it."
 )
 
 st.markdown(
@@ -88,19 +91,23 @@ st.markdown(
 st.markdown("---")
 
 col1, col2, col3, col4 = st.columns(4)
-_h1, _h2r, _h3 = S2["H1_flood"], R1["H2_irrigation"], S2["H3_reservoir_bed"]
+_h1, _h2, _h3 = S2["H1_flood"], S2["H2_irrigation"], S2["H3_reservoir_bed"]
+_h1all = H1R["robustness"]["1_no_matching"]
+_pre = [_h3[str(y)]["km2_ndvi_gt_0_3"] for y in range(2016, 2023)]
 with col1:
     st.metric("UNOSAT FLOOD (6–9 JUNE)", f"{FLOOD['composite_6_9_june']['flood_km2']:.0f} km²", "cumulative, multi-sensor")
 with col2:
-    st.metric("FLOODED LAND (H1)", f"{_h1['beta']:+.3f} NDVI", f"{_h1['verdict']} — no loss of greenness", delta_color="off")
+    st.metric("FLOODED LAND (H1, all pixels)", f"{_h1all['beta']:+.3f} NDVI",
+              f"{_h1['verdict']} — no detectable lasting loss", delta_color="off")
 with col3:
-    st.metric("CANAL FARMLAND, 2023 vs 2021 (H2)", f"{_h2r['event_study']['2023']:+.3f} NDVI",
-              "no change after the breach (revision)", delta_color="off")
+    st.metric("CANAL FARMLAND (H2)", f"{_h2['beta']:+.3f} NDVI",
+              f"{_h2['verdict']} by rule — not attributable to the dam", delta_color="off")
 with col4:
     st.metric("RESERVOIR BED, NDVI > 0.3 (H3)", f"{_h3['2024']['km2_ndvi_gt_0_3']:,.0f} km²",
-              f"2024; {_h3['2021']['km2_ndvi_gt_0_3']:.0f} km² in 2021", delta_color="off")
-st.caption("Headline numbers are from Study 2 (outputs/v2/study2_summary.json and r1_summary.json). "
-           "Study 1 numbers (Kherson vs Romania) are on the Study 1 pages.")
+              f"2024; {min(_pre):.0f}–{max(_pre):.0f} km² each year 2016–22", delta_color="off")
+st.caption("Headline numbers are from Study 2 (outputs/v2/study2_summary.json and h1_results.json). Why H2 cannot be "
+           "attributed to the dam is explained on the Study 2 Main Results page. Study 1 numbers (Kherson vs Romania) "
+           "are on the Study 1 pages.")
 
 st.markdown("---")
 
@@ -140,7 +147,7 @@ with col_left:
     happened to it (flooded, drained reservoir bed, canal-irrigated farmland) and compared with similar
     land in the same war zone. The analysis plan was made public before any data were downloaded.
 
-    **Study 1 (earlier)** compared the whole of Kherson Oblast with four Romanian counties. It found a
+    **Study 1 (background)** compared the whole of Kherson Oblast with four Romanian counties. It found a
     decline but could not link it to the dam.
 
     All analysis results on this dashboard are read from the results files written by the repository's code. Background facts (dates, reservoir volume, flood area from UNOSAT) come from the cited sources.
@@ -154,12 +161,12 @@ with col_right:
                       letter-spacing:1.5px; font-weight:800; margin-bottom:12px;">Core Finding</p>
             <p style="color:{PALETTE['text_primary']}; font-size:0.95rem; line-height:1.7; margin:0; font-weight:500;">
                 The drained reservoir bed changed the most: land with NDVI above 0.3 grew from
-                {S2["H3_reservoir_bed"]["2021"]["km2_ndvi_gt_0_3"]:.0f} km² in 2021 to
-                {S2["H3_reservoir_bed"]["2024"]["km2_ndvi_gt_0_3"]:,.0f} km² in 2024. Flooded land did not lose
-                summer greenness ({S2["H1_flood"]["beta"]:+.3f} NDVI), except floodplain wetlands. Canal-zone
-                farmland declined relative to other farmland, but the decline came before the war and did not
-                change after the breach. Most of Kherson Oblast's overall decline came from land outside all
-                three pathways.
+                {min(_pre):.0f}–{max(_pre):.0f} km² in each year before the breach to
+                {_h3["2024"]["km2_ndvi_gt_0_3"]:,.0f} km² in 2024. Flooded land showed no detectable lasting loss of
+                July–October greenness ({_h1all["beta"]:+.3f} NDVI over all flooded pixels), except floodplain
+                wetlands. Canal-zone farmland declined relative to other farmland, starting before the war, but this
+                design cannot tell whether the loss of canal water added to the decline. An oblast-wide average
+                mixes all of these changes.
             </p>
         </div>
         """, unsafe_allow_html=True
@@ -200,7 +207,7 @@ with m3:
         <p style="color: {PALETTE['damage']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Honest Validation</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
             Every check is reported with its actual result, including the ones that weaken the
-            headline — they are listed on the Statistical Validation page.
+            headline — Study 2 checks on the Study 2 pages, Study 1 checks on the Statistical Validation page.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -211,15 +218,16 @@ st.markdown("### Explore the Evidence")
 
 nav_items = [
     ("Study 2 Main Results", "Flood, irrigation and reservoir results (main study)"),
+    ("Study 2 Methods and Data", "Data, exposure groups, models, tests and limitations of the main study"),
     ("Study Design", "Study 1: treatment and control zones"),
-    ("Theoretical Foundations", "How a dam-break flood and reservoir drainage could affect vegetation"),
+    ("Theoretical Foundations", "Three ways the dam's destruction could change vegetation"),
     ("Flood Analysis", "UNOSAT flood-extent layers by sensor"),
     ("Vegetation Impact", "Study 1: NDVI DiD results"),
     ("Statistical Validation", "Study 1: placebo tests, event study, limitations"),
-    ("Explore Trends", "Interactive NDVI time series, live difference calculator"),
-    ("Satellite Evidence", "Before/after true-color imagery"),
-    ("Interactive Maps & Plots", "Flood map plus three interactive charts"),
-    ("Methodology & Data", "Data sources, corrections, limitations"),
+    ("Explore Trends", "Study 1: interactive NDVI time series"),
+    ("Satellite Evidence", "Before/after true-colour imagery (context)"),
+    ("Interactive Maps & Plots", "Flood map plus three Study 1 charts"),
+    ("Methodology & Data", "Study 1: data sources, corrections, limitations"),
 ]
 
 cols = st.columns(3)
@@ -250,7 +258,7 @@ st.markdown(
 _all_docs = [
     {"label": "Executive Summary", "filename": "ECO_Executive_Summary.pdf"},
     {"label": "Research Paper (Study 2, main)", "filename": "ECO_Research_Paper_v2.pdf"},
-    {"label": "Research Paper (Study 1)", "filename": "ECO_Research_Paper.pdf"},
+    {"label": "Research Paper (Study 1, background)", "filename": "ECO_Research_Paper.pdf"},
     {"label": "Development Log", "filename": "ECO_Development_Log.pdf"},
 ]
 _docs = [d for d in _all_docs if os.path.exists(os.path.join(BASE_DIR, "static", d["filename"]))]

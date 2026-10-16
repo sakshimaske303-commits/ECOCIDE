@@ -11,11 +11,12 @@ from styles import apply_custom_style, PALETTE
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>📈 EXPLORE TRENDS</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>📈 STUDY 1 — EXPLORE TRENDS</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Interactive NDVI Time Series</h3>",
     unsafe_allow_html=True,
 )
+st.info("**Study 1 (background study):** Kherson Oblast compared with four Romanian counties, monthly Sentinel-2 NDVI. It motivated the main study; the main results are on the **Study 2** pages.")
 st.markdown("---")
 
 st.markdown("""
@@ -120,6 +121,6 @@ st.caption("A simple two-month comparison for exploration only. It ignores seaso
 
 st.markdown("---")
 st.markdown(
-    "<p class='caption-text' style='text-align:center;'>ECOCIDE — Sentinel-2 L2A, GADM polygons, SCL-masked monthly NDVI (data/ndvi)</p>",
+    "<p class='caption-text' style='text-align:center;'>ECOCIDE — Sentinel-2 L2A, GADM polygons, SCL- and water-masked monthly NDVI (data/ndvi_v3)</p>",
     unsafe_allow_html=True,
 )

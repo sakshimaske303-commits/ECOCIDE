@@ -1,41 +1,51 @@
-# ECOCIDE — Satellite Evidence and Causal-Inference Testing of the Kakhovka Dam Destruction
+# ECOCIDE — What Did the Destruction of the Kakhovka Dam Do to Vegetation?
+
+*Separating flood, reservoir and irrigation effects with satellite data*
 
 [![EarthArXiv](https://img.shields.io/badge/EarthArXiv-Preprint%20v1%20(superseded%20results)-B7410E.svg)](https://eartharxiv.org/repository/view/14827/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21757974.svg)](https://doi.org/10.5281/zenodo.21757974)
 
-**Can a Difference-in-Differences design separate the vegetation impact of the Kakhovka Dam's destruction (6 June 2023) from background change in comparable, unaffected regions?** Kherson's vegetation did decline significantly relative to its controls after June 2023 — but the design cannot attribute that decline to the dam.
+**Research question.** Which physical pathway of the Kakhovka Dam's destruction (6 June 2023) — the flood below the dam, the draining of the reservoir, or the loss of water for the irrigation canals — left a detectable mark on vegetation, when exposed land is compared with similar land in the same war zone?
 
-> **Version note.** EarthArXiv preprint v1 (5 September 2026) and Zenodo v1.0.0 report an earlier analysis (bounding-box NDVI, stacked-panel standard errors) with a significant result (−0.0703, p = 0.022). That result is superseded. The numbers below come from the third, corrected NDVI extraction (`data/ndvi_v3`) and the code in this repository.
+The main analysis is **Study 2**: a pre-registered, pixel-level analysis of MODIS NDVI. **Study 1**, an earlier comparison of the whole of Kherson Oblast with Romanian counties, is kept as the background study that motivated it.
+
+> **Version note.** EarthArXiv preprint v1 (5 September 2026) and Zenodo v1.0.0 report an earlier version of Study 1 (bounding-box NDVI, stacked-panel standard errors) with a significant result (−0.0703, p = 0.022). That result is superseded.
 
 ## Study 2 (main result): pre-registered, exposure-based pixel analysis
 
-Study 2 replaces the oblast-versus-Romania design with 231 m MODIS pixels (2016–2024), treatment defined by physical exposure, and comparisons inside the war zone. Every choice was fixed in [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md) before the analysis; departures are logged in [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md). Paper: [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md). Reproduce: `python v2/analysis/run_all.py` (after the download steps in [`v2/README_v2.md`](./v2/README_v2.md)).
+Study 2 uses 231 m MODIS pixels (2016–2024), defines treatment by physical exposure, and makes all comparisons inside the war zone. Every choice was fixed in [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md) before the analysis; departures are logged in [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md). Paper: [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md). Reproduce: `python v2/analysis/run_all.py` (after the download steps in [`v2/README_v2.md`](./v2/README_v2.md)).
 
-| Hypothesis | Estimate (July–October NDVI) | Pre-registered verdict |
-|---|---|---|
-| H1 flood: flooded vs matched unflooded land, same bank | +0.006 (95% CI −0.014 to 0.026); wild-bootstrap p = 0.60; placebo floodplains p = 0.63 | **not supported** (wetlands: −0.04) |
-| H2 irrigation loss: irrigated vs rainfed, canal zone vs elsewhere | −0.074 (−0.088 to −0.060); wild-bootstrap p < 0.001; placebo zones p = 0.14 (minimum attainable); strong pre-trends | **suggestive** |
-| H3 former reservoir bed (descriptive) | area with NDVI > 0.3: ~95 km² (2016–22) → 906 km² (2023) → 1,574 km² (2024) | — |
-| H4 decomposition of Kherson's 2021→24 change vs zone O (−0.029) | other land −0.024, irrigated canal zone −0.013, flood −0.0004, reservoir bed +0.010 | — |
+| Pathway | Estimate (July–October NDVI) | Pre-registered verdict | What it means |
+|---|---|---|---|
+| H1 flood: flooded vs unflooded land, same river bank | all flooded pixels +0.010 (95% CI −0.004 to 0.025); pre-registered matched sample (1.8% of flooded pixels) +0.006 (−0.014 to 0.026), wild-bootstrap p = 0.60, placebo floodplains p = 0.63 | **not supported** | no detectable lasting loss of greenness, except floodplain wetlands (−0.04) |
+| H2 irrigation loss: irrigated vs rainfed, canal zone vs elsewhere | −0.074 (−0.088 to −0.060); wild-bootstrap p < 0.001; placebo zones p = 0.14 (minimum attainable); strong pre-trends | **suggestive** | the design cannot attribute this to the loss of canal water (see below) |
+| H3 former reservoir bed (descriptive) | area with NDVI > 0.3: 86–100 km² each year 2016–2022 → 906 km² (2023) → 1,574 km² (2024) | — | the largest change |
+| H4 decomposition of Kherson's 2021→24 change vs zone O (−0.029) | land outside the exposure groups −0.024, irrigated canal zone −0.013, flood −0.0004, reservoir bed +0.010 | — | the oblast average mixes changes of opposite sign |
 
-**Registered revision** ([`ANALYSIS_PLAN_v2_ADDENDUM_1.md`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), committed before its extra data were downloaded: irrigation from 2010–15, steppe-only comparison zone, raion placebos, VIINA occupation and conflict, annual water masks). H1: flooded land greener than matched controls (+0.055), still **not supported**; wetlands −0.061. H2: β = −0.053 but the event study shows **no change after the breach relative to 2021** (−0.006 to −0.014, n.s.); 15 placebo districts p = 0.38; verdict **suggestive** by rule. Numbers: `outputs/v2/r1_summary.json`.
+**Registered revision** ([`ANALYSIS_PLAN_v2_ADDENDUM_1.md`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), committed before its extra data were downloaded: irrigation from 2010–15, steppe-only comparison zone, district placebos, VIINA occupation and conflict, annual water masks). H1: flooded land greener than matched controls (+0.055; unmatched +0.012, n.s.), still **not supported**; wetlands −0.061. H2: β = −0.053; relative to 2021 the year-by-year contrast stays near zero after the breach (−0.006 to −0.014, n.s.); 15 placebo districts p = 0.38; verdict **suggestive** by rule. Numbers: `outputs/v2/r1_summary.json`.
 
-All Study 2 numbers: `outputs/v2/study2_summary.json`; figures: `outputs/v2/figures/`. The Study 1 results below are kept as the administrative-unit analysis that motivated Study 2.
+**Why H2 cannot be read as "no effect" (exploratory checks after all results were known; [`v2/analysis/x1_review_diagnostics.py`](./v2/analysis/x1_review_diagnostics.py)).** The reference year 2021 was the wettest summer of the record in the canal zone (161 mm of July–October rain, against 67 mm in 2023 and 94 mm in 2024), and before the war the irrigated–rainfed contrast moved closely with summer rain (r = −0.97), which the models do not allow for. The four placebo districts with the largest declines adjoin the canal network and are partly irrigated by it. The irrigation pathway therefore remains untested by this design, although other work shows that irrigated area fell by about 90%.
+
+All Study 2 numbers: `outputs/v2/study2_summary.json`, `outputs/v2/r1_summary.json`, `outputs/v2/x1_review_diagnostics.json`; figures: `outputs/v2/figures/`.
 
 ## Live dashboard
 
-**[ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)** — numbers are read from `outputs/v2/study2_summary.json` and `outputs/v2/r1_summary.json` (Study 2) and `outputs/model_results.json` (Study 1).
+**[ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)** — numbers are read from `outputs/v2/study2_summary.json`, `outputs/v2/r1_summary.json` and `outputs/v2/x1_review_diagnostics.json` (Study 2) and `outputs/model_results.json` (Study 1).
 
 ## Documents
 
 | Document | Contents |
 |---|---|
-| [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Full paper: literature, data, methods, results, limitations |
-| [`ECO_Executive_Summary.md`](./ECO_Executive_Summary.md) | Two-page summary |
+| [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md) | **Main paper (Study 2)**: question, data, methods, results, limitations |
+| [`ECO_Executive_Summary.md`](./ECO_Executive_Summary.md) | Two-page summary of Study 2 |
+| [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md), [`ANALYSIS_PLAN_v2_ADDENDUM_1.md`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md) | Pre-registered plan, registered revision, and every deviation |
+| [`ANALYSIS_PLAN_v2_ADDENDUM_2.md`](./ANALYSIS_PLAN_v2_ADDENDUM_2.md) | Registered Revision 2 (approved 16 Oct 2026; independent irrigation maps, terrain matching, weather interactions; not yet run) |
+| [`RESEARCH_COMPLETION_PLAN.md`](./RESEARCH_COMPLETION_PLAN.md) | What is left to do, and where the research stops |
+| [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Study 1 paper (background study: Kherson Oblast vs Romanian counties) |
 | [`ECO_RESULTS_RECONCILIATION.md`](./ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
 | [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Chronological research diary (historical entries describe the state at that time) |
 | [`ECOCIDE_Maps_and_Plots.pdf`](./ECOCIDE_Maps_and_Plots.pdf) | All figures with captions |
 
-## Key findings (current code and data)
+## Study 1 (background): Kherson Oblast vs Romanian counties
 
 Monthly Sentinel-2 NDVI, January 2022 – November 2024, over each zone's GADM polygon on a common 0.002° grid, with cloud, shadow, cirrus, snow and water masked and each pixel's monthly median over all clear acquisitions (`data/ndvi_v3`). Effects are estimated on the monthly treated-minus-control NDVI gap, with Newey-West HAC standard errors (maxlags = 3, t-distribution).
 
@@ -51,7 +61,7 @@ Monthly Sentinel-2 NDVI, January 2022 – November 2024, over each zone's GADM p
 | Event study | 4 of 5 pre-event quarters deviate; the summer–autumn gap deepens from 2022/2023 to 2024 |
 | HAC lags 1–6 / log NDVI | p = 0.010–0.042 / −25%, p = 0.030 |
 
-Taken together: Kherson's NDVI declined relative to comparable unaffected regions after June 2023, robustly to seasonality and specification, most strongly in the 2024 growing season. The design does not attribute that decline to the dam: one control county shifts by as much, pre-event quarters already deviate, and the oblast-wide unit mixes flooding, reservoir drainage and war effects.
+Kherson's NDVI declined relative to comparable unaffected regions after June 2023, robustly to seasonality and specification. The design does not attribute that decline to the dam: one control county shifts by as much, pre-event quarters already deviate, and the oblast-wide unit mixes flooding, reservoir drainage, irrigation loss and war effects. Study 2 was designed to separate them.
 
 **Flood extent (descriptive).** UNOSAT's FL20230606UKR layers map the downstream flood with different sensors: 122.5 km² (6 June, Sentinel-3), 520.8 km² (7 June, ICEYE), 260.9 km² (8 June, Sentinel-2), 464.2 km² (9 June, Sentinel-3), 179.9 km² (13 June, Sentinel-2, 55% of the analysis area cloud-obscured), 21.2 km² (21 June, Sentinel-1); UNOSAT's cumulative 6–9 June composite is 617 km². These are separate preliminary observations, not one continuous series.
 
@@ -61,42 +71,71 @@ Taken together: Kherson's NDVI declined relative to comparable unaffected region
 git clone https://github.com/sakshimaske303-commits/ECOCIDE.git
 cd ECOCIDE
 pip install -r requirements.txt
+
+# Boundaries (GADM may not be redistributed, so they are downloaded, not stored here)
+python download_gadm.py
+python extract_boundaries.py && python extract_control_zone_boundaries.py && python export_zone_geometries.py
+
+# Study 2 (main): first the downloads in v2/README_v2.md, then
+pip install -r v2/requirements_v2.txt
+python v2/analysis/run_all.py                 # pre-registered analysis -> outputs/v2/study2_summary.json
+python v2/analysis/run_revision.py            # registered revision     -> outputs/v2/r1_summary.json
+python v2/analysis/x1_review_diagnostics.py   # exploratory checks      -> outputs/v2/x1_review_diagnostics.json
+# Registered Revision 2: downloads v2/09-11, then (see v2/README_v2.md)
+python v2/analysis/run_revision2.py           # -> outputs/v2/r2_summary.json
+python tests/test_v2lib.py                    # checks of the estimation engine
+python tests/test_r2lib.py                    # checks of the Revision 2 helpers and the addendum checksum
+
+# Study 1 (background)
 python generate_model_results.py      # all statistics -> outputs/model_results.json (reads data/ndvi_v3)
 python flood_progression.py           # UNOSAT areas  -> outputs/flood_extent_table.csv
-python build_all_figures.py           # every static + interactive figure and the figure PDF
+python build_all_figures.py           # every Study 1 figure and the figure PDF
+
 cd dashboard && streamlit run app.py
 ```
 
-Individual scripts (`did_model.py`, `placebo_test.py`, `event_study.py`, `placebo_in_space_test.py`, …) print the same numbers; all use the shared engine in `eco_core.py`.
+Individual Study 1 scripts (`did_model.py`, `placebo_test.py`, `event_study.py`, `placebo_in_space_test.py`, …) print the same numbers; all use the shared engine in `eco_core.py`.
 
-**NDVI versions.** `data/ndvi_v3` (current, `download_ndvi_polygon_v3.py`): polygon, common 0.002° grid, cloud/shadow/cirrus/snow/water masked, per-pixel monthly median. `data/ndvi` = `data/ndvi_v2` (`download_ndvi_polygon.py`): polygon, default 256 × 256 sampling grid, water not masked, single scene per month. `data/ndvi_old_bbox`: original bounding-box extraction. Any version can be analysed with `ECO_NDVI_DIR=<folder> python generate_model_results.py`. Re-extraction needs Sentinel Hub credentials in `.env` (see `.env.example`).
+**Study 1 NDVI versions.** `data/ndvi_v3` (current, `download_ndvi_polygon_v3.py`): polygon, common 0.002° grid, cloud/shadow/cirrus/snow/water masked, per-pixel monthly median. `data/ndvi_v2` (`download_ndvi_polygon.py`): polygon, default 256 × 256 sampling grid, water not masked, single scene per month. `data/ndvi_old_bbox`: original bounding-box extraction. Any version can be analysed with `ECO_NDVI_DIR=<folder> python generate_model_results.py`. Re-extraction needs Sentinel Hub credentials in `.env` (see `.env.example`).
 
 ## Repository structure
 
 ```text
 ECOCIDE/
-├── eco_core.py                  # shared estimation engine (gap-series DiD, HAC, event study)
+├── ANALYSIS_PLAN_v2.md, ANALYSIS_PLAN_v2_ADDENDUM_1.md   # Study 2 plans (registered)
+├── ECO_Research_Paper_v2.md     # main paper (Study 2)
+├── v2/                          # Study 2
+│   ├── 00–08_*.py               # data download and preparation (MODIS, WorldCover, ERA5-Land, OSM, IO land cover, VIINA)
+│   ├── grid.py                  # common EPSG:3035 231.656 m grid
+│   ├── DEVIATIONS.md, README_v2.md
+│   └── analysis/                # a1–a8 (pre-registered), r1_* (revision), x1 (exploratory checks), v2lib.py (engine)
+├── tests/                       # checks of the Study 2 engine
+├── eco_core.py                  # Study 1 estimation engine (gap-series DiD, HAC, event study)
 ├── eco_flood.py / eco_style.py  # UNOSAT layer definitions / figure style
-├── generate_model_results.py    # runs every model -> outputs/model_results.json
-├── build_all_figures.py         # regenerates all figures
-├── did_model*.py, placebo*.py, event_study*.py, placebo_in_space_test.py,
-│   control_only_spillover_check.py, specification_robustness_check.py,
-│   low_coverage_month_check.py  # individual checks (thin wrappers on eco_core)
-├── map*.py, build_*.py          # figures, interactive plots, folium map, figure PDF
-├── download_*.py                # data acquisition (Sentinel Hub)
-├── data/                        # boundaries, NDVI (ndvi_v3 current; ndvi, ndvi_v2, ndvi_old_bbox earlier), UNOSAT zip
-├── outputs/                     # model_results.json, flood table, plots, maps
-└── dashboard/                   # Streamlit app (reads outputs/v2/*.json and outputs/model_results.json)
+├── generate_model_results.py    # runs every Study 1 model -> outputs/model_results.json
+├── build_all_figures.py         # regenerates Study 1 figures
+├── did_model*.py, placebo*.py, event_study*.py, …   # individual Study 1 checks (thin wrappers on eco_core)
+├── map*.py, build_*.py          # Study 1 figures, interactive plots, folium map, figure PDF
+├── download_*.py                # Study 1 data acquisition (Sentinel Hub)
+├── data/                        # boundaries, Study 1 NDVI, UNOSAT zip, small Study 2 inputs (large ones are regenerated)
+├── outputs/                     # model_results.json, flood table, plots, maps; outputs/v2 for Study 2
+├── submission/                  # anonymised manuscript files built by make_submission.py
+└── dashboard/                   # Streamlit app
 ```
 
 ## Data sources
 
 | Dataset | Provider |
 |---|---|
-| NDVI, true-colour imagery | Copernicus Sentinel-2 L2A via Sentinel Hub (Copernicus Data Space Ecosystem) |
+| NDVI and EVI, 250 m, 2010–2024 (Study 2) | MODIS Terra MOD13Q1 v061 (NASA LP DAAC), via Microsoft Planetary Computer |
+| Land cover | ESA WorldCover 2021 v200; Impact Observatory annual land cover 2017–2023 |
+| Weather | ERA5-Land monthly means (Copernicus Climate Data Store) |
+| Irrigation canals | © OpenStreetMap contributors, Open Database License (ODbL 1.0); the extract in `data/v2` is a derived database under the same licence |
+| War events and territorial control | VIINA (Zhukov, 2023) |
 | Flood extent | UNITAR/UNOSAT, FL20230606UKR (Sentinel-1, Sentinel-2, Sentinel-3, ICEYE layers; preliminary) |
-| Administrative boundaries | GADM v4.1 |
+| NDVI and true-colour imagery (Study 1) | Copernicus Sentinel-2 L2A via Sentinel Hub (Copernicus Data Space Ecosystem) |
+| Administrative boundaries | GADM v4.1 (academic and non-commercial use; not redistributed here — `download_gadm.py`) |
 
 ## Author and licence
 
-Sakshi D. Maske, independent geospatial researcher. Licensed under [CC BY 4.0](./LICENSE).
+Sakshi D. Maske, independent geospatial researcher. Code: [MIT](./LICENSE). Text, papers, figures and derived results: [CC BY 4.0](./LICENSE-CC-BY-4.0). Third-party data keep the licences listed above.

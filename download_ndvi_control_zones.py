@@ -4,7 +4,9 @@ import requests
 from auth_sentinelhub import get_sentinelhub_token
 
 STATISTICAL_API_URL = "https://sh.dataspace.copernicus.eu/api/v1/statistics"
-OUTPUT_DIR = "data/ndvi"
+# Legacy bounding-box extraction (Study 1, version A). It writes to data/ndvi_old_bbox so that
+# re-running it cannot overwrite data/ndvi_v2. The current data are data/ndvi_v3.
+OUTPUT_DIR = "data/ndvi_old_bbox"
 
 # Three more Danube/Black Sea Romanian counties, bordering Tulcea, forming the
 # four-county control panel alongside it — same non-combatant status, same

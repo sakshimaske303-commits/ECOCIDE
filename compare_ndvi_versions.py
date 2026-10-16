@@ -22,12 +22,11 @@ def main():
     """
     Run this AFTER export_zone_geometries.py + download_ndvi_polygon.py have
     produced data/ndvi_v2/*.json. Compares the new polygon+SCL-masked NDVI
-    against the original bbox-based data/ndvi/*.json, month by month, so you
-    can see exactly what changed before deciding whether to promote the new
-    data to primary (see PHASE2_INSTRUCTIONS.md).
+    against the original bbox-based data/ndvi_old_bbox/*.json, month by month,
+    so you can see exactly what changed (see ECO_RESULTS_RECONCILIATION.md).
     """
     for zone in ZONES:
-        old = load(zone, "data/ndvi")
+        old = load(zone, "data/ndvi_old_bbox")
         new = load(zone, "data/ndvi_v2")
         print(f"\n=== {zone.upper()} ===")
         print(f"{'month':>9s} {'old_mean':>10s} {'new_mean':>10s} {'diff':>8s} "

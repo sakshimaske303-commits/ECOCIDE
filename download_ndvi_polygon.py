@@ -11,9 +11,9 @@ OUTPUT_DIR = "data/ndvi_v2"
 # now using the actual GADM administrative-boundary geometry (exported by
 # export_zone_geometries.py) instead of each zone's bounding box, plus
 # pixel-level SCL-based cloud/shadow/snow masking instead of relying on the
-# scene-level maxCloudCoverage filter alone. Output goes to data/ndvi_v2/,
-# NOT data/ndvi/ -- the original bbox-based files are kept as the Phase-1
-# baseline for comparison (see ECO_RESULTS_RECONCILIATION.md).
+# scene-level maxCloudCoverage filter alone. Output goes to data/ndvi_v2/;
+# the original bbox-based files are kept in data/ndvi_old_bbox/ as the
+# Phase-1 baseline for comparison (see ECO_RESULTS_RECONCILIATION.md).
 ZONES = ["kherson", "tulcea", "galati", "constanta", "braila"]
 
 

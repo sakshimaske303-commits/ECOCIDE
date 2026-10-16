@@ -13,6 +13,10 @@ MODELS = [
 ]
 
 
+def fp(x):
+    return "p<0.001" if x < 0.001 else f"p={x:.3f}"
+
+
 def main():
     st.apply()
     R = st.results()
@@ -26,9 +30,9 @@ def main():
         c = st.FLAG if failed else st.CONTROL
         ax.plot(m["ci"], [y - 0.14] * 2, color=c, lw=2.6)
         ax.plot(m["coef"], y - 0.14, "X" if failed else "o", color=c, ms=8 if failed else 6)
-        ax.text(1.02, y + 0.14, f"classical p={m['classic_p']:.3f}", transform=ax.get_yaxis_transform(),
+        ax.text(1.02, y + 0.14, f"classical {fp(m['classic_p'])}", transform=ax.get_yaxis_transform(),
                 va="center", fontsize=8, color=st.NEUTRAL)
-        ax.text(1.02, y - 0.14, f"HAC p={m['p']:.3f}" + ("  placebo significant" if failed else ""),
+        ax.text(1.02, y - 0.14, f"HAC {fp(m['p'])}" + ("  placebo significant" if failed else ""),
                 transform=ax.get_yaxis_transform(), va="center", fontsize=8, color=c)
     ax.axvline(0, color="#333333", ls="--", lw=1)
     ax.set_yticks(ys)

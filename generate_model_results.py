@@ -5,7 +5,7 @@ the paper, dashboard and figures to outputs/model_results.json.
     python generate_model_results.py
 
 Re-run this (then build_all_figures.py) whenever the NDVI data changes.
-To analyse a different NDVI folder without touching data/ndvi:
+To analyse a different NDVI folder without editing code:
     ECO_NDVI_DIR=data/ndvi_v3 python generate_model_results.py
 """
 import json

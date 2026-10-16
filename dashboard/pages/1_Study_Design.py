@@ -10,15 +10,16 @@ from styles import apply_custom_style, PALETTE
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>🏛️ STUDY DESIGN</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>🏛️ STUDY 1 — STUDY DESIGN</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Treatment Zone, Control Zone, and Causal Framework</h3>",
     unsafe_allow_html=True,
 )
+st.info("**Study 1 (background study):** Kherson Oblast compared with four Romanian counties, monthly Sentinel-2 NDVI. It motivated the main study; the main results are on the **Study 2** pages.")
 st.markdown("---")
 
 st.markdown("""
-### The Research Question
+### Study 1 Research Question
 
 After the destruction of the Kakhovka Dam, did vegetation greenness (NDVI) in Kherson Oblast change
 more than in comparable, unaffected regions over the same period — and can that difference be
@@ -110,7 +111,7 @@ st.markdown("""
 1. **Boundary Acquisition** — Administrative boundaries for both zones sourced from GADM v4.1.
 
 2. **Monthly NDVI** — Sentinel-2 L2A, Sentinel Hub Statistical API, each zone's GADM polygon,
-   pixel-level cloud/shadow/cirrus/snow masking, January 2022 – November 2024.
+   pixel-level cloud/shadow/cirrus/snow/water masking, per-pixel monthly median, January 2022 – November 2024.
 
 3. **Flood Extent** — UNOSAT FL20230606UKR layers (Sentinel-3, ICEYE, Sentinel-2, Sentinel-1),
    6–21 June 2023; preliminary products, reported descriptively.

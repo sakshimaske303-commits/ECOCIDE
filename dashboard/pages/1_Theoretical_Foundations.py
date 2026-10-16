@@ -13,7 +13,7 @@ apply_custom_style()
 st.markdown("<h1 style='text-align: center;'>🌊 ANATOMY OF A DAM-BREAK FLOOD</h1>", unsafe_allow_html=True)
 st.markdown(
     f"<h3 style='text-align: center; color: {PALETTE['accent']}; font-weight: 400;'>"
-    "How a Dam-Break Flood and Reservoir Drainage Can Change Vegetation</h3>",
+    "Three Ways the Dam's Destruction Could Change Vegetation</h3>",
     unsafe_allow_html=True,
 )
 st.markdown("---")
@@ -39,11 +39,10 @@ st.markdown("---")
 # ============================================================
 # SECTION 1 — DAM-BREAK HYDRAULICS
 # ============================================================
-st.markdown("### Two Opposite Processes Inside One Treatment Zone")
+st.markdown("### Three Pathways, With Opposite Effects")
 
 st.markdown("""
-The dam's failure on 6 June 2023 set off two different landscape changes, and both fall inside the
-Kherson Oblast polygon used for the NDVI analysis:
+The dam's failure on 6 June 2023 set off three different landscape changes inside an active war zone:
 
 - **Downstream, the floodplain was inundated.** A dam-break wave travels as an unsteady flood pulse
   (described by the shallow-water / Saint-Venant equations). Along the roughly 90 km of the lower
@@ -53,6 +52,8 @@ Kherson Oblast polygon used for the NDVI analysis:
 - **Upstream, the reservoir drained.** Several hundred square kilometres of former reservoir inside
   the oblast turned from open water into exposed bed that re-vegetated quickly. Water is masked in
   the NDVI series, so this bed enters the oblast mean as new, increasingly green land.
+- **The irrigation canals lost their water source.** The reservoir fed the canals that irrigated much of the
+  southern steppe. Without them, summer crops that depended on irrigation could no longer be grown in the same way.
 """)
 
 st.markdown("---")
@@ -60,14 +61,13 @@ st.markdown("---")
 st.markdown("### Why This Matters for the Statistics")
 
 st.markdown("""
-The flood covered only about 2% of the oblast. Even a complete loss of vegetation on every flooded
+The flood covered only about 2% of Kherson Oblast. Even a complete loss of vegetation on every flooded
 pixel would move the oblast-wide mean NDVI by roughly 0.02, while reservoir drainage pushes the mean
-in the opposite direction by adding newly vegetated land. A mechanism that could produce an oblast-wide decline would have to act
-far beyond the flooded strip — for example through the loss of irrigation water from the reservoir,
-or through conflict effects unrelated to the dam. The NDVI analysis cannot separate these pathways,
-which is why its statistically significant oblast-wide decline is reported as an association, not
-as a measured flood impact. The decline is largest in the 2024 growing season, which fits slower,
-larger-scale pathways better than the flood itself.
+in the opposite direction by adding newly vegetated land. An oblast-wide average (Study 1) therefore mixes
+the three pathways with each other and with the war's other effects, and cannot say which one caused a change.
+
+This is why Study 2 defines each pathway by its physical footprint — the flooded land, the drained bed and the
+cropland near the canals — and compares each with similar land in the same war zone. See the **Study 2** pages.
 """)
 
 st.markdown("---")
