@@ -78,3 +78,15 @@ later change to the addendum must be recorded here as a deviation, with a new ch
 |---|---|
 | Code written before data | `v2/09_download_irrigation_maps.py`, `10_download_dem.py`, `11_download_s2_reservoir.py`, `v2/analysis/r2_*.py`, `run_revision2.py`, `tests/test_r2lib.py`; checked only on a synthetic world with known effects (H2 effect −0.050 recovered as −0.053; flood effect −0.020 recovered as −0.020; placebo-in-time test detects the regression-to-the-mean bias built into that world). |
 | Map values (after download, before any analysis) | The 2019–2022 RF v6 files are 32-bit integers with values 0, 1 and −999 and no no-data tag; the 2024–2025 RF v7 files are 16-bit with 0 and 1. As the addendum's definitions say (value 1 = irrigated; no-data cells left out), −999 is read as no-data. Checked on 16 Oct 2026 by decoding sample tiles; no outcome data were looked at. |
+| DEM values (after download, before any analysis) | `dem_glo30_mean.nc` reports a minimum of −362 m, which is impossible on land here: pixels beside areas with no DEM tiles (open sea) average in the fill value. `r2_prepare.py` sets elevations below −10 m to no-data and records how many pixels this affects in `r2_meta.json`. |
+| First run on real data (16 Oct 2026, ~23:00) | The first full run of `run_revision2.py` used the earlier `r2_prepare.py` without the DEM rule above, because the updated file had not reached the run folder. Its outputs are kept unchanged in `outputs/v2/r2_run1_without_dem_rule/`. The run was then repeated with the registered code, and the repeated run is the one reported. |
+
+## 7. Full re-run on 16 Oct 2026 (reproducibility check)
+
+The derived files of `data/v2/derived/` were no longer on the author's computer, so `run_all.py` and `run_revision.py`
+were run again from the downloaded data before Revision 2. Every sample size, matched count and verdict is the same
+as in the committed outputs, and H3/H4 are identical. Coefficients differ from the 4th significant digit on (for
+example Revision 1 H1 β = 0.05517 → 0.05541; plan H2 β = −0.073942 → −0.073942), and some p-values move (Revision 1
+H1 pre-trend p = 0.0002 → 0.0016; plan H1 pre-trend p = 0.72 → 0.74). The likely cause is different library
+versions on the two runs. The re-run outputs are the ones kept and reported from now on.
+

@@ -65,7 +65,7 @@
  },
  "kakhovka_network": {
   "segments": 1879,
-  "km": 3264.0042613220476,
+  "km": 3264.0042613220353,
   "all_segments": 5910
  },
  "classes": [
@@ -96,5 +96,5 @@
   "left": 6482,
   "none": 77
  },
- "seconds": 77
+ "seconds": 178
 }

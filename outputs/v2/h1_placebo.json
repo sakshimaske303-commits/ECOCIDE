@@ -9,8 +9,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.01479951666111145,
-    "se_cluster": 0.011704455610284147,
+    "beta": -0.01479962383883584,
+    "se_cluster": 0.011685917726365454,
     "n_pixels": 14539
    }
   },
@@ -23,8 +23,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.007925829085887223,
-    "se_cluster": 0.007143942705103045,
+    "beta": 0.007927440150398753,
+    "se_cluster": 0.007134738925364338,
     "n_pixels": 7077
    }
   },
@@ -37,8 +37,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.02837762969348439,
-    "se_cluster": 0.0068315133151324045,
+    "beta": -0.028377569089966186,
+    "se_cluster": 0.006828945687528781,
     "n_pixels": 10432
    }
   },
@@ -51,8 +51,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.016081321282043242,
-    "se_cluster": 0.005899653743445469,
+    "beta": -0.016081326868349025,
+    "se_cluster": 0.005901898626885214,
     "n_pixels": 6243
    }
   },
@@ -65,8 +65,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.019379532915871536,
-    "se_cluster": 0.006718306703665409,
+    "beta": -0.01937947141474978,
+    "se_cluster": 0.006698949887772538,
     "n_pixels": 7781
    }
   },
@@ -79,8 +79,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.0071698796105689935,
-    "se_cluster": 0.004650740098421004,
+    "beta": -0.007169875855106849,
+    "se_cluster": 0.0046593812092256765,
     "n_pixels": 8582
    }
   },
@@ -93,8 +93,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.007282530888925085,
-    "se_cluster": 0.01375169142994376,
+    "beta": 0.007281087217332427,
+    "se_cluster": 0.013735704411182924,
     "n_pixels": 7226
    }
   },
@@ -107,8 +107,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.03521280139570962,
-    "se_cluster": 0.00571178724176415,
+    "beta": 0.035212585099935044,
+    "se_cluster": 0.0057073540701897876,
     "n_pixels": 9217
    }
   },
@@ -121,8 +121,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0015255519231532064,
-    "se_cluster": 0.00860101384199365,
+    "beta": 0.0015255424102115166,
+    "se_cluster": 0.008596202545703646,
     "n_pixels": 9156
    }
   },
@@ -135,8 +135,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.031773109078316784,
-    "se_cluster": 0.004715368254744084,
+    "beta": 0.031773061628294866,
+    "se_cluster": 0.004692431923861701,
     "n_pixels": 7600
    }
   },
@@ -149,8 +149,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.012990588883687175,
-    "se_cluster": 0.007756755519296126,
+    "beta": -0.01299057320674318,
+    "se_cluster": 0.007754664023922698,
     "n_pixels": 5849
    }
   },
@@ -163,8 +163,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.011789347871223325,
-    "se_cluster": 0.006701799815074925,
+    "beta": -0.011789312615060304,
+    "se_cluster": 0.006693084971562513,
     "n_pixels": 11615
    }
   },
@@ -177,8 +177,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.002872674372841782,
-    "se_cluster": 0.005416322455798539,
+    "beta": 0.0028725677396705374,
+    "se_cluster": 0.005427000806966457,
     "n_pixels": 7741
    }
   },
@@ -191,8 +191,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.004778373340901876,
-    "se_cluster": 0.004705061021595232,
+    "beta": 0.004778426790382649,
+    "se_cluster": 0.004702212598394902,
     "n_pixels": 9446
    }
   },
@@ -205,8 +205,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.008782618643131615,
-    "se_cluster": 0.007698831267038934,
+    "beta": 0.008782864336913334,
+    "se_cluster": 0.0076982991427368,
     "n_pixels": 9793
    }
   },
@@ -219,8 +219,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.013972143058549099,
-    "se_cluster": 0.0062078134786152026,
+    "beta": 0.013972495190770602,
+    "se_cluster": 0.00618262581501198,
     "n_pixels": 7845
    }
   },
@@ -233,8 +233,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.012249552465668268,
-    "se_cluster": 0.013046082729186524,
+    "beta": 0.012249591099644665,
+    "se_cluster": 0.013049095850703839,
     "n_pixels": 9339
    }
   },
@@ -247,8 +247,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0417855991838992,
-    "se_cluster": 0.009880054873412597,
+    "beta": 0.04178565007542555,
+    "se_cluster": 0.00988869500557199,
     "n_pixels": 7959
    }
   },
@@ -261,8 +261,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.050485774064186834,
-    "se_cluster": 0.006009663579848097,
+    "beta": 0.05048552654908281,
+    "se_cluster": 0.006006109134980294,
     "n_pixels": 8125
    }
   },
@@ -275,8 +275,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.015524475772070402,
-    "se_cluster": 0.011680427772861985,
+    "beta": 0.015524528690571303,
+    "se_cluster": 0.011695494549968731,
     "n_pixels": 8925
    }
   },
@@ -289,8 +289,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.020078218381782538,
-    "se_cluster": 0.014477759976501288,
+    "beta": 0.020078158795443377,
+    "se_cluster": 0.014470965685796994,
     "n_pixels": 7567
    }
   },
@@ -303,8 +303,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.0013794901213151842,
-    "se_cluster": 0.005039407939579633,
+    "beta": -0.0013795591877866055,
+    "se_cluster": 0.005039077488845996,
     "n_pixels": 5911
    }
   },
@@ -317,8 +317,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.030175082391889107,
-    "se_cluster": 0.005462186522586403,
+    "beta": -0.030175030985221923,
+    "se_cluster": 0.005434411774071102,
     "n_pixels": 11604
    }
   },
@@ -331,8 +331,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0015362762469692407,
-    "se_cluster": 0.0045751356970488415,
+    "beta": 0.0015354812663710966,
+    "se_cluster": 0.004574099761893685,
     "n_pixels": 4748
    }
   },
@@ -345,8 +345,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.03257378935307347,
-    "se_cluster": 0.007418981032235563,
+    "beta": -0.03257377922334555,
+    "se_cluster": 0.007419344795928088,
     "n_pixels": 12724
    }
   },
@@ -359,8 +359,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.004622445029642393,
-    "se_cluster": 0.002200599083390209,
+    "beta": 0.004622783812241108,
+    "se_cluster": 0.0022772828633201812,
     "n_pixels": 3374
    }
   },
@@ -373,8 +373,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.02426379323910593,
-    "se_cluster": 0.01192713821123651,
+    "beta": -0.024263779395496256,
+    "se_cluster": 0.011931318073503082,
     "n_pixels": 8028
    }
   },
@@ -387,8 +387,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.0131538813607537,
-    "se_cluster": 0.008900997475779902,
+    "beta": -0.01315480924418676,
+    "se_cluster": 0.008881543280160551,
     "n_pixels": 7966
    }
   },
@@ -401,8 +401,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.013833220328092394,
-    "se_cluster": 0.011188211768715314,
+    "beta": -0.013833195081092018,
+    "se_cluster": 0.011187028463334579,
     "n_pixels": 8128
    }
   },
@@ -415,8 +415,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0035189643193287486,
-    "se_cluster": 0.009151399555146086,
+    "beta": 0.0035189980018735757,
+    "se_cluster": 0.009157377063266678,
     "n_pixels": 8386
    }
   },
@@ -429,8 +429,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.031170893806791583,
-    "se_cluster": 0.014642749351409428,
+    "beta": 0.031171343860561848,
+    "se_cluster": 0.014643033200420466,
     "n_pixels": 7535
    }
   },
@@ -443,8 +443,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.04189668846323124,
-    "se_cluster": 0.013450834762582393,
+    "beta": 0.041896631177199654,
+    "se_cluster": 0.013443428695363488,
     "n_pixels": 9300
    }
   },
@@ -457,8 +457,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.01789190886427872,
-    "se_cluster": 0.0050759349415162944,
+    "beta": 0.01789184857816499,
+    "se_cluster": 0.005060667910706587,
     "n_pixels": 8581
    }
   },
@@ -471,8 +471,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.03476507141944693,
-    "se_cluster": 0.004778291241434407,
+    "beta": 0.03476507439697954,
+    "se_cluster": 0.00477904952503411,
     "n_pixels": 7969
    }
   },
@@ -485,8 +485,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.01796873848460827,
-    "se_cluster": 0.0027859540401811854,
+    "beta": -0.017968731329748237,
+    "se_cluster": 0.002785202844697168,
     "n_pixels": 8192
    }
   },
@@ -499,8 +499,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.004131525362083324,
-    "se_cluster": 0.00897162217263674,
+    "beta": 0.00413153239999184,
+    "se_cluster": 0.008974188376892943,
     "n_pixels": 9105
    }
   },
@@ -513,8 +513,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.04145770125937347,
-    "se_cluster": 0.002579976750757199,
+    "beta": -0.04145763178705955,
+    "se_cluster": 0.0025801015193061623,
     "n_pixels": 6765
    }
   },
@@ -527,8 +527,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.003282769515916153,
-    "se_cluster": 0.010044242561321819,
+    "beta": 0.0032827801265375694,
+    "se_cluster": 0.010053538896738054,
     "n_pixels": 10674
    }
   },
@@ -541,8 +541,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.010982720820110457,
-    "se_cluster": 0.004585200475120735,
+    "beta": 0.010982336142906331,
+    "se_cluster": 0.004593990470335911,
     "n_pixels": 5899
    }
   },
@@ -555,8 +555,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.011224605935688897,
-    "se_cluster": 0.00559826890472751,
+    "beta": 0.0112246344723407,
+    "se_cluster": 0.005598565120333834,
     "n_pixels": 10525
    }
   },
@@ -569,8 +569,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.022256989960888537,
-    "se_cluster": 0.007594827884830764,
+    "beta": 0.022256700791402215,
+    "se_cluster": 0.007603591905424345,
     "n_pixels": 8847
    }
   },
@@ -583,8 +583,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.019864649566915162,
-    "se_cluster": 0.00854564044362815,
+    "beta": 0.01986464712370516,
+    "se_cluster": 0.008552667839830112,
     "n_pixels": 8083
    }
   },
@@ -597,8 +597,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.042530041355059514,
-    "se_cluster": 0.005142392472127993,
+    "beta": -0.04253004619113148,
+    "se_cluster": 0.005141917049853123,
     "n_pixels": 11290
    }
   },
@@ -611,8 +611,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.003847774874812136,
-    "se_cluster": 0.01469569501877065,
+    "beta": -0.0038472218978996163,
+    "se_cluster": 0.014717558791668285,
     "n_pixels": 5293
    }
   },
@@ -625,8 +625,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.019829514768158668,
-    "se_cluster": 0.0054576120021765555,
+    "beta": -0.019829508558709512,
+    "se_cluster": 0.005457189422514875,
     "n_pixels": 7683
    }
   },
@@ -639,8 +639,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.004689521775770715,
-    "se_cluster": 0.007104933519846201,
+    "beta": 0.004688865730490938,
+    "se_cluster": 0.00709374875265701,
     "n_pixels": 7872
    }
   },
@@ -653,8 +653,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.027657313602561975,
-    "se_cluster": 0.023150305489483308,
+    "beta": -0.027657318842111256,
+    "se_cluster": 0.02314901488070531,
     "n_pixels": 6132
    }
   },
@@ -667,8 +667,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.044562689189172645,
-    "se_cluster": 0.010850004654178754,
+    "beta": -0.04456266773668449,
+    "se_cluster": 0.010848403867607683,
     "n_pixels": 9484
    }
   },
@@ -678,13 +678,13 @@
    "side": 1,
    "treated_px": 587,
    "matched": {
-    "beta": -0.013502314089024522,
-    "se_cluster": 0.007772030656493586,
+    "beta": -0.013502314089024525,
+    "se_cluster": 0.007772030656493561,
     "n_pixels": 26
    },
    "no_matching": {
-    "beta": -0.009198143916880466,
-    "se_cluster": 0.007918538830151893,
+    "beta": -0.009198145639017555,
+    "se_cluster": 0.00791950212431784,
     "n_pixels": 8323
    }
   },
@@ -697,8 +697,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.047068873847333915,
-    "se_cluster": 0.0020804977493046437,
+    "beta": -0.0470689699585158,
+    "se_cluster": 0.002078681635757412,
     "n_pixels": 7290
    }
   },
@@ -711,8 +711,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.005327845230318524,
-    "se_cluster": 0.009957766921893322,
+    "beta": 0.0053278439103868576,
+    "se_cluster": 0.009958924210243558,
     "n_pixels": 6117
    }
   },
@@ -722,13 +722,13 @@
    "side": 2,
    "treated_px": 616,
    "matched": {
-    "beta": -0.001371221867675805,
-    "se_cluster": 0.0231922332251027,
+    "beta": -0.0013712218676758129,
+    "se_cluster": 0.023192233225102655,
     "n_pixels": 20
    },
    "no_matching": {
-    "beta": -0.008008475059932876,
-    "se_cluster": 0.004398000507325609,
+    "beta": -0.008008456585257746,
+    "se_cluster": 0.004393288554500317,
     "n_pixels": 11017
    }
   },
@@ -738,13 +738,13 @@
    "side": 1,
    "treated_px": 416,
    "matched": {
-    "beta": 0.03381728760869189,
-    "se_cluster": 0.009066075276855054,
+    "beta": 0.033817287608691876,
+    "se_cluster": 0.00906607527685503,
     "n_pixels": 23
    },
    "no_matching": {
-    "beta": 0.01442841587211402,
-    "se_cluster": 0.0074388746309572975,
+    "beta": 0.014428438583896879,
+    "se_cluster": 0.007448441873646032,
     "n_pixels": 6448
    }
   },
@@ -754,13 +754,13 @@
    "side": 2,
    "treated_px": 440,
    "matched": {
-    "beta": -0.00909998950815227,
-    "se_cluster": 0.008888004664448924,
+    "beta": -0.009099989508152266,
+    "se_cluster": 0.00888800466444891,
     "n_pixels": 38
    },
    "no_matching": {
-    "beta": -0.01836085372448336,
-    "se_cluster": 0.007203587507824782,
+    "beta": -0.01836091240444229,
+    "se_cluster": 0.007199377671091988,
     "n_pixels": 9456
    }
   },
@@ -770,13 +770,13 @@
    "side": 1,
    "treated_px": 598,
    "matched": {
-    "beta": -0.006145226715926702,
-    "se_cluster": 0.0077241515381538065,
+    "beta": -0.006100323633495797,
+    "se_cluster": 0.008417004718815617,
     "n_pixels": 78
    },
    "no_matching": {
-    "beta": -0.0010254564574429614,
-    "se_cluster": 0.003291581029858192,
+    "beta": -0.0010253410205180657,
+    "se_cluster": 0.0032889381793814094,
     "n_pixels": 9396
    }
   },
@@ -786,13 +786,13 @@
    "side": 2,
    "treated_px": 415,
    "matched": {
-    "beta": -0.0073036555364037,
-    "se_cluster": 0.014519953144682086,
+    "beta": -0.007303655536403698,
+    "se_cluster": 0.014519953144682088,
     "n_pixels": 43
    },
    "no_matching": {
-    "beta": -0.0007457551482884381,
-    "se_cluster": 0.008622693221655448,
+    "beta": -0.0007457597513198496,
+    "se_cluster": 0.008622640292398382,
     "n_pixels": 7495
    }
   },
@@ -802,13 +802,13 @@
    "side": 1,
    "treated_px": 434,
    "matched": {
-    "beta": -0.008368946546095728,
-    "se_cluster": 0.017400095990044925,
+    "beta": -0.008368946546095737,
+    "se_cluster": 0.017400095990044908,
     "n_pixels": 33
    },
    "no_matching": {
-    "beta": -0.007304269738713994,
-    "se_cluster": 0.0029920500176011445,
+    "beta": -0.007304225751971537,
+    "se_cluster": 0.002993044303422036,
     "n_pixels": 9512
    }
   },
@@ -818,13 +818,13 @@
    "side": 2,
    "treated_px": 525,
    "matched": {
-    "beta": 0.005849606088762702,
-    "se_cluster": 0.013146093015153324,
+    "beta": 0.005818541950003856,
+    "se_cluster": 0.012350079293037499,
     "n_pixels": 95
    },
    "no_matching": {
-    "beta": 0.0067374763691930815,
-    "se_cluster": 0.01025781091557601,
+    "beta": 0.006737446718095815,
+    "se_cluster": 0.010260308341227577,
     "n_pixels": 6831
    }
   },
@@ -834,13 +834,13 @@
    "side": 1,
    "treated_px": 585,
    "matched": {
-    "beta": -0.0043450034555253675,
-    "se_cluster": 0.004894364455954029,
+    "beta": -0.004386947935924565,
+    "se_cluster": 0.005213636090117698,
     "n_pixels": 90
    },
    "no_matching": {
-    "beta": -0.01279406070866295,
-    "se_cluster": 0.006962000593179154,
+    "beta": -0.012794035033675195,
+    "se_cluster": 0.006967641237076818,
     "n_pixels": 11943
    }
   },
@@ -850,13 +850,13 @@
    "side": 2,
    "treated_px": 387,
    "matched": {
-    "beta": -0.004365008798795814,
-    "se_cluster": 0.01317662369827835,
+    "beta": -0.004385828938800466,
+    "se_cluster": 0.012653467502239652,
     "n_pixels": 79
    },
    "no_matching": {
-    "beta": -0.007681208086187122,
-    "se_cluster": 0.015513298955291634,
+    "beta": -0.007681083976981554,
+    "se_cluster": 0.01557485915895205,
     "n_pixels": 5364
    }
   },
@@ -866,13 +866,13 @@
    "side": 1,
    "treated_px": 498,
    "matched": {
-    "beta": -0.06878828511851906,
-    "se_cluster": 0.012414021158915803,
+    "beta": -0.06878828511851907,
+    "se_cluster": 0.012414021158915784,
     "n_pixels": 32
    },
    "no_matching": {
-    "beta": -0.03292858536057204,
-    "se_cluster": 0.006329634587819117,
+    "beta": -0.03292861693931065,
+    "se_cluster": 0.006329978031919013,
     "n_pixels": 9658
    }
   },
@@ -882,13 +882,13 @@
    "side": 2,
    "treated_px": 417,
    "matched": {
-    "beta": -0.003660664114218981,
-    "se_cluster": 0.010539523115560176,
+    "beta": -0.0036606641142189946,
+    "se_cluster": 0.01053952311556018,
     "n_pixels": 32
    },
    "no_matching": {
-    "beta": -0.0011346692715470256,
-    "se_cluster": 0.005816071376678791,
+    "beta": -0.0011351987859316078,
+    "se_cluster": 0.005776170661009447,
     "n_pixels": 7088
    }
   },
@@ -901,8 +901,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.04069431562905637,
-    "se_cluster": 0.007082158339902142,
+    "beta": -0.040694100342839754,
+    "se_cluster": 0.007077983322370711,
     "n_pixels": 6688
    }
   },
@@ -912,13 +912,13 @@
    "side": 2,
    "treated_px": 606,
    "matched": {
-    "beta": 0.010649884969662892,
-    "se_cluster": 0.004923696191893949,
+    "beta": 0.010488939815972364,
+    "se_cluster": 0.005126113781767634,
     "n_pixels": 100
    },
    "no_matching": {
-    "beta": -0.003591428986946277,
-    "se_cluster": 0.008962386000315228,
+    "beta": -0.0035912266516640668,
+    "se_cluster": 0.008945550961101492,
     "n_pixels": 10118
    }
   },
@@ -928,13 +928,13 @@
    "side": 1,
    "treated_px": 474,
    "matched": {
-    "beta": -0.0070064222324503714,
-    "se_cluster": 0.02153463050603842,
+    "beta": -0.007006422232450373,
+    "se_cluster": 0.021534630506038353,
     "n_pixels": 25
    },
    "no_matching": {
-    "beta": 0.0016003723583851645,
-    "se_cluster": 0.009464449575186452,
+    "beta": 0.001600711433469371,
+    "se_cluster": 0.009455986124588351,
     "n_pixels": 7716
    }
   },
@@ -944,13 +944,13 @@
    "side": 2,
    "treated_px": 435,
    "matched": {
-    "beta": -0.0027098345100482575,
-    "se_cluster": 0.012168551951964606,
+    "beta": -0.0027098345100482566,
+    "se_cluster": 0.012168551951964594,
     "n_pixels": 31
    },
    "no_matching": {
-    "beta": -0.001964535464738004,
-    "se_cluster": 0.015070021173175255,
+    "beta": -0.001964759710278806,
+    "se_cluster": 0.015070790522930927,
     "n_pixels": 8132
    }
   },
@@ -960,13 +960,13 @@
    "side": 1,
    "treated_px": 553,
    "matched": {
-    "beta": 0.010399198503753655,
-    "se_cluster": 0.02064358652072975,
+    "beta": 0.010399198503753647,
+    "se_cluster": 0.02064358652072982,
     "n_pixels": 21
    },
    "no_matching": {
-    "beta": -0.004456968581320053,
-    "se_cluster": 0.006040748451223253,
+    "beta": -0.0044562326993649055,
+    "se_cluster": 0.006011304430191491,
     "n_pixels": 9784
    }
   },
@@ -976,13 +976,13 @@
    "side": 2,
    "treated_px": 423,
    "matched": {
-    "beta": -0.0016823144696683076,
-    "se_cluster": 0.00934218822821425,
+    "beta": -0.002535286053678216,
+    "se_cluster": 0.01285042570003165,
     "n_pixels": 54
    },
    "no_matching": {
-    "beta": 0.005113392527500925,
-    "se_cluster": 0.002495386531770417,
+    "beta": 0.005115064837957257,
+    "se_cluster": 0.0024753479583034532,
     "n_pixels": 6946
    }
   },
@@ -992,13 +992,13 @@
    "side": 1,
    "treated_px": 525,
    "matched": {
-    "beta": -0.007607296314030563,
-    "se_cluster": 0.005140671973269278,
+    "beta": -0.007607296314030565,
+    "se_cluster": 0.005140671973269269,
     "n_pixels": 78
    },
    "no_matching": {
-    "beta": -0.005351923302381472,
-    "se_cluster": 0.005769487747192827,
+    "beta": -0.005351500907667149,
+    "se_cluster": 0.005766767680140886,
     "n_pixels": 8819
    }
   },
@@ -1008,13 +1008,13 @@
    "side": 2,
    "treated_px": 459,
    "matched": {
-    "beta": 0.0035825816258721736,
-    "se_cluster": 0.012880914149560167,
+    "beta": 0.003582581625872175,
+    "se_cluster": 0.012880914149560191,
     "n_pixels": 38
    },
    "no_matching": {
-    "beta": 0.005189093610275433,
-    "se_cluster": 0.0023614533258821766,
+    "beta": 0.005188798374412631,
+    "se_cluster": 0.002361263721873002,
     "n_pixels": 8496
    }
   },
@@ -1024,13 +1024,13 @@
    "side": 1,
    "treated_px": 415,
    "matched": {
-    "beta": 0.013649465129055483,
-    "se_cluster": 0.010687298988121074,
+    "beta": 0.013649465129055474,
+    "se_cluster": 0.01068729898812106,
     "n_pixels": 31
    },
    "no_matching": {
-    "beta": 0.0365279298995224,
-    "se_cluster": 0.005282076901914019,
+    "beta": 0.03652802534313947,
+    "se_cluster": 0.005271283621181731,
     "n_pixels": 5591
    }
   },
@@ -1040,13 +1040,13 @@
    "side": 2,
    "treated_px": 558,
    "matched": {
-    "beta": 0.005572948151451304,
-    "se_cluster": 0.011177679027526272,
+    "beta": 0.005572948151451297,
+    "se_cluster": 0.01117767902752623,
     "n_pixels": 36
    },
    "no_matching": {
-    "beta": 0.006938617030540449,
-    "se_cluster": 0.00930283582413758,
+    "beta": 0.006938680017579121,
+    "se_cluster": 0.009297560738371369,
     "n_pixels": 11535
    }
   },
@@ -1056,13 +1056,13 @@
    "side": 1,
    "treated_px": 480,
    "matched": {
-    "beta": 0.022593531511808845,
-    "se_cluster": 0.004583178503594163,
+    "beta": 0.02259353151180884,
+    "se_cluster": 0.004583178503594119,
     "n_pixels": 77
    },
    "no_matching": {
-    "beta": 0.013995864490059112,
-    "se_cluster": 0.005070715571085342,
+    "beta": 0.013996062003406636,
+    "se_cluster": 0.005054309283226174,
     "n_pixels": 6588
    }
   },
@@ -1073,12 +1073,12 @@
    "treated_px": 542,
    "matched": {
     "beta": 0.008504005946580026,
-    "se_cluster": 0.01250009663402469,
+    "se_cluster": 0.012500096634024686,
     "n_pixels": 55
    },
    "no_matching": {
-    "beta": 0.014107519274942956,
-    "se_cluster": 0.013815465652763741,
+    "beta": 0.014107534478828034,
+    "se_cluster": 0.013813954232889714,
     "n_pixels": 9844
    }
   },
@@ -1088,13 +1088,13 @@
    "side": 1,
    "treated_px": 570,
    "matched": {
-    "beta": 0.004466621120888837,
-    "se_cluster": 0.0031107469073140058,
+    "beta": 0.004466621120888835,
+    "se_cluster": 0.003110746907314023,
     "n_pixels": 161
    },
    "no_matching": {
-    "beta": 0.01832823549889835,
-    "se_cluster": 0.0029668295546004314,
+    "beta": 0.01832822904959955,
+    "se_cluster": 0.0029604871458648687,
     "n_pixels": 10571
    }
   },
@@ -1107,8 +1107,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.02398129563857581,
-    "se_cluster": 0.0030094200686259726,
+    "beta": -0.02398106201088058,
+    "se_cluster": 0.003014296907610097,
     "n_pixels": 6076
    }
   },
@@ -1119,12 +1119,12 @@
    "treated_px": 557,
    "matched": {
     "beta": 0.009399879006327057,
-    "se_cluster": 0.008002840713564692,
+    "se_cluster": 0.008002840713564677,
     "n_pixels": 78
    },
    "no_matching": {
-    "beta": 0.005837770693953463,
-    "se_cluster": 0.0055930868327401136,
+    "beta": 0.005837799953809827,
+    "se_cluster": 0.005591187287788649,
     "n_pixels": 11347
    }
   },
@@ -1137,8 +1137,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.05478518689333814,
-    "se_cluster": 0.00845102663253334,
+    "beta": -0.054786445832733725,
+    "se_cluster": 0.008439228221227713,
     "n_pixels": 6170
    }
   },
@@ -1148,13 +1148,13 @@
    "side": 1,
    "treated_px": 519,
    "matched": {
-    "beta": -0.011363128448298954,
-    "se_cluster": 0.0068093759582881965,
+    "beta": -0.01105112170205518,
+    "se_cluster": 0.006647340961956889,
     "n_pixels": 115
    },
    "no_matching": {
-    "beta": -0.029914246089830756,
-    "se_cluster": 0.02867442278407387,
+    "beta": -0.029911253876860836,
+    "se_cluster": 0.028672787586796127,
     "n_pixels": 9342
    }
   },
@@ -1164,13 +1164,13 @@
    "side": 2,
    "treated_px": 421,
    "matched": {
-    "beta": 0.0031177096903391307,
-    "se_cluster": 0.010795058238727142,
+    "beta": 0.0031177096903391354,
+    "se_cluster": 0.010795058238727137,
     "n_pixels": 51
    },
    "no_matching": {
-    "beta": -0.030123244958953722,
-    "se_cluster": 0.006623901579492875,
+    "beta": -0.030123321102816673,
+    "se_cluster": 0.006642382459578783,
     "n_pixels": 7873
    }
   },
@@ -1180,13 +1180,13 @@
    "side": 1,
    "treated_px": 393,
    "matched": {
-    "beta": -0.003282972696165172,
-    "se_cluster": 0.0022598049663733817,
+    "beta": -0.0032829726961651684,
+    "se_cluster": 0.002259804966373385,
     "n_pixels": 52
    },
    "no_matching": {
-    "beta": -0.03751844911816902,
-    "se_cluster": 0.007371059149237787,
+    "beta": -0.037518357100342035,
+    "se_cluster": 0.0073742709854347855,
     "n_pixels": 7017
    }
   },
@@ -1196,13 +1196,13 @@
    "side": 2,
    "treated_px": 547,
    "matched": {
-    "beta": 0.0027878105617003654,
-    "se_cluster": 0.007288537116858007,
+    "beta": 0.002785407053971748,
+    "se_cluster": 0.007347708008669849,
     "n_pixels": 196
    },
    "no_matching": {
-    "beta": -0.011302223696305047,
-    "se_cluster": 0.011239667421458306,
+    "beta": -0.011301118263339047,
+    "se_cluster": 0.011239185823537104,
     "n_pixels": 11034
    }
   },
@@ -1215,8 +1215,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0037903000438704744,
-    "se_cluster": 0.003428551330537022,
+    "beta": 0.003789466355081545,
+    "se_cluster": 0.003470111952355752,
     "n_pixels": 2269
    }
   },
@@ -1226,13 +1226,13 @@
    "side": 2,
    "treated_px": 905,
    "matched": {
-    "beta": 0.011294748041628763,
-    "se_cluster": 0.009876553213196684,
+    "beta": 0.011294748041628768,
+    "se_cluster": 0.00987655321319668,
     "n_pixels": 37
    },
    "no_matching": {
-    "beta": 0.011524396936405024,
-    "se_cluster": 0.003919821589992356,
+    "beta": 0.011524397332176285,
+    "se_cluster": 0.003919563946262417,
     "n_pixels": 12516
    }
   },
@@ -1245,8 +1245,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.006868267477356255,
-    "se_cluster": 0.00271107951208138,
+    "beta": -0.006868449427985769,
+    "se_cluster": 0.002781042122006699,
     "n_pixels": 2881
    }
   },
@@ -1259,8 +1259,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.045137160890050765,
-    "se_cluster": 0.015092073502090228,
+    "beta": 0.04513715552043785,
+    "se_cluster": 0.015092013918828641,
     "n_pixels": 9760
    }
   },
@@ -1273,8 +1273,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.024021764032836096,
-    "se_cluster": 0.003441921131480353,
+    "beta": -0.02402131594847062,
+    "se_cluster": 0.003466350773787985,
     "n_pixels": 3213
    }
   },
@@ -1287,8 +1287,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.026037481981657336,
-    "se_cluster": 0.006722506882320761,
+    "beta": -0.02603742143151758,
+    "se_cluster": 0.006729075840479022,
     "n_pixels": 5647
    }
   },
@@ -1301,8 +1301,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.015518803011227931,
-    "se_cluster": 0.008517402100116783,
+    "beta": -0.015518765322668713,
+    "se_cluster": 0.008510018347234364,
     "n_pixels": 2782
    }
   },
@@ -1315,8 +1315,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.02684088898808904,
-    "se_cluster": 0.006429700738321993,
+    "beta": -0.02684079568605161,
+    "se_cluster": 0.006443849061692269,
     "n_pixels": 4848
    }
   },
@@ -1329,8 +1329,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.040157854903679645,
-    "se_cluster": 0.006015748819690008,
+    "beta": -0.040157915138079356,
+    "se_cluster": 0.0060190741715690586,
     "n_pixels": 4324
    }
   },
@@ -1343,8 +1343,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.022303539027983096,
-    "se_cluster": 0.015932284704251294,
+    "beta": -0.022304043352354815,
+    "se_cluster": 0.015988000588522386,
     "n_pixels": 3932
    }
   },
@@ -1357,8 +1357,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.008541597171974669,
-    "se_cluster": 0.0022850857494352947,
+    "beta": -0.008543686713303052,
+    "se_cluster": 0.0022675319432574623,
     "n_pixels": 2015
    }
   },
@@ -1371,8 +1371,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.00024114900184184478,
-    "se_cluster": 0.004018779492629865,
+    "beta": -0.00024134150707706865,
+    "se_cluster": 0.004017300347257092,
     "n_pixels": 10973
    }
   },
@@ -1382,13 +1382,13 @@
    "side": 2,
    "treated_px": 1228,
    "matched": {
-    "beta": 0.0033399780434627134,
-    "se_cluster": 0.005595729411788689,
+    "beta": 0.003339978043462714,
+    "se_cluster": 0.005595729411788685,
     "n_pixels": 60
    },
    "no_matching": {
-    "beta": 0.010073862381659084,
-    "se_cluster": 0.0063513407383886085,
+    "beta": 0.010073955096811244,
+    "se_cluster": 0.006351139638524432,
     "n_pixels": 12919
    }
   },
@@ -1401,8 +1401,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.01434515274810277,
-    "se_cluster": 0.008537229411008887,
+    "beta": 0.014345871300467184,
+    "se_cluster": 0.008554728701348874,
     "n_pixels": 6984
    }
   },
@@ -1412,13 +1412,13 @@
    "side": 2,
    "treated_px": 783,
    "matched": {
-    "beta": 0.02086200479372883,
-    "se_cluster": 0.018475185368670946,
+    "beta": 0.02086200479372882,
+    "se_cluster": 0.018475185368670922,
     "n_pixels": 24
    },
    "no_matching": {
-    "beta": 0.011262660832733883,
-    "se_cluster": 0.007789215342242039,
+    "beta": 0.011262955778978602,
+    "se_cluster": 0.007800580924522293,
     "n_pixels": 9096
    }
   },
@@ -1431,8 +1431,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.005143153900891334,
-    "se_cluster": 0.002969636141279606,
+    "beta": -0.0051431891907454345,
+    "se_cluster": 0.002969544664894783,
     "n_pixels": 12703
    }
   },
@@ -1445,8 +1445,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.018065028178184873,
-    "se_cluster": 0.006955294999793095,
+    "beta": 0.01806575860927255,
+    "se_cluster": 0.006972523602373879,
     "n_pixels": 3852
    }
   },
@@ -1459,8 +1459,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.01290043297024814,
-    "se_cluster": 0.0046029248853831466,
+    "beta": 0.012900223398216273,
+    "se_cluster": 0.004604861430771229,
     "n_pixels": 8593
    }
   },
@@ -1470,13 +1470,13 @@
    "side": 2,
    "treated_px": 933,
    "matched": {
-    "beta": 0.055376171696535206,
-    "se_cluster": 0.020356235929254226,
+    "beta": 0.05537617169653519,
+    "se_cluster": 0.020356235929254212,
     "n_pixels": 25
    },
    "no_matching": {
-    "beta": 0.03222487379040062,
-    "se_cluster": 0.0033547239507667973,
+    "beta": 0.03222490060123344,
+    "se_cluster": 0.003353498434160703,
     "n_pixels": 9340
    }
   },
@@ -1489,8 +1489,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.008126791539255131,
-    "se_cluster": 0.010631270959769505,
+    "beta": -0.008122976401610556,
+    "se_cluster": 0.01063176627234291,
     "n_pixels": 5392
    }
   },
@@ -1503,8 +1503,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.003802543292889621,
-    "se_cluster": 0.00386150003614949,
+    "beta": 0.003802565266209602,
+    "se_cluster": 0.0038630937267540586,
     "n_pixels": 12872
    }
   },
@@ -1517,8 +1517,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0054676282062628735,
-    "se_cluster": 0.0038678922823151456,
+    "beta": 0.005468277702115125,
+    "se_cluster": 0.00390759872384509,
     "n_pixels": 6908
    }
   },
@@ -1531,8 +1531,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.033257893087857766,
-    "se_cluster": 0.008865831050725751,
+    "beta": 0.033257880772886037,
+    "se_cluster": 0.00885858963435919,
     "n_pixels": 10168
    }
   },
@@ -1545,8 +1545,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.0075777931268317805,
-    "se_cluster": 0.006277079846227962,
+    "beta": -0.007578267462828571,
+    "se_cluster": 0.006287497623737512,
     "n_pixels": 7837
    }
   },
@@ -1557,12 +1557,12 @@
    "treated_px": 594,
    "matched": {
     "beta": -0.02359485600961828,
-    "se_cluster": 0.007245018523270728,
+    "se_cluster": 0.007245018523270737,
     "n_pixels": 26
    },
    "no_matching": {
-    "beta": -0.008733268966528917,
-    "se_cluster": 0.007425378837956689,
+    "beta": -0.00873305741904644,
+    "se_cluster": 0.007464460091121394,
     "n_pixels": 9149
    }
   },
@@ -1572,13 +1572,13 @@
    "side": 1,
    "treated_px": 541,
    "matched": {
-    "beta": -0.016009830370064437,
-    "se_cluster": 0.0024132380152246478,
+    "beta": -0.016009830370064457,
+    "se_cluster": 0.0024132380152246105,
     "n_pixels": 21
    },
    "no_matching": {
-    "beta": -0.001218750848491075,
-    "se_cluster": 0.0036076622817208795,
+    "beta": -0.0012185870715399312,
+    "se_cluster": 0.0036091813978064817,
     "n_pixels": 7221
    }
   },
@@ -1588,13 +1588,13 @@
    "side": 2,
    "treated_px": 667,
    "matched": {
-    "beta": 0.003294517502318945,
-    "se_cluster": 0.003118698245092384,
+    "beta": 0.003294517502318948,
+    "se_cluster": 0.003118698245092383,
     "n_pixels": 51
    },
    "no_matching": {
-    "beta": -0.0010277276803166936,
-    "se_cluster": 0.003018068048746478,
+    "beta": -0.0010276763480206765,
+    "se_cluster": 0.0030255553532652648,
     "n_pixels": 10618
    }
   },
@@ -1607,8 +1607,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.004371051507233465,
-    "se_cluster": 0.005128532160900478,
+    "beta": 0.004350672323063211,
+    "se_cluster": 0.004130033364510165,
     "n_pixels": 6145
    }
   },
@@ -1621,8 +1621,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0011543974209095942,
-    "se_cluster": 0.0015702684055012672,
+    "beta": 0.001154380220393694,
+    "se_cluster": 0.0016543537052340965,
     "n_pixels": 12012
    }
   },
@@ -1635,8 +1635,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0035686638275346616,
-    "se_cluster": 0.011071633652465116,
+    "beta": 0.0035699326116976713,
+    "se_cluster": 0.011069536533012809,
     "n_pixels": 6644
    }
   },
@@ -1649,8 +1649,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.00037277527230607883,
-    "se_cluster": 0.002416651456122893,
+    "beta": -0.000372530626619165,
+    "se_cluster": 0.0024247822961758416,
     "n_pixels": 9951
    }
   },
@@ -1660,13 +1660,13 @@
    "side": 1,
    "treated_px": 696,
    "matched": {
-    "beta": -0.006697443288896812,
-    "se_cluster": 0.006612435291086887,
+    "beta": -0.006697443288896821,
+    "se_cluster": 0.006612435291086906,
     "n_pixels": 51
    },
    "no_matching": {
-    "beta": -0.013875916824094699,
-    "se_cluster": 0.003278464655768122,
+    "beta": -0.013875721572167892,
+    "se_cluster": 0.0032788845657347244,
     "n_pixels": 10688
    }
   },
@@ -1679,8 +1679,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0028477076495915113,
-    "se_cluster": 0.006968467730643759,
+    "beta": 0.0028475900866701863,
+    "se_cluster": 0.006972218143137614,
     "n_pixels": 6752
    }
   },
@@ -1693,8 +1693,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.009963628224953896,
-    "se_cluster": 0.002596776430630705,
+    "beta": 0.009963808162659932,
+    "se_cluster": 0.002623830757676245,
     "n_pixels": 8135
    }
   },
@@ -1707,8 +1707,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.0021044980195129735,
-    "se_cluster": 0.006919838416202613,
+    "beta": -0.0021049748775921074,
+    "se_cluster": 0.006920734599437412,
     "n_pixels": 7730
    }
   },
@@ -1721,8 +1721,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0019966180749625383,
-    "se_cluster": 0.0033605566096248833,
+    "beta": 0.001996326453247526,
+    "se_cluster": 0.003365763350837096,
     "n_pixels": 11947
    }
   },
@@ -1735,8 +1735,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0006979063574539762,
-    "se_cluster": 0.004704033144180386,
+    "beta": 0.0006974246178487343,
+    "se_cluster": 0.004699114881654672,
     "n_pixels": 7209
    }
   },
@@ -1746,13 +1746,13 @@
    "side": 1,
    "treated_px": 678,
    "matched": {
-    "beta": -0.022104684605589297,
-    "se_cluster": 0.019226947853300477,
+    "beta": -0.022104684605589307,
+    "se_cluster": 0.019226947853300463,
     "n_pixels": 25
    },
    "no_matching": {
-    "beta": -0.016348342250089166,
-    "se_cluster": 0.005585629414562476,
+    "beta": -0.016348244377990158,
+    "se_cluster": 0.005585206199474013,
     "n_pixels": 10553
    }
   },
@@ -1765,8 +1765,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.012470750080489795,
-    "se_cluster": 0.0054629250854237015,
+    "beta": 0.012470590802681442,
+    "se_cluster": 0.005463311793922081,
     "n_pixels": 8177
    }
   },
@@ -1779,8 +1779,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": -0.004464983064560522,
-    "se_cluster": 0.0034462781411975494,
+    "beta": -0.004464913321731061,
+    "se_cluster": 0.0034616004376026425,
     "n_pixels": 8340
    }
   },
@@ -1793,8 +1793,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.016691103551281974,
-    "se_cluster": 0.00642388520800539,
+    "beta": 0.016690927233030523,
+    "se_cluster": 0.006414563911719553,
     "n_pixels": 9649
    }
   },
@@ -1804,13 +1804,13 @@
    "side": 1,
    "treated_px": 664,
    "matched": {
-    "beta": 0.027617959833753276,
-    "se_cluster": 0.0037977401255892347,
+    "beta": 0.027617959833753283,
+    "se_cluster": 0.003797740125589238,
     "n_pixels": 31
    },
    "no_matching": {
-    "beta": 0.021791398109103133,
-    "se_cluster": 0.007956677397496243,
+    "beta": 0.021791368876304236,
+    "se_cluster": 0.007960653623364636,
     "n_pixels": 8696
    }
   },
@@ -1823,8 +1823,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.015904814931386128,
-    "se_cluster": 0.004314232349776254,
+    "beta": 0.0159045098463697,
+    "se_cluster": 0.004234524921961191,
     "n_pixels": 8532
    }
   },
@@ -1834,13 +1834,13 @@
    "side": 1,
    "treated_px": 502,
    "matched": {
-    "beta": 0.01949938692667348,
-    "se_cluster": 0.012634076937220769,
+    "beta": 0.01949938692667347,
+    "se_cluster": 0.012634076937220753,
     "n_pixels": 31
    },
    "no_matching": {
-    "beta": 0.011016063639263947,
-    "se_cluster": 0.007909537145355063,
+    "beta": 0.011016094600336951,
+    "se_cluster": 0.007933559963924967,
     "n_pixels": 7198
    }
   },
@@ -1850,13 +1850,13 @@
    "side": 2,
    "treated_px": 489,
    "matched": {
-    "beta": 0.023520431269375617,
-    "se_cluster": 0.010675183782466818,
+    "beta": 0.023520431269375624,
+    "se_cluster": 0.010675183782466822,
     "n_pixels": 45
    },
    "no_matching": {
-    "beta": 0.01687944254089689,
-    "se_cluster": 0.0031376701335464664,
+    "beta": 0.016879469344834957,
+    "se_cluster": 0.0031466231148625785,
     "n_pixels": 9645
    }
   },
@@ -1866,13 +1866,13 @@
    "side": 1,
    "treated_px": 1096,
    "matched": {
-    "beta": 0.011858403614896349,
-    "se_cluster": 0.005456206249095498,
+    "beta": 0.011858403614896358,
+    "se_cluster": 0.0054562062490955,
     "n_pixels": 241
    },
    "no_matching": {
-    "beta": 0.003769464610396311,
-    "se_cluster": 0.003987613683201527,
+    "beta": 0.003769496915012133,
+    "se_cluster": 0.003984604749114217,
     "n_pixels": 12300
    }
   },
@@ -1885,8 +1885,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.018451378880729112,
-    "se_cluster": 0.01022874126801427,
+    "beta": 0.018451381785717987,
+    "se_cluster": 0.010251492394579714,
     "n_pixels": 6054
    }
   },
@@ -1896,13 +1896,13 @@
    "side": 1,
    "treated_px": 479,
    "matched": {
-    "beta": 0.028653360758638956,
-    "se_cluster": 0.010059828268534422,
+    "beta": 0.028653360758638963,
+    "se_cluster": 0.010059828268534432,
     "n_pixels": 47
    },
    "no_matching": {
-    "beta": 0.013277635415469159,
-    "se_cluster": 0.0042544181752613465,
+    "beta": 0.013277206996503152,
+    "se_cluster": 0.004256058178291465,
     "n_pixels": 7759
    }
   },
@@ -1913,12 +1913,12 @@
    "treated_px": 537,
    "matched": {
     "beta": -0.03165708353532605,
-    "se_cluster": 0.012528679355930406,
+    "se_cluster": 0.012528679355930392,
     "n_pixels": 38
    },
    "no_matching": {
-    "beta": -0.007253887417702257,
-    "se_cluster": 0.004245553114427527,
+    "beta": -0.0072537480916585115,
+    "se_cluster": 0.004252205168600884,
     "n_pixels": 9106
    }
   },
@@ -1928,13 +1928,13 @@
    "side": 1,
    "treated_px": 621,
    "matched": {
-    "beta": 0.026311450220483458,
-    "se_cluster": 0.02171193946306789,
+    "beta": 0.026311450220483448,
+    "se_cluster": 0.02171193946306795,
     "n_pixels": 23
    },
    "no_matching": {
-    "beta": 0.028615955271636385,
-    "se_cluster": 0.005439193694400003,
+    "beta": 0.02861608814137901,
+    "se_cluster": 0.005445993177600218,
     "n_pixels": 7522
    }
   },
@@ -1944,13 +1944,13 @@
    "side": 2,
    "treated_px": 360,
    "matched": {
-    "beta": -0.0023634456246148855,
-    "se_cluster": 0.005559503477789814,
+    "beta": -0.0023634456246148933,
+    "se_cluster": 0.005559503477789806,
     "n_pixels": 22
    },
    "no_matching": {
-    "beta": 0.02202493905713511,
-    "se_cluster": 0.008016532096116899,
+    "beta": 0.0220254598792654,
+    "se_cluster": 0.007977483497769194,
     "n_pixels": 8448
    }
   },
@@ -1960,13 +1960,13 @@
    "side": 1,
    "treated_px": 870,
    "matched": {
-    "beta": -0.002922933033831682,
-    "se_cluster": 0.006502936968073973,
+    "beta": -0.0026419368611951778,
+    "se_cluster": 0.0065661080037466586,
     "n_pixels": 80
    },
    "no_matching": {
-    "beta": -0.015561165857604276,
-    "se_cluster": 0.0021754002088012233,
+    "beta": -0.015561128698580333,
+    "se_cluster": 0.0021761310951904016,
     "n_pixels": 11028
    }
   },
@@ -1979,8 +1979,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 3.023881457716541e-05,
-    "se_cluster": 0.005828540758160015,
+    "beta": 3.0287483369177953e-05,
+    "se_cluster": 0.0058531818785029196,
     "n_pixels": 8603
    }
   },
@@ -1990,13 +1990,13 @@
    "side": 1,
    "treated_px": 404,
    "matched": {
-    "beta": 0.042776738270057624,
-    "se_cluster": 0.010246513641517787,
+    "beta": 0.04277673827005763,
+    "se_cluster": 0.010246513641517784,
     "n_pixels": 27
    },
    "no_matching": {
-    "beta": 0.01333375117852308,
-    "se_cluster": 0.0060136414072432575,
+    "beta": 0.013333773841503069,
+    "se_cluster": 0.005995570374505243,
     "n_pixels": 8327
    }
   },
@@ -2009,8 +2009,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.0065362337581364805,
-    "se_cluster": 0.008423782520762533,
+    "beta": 0.006536152797432998,
+    "se_cluster": 0.00841718329939746,
     "n_pixels": 9294
    }
   },
@@ -2023,8 +2023,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.016105503315870684,
-    "se_cluster": 0.00325865771278409,
+    "beta": 0.01610553840444689,
+    "se_cluster": 0.0032529633267984765,
     "n_pixels": 9861
    }
   },
@@ -2034,13 +2034,13 @@
    "side": 2,
    "treated_px": 466,
    "matched": {
-    "beta": 0.008042925543745747,
-    "se_cluster": 0.009491974891626667,
+    "beta": 0.008042925543745746,
+    "se_cluster": 0.009491974891626693,
     "n_pixels": 36
    },
    "no_matching": {
-    "beta": 0.00797537646148761,
-    "se_cluster": 0.005029150639927566,
+    "beta": 0.00797784133331696,
+    "se_cluster": 0.004961779978395524,
     "n_pixels": 8602
    }
   },
@@ -2053,8 +2053,8 @@
     "skipped": "fewer than 10 matched treated"
    },
    "no_matching": {
-    "beta": 0.01890476345260205,
-    "se_cluster": 0.003353609459617067,
+    "beta": 0.018904798042108394,
+    "se_cluster": 0.003361811427298307,
     "n_pixels": 9486
    }
   },
@@ -2064,13 +2064,13 @@
    "side": 2,
    "treated_px": 231,
    "matched": {
-    "beta": -0.007396846220247645,
-    "se_cluster": 0.0036154445773876717,
+    "beta": -0.007396846220247642,
+    "se_cluster": 0.0036154445773876913,
     "n_pixels": 22
    },
    "no_matching": {
-    "beta": -0.00955940679330932,
-    "se_cluster": 0.0036822799053851493,
+    "beta": -0.00955920776371961,
+    "se_cluster": 0.0037299155355643232,
     "n_pixels": 7587
    }
   }
@@ -2091,25 +2091,25 @@
  },
  "matched": {
   "n_placebos": 50,
-  "beta_real": 0.005728253005548875,
+  "beta_real": 0.005744918546278846,
   "p_one_sided": 0.6274509803921569,
   "p_two_sided": 0.6862745098039216,
   "placebo_quantiles": [
-   -0.022924278877805238,
-   0.002952760126019748,
-   0.03149352052616806
+   -0.02292427887780524,
+   0.002951558372155442,
+   0.03149352052616805
   ]
  },
  "no_matching": {
   "n_placebos": 141,
-  "beta_real": 0.010451238800489485,
+  "beta_real": 0.010451241898591982,
   "p_one_sided": 0.704225352112676,
   "p_two_sided": 0.5633802816901409,
   "placebo_quantiles": [
-   -0.03751844911816902,
-   0.0016003723583851645,
-   0.033257893087857766
+   -0.037518357100342035,
+   0.001600711433469371,
+   0.033257880772886037
   ]
  },
- "seconds": 98
+ "seconds": 380
 }

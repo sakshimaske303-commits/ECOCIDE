@@ -1,0 +1,162 @@
+{
+ "label": "registered revision 2 (ANALYSIS_PLAN_v2_ADDENDUM_2.md)",
+ "H1_flood": {
+  "beta": -0.0036753056287775975,
+  "ci95_cluster": [
+   -0.020582928942530467,
+   0.013232317684975273
+  ],
+  "p_cluster": 0.6716714542632723,
+  "p_wcr": 0.6762,
+  "p_wcr_holm": 0.6762,
+  "conley": {
+   "25km": {
+    "se": 0.010675090301790735,
+    "p": 0.7306296981263167
+   },
+   "50km": {
+    "se": 0.008601174338713324,
+    "p": 0.6691588147858409
+   },
+   "100km": {
+    "se": 0.007751561803420242,
+    "p": 0.6354019052797719
+   }
+  },
+  "primary": "matched",
+  "p_randomization": 0.42028985507246375,
+  "n_placebos": 137,
+  "pretrend_joint_p": 0.02368654796886452,
+  "rr_M1_robust_ci": [
+   -0.15247579145875004,
+   0.15308794660001604
+  ],
+  "share_of_flooded_matched": 0.5919757759273278,
+  "placebo_in_time": {
+   "beta": 0.0002463918928904569,
+   "ci95_cluster": [
+    -0.007403122504723189,
+    0.007895906290504103
+   ],
+   "p_cluster": 0.9498097253659682
+  },
+  "unmatched": {
+   "beta": 0.012189404857984944,
+   "ci95_cluster": [
+    -0.0033031876319196372,
+    0.027681997347889526
+   ],
+   "p_cluster": 0.12667728615487517
+  },
+  "unmatched_p_randomization": 0.6739130434782609,
+  "verdict": "not supported"
+ },
+ "H2_irrigation": {
+  "beta": -0.17886620435211698,
+  "ci95_cluster": [
+   -0.2108700307928984,
+   -0.14686237791133555
+  ],
+  "p_cluster": 2.5538441263966225e-13,
+  "p_wcr": 0.0001,
+  "p_wcr_holm": 0.0002,
+  "conley": {
+   "25km": {
+    "se": 0.016567218352762196,
+    "p": 3.579911228366296e-27
+   },
+   "50km": {
+    "se": 0.01990432770432059,
+    "p": 2.556998954116186e-19
+   },
+   "100km": {
+    "se": 0.02265101582044097,
+    "p": 2.865947524069593e-15
+   }
+  },
+  "beta_pct_of_base_mean": -33.412683216576475,
+  "placebo_test": {
+   "beta": 0.050482103913498756,
+   "p_wcr": 0.0001
+  },
+  "pretrend_joint_p": 2.7169573535731455e-06,
+  "rr_M1_robust_ci": [
+   -0.5829555646969252,
+   0.24088600265255308
+  ],
+  "sample": {
+   "never_distance_rule_km": 5,
+   "pixels": {
+    "irrigated_canal_fed": 21706,
+    "never_irrigated": 68180,
+    "irrigated_not_canal_fed": 133
+   }
+  },
+  "triple_difference": {
+   "skipped": "only 133 irrigated pixels not canal-fed (< 1,000)"
+  },
+  "verdict": "suggestive"
+ },
+ "H3_check": {
+  "bed_pixels": 33764,
+  "same_pixels": 4312,
+  "same_pixels_km2": 231.40204928626582,
+  "modis_km2_ndvi_gt_0_3": 211.06314003777445,
+  "sentinel2_km2_ndvi_gt_0_3": 172.15518188476562,
+  "ratio_s2_to_modis": 0.8156572571314661,
+  "s2_scenes": 61,
+  "note": "MODIS: July\u2013October mean NDVI 2024, land pixel-years (water share < 10 %); Sentinel-2: August 2024 median NDVI per 23 m cell; both on the same bed pixels with S2 coverage >= 50 %"
+ },
+ "H4": {
+  "flooded (F)": {
+   "contribution": -7.946268261010708e-05,
+   "ci95": [
+    -0.0003210034160971999,
+    0.0001380626705405996
+   ]
+  },
+  "former reservoir bed": {
+   "contribution": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "R9 irrigated cropland": {
+   "contribution": -0.008028109762575496,
+   "ci95": [
+    -0.008487119992306221,
+    -0.007468105827471822
+   ]
+  },
+  "R9 never-irrigated cropland": {
+   "contribution": -0.000260689880418856,
+   "ci95": [
+    -0.0029837771145825964,
+    0.002446126431638118
+   ]
+  },
+  "other cropland": {
+   "contribution": -0.009427921746429863,
+   "ci95": [
+    -0.011105575939764814,
+    -0.007504889540418286
+   ]
+  },
+  "all other land": {
+   "contribution": -0.0026386043859845426,
+   "ci95": [
+    -0.004148896888957925,
+    -0.0011316639993118722
+   ]
+  },
+  "total": {
+   "contribution": -0.020434788458018865,
+   "ci95": [
+    -0.025431937282583306,
+    -0.015041837900410068
+   ]
+  },
+  "descriptive_only": false
+ }
+}

@@ -131,6 +131,10 @@ def main():
     if os.path.exists(DEM):
         e = xr.open_dataset(DEM).elev_m.values.astype(np.float32)
         assert e.shape == shape, (e.shape, shape)
+        # pixels next to areas without DEM tiles (open sea) can average in the fill value; no land in the
+        # study area lies below -10 m, so lower values are set to no-data
+        info["dem_pixels_below_minus10m_set_to_nodata"] = int(np.nansum(e < -10))
+        e[e < -10] = np.nan
         out["dem"] = e
         ch = A["channel"] & np.isfinite(e)
         _, (ir, ic) = ndi.distance_transform_edt(~ch, return_indices=True)

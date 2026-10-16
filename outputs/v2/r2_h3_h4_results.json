@@ -1,0 +1,121 @@
+{
+ "label": "registered revision 2 (ANALYSIS_PLAN_v2_ADDENDUM_2.md)",
+ "H3_check_R12": {
+  "bed_pixels": 33764,
+  "same_pixels": 4312,
+  "same_pixels_km2": 231.40204928626582,
+  "modis_km2_ndvi_gt_0_3": 211.06314003777445,
+  "sentinel2_km2_ndvi_gt_0_3": 172.15518188476562,
+  "ratio_s2_to_modis": 0.8156572571314661,
+  "s2_scenes": 61,
+  "note": "MODIS: July\u2013October mean NDVI 2024, land pixel-years (water share < 10 %); Sentinel-2: August 2024 median NDVI per 23 m cell; both on the same bed pixels with S2 coverage >= 50 %"
+ },
+ "weather_adjustment": {
+  "source": "R9 main model coefficients (per 100 mm, per \u00b0C)",
+  "P": 0.04360315328597927,
+  "T": -0.007444649967810094,
+  "P_irr": -0.010054341798353468,
+  "T_irr": -0.003011565127736899
+ },
+ "H4_decomposition_Kherson": {
+  "categories": {
+   "flooded (F)": {
+    "mean_change": 0.017153234044110427,
+    "reference_change": 0.021498021667986016,
+    "relative_change": -0.004344787623875589,
+    "contribution": -7.946268261010708e-05,
+    "pixels": 8705,
+    "pixels_valid": 7264,
+    "note": "",
+    "area_share": 0.018289198342731804,
+    "contribution_ci95": [
+     -0.0003210034160971999,
+     0.0001380626705405996
+    ]
+   },
+   "former reservoir bed": {
+    "mean_change": NaN,
+    "reference_change": 0.0,
+    "relative_change": NaN,
+    "contribution": 0.0,
+    "pixels": 10122,
+    "pixels_valid": 0,
+    "note": "no valid pixels (e.g. open water before the breach); contribution set to 0",
+    "area_share": 0.02126631425906161,
+    "contribution_ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "R9 irrigated cropland": {
+    "mean_change": -0.1844635415678703,
+    "reference_change": 0.018580787835099245,
+    "relative_change": -0.20304432940296954,
+    "contribution": -0.008028109762575496,
+    "pixels": 18819,
+    "pixels_valid": 18777,
+    "note": "",
+    "area_share": 0.03953870460791152,
+    "contribution_ci95": [
+     -0.008487119992306221,
+     -0.007468105827471822
+    ]
+   },
+   "R9 never-irrigated cropland": {
+    "mean_change": 0.018060900133745127,
+    "reference_change": 0.018580787835099245,
+    "relative_change": -0.0005198877013541173,
+    "contribution": -0.000260689880418856,
+    "pixels": 238665,
+    "pixels_valid": 238014,
+    "note": "",
+    "area_share": 0.5014349824776664,
+    "contribution_ci95": [
+     -0.0029837771145825964,
+     0.002446126431638118
+    ]
+   },
+   "other cropland": {
+    "mean_change": -0.04080241818503869,
+    "reference_change": 0.018580787835099245,
+    "relative_change": -0.05938320602013794,
+    "contribution": -0.009427921746429863,
+    "pixels": 75566,
+    "pixels_valid": 74974,
+    "note": "",
+    "area_share": 0.1587641082098646,
+    "contribution_ci95": [
+     -0.011105575939764814,
+     -0.007504889540418286
+    ]
+   },
+   "all other land": {
+    "mean_change": 0.009904041855434876,
+    "reference_change": 0.020025010997816808,
+    "relative_change": -0.010120969142381931,
+    "contribution": -0.0026386043859845426,
+    "pixels": 124087,
+    "pixels_valid": 88988,
+    "note": "",
+    "area_share": 0.2607066921027641,
+    "contribution_ci95": [
+     -0.004148896888957925,
+     -0.0011316639993118722
+    ]
+   }
+  },
+  "sum_of_contributions": -0.020434788458018865,
+  "sum_ci95": [
+   -0.025431937282583306,
+   -0.015041837900410068
+  ],
+  "bootstrap": {
+   "draws": 999,
+   "blocks": "10 km",
+   "kherson_blocks": 331,
+   "zoneO_blocks": 722,
+   "area_shares": "fixed"
+  },
+  "descriptive_only": false
+ }
+}

@@ -25,3 +25,11 @@ data/v2/conflict/*.geojson
 # recreate with download_gadm.py and the extract_* scripts
 data/boundaries/*.gpkg
 data/boundaries/geometries/
+
+# Registered Revision 2 downloads (re-create with v2/09-11; archive separately)
+data/v2/dem_glo30_mean.nc
+data/v2/dem_parts/
+data/v2/s2_parts/
+data/v2/irrigation_baber/*.tif
+data/v2/derived/r2_layers.npz
+data/v2/derived/r2_h1_cov_weights.npy

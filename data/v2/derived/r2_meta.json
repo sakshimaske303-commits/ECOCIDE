@@ -1,0 +1,117 @@
+{
+ "files": {
+  "ukraine_irrigation_outputs_irrig_result_postburst-2019-30m_resampled_aeti_RF_v6.tif": {
+   "year": 2019,
+   "kind": "binary",
+   "nodata": -999,
+   "values": [
+    0,
+    1
+   ],
+   "irrigated_km2_on_grid": 1343.9334716796875
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2020-30m_resampled_aeti_RF_v6.tif": {
+   "year": 2020,
+   "kind": "binary",
+   "nodata": -999,
+   "values": [
+    0,
+    1
+   ],
+   "irrigated_km2_on_grid": 1711.7335205078125
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2021-30m_resampled_aeti_RF_v6.tif": {
+   "year": 2021,
+   "kind": "binary",
+   "nodata": -999,
+   "values": [
+    0,
+    1
+   ],
+   "irrigated_km2_on_grid": 1518.268798828125
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2022-30m_resampled_aeti_RF_v6.tif": {
+   "year": 2022,
+   "kind": "binary",
+   "nodata": -999,
+   "values": [
+    0,
+    1
+   ],
+   "irrigated_km2_on_grid": 1146.2149658203125
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2024_RF_v7_thresholded.tif": {
+   "year": 2024,
+   "kind": "binary",
+   "nodata": null,
+   "values": [
+    0,
+    1
+   ],
+   "irrigated_km2_on_grid": 889.6459350585938
+  },
+  "ukraine_irrigation_outputs_irrig_result_postburst-2025_RF_v7_thresholded.tif": {
+   "year": 2025,
+   "kind": "binary",
+   "nodata": null,
+   "values": [
+    0,
+    1
+   ],
+   "irrigated_km2_on_grid": 429.880126953125
+  }
+ },
+ "dem_pixels_below_minus10m_set_to_nodata": 439,
+ "dem": {
+  "min": -9.367650985717773,
+  "max": 753.1390991210938,
+  "nodata_share": 0.22930034214310507
+ },
+ "validation_R1_vs_R9_pixels": {
+  "Kherson": {
+   "R1 irrigated": {
+    "R9 irrigated (>= 50 %)": 14231,
+    "R9 never irrigated (< 5 % every year)": 52378,
+    "R9 in between": 22379
+   },
+   "R1 rainfed": {
+    "R9 irrigated (>= 50 %)": 243,
+    "R9 never irrigated (< 5 % every year)": 13429,
+    "R9 in between": 598
+   },
+   "R1 unclassified": {
+    "R9 irrigated (>= 50 %)": 4345,
+    "R9 never irrigated (< 5 % every year)": 172858,
+    "R9 in between": 10589
+   }
+  },
+  "Zaporizhia": {
+   "R1 irrigated": {
+    "R9 irrigated (>= 50 %)": 1313,
+    "R9 never irrigated (< 5 % every year)": 115219,
+    "R9 in between": 5957
+   },
+   "R1 rainfed": {
+    "R9 irrigated (>= 50 %)": 106,
+    "R9 never irrigated (< 5 % every year)": 4879,
+    "R9 in between": 142
+   },
+   "R1 unclassified": {
+    "R9 irrigated (>= 50 %)": 1617,
+    "R9 never irrigated (< 5 % every year)": 171665,
+    "R9 in between": 5540
+   }
+  }
+ },
+ "counts": {
+  "covered_cropland_two_oblasts": 597488,
+  "r9_irrigated": 21855,
+  "r9_irrigated_canal_fed": 21722,
+  "r9_irrigated_not_canal_fed": 133,
+  "r9_never": 530428,
+  "r9_never_gt5km": 68832,
+  "r9_never_gt2km": 253351,
+  "zoneO_r2": 1044523,
+  "zoneO_r8": 723774
+ }
+}

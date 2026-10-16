@@ -135,8 +135,8 @@ python v2/11_download_s2_reservoir.py           # Sentinel-2 August 2024 over th
 python v2/analysis/run_revision2.py             # all Revision 2 analyses; the placebo floodplains take longest
 ```
 
-Results: `outputs/v2/r2_*.json`, summary `outputs/v2/r2_summary.json`. `r2_prepare.py` reads each irrigation map
-whole (about 1 GB of memory for the largest 30 m file).
+Results: `outputs/v2/r2_*.json`, summary `outputs/v2/r2_summary.json`. `r2_prepare.py` reads each irrigation map in
+row bands (about 0.6 GB of memory per 30 m file).
 
 ## Exploratory checks and engine tests
 
