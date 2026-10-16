@@ -1,0 +1,14 @@
+# Keep binary files byte-for-byte on every system (no line-ending conversion)
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.gif  binary
+*.tif  binary
+*.gpkg binary
+*.nc   binary
+*.npz  binary
+*.npy  binary
+*.zip  binary
+*.docx binary
+*.ttf  binary
+*.woff2 binary
