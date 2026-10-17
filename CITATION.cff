@@ -12,13 +12,15 @@ abstract: >-
   the vegetation effects of the Kakhovka Dam destruction (6 June 2023) using
   MODIS NDVI (250 m, 2010-2024). Treatment is defined by exposure (flooded
   land, drained reservoir bed, canal-irrigated cropland) and comparisons are
-  made inside the war zone, with a registered revision adding VIINA occupation
-  and conflict data and annual water masks. No lasting loss of July-October
-  greenness was detected on flooded land (except floodplain wetlands); about
-  1,500 km2 of the former reservoir became vegetated by 2024; the relative
-  decline of canal-zone farmland began before the invasion, and the design
-  cannot attribute it to the loss of canal water. Study 1
-  (Kherson Oblast vs Romanian counties, monthly Sentinel-2 NDVI) is retained.
+  made inside the war zone, under a plan fixed before any data download and
+  two registered revisions (the second with independent 30 m irrigation maps
+  and terrain-based flood matching). No lasting loss of July-October greenness
+  was detected on flooded land (except floodplain wetlands); about 1,500 km2
+  of the former reservoir became vegetated by 2024; formerly canal-irrigated
+  fields lost about a third of their summer greenness after the breach
+  relative to never-irrigated cropland, a result the pre-registered rule names
+  suggestive. Study 1 (Kherson Oblast vs Romanian counties, monthly
+  Sentinel-2 NDVI) is retained as background.
   Zenodo v1.0.0 and EarthArXiv preprint v1 report an earlier, superseded
   analysis.
 keywords:
@@ -39,5 +41,5 @@ identifiers:
 license:
   - MIT
   - CC-BY-4.0
-version: 2.1.0
-date-released: "2026-10-16"
+version: 3.0.0
+date-released: "2026-10-17"

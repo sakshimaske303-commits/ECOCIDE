@@ -337,13 +337,13 @@ But the year-by-year results (Figure 3) show that this is not a change that star
 **Why "no change after the breach" is not a safe reading (exploratory, Section 4.9).**
 
 - *The reference year was the wettest year.* July–October rainfall in zone K was 131, 115, 129, 141, 131 and 161 mm in 2016–2021, then 118 mm in 2022, 67 mm in 2023 and 94 mm in 2024. The reference year 2021 was the wettest and coolest (19.1 °C) of the record; 2023 was the driest and 2024 the hottest (22.1 °C). In 2016–2021 the irrigated–rainfed contrast moved closely with rainfall: it was lowest in wet years, when rainfed crops stay green (r = −0.97 in the revision, −0.94 in the main plan). The models include rainfall and temperature only as separate terms, so they cannot allow for this. A straight line fitted to 2016–2021 would put the revision's contrast at about +0.15 in 2023 and +0.11 in 2024, against −0.014 and −0.006 observed. With six points, and 2023 drier than any of them, this is an illustration, not an estimate. But it shows that "no change relative to 2021" means only that the contrast stayed at the level of the wettest year while the summers became the driest.
-- *Part of the comparison land is exposed.* The four most negative of the 15 placebo districts adjoin the canal network: Chaplynskyi (−0.129; 86% of its cropland lies in zone K), Novotroitskyi (−0.112; 77%), Ivanivskyi (−0.110; 48%) and Nyzhnosirohozkyi (−0.083; 2%, with its remaining cropland a median 15 km from the canals). Their effects are larger than the real one. Without the five districts that adjoin the network (the four above and Melitopolskyi, 21% in zone K), the canal zone ranks second of eleven (placebo p = 0.18). The same problem affects zone O: a 5 km buffer around the mapped canals misses irrigated land further away.
+- *Part of the comparison land is exposed.* The four most negative of the 15 placebo districts adjoin the canal network: Chaplynskyi (−0.129; 87% of its cropland lies in zone K), Novotroitskyi (−0.112; 77%), Ivanivskyi (−0.110; 48%) and Nyzhnosirohozkyi (−0.083; 2%, with its remaining cropland a median 15 km from the canals). Their effects are larger than the real one. Without the five districts that adjoin the network (the four above and Melitopolskyi, 21% in zone K), the canal zone ranks second of eleven (placebo p = 0.18). The same problem affects zone O: a 5 km buffer around the mapped canals misses irrigated land further away.
 
 **What the first two analyses could show.** The rule in the plan names both results **suggestive**, because β is negative and significant while the placebo and sensitivity conditions fail. On their own they could not show whether the loss of canal water changed the greenness of farmland: the relative decline began before the war, the year-by-year contrasts are dominated by rainfall, and the comparison land is partly exposed.
 
 **Second revision: independent irrigation maps.** First, the check of the proxy. On cropland of Kherson Oblast, of the pixels my NDVI rule called irrigated (2010–2015), the maps of Baber et al. (2026b) show only 16% as irrigated in 2019–2021 and 59% as never irrigated; in Zaporizhzhia Oblast the figures are 1% and 94%. The proxy did not measure irrigation.
 
-With the maps, 21,706 canal-fed irrigated pixels (1,165 km²) were compared with 68,180 never-irrigated cropland pixels in Kherson and Zaporizhzhia, with 39 districts as clusters.
+The mapped fields lie mostly in the south of Kherson Oblast, along the main canals (Figure 11). With the maps, 21,706 canal-fed irrigated pixels (1,165 km²) were compared with 68,180 never-irrigated cropland pixels in Kherson and Zaporizhzhia, with 39 districts as clusters.
 
 - β = −0.179 NDVI (95% CI −0.211 to −0.147): 33% of the irrigated fields' 2016–2018 level of 0.54.
 - Bootstrap p = 0.0001 (Holm 0.0002); Conley standard error 0.023 at 100 km.
@@ -357,6 +357,10 @@ Year by year against 2016–2018 (Figure 9), the contrast was within ±0.02 in 2
 In substance, the second revision shows a loss of summer greenness on formerly irrigated fields that is large, starts with the breach and is not explained by weather. What it cannot show is how much of this loss would have happened anyway in a war zone where farming collapsed, because no irrigated land outside the canal system is available for comparison. The July–October window also misses the move to winter crops reported by Baber et al. (2026a).
 
 ![](outputs/v2/figures/s2_fig9_r2_irrigation.png)
+
+![](outputs/v2/figures/s2_fig11_irrigated_fields.png)
+
+*Figure 11. Irrigated fields of Baber et al. (2026b) on the 231 m grid: mean share of each pixel mapped as irrigated in 2019–2021 (left) and in 2024 (right). The 2024 map is much less accurate than the earlier ones (Baber et al., 2026a).*
 
 *Figure 9. Second revision, irrigation: canal-fed irrigated minus never-irrigated cropland (Baber et al., 2026b), each year compared with the 2016–2018 mean, with July–October rainfall in the canal zone below. Bars are 95% confidence intervals.*
 
