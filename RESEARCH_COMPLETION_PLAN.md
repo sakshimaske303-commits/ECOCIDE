@@ -101,32 +101,32 @@ Ranked by risk. **A** = must fix. **B** = should fix. Each fix has a clear "done
 - **Done when.** One number and one figure.
 
 ### L9 [B] Pre-registration credibility
-- **Fix (your decision, 16 Oct: no OSF).** Commit Addendum 2 locally before any new data are downloaded. Its
+- **Fix (decision of 16 Oct: no OSF).** Commit Addendum 2 locally before any new data are downloaded. Its
   SHA-256 checksum is in `v2/DEVIATIONS.md` §6 and the analysis code refuses to run if the file changes. The paper
   says plainly that the only record of its date is the author's own git commit, and that it was written after the
   review checks were known.
 - ☑ 16 Oct: Addendum 2 approved (v1.0), checksum recorded, all download and analysis code written and checked on a
-  synthetic world. ☐ You: commit it on your PC before running steps 9–11.
+  synthetic world; committed 16 Oct (07b8ad1) before steps 9–11 were run.
 - **Done when.** The paper states the commit and the limitation.
 
 ### L10 [B] Reproducibility
 - **Fix.** One command reruns everything (`run_all.py`, `run_revision.py`, the new `run_revision2.py`); tests pass;
   frozen inputs that cannot be re-downloaded identically (OSM canal extract, WorldCover fractions, annual composites,
   Baber subset) go into one Zenodo archive.
-- **Done when.** A clean run on your PC reproduces every number in the paper.
+- **Done when.** A clean run reproduces every number in the paper.
 
 ### L11 [B] Figures
 - **Fix.** Exposure map with boundaries, labels, coordinates and an inset; rainfall panel under the H2 event study;
   one map of the Baber irrigated fields; updated H4 figure with intervals. No other new figures.
 
 ### L12 [A, non-scientific] Repository hygiene
-- ☐ Change the Sentinel Hub / CDSE credentials that are in the git history (you).
+- ☐ Change the Sentinel Hub / CDSE credentials that are in the git history.
 - ☑ 16 Oct: removed duplicates and leftovers (`v2/04b_*`, `v2/05_*`, `v2/07_download_io_lulc.py`,
   `v2/08_download_conflict.py`, `data/ndvi` = identical copy of `data/ndvi_v2`, `qgis_processing/`,
   `outputs/proof_screenshots/02–04`, nine one-off `verify_*.py`). `__pycache__` was already ignored.
 - ☑ 16 Oct: licence split — MIT for code (`LICENSE`), CC BY 4.0 for text and figures (`LICENSE-CC-BY-4.0`); GADM files
   no longer tracked (`download_gadm.py` + extract scripts); ODbL notice for the OSM canal layer in README.
-- ☑ On your PC: `git rm` of the same files done and committed (16 Oct).
+- ☑ Removal committed (16 Oct).
 
 ---
 
@@ -146,16 +146,16 @@ These are good ideas, but they are outside this research. Each gets at most one 
 
 ## 4. Order of work
 
-| Phase | What | Who | Done |
-|---|---|---|---|
-| 0 | Change credentials; review and commit today's changes | you | ☑ commits; ☐ credentials (you: at the end) |
-| 1 | Finalise Addendum 2 (L1–L6, L8); commit locally (no OSF) | together | ☑ 16 Oct (07b8ad1) |
-| 2 | Download Baber maps, Copernicus DEM, Sentinel-2 Aug 2024 bed composite | you run, I write scripts | ☑ 16 Oct |
-| 3 | Run Addendum 2 analyses once (`run_revision2.py`) | you run, I write code | ☑ 16 Oct (repeated once with the DEM rule, see DEVIATIONS §6) |
-| 4 | Write results into paper, summary, README, dashboard; new figures (L11) | me, you review | ☑ written 17 Oct; ☐ your review |
-| 5 | Introduction, literature and contribution rewrite (L7) | me, you review | ☑ written 17 Oct; ☐ your review |
-| 6 | Repository hygiene, licence, Zenodo archive, clean full re-run (L10, L12) | together | ☐ |
-| 7 | Final consistency check of every number; tag version 3.0.0; push to GitHub (first push since 16 Oct) | me, you push | ☐ |
+| Phase | What | Done |
+|---|---|---|
+| 0 | Change credentials; commit the review changes | ☑ commits; ☐ credentials |
+| 1 | Finalise Addendum 2 (L1–L6, L8); commit locally (no OSF) | ☑ 16 Oct (07b8ad1) |
+| 2 | Download Baber maps, Copernicus DEM, Sentinel-2 Aug 2024 bed composite | ☑ 16 Oct |
+| 3 | Run Addendum 2 analyses once (`run_revision2.py`) | ☑ 16 Oct (repeated once with the DEM rule, see DEVIATIONS §6) |
+| 4 | Write results into paper, summary, README, dashboard; new figures (L11) | ☑ 17 Oct |
+| 5 | Introduction, literature and contribution rewrite (L7) | ☑ 17 Oct |
+| 6 | Repository hygiene, licence, Zenodo archive, clean full re-run (L10, L12) | ☑ hygiene, licence, re-run (16–17 Oct); ☐ Zenodo archive |
+| 7 | Final consistency check of every number; tag version 3.0.0; push to GitHub (first push since 16 Oct) | ☑ check (17 Oct); ☐ tag and push |
 
 ---
 
@@ -175,7 +175,7 @@ The research is **complete** when every box below is ticked. Then we stop.
 - ☑ One independent validation each for H2 (confusion matrix) and H3 (Sentinel-2 check).
 - ☑ Introduction states one contribution, positioned against Kuzemko et al. (2025) and Baber et al. (2026).
 - ☐ Paper, executive summary, README, CITATION and dashboard give the same numbers and the same answer.
-- ☐ One clean re-run on your PC reproduces every number; tests pass.
+- ☑ One clean re-run reproduces every number; tests pass (16–17 Oct; DEVIATIONS §7).
 - ☐ Credentials changed; repository cleaned; licence fixed; inputs archived; version 3.0.0 tagged.
 
 **After this point only these are allowed:** journal choice and formatting, DOIs (Zenodo, EarthArXiv), cover letter,

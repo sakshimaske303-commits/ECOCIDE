@@ -8,7 +8,7 @@
 
 **Word count:** [to be recounted after the final revision]
 
-**Pre-registration:** analysis plan `ANALYSIS_PLAN_v2.md` (GitHub commit 521672f, 24 September 2026, before any data download); registered revision `ANALYSIS_PLAN_v2_ADDENDUM_1.md` (commit 30e3840, 24 September 2026, before its additional data were downloaded).
+**Pre-registration:** analysis plan `ANALYSIS_PLAN_v2.md` (GitHub commit 521672f, 24 September 2026, before any data download); registered revision `ANALYSIS_PLAN_v2_ADDENDUM_1.md` (commit 30e3840, 24 September 2026, before its additional data were downloaded); second registered revision `ANALYSIS_PLAN_v2_ADDENDUM_2.md` (16 October 2026, local commit with recorded checksum, before its additional data were downloaded).
 
 ## Acknowledgements
 

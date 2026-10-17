@@ -34,7 +34,7 @@ The NDVI-based irrigation proxy used in the plan and revision 1 agreed with the 
 | [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md) | **Main paper (Study 2)**: question, data, methods, results, limitations |
 | [`ECO_Executive_Summary.md`](./ECO_Executive_Summary.md) | Two-page summary of Study 2 |
 | [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md), [`ADDENDUM_1`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`ADDENDUM_2`](./ANALYSIS_PLAN_v2_ADDENDUM_2.md), [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md) | Pre-registered plan, two registered revisions, and every deviation |
-| [`RESEARCH_COMPLETION_PLAN.md`](./RESEARCH_COMPLETION_PLAN.md) | What is left to do, and where the research stops |
+| [`RESEARCH_COMPLETION_PLAN.md`](./RESEARCH_COMPLETION_PLAN.md) | The bounded plan for the second revision and its stopping rules |
 | [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Study 1 paper (background study: Kherson Oblast vs Romanian counties) |
 | [`ECO_RESULTS_RECONCILIATION.md`](./ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
 | [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Chronological research diary (historical entries describe the state at that time) |

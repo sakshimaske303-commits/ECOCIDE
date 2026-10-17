@@ -1,6 +1,6 @@
 # ECOCIDE — Development Log
 
-> *Note: entries are a chronological diary and describe what I believed at the time. Early entries (and this introduction) use stronger language — "prove", "conflict attributable" — than the final results support. Current results are in `ECO_Research_Paper_v2.md` and `ECO_RESULTS_RECONCILIATION.md`; the latest state is described in Entry 24.*
+> *Note: entries are a chronological diary and describe what I believed at the time. Early entries (and this introduction) use stronger language — "prove", "conflict attributable" — than the final results support. Current results are in `ECO_Research_Paper_v2.md` and `ECO_RESULTS_RECONCILIATION.md`; the latest state is described in Entry 25.*
 
 
 So...I keep detailed notes on almost every research project I take on..... It began as a purely practical habit—something to stop me from waking up the nxt morning completely lost about where I’d stopped or which exact files a
@@ -40,6 +40,7 @@ My ECOCIDE framework fixes this exact missing puzzle piece. I used a strict Diff
 22. [Entry 22](#entry-22)
 23. [Entry 23](#entry-23)
 24. [Entry 24](#entry-24)
+25. [Entry 25](#entry-25)
 
 ---
 
@@ -432,10 +433,22 @@ I did not change the files in `submission/`. They are outside the scope of this 
 I had the whole project reviewed again, this time including re-running parts of it: the Study 1 statistics (all reproduced exactly), the Study 2 estimation engine (checked against direct calculations on simulated data), the reservoir-bed numbers and the UNOSAT flood areas (both reproduced exactly). The numbers in the results files and the documents agree. The review found three problems with what I was *saying* about them.
 
 1. **The irrigation result was compared with the wettest summer.** My year-by-year H2 results use 2021 as the reference year. In the canal zone, 2021 had 161 mm of July–October rain, the most of 2016–2024; 2023 had 67 mm and 2024 had 94 mm. Before the war the irrigated–rainfed contrast followed summer rain very closely (r = −0.97), because rainfed crops stay green in wet summers. My models only add rainfall as a separate term, so they cannot allow for this. "No change after the breach" therefore only means that the contrast stayed at the level of the wettest year while the summers became the driest.
-2. **Some of my comparison land is irrigated from the same canals.** The four placebo districts with the largest declines lie next to the canal network (up to 86% of their cropland is in my canal zone). Without the districts that adjoin the network, the canal zone ranks second of eleven (p = 0.18), not sixth of sixteen.
+2. **Some of my comparison land is irrigated from the same canals.** The four placebo districts with the largest declines lie next to the canal network (up to 87% of their cropland is in my canal zone). Without the districts that adjoin the network, the canal zone ranks second of eleven (p = 0.18), not sixth of sixteen.
 3. **The matched flood sample is matched on the values its pre-trend test checks.** So its flat pre-trend is expected and is not separate evidence, and the positive revised estimate may partly be regression to the mean.
 
 I wrote these checks as `v2/analysis/x1_review_diagnostics.py` and labelled them exploratory: they came after all registered results were known and change no verdict. What changed is the wording. The paper, executive summary, README, CITATION and dashboard no longer say that canal-zone farmland showed "no change after the breach" or that "most of the decline is not from the dam". They now say that this design cannot test the irrigation pathway, and why. I also used one title everywhere, fixed several small number and rounding errors (the flood estimate over all pixels is +0.010, not +0.011; the 141 vs 50 placebo floodplains; the reservoir baseline is 86–100 km² per year), rebuilt the PDFs from the current text, and added `tests/test_v2lib.py`.
 
 What is still to do: change the old Sentinel Hub credentials that are in the git history; register a second addendum (weather × irrigation interactions, comparison land outside the whole irrigation command area, an independent irrigation map, and a non-outcome matching for the flood) before running it; and clean out duplicate scripts and files.
+
+## Entry 25
+
+**16–17 October 2026 — The second registered revision, and where the research stops**
+
+I wrote down what was still weak enough to get the paper rejected and fixed it in one bounded step instead of an open-ended list. The second revision (`ANALYSIS_PLAN_v2_ADDENDUM_2.md`) was committed before I downloaded anything it needed; its checksum is in `v2/DEVIATIONS.md`, and the code stops if the file changes. It replaces my NDVI-based irrigation groups with the 30 m irrigated-field maps of Baber et al. (2026), matches flooded land on height above the river instead of past greenness, lets rainfall and temperature change the irrigation contrast, and puts intervals on the Kherson decomposition.
+
+The derived files had gone missing from my computer, so I re-ran the whole pipeline first. Every sample size and verdict came back the same; some coefficients moved in the fourth digit. My first run of the new revision missed one data-cleaning rule (impossible DEM values next to the sea), so I kept that run and repeated it with the rule.
+
+What came out: the flood still shows no lasting loss outside the wetlands, now with 59% of flooded pixels matched on terrain instead of 1.8%. My old irrigation proxy turned out to agree with the real maps on only 16% of its "irrigated" pixels in Kherson. With the real maps, formerly irrigated fields lost about a third of their summer greenness after the breach, and the drop starts with the breach. My own pre-registered rule still calls it suggestive, because those fields were already greener in 2019–2021, the years used to find them. I kept the rule and the word.
+
+This is the last analysis. From here on only formatting, DOIs and changes asked for by a journal.
 
