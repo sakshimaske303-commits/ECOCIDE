@@ -126,7 +126,7 @@ Ranked by risk. **A** = must fix. **B** = should fix. Each fix has a clear "done
   `outputs/proof_screenshots/02–04`, nine one-off `verify_*.py`). `__pycache__` was already ignored.
 - ☑ 16 Oct: licence split — MIT for code (`LICENSE`), CC BY 4.0 for text and figures (`LICENSE-CC-BY-4.0`); GADM files
   no longer tracked (`download_gadm.py` + extract scripts); ODbL notice for the OSM canal layer in README.
-- ☐ On your PC: run the `git rm` commands for the same files (they stay on disk, see below), then commit.
+- ☑ On your PC: `git rm` of the same files done and committed (16 Oct).
 
 ---
 
@@ -148,12 +148,12 @@ These are good ideas, but they are outside this research. Each gets at most one 
 
 | Phase | What | Who | Done |
 |---|---|---|---|
-| 0 | Change credentials; review and commit today's changes | you | ☐ |
-| 1 | Finalise Addendum 2 (L1–L6, L8); commit locally (no OSF) | together | ☑ approved; ☐ your commit |
-| 2 | Download Baber maps, Copernicus DEM, Sentinel-2 Aug 2024 bed composite | you run, I write scripts | ☑ scripts; ☐ run |
-| 3 | Run Addendum 2 analyses once (`run_revision2.py`) | you run, I write code | ☑ code; ☐ run |
-| 4 | Write results into paper, summary, README, dashboard; new figures (L11) | me, you review | ☐ |
-| 5 | Introduction, literature and contribution rewrite (L7) | me, you review | ☐ |
+| 0 | Change credentials; review and commit today's changes | you | ☑ commits; ☐ credentials (you: at the end) |
+| 1 | Finalise Addendum 2 (L1–L6, L8); commit locally (no OSF) | together | ☑ 16 Oct (07b8ad1) |
+| 2 | Download Baber maps, Copernicus DEM, Sentinel-2 Aug 2024 bed composite | you run, I write scripts | ☑ 16 Oct |
+| 3 | Run Addendum 2 analyses once (`run_revision2.py`) | you run, I write code | ☑ 16 Oct (repeated once with the DEM rule, see DEVIATIONS §6) |
+| 4 | Write results into paper, summary, README, dashboard; new figures (L11) | me, you review | ☑ written 17 Oct; ☐ your review |
+| 5 | Introduction, literature and contribution rewrite (L7) | me, you review | ☑ written 17 Oct; ☐ your review |
 | 6 | Repository hygiene, licence, Zenodo archive, clean full re-run (L10, L12) | together | ☐ |
 | 7 | Final consistency check of every number; tag version 3.0.0; push to GitHub (first push since 16 Oct) | me, you push | ☐ |
 
@@ -163,17 +163,17 @@ These are good ideas, but they are outside this research. Each gets at most one 
 
 The research is **complete** when every box below is ticked. Then we stop.
 
-- ☐ Addendum 2 committed (checksum in DEVIATIONS §6) before its data were downloaded; the paper states that the date
+- ☑ Addendum 2 committed (checksum in DEVIATIONS §6) before its data were downloaded; the paper states that the date
   rests on the author's own git commit.
-- ☐ H1, H2, H3, H4 each have one final result and one plain-language verdict, traceable to one JSON file.
-- ☐ The irrigation exposure comes from independent maps, and the NDVI proxy's error is reported.
-- ☐ Weather is allowed to change the irrigated–non-irrigated contrast; event studies do not use 2021 alone as reference.
-- ☐ Zone O and placebo districts lie more than 30 km from the canal network; never-irrigated comparison cropland lies
+- ☑ H1, H2, H3, H4 each have one final result and one plain-language verdict, traceable to one JSON file.
+- ☑ The irrigation exposure comes from independent maps, and the NDVI proxy's error is reported.
+- ☑ Weather is allowed to change the irrigated–non-irrigated contrast; event studies do not use 2021 alone as reference.
+- ☑ Zone O and placebo districts lie more than 30 km from the canal network; never-irrigated comparison cropland lies
   more than 5 km from mapped irrigated fields.
-- ☐ Flood matching does not use the outcome; the placebo-in-time bias test is reported.
-- ☐ Placebo p-values are the headline tests.
-- ☐ One independent validation each for H2 (confusion matrix) and H3 (Sentinel-2 check).
-- ☐ Introduction states one contribution, positioned against Kuzemko et al. (2025) and Baber et al. (2026).
+- ☑ Flood matching does not use the outcome; the placebo-in-time bias test is reported.
+- ☑ Placebo p-values are the headline tests (flood); district-cluster bootstrap for the irrigation design (Addendum 2, R11).
+- ☑ One independent validation each for H2 (confusion matrix) and H3 (Sentinel-2 check).
+- ☑ Introduction states one contribution, positioned against Kuzemko et al. (2025) and Baber et al. (2026).
 - ☐ Paper, executive summary, README, CITATION and dashboard give the same numbers and the same answer.
 - ☐ One clean re-run on your PC reproduces every number; tests pass.
 - ☐ Credentials changed; repository cleaned; licence fixed; inputs archived; version 3.0.0 tagged.

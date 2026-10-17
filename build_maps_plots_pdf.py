@@ -35,7 +35,20 @@ STUDY2 = [
     {"num": "S2-7", "path": "v2/figures/s2_fig7_revision_event_studies.png", "title": "Registered revision: event studies",
      "caption": "H1 matched and unmatched, and H2 triple difference under Registered Revision 1 (2010-15 irrigation "
                 "classification, steppe comparison zone, VIINA occupation and conflict, annual water masks)."},
+    {"num": "S2-8", "path": "v2/figures/s2_fig8_r2_flood.png", "title": "Second revision: flood",
+     "caption": "Flooded minus comparison land relative to 2016-2018: matched on height above the river and land cover "
+                "(red) and not matched (grey). 95% CIs."},
+    {"num": "S2-9", "path": "v2/figures/s2_fig9_r2_irrigation.png", "title": "Second revision: irrigation",
+     "caption": "Canal-fed irrigated minus never-irrigated cropland (Baber et al. 2026 maps) relative to 2016-2018, with "
+                "July-October rainfall in the canal zone. 95% CIs."},
+    {"num": "S2-10", "path": "v2/figures/s2_fig10_r2_h4.png", "title": "Second revision: Kherson decomposition",
+     "caption": "Contributions to Kherson Oblast's change in July-October NDVI, 2016-18 to 2023-24, relative to the "
+                "comparison area, with 95% block-bootstrap intervals."},
+    {"num": "S2-11", "path": "v2/figures/s2_fig11_irrigated_fields.png", "title": "Irrigated fields (Baber et al. 2026)",
+     "caption": "Share of each 231 m pixel mapped as irrigated: mean 2019-2021 and 2024."},
 ]
+
+STUDY2 = [f for f in STUDY2 if os.path.exists(os.path.join(BASE, f["path"]))]   # figure 11 needs local derived data
 
 FIGURES = STUDY2 + [
     {"num": 1, "path": "plots/study_area_overview.png", "title": "Study area",

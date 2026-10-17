@@ -12,24 +12,20 @@ The main analysis is **Study 2**: a pre-registered, pixel-level analysis of MODI
 
 ## Study 2 (main result): pre-registered, exposure-based pixel analysis
 
-Study 2 uses 231 m MODIS pixels (2016–2024), defines treatment by physical exposure, and makes all comparisons inside the war zone. Every choice was fixed in [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md) before the analysis; departures are logged in [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md). Paper: [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md). Reproduce: `python v2/analysis/run_all.py` (after the download steps in [`v2/README_v2.md`](./v2/README_v2.md)).
+Study 2 uses 231 m MODIS pixels (2016–2024), defines treatment by physical exposure, and makes all comparisons inside the war zone. Every choice was fixed in [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md) before any data were downloaded, and in two registered revisions, each written before its extra data were downloaded ([`ADDENDUM_1`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`ADDENDUM_2`](./ANALYSIS_PLAN_v2_ADDENDUM_2.md)); departures are logged in [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md). Paper: [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md).
 
-| Pathway | Estimate (July–October NDVI) | Pre-registered verdict | What it means |
+| Pathway | Final result (registered revision 2, July–October NDVI) | Verdict | Earlier analyses |
 |---|---|---|---|
-| H1 flood: flooded vs unflooded land, same river bank | all flooded pixels +0.010 (95% CI −0.004 to 0.025); pre-registered matched sample (1.8% of flooded pixels) +0.006 (−0.014 to 0.026), wild-bootstrap p = 0.60, placebo floodplains p = 0.63 | **not supported** | no detectable lasting loss of greenness, except floodplain wetlands (−0.04) |
-| H2 irrigation loss: irrigated vs rainfed, canal zone vs elsewhere | −0.074 (−0.088 to −0.060); wild-bootstrap p < 0.001; placebo zones p = 0.14 (minimum attainable); strong pre-trends | **suggestive** | the design cannot attribute this to the loss of canal water (see below) |
-| H3 former reservoir bed (descriptive) | area with NDVI > 0.3: 86–100 km² each year 2016–2022 → 906 km² (2023) → 1,574 km² (2024) | — | the largest change |
-| H4 decomposition of Kherson's 2021→24 change vs zone O (−0.029) | land outside the exposure groups −0.024, irrigated canal zone −0.013, flood −0.0004, reservoir bed +0.010 | — | the oblast average mixes changes of opposite sign |
+| H1 flood: flooded vs unflooded land, same river bank | matched on terrain and land cover (59% of flooded pixels): −0.004 (95% CI −0.021 to 0.013), placebo floodplains p = 0.42; all flooded pixels +0.012 (−0.003 to 0.028) | **not supported** | plan: +0.010 / +0.006; revision 1: +0.012 / +0.055; wetlands −0.04 to −0.06 |
+| H2 irrigation loss: irrigated (Baber et al. 2026 maps) vs never-irrigated cropland | −0.179 (−0.211 to −0.147), a third of the 2016–2018 level, starting with the breach; placebo test fails (+0.050 in 2019–2021) | **suggestive** | NDVI-proxy groups: −0.074 and −0.053, not attributable |
+| H3 former reservoir bed (descriptive) | area with NDVI > 0.3: 86–100 km² each year 2016–2022 → 906 km² (2023) → 1,574 km² (2024); Sentinel-2 within 18% of MODIS | — | — |
+| H4 Kherson Oblast, 2016–18 → 2023–24 vs comparison area | −0.020 (−0.025 to −0.015); irrigated cropland (4% of area) −0.008; never-irrigated cropland 0.000; flood 0.000 | — | 2021→2024: −0.029, reservoir bed +0.010 |
 
-**Registered revision** ([`ANALYSIS_PLAN_v2_ADDENDUM_1.md`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), committed before its extra data were downloaded: irrigation from 2010–15, steppe-only comparison zone, district placebos, VIINA occupation and conflict, annual water masks). H1: flooded land greener than matched controls (+0.055; unmatched +0.012, n.s.), still **not supported**; wetlands −0.061. H2: β = −0.053; relative to 2021 the year-by-year contrast stays near zero after the breach (−0.006 to −0.014, n.s.); 15 placebo districts p = 0.38; verdict **suggestive** by rule. Numbers: `outputs/v2/r1_summary.json`.
-
-**Why H2 cannot be read as "no effect" (exploratory checks after all results were known; [`v2/analysis/x1_review_diagnostics.py`](./v2/analysis/x1_review_diagnostics.py)).** The reference year 2021 was the wettest summer of the record in the canal zone (161 mm of July–October rain, against 67 mm in 2023 and 94 mm in 2024), and before the war the irrigated–rainfed contrast moved closely with summer rain (r = −0.97), which the models do not allow for. The four placebo districts with the largest declines adjoin the canal network and are partly irrigated by it. The irrigation pathway therefore remains untested by this design, although other work shows that irrigated area fell by about 90%.
-
-All Study 2 numbers: `outputs/v2/study2_summary.json`, `outputs/v2/r1_summary.json`, `outputs/v2/x1_review_diagnostics.json`; figures: `outputs/v2/figures/`.
+The NDVI-based irrigation proxy used in the plan and revision 1 agreed with the independent maps on only 16% of its "irrigated" pixels in Kherson Oblast. All numbers: `outputs/v2/study2_summary.json`, `r1_summary.json`, `r2_summary.json`; figures: `outputs/v2/figures/`.
 
 ## Live dashboard
 
-**[ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)** — numbers are read from `outputs/v2/study2_summary.json`, `outputs/v2/r1_summary.json` and `outputs/v2/x1_review_diagnostics.json` (Study 2) and `outputs/model_results.json` (Study 1).
+**[ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app](https://ecocide-xbub2cwcqjx9rkdd6nk5j5.streamlit.app/)** — numbers are read from `outputs/v2/study2_summary.json`, `r1_summary.json`, `r2_summary.json` and `x1_review_diagnostics.json` (Study 2) and `outputs/model_results.json` (Study 1).
 
 ## Documents
 
@@ -37,8 +33,7 @@ All Study 2 numbers: `outputs/v2/study2_summary.json`, `outputs/v2/r1_summary.js
 |---|---|
 | [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md) | **Main paper (Study 2)**: question, data, methods, results, limitations |
 | [`ECO_Executive_Summary.md`](./ECO_Executive_Summary.md) | Two-page summary of Study 2 |
-| [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md), [`ANALYSIS_PLAN_v2_ADDENDUM_1.md`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md) | Pre-registered plan, registered revision, and every deviation |
-| [`ANALYSIS_PLAN_v2_ADDENDUM_2.md`](./ANALYSIS_PLAN_v2_ADDENDUM_2.md) | Registered Revision 2 (approved 16 Oct 2026; independent irrigation maps, terrain matching, weather interactions; not yet run) |
+| [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md), [`ADDENDUM_1`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`ADDENDUM_2`](./ANALYSIS_PLAN_v2_ADDENDUM_2.md), [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md) | Pre-registered plan, two registered revisions, and every deviation |
 | [`RESEARCH_COMPLETION_PLAN.md`](./RESEARCH_COMPLETION_PLAN.md) | What is left to do, and where the research stops |
 | [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Study 1 paper (background study: Kherson Oblast vs Romanian counties) |
 | [`ECO_RESULTS_RECONCILIATION.md`](./ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
@@ -102,13 +97,13 @@ Individual Study 1 scripts (`did_model.py`, `placebo_test.py`, `event_study.py`,
 
 ```text
 ECOCIDE/
-├── ANALYSIS_PLAN_v2.md, ANALYSIS_PLAN_v2_ADDENDUM_1.md   # Study 2 plans (registered)
+├── ANALYSIS_PLAN_v2.md, ..._ADDENDUM_1.md, ..._ADDENDUM_2.md   # Study 2 plans (registered)
 ├── ECO_Research_Paper_v2.md     # main paper (Study 2)
 ├── v2/                          # Study 2
-│   ├── 00–08_*.py               # data download and preparation (MODIS, WorldCover, ERA5-Land, OSM, IO land cover, VIINA)
+│   ├── 00–11_*.py               # data download and preparation (MODIS, WorldCover, ERA5-Land, OSM, IO land cover, VIINA, irrigation maps, DEM, Sentinel-2)
 │   ├── grid.py                  # common EPSG:3035 231.656 m grid
 │   ├── DEVIATIONS.md, README_v2.md
-│   └── analysis/                # a1–a8 (pre-registered), r1_* (revision), x1 (exploratory checks), v2lib.py (engine)
+│   └── analysis/                # a1–a8 (plan), r1_* (revision 1), r2_* (revision 2), x1 (exploratory checks), v2lib.py (engine)
 ├── tests/                       # checks of the Study 2 engine
 ├── eco_core.py                  # Study 1 estimation engine (gap-series DiD, HAC, event study)
 ├── eco_flood.py / eco_style.py  # UNOSAT layer definitions / figure style

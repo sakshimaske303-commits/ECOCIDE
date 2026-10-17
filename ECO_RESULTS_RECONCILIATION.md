@@ -1,6 +1,6 @@
 # ECOCIDE — Results Reconciliation (current-state manifest)
 
-> **Main result is now Study 2** (versions E and F below). Everything in this file below the Study 2 section refers to **Study 1** (versions A–D: Kherson Oblast vs Romanian counties), kept as the analysis that motivated Study 2.
+> **Main result is now Study 2** (versions E, F and G below; G is final). Everything in this file below the Study 2 section refers to **Study 1** (versions A–D: Kherson Oblast vs Romanian counties), kept as the analysis that motivated Study 2.
 
 ## Study 2 (pixel-level, exposure-based)
 
@@ -8,24 +8,30 @@
 |---|---|---|---|---|
 | **E — pre-registered** | MODIS 250 m 2016–2024; H1 matched flood design, H2 triple difference, H3/H4 descriptive | `ANALYSIS_PLAN_v2.md` (commit 521672f, before any download) | `v2/analysis/run_all.py` | `outputs/v2/study2_summary.json` |
 | **F — registered revision** | + irrigation from 2010–15, steppe-only comparison zone, raion placebos, VIINA occupation and conflict, annual water masks | `ANALYSIS_PLAN_v2_ADDENDUM_1.md` (commit 30e3840, before its extra downloads) | `v2/analysis/run_revision.py` | `outputs/v2/r1_summary.json` |
+| **G — second registered revision (final)** | + Baber et al. (2026) irrigation maps, never-irrigated comparison cropland, weather × group, 2016–18 baseline; flood matching on DEM height and land cover; placebo-in-time; H4 with block bootstrap; Sentinel-2 check of H3 | `ANALYSIS_PLAN_v2_ADDENDUM_2.md` (16 Oct 2026, local commit; SHA-256 in `v2/DEVIATIONS.md` §6) | `v2/analysis/run_revision2.py` | `outputs/v2/r2_summary.json` |
 | X — exploratory review checks | zone-K July–October weather; H2 event studies vs rainfall; placebo districts' overlap with the canal zone | none (written 16 Oct 2026, after all results were known) | `v2/analysis/x1_review_diagnostics.py` | `outputs/v2/x1_review_diagnostics.json` |
 
 | Quantity | E (pre-registered) | F (revision) | JSON key |
 |---|---|---|---|
-| H1 flood β (matched) | +0.0057, CI [−0.014, 0.026], WCR p = 0.60, RI p = 0.63 | +0.0552, CI [0.034, 0.076], RI p (decline) = 0.88 | `H1_flood` |
+| H1 flood β (matched) | +0.0057, CI [−0.014, 0.026], WCR p = 0.60, RI p = 0.63 | +0.0554, CI [0.034, 0.077], RI p (decline) = 0.88 | `H1_flood` |
+| H1 flood β, G (terrain-matched, 59% of flooded pixels) | −0.0037, CI [−0.021, 0.013], WCR p = 0.68, RI p = 0.42 (137 placebos); placebo-in-time +0.0002; unmatched +0.0122 | | `r2_summary: H1_flood` |
 | H1 without matching (all flooded pixels) | +0.0105 (reported +0.010), CI [−0.004, 0.025], p = 0.15 | +0.0122, p = 0.13 | `robustness.1_no_matching` |
 | H1 wetlands (unmatched) | −0.041, CI [−0.061, −0.020] | −0.061, CI [−0.081, −0.041] | `exploratory` / `robustness.8_class_wetland_no_matching` |
 | H2 irrigation β | −0.0739, WCR Holm p = 0.0002, RI p = 0.14 (6 oblasts) | −0.0527, Holm p = 0.0002, RI p = 0.375 (15 raions) | `H2_irrigation` |
 | H2 event study 2023 / 2024 (vs 2021) | −0.016 / −0.030 | −0.014 / −0.006 (n.s.) | `event_study` |
-| H2 pre-trend joint p | 4 × 10⁻³⁹ | 3 × 10⁻²³ | `pretrend_joint_p` |
+| H2 pre-trend joint p | 4 × 10⁻³⁹ | 2 × 10⁻²³ | `pretrend_joint_p` |
+| H2 irrigation β, G (Baber irrigated vs never irrigated, 2023–24 vs 2016–18) | −0.1789, CI [−0.211, −0.147], WCR Holm p = 0.0002, placebo test +0.050 (p = 0.0001), verdict suggestive | | `r2_summary: H2_irrigation` |
+| NDVI proxy vs Baber maps, Kherson (G) | of R1-irrigated pixels: 16% irrigated, 59% never irrigated | | `data/v2/derived/r2_meta.json` |
 | Verdicts | H1 not supported, H2 suggestive | H1 not supported, H2 suggestive | `verdict` |
 | H2 placebo p without districts adjoining the canals (X) | — | 0.18 (10 placebos) | `x1: D3_placebo_districts` |
 | Zone-K July–October rain 2021 / 2023 / 2024 (X) | 161 / 67 / 94 mm (2021 wettest of 2016–24) | | `x1: D1_weather_jul_oct` |
 | r(H2 event study 2016–21, zone-K rain) (X) | −0.94 | −0.97 | `x1: D2_h2_event_study_vs_zoneK_rain` |
 | H3 reservoir bed, km² NDVI > 0.3 (2016–22 range → 2023 → 2024) | 86–100 (2021: 99.9) → 906 → 1,574 | land-only: 244 km² land in 2023–24, NDVI 0.37 → 0.55 | `H3_*` |
 | H4 Kherson 2021→2024 vs zone O | −0.029 (other land −0.024) | −0.052 (reservoir excluded by the water rule) | `H4*` |
+| H4, G (2016–18 → 2023–24, 95% bootstrap) | −0.020 [−0.025, −0.015]; irrigated cropland −0.008 [−0.0085, −0.0075] | | `r2_summary: H4` |
+| H3 Sentinel-2 check, G | 172 km² (S2) vs 211 km² (MODIS) NDVI > 0.3 on the same 231 km², ratio 0.82 | | `r2_summary: H3_check` |
 
-Every departure from the plans: `v2/DEVIATIONS.md`.
+Every departure from the plans: `v2/DEVIATIONS.md`. E and F values are from the full re-run of 16 Oct 2026 (§7 there).
 
 # Study 1 (Kherson Oblast vs Romanian counties)
 

@@ -1,81 +1,80 @@
 {
  "label": "exploratory review diagnostics (not registered; written after all registered results were known)",
- "provenance": "Generated on 16 Oct 2026 during the external review from an independent reconstruction of layers.npz and r1_layers.npz (zone K 204,754 vs 204,890 pixels in the pipeline; zone O within 0.04 %). Re-run python v2/analysis/x1_review_diagnostics.py after run_all.py and run_revision.py to regenerate it from the pipeline's own layers.",
  "D1_weather_jul_oct": {
   "zone_K": {
    "2016": {
-    "precip_mm": 130.63116455078125,
-    "temp_c": 19.52062225341797
+    "precip_mm": 130.62969970703125,
+    "temp_c": 19.52058219909668
    },
    "2017": {
-    "precip_mm": 114.62310791015625,
-    "temp_c": 20.373699188232422
+    "precip_mm": 114.6268310546875,
+    "temp_c": 20.37366485595703
    },
    "2018": {
-    "precip_mm": 129.15802001953125,
-    "temp_c": 20.827011108398438
+    "precip_mm": 129.1571044921875,
+    "temp_c": 20.82699966430664
    },
    "2019": {
-    "precip_mm": 140.53492736816406,
-    "temp_c": 19.594009399414062
+    "precip_mm": 140.5371856689453,
+    "temp_c": 19.593961715698242
    },
    "2020": {
-    "precip_mm": 130.50369262695312,
-    "temp_c": 21.374954223632812
+    "precip_mm": 130.50421142578125,
+    "temp_c": 21.37491798400879
    },
    "2021": {
-    "precip_mm": 160.90184020996094,
-    "temp_c": 19.140718460083008
+    "precip_mm": 160.90216064453125,
+    "temp_c": 19.14067840576172
    },
    "2022": {
-    "precip_mm": 117.57731628417969,
-    "temp_c": 19.766868591308594
+    "precip_mm": 117.57959747314453,
+    "temp_c": 19.766836166381836
    },
    "2023": {
-    "precip_mm": 67.1378173828125,
-    "temp_c": 21.049253463745117
+    "precip_mm": 67.13796997070312,
+    "temp_c": 21.049230575561523
    },
    "2024": {
-    "precip_mm": 93.68855285644531,
-    "temp_c": 22.127410888671875
+    "precip_mm": 93.68929290771484,
+    "temp_c": 22.127405166625977
    }
   },
   "zone_O_revision": {
    "2016": {
-    "precip_mm": 167.29330444335938,
-    "temp_c": 18.917037963867188
+    "precip_mm": 167.27056884765625,
+    "temp_c": 18.918394088745117
    },
    "2017": {
-    "precip_mm": 138.43624877929688,
-    "temp_c": 19.776107788085938
+    "precip_mm": 138.40362548828125,
+    "temp_c": 19.777305603027344
    },
    "2018": {
-    "precip_mm": 125.59774780273438,
-    "temp_c": 20.296072006225586
+    "precip_mm": 125.56690979003906,
+    "temp_c": 20.297260284423828
    },
    "2019": {
-    "precip_mm": 146.11026000976562,
-    "temp_c": 19.25468635559082
+    "precip_mm": 146.10655212402344,
+    "temp_c": 19.25575065612793
    },
    "2020": {
-    "precip_mm": 111.17567443847656,
-    "temp_c": 20.97535514831543
+    "precip_mm": 111.14835357666016,
+    "temp_c": 20.976354598999023
    },
    "2021": {
-    "precip_mm": 167.65663146972656,
-    "temp_c": 18.475351333618164
+    "precip_mm": 167.633544921875,
+    "temp_c": 18.476604461669922
    },
    "2022": {
-    "precip_mm": 118.8786849975586,
-    "temp_c": 19.273096084594727
+    "precip_mm": 118.83214569091797,
+    "temp_c": 19.27460479736328
    },
    "2023": {
-    "precip_mm": 63.19911193847656,
-    "temp_c": 21.03241539001465
+    "precip_mm": 63.16523742675781,
+    "temp_c": 21.033641815185547
    },
    "2024": {
-    "precip_mm": 129.61952209472656,
-    "temp_c": 21.684709548950195
+    "precip_mm": 129.61825561523438,
+    "temp_c": 21.685585021972656
    }
   },
   "wettest_year_zone_K": 2021,
@@ -83,58 +82,58 @@
  },
  "D2_h2_event_study_vs_zoneK_rain": {
   "preregistered": {
-   "pearson_r_2016_2021": -0.9382730678371622,
-   "slope_per_100mm": -0.16148288627460958,
+   "pearson_r_2016_2021": -0.9382854036120252,
+   "slope_per_100mm": -0.16149084855493503,
    "rain_range_2016_2021_mm": [
-    114.62310791015625,
-    160.90184020996094
+    114.6268310546875,
+    160.90216064453125
    ],
    "post": {
     "2022": {
-     "rain_mm": 117.57731628417969,
-     "observed": 0.02896510159151018,
-     "line_fit_value": 0.07841398468716715,
-     "observed_minus_fit": -0.04944888309565697
+     "rain_mm": 117.57959747314453,
+     "observed": 0.028965100215310496,
+     "line_fit_value": 0.07841283504789337,
+     "observed_minus_fit": -0.04944773483258287
     },
     "2023": {
-     "rain_mm": 67.1378173828125,
-     "observed": -0.015614454053591065,
-     "line_fit_value": 0.15986514333554486,
-     "observed_minus_fit": -0.17547959738913593
+     "rain_mm": 67.13796997070312,
+     "observed": -0.0156144550538443,
+     "line_fit_value": 0.1598714473265055,
+     "observed_minus_fit": -0.17548590238034978
     },
     "2024": {
-     "rain_mm": 93.68855285644531,
-     "observed": -0.02984524613467083,
-     "line_fit_value": 0.11699024936558597,
-     "observed_minus_fit": -0.1468354955002568
+     "rain_mm": 93.68929290771484,
+     "observed": -0.029845243980596813,
+     "line_fit_value": 0.11699349061296416,
+     "observed_minus_fit": -0.14683873459356098
     }
    }
   },
   "revision": {
-   "pearson_r_2016_2021": -0.9738942948828089,
-   "slope_per_100mm": -0.16323511893309783,
+   "pearson_r_2016_2021": -0.9739004986223857,
+   "slope_per_100mm": -0.1632278196644221,
    "rain_range_2016_2021_mm": [
-    114.62310791015625,
-    160.90184020996094
+    114.6268310546875,
+    160.90216064453125
    ],
    "post": {
     "2022": {
-     "rain_mm": 117.57731628417969,
-     "observed": -0.006743601043028463,
-     "line_fit_value": 0.0700347494081753,
-     "observed_minus_fit": -0.07677835045120376
+     "rain_mm": 117.57959747314453,
+     "observed": -0.006751884064837609,
+     "line_fit_value": 0.07002599221115532,
+     "observed_minus_fit": -0.07677787627599293
     },
     "2023": {
-     "rain_mm": 67.1378173828125,
-     "observed": -0.014410462363320092,
-     "line_fit_value": 0.15236972542908062,
-     "observed_minus_fit": -0.1667801877924007
+     "rain_mm": 67.13796997070312,
+     "observed": -0.01441388854728323,
+     "line_fit_value": 0.15236076098663992,
+     "observed_minus_fit": -0.16677464953392315
     },
     "2024": {
-     "rain_mm": 93.68855285644531,
-     "observed": -0.005786359997802323,
-     "line_fit_value": 0.1090296008010839,
-     "observed_minus_fit": -0.11481596079888622
+     "rain_mm": 93.68929290771484,
+     "observed": -0.005797102904941724,
+     "line_fit_value": 0.1090216154644961,
+     "observed_minus_fit": -0.11481871836943783
     }
    }
   }
@@ -143,112 +142,112 @@
   "rule_adjoining": "share of cropland in zone K >= 1% or median zone-O distance to network <= 20 km",
   "units": {
    "Kherson / Bilozers'kyi": {
-    "beta": -0.031158768436460246,
-    "cropland_px": 16481,
+    "beta": -0.031164657632213336,
+    "cropland_px": 16468,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 41.003173828125,
+    "median_km_zoneO_to_network": 41.0398063659668,
     "adjoins_network": false
    },
    "Kherson / Chaplyns'kyi": {
-    "beta": -0.12916319292803558,
-    "cropland_px": 23392,
-    "share_cropland_in_zone_K": 0.8647400820793434,
+    "beta": -0.12916394596863726,
+    "cropland_px": 23574,
+    "share_cropland_in_zone_K": 0.8658267582930347,
     "median_km_zoneO_to_network": 6.424027442932129,
     "adjoins_network": true
    },
    "Kherson / Ivanivs'kyi": {
-    "beta": -0.10980186125475067,
-    "cropland_px": 21071,
-    "share_cropland_in_zone_K": 0.47809785961748374,
-    "median_km_zoneO_to_network": 11.707243919372559,
+    "beta": -0.10979923874312741,
+    "cropland_px": 21252,
+    "share_cropland_in_zone_K": 0.48174289478637305,
+    "median_km_zoneO_to_network": 11.619823455810547,
     "adjoins_network": true
    },
    "Kherson / Novotro\u2039ts'kyi": {
-    "beta": -0.11212002584332274,
-    "cropland_px": 25917,
-    "share_cropland_in_zone_K": 0.7684531388663811,
+    "beta": -0.11212082343256256,
+    "cropland_px": 25588,
+    "share_cropland_in_zone_K": 0.7680944192590277,
     "median_km_zoneO_to_network": 6.733991622924805,
     "adjoins_network": true
    },
    "Kherson / Nyzhn'osirohoz'kyi": {
-    "beta": -0.08263567386162399,
-    "cropland_px": 21300,
-    "share_cropland_in_zone_K": 0.02056338028169014,
-    "median_km_zoneO_to_network": 15.401227951049805,
+    "beta": -0.08263677338883325,
+    "cropland_px": 21260,
+    "share_cropland_in_zone_K": 0.021307619943555973,
+    "median_km_zoneO_to_network": 15.437771797180176,
     "adjoins_network": true
    },
    "Mykolayiv / Berezans'kyi": {
-    "beta": -0.0004870201275010487,
-    "cropland_px": 19119,
+    "beta": -0.00048619477209860094,
+    "cropland_px": 19192,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 79.30636596679688,
+    "median_km_zoneO_to_network": 79.22410583496094,
     "adjoins_network": false
    },
    "Mykolayiv / Ochakivs'kyi": {
-    "beta": -0.011243112984050774,
-    "cropland_px": 9900,
+    "beta": -0.011244933859726627,
+    "cropland_px": 9760,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 54.053428649902344,
+    "median_km_zoneO_to_network": 53.9229621887207,
     "adjoins_network": false
    },
    "Mykolayiv / Snihurivs'kyi": {
-    "beta": 0.00918827474929362,
-    "cropland_px": 21374,
+    "beta": 0.009189928115623722,
+    "cropland_px": 21255,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 51.81029510498047,
+    "median_km_zoneO_to_network": 51.761070251464844,
     "adjoins_network": false
    },
    "Odessa / Artsyz'kyi": {
-    "beta": -0.0002674286473239476,
-    "cropland_px": 21063,
+    "beta": -0.0002663846017292642,
+    "cropland_px": 21300,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 214.43234252929688,
+    "median_km_zoneO_to_network": 214.3544921875,
     "adjoins_network": false
    },
    "Odessa / Bilhorod-Dnistrovs'kyi": {
-    "beta": -0.023635818212833344,
-    "cropland_px": 24835,
+    "beta": -0.02363718423476004,
+    "cropland_px": 24845,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 152.2525177001953,
+    "median_km_zoneO_to_network": 152.2297821044922,
     "adjoins_network": false
    },
    "Odessa / Sarats'kyi": {
-    "beta": 0.016202660636819372,
-    "cropland_px": 21148,
+    "beta": 0.01620483107211367,
+    "cropland_px": 21057,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 178.69033813476562,
+    "median_km_zoneO_to_network": 178.6256866455078,
     "adjoins_network": false
    },
    "Odessa / Tarutyns'kyi": {
-    "beta": -0.05317376838160817,
-    "cropland_px": 25405,
+    "beta": -0.053171987655935206,
+    "cropland_px": 25251,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 218.89749145507812,
+    "median_km_zoneO_to_network": 218.8447723388672,
     "adjoins_network": false
    },
    "Odessa / Tatarbunars'kyi": {
-    "beta": -0.011037096291177962,
-    "cropland_px": 20142,
+    "beta": -0.011036330818588609,
+    "cropland_px": 19833,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 188.50970458984375,
+    "median_km_zoneO_to_network": 188.5084991455078,
     "adjoins_network": false
    },
    "Zaporizhia / Melitopol's'kyi": {
-    "beta": 0.017993192445777847,
-    "cropland_px": 25127,
-    "share_cropland_in_zone_K": 0.2148684681816373,
-    "median_km_zoneO_to_network": 20.164751052856445,
+    "beta": 0.017991241365893026,
+    "cropland_px": 25303,
+    "share_cropland_in_zone_K": 0.21214875706437972,
+    "median_km_zoneO_to_network": 20.2285213470459,
     "adjoins_network": true
    },
    "Zaporizhia / Pryazovs'kyi": {
-    "beta": 0.03366235740089217,
-    "cropland_px": 27088,
+    "beta": 0.033661824183687676,
+    "cropland_px": 26966,
     "share_cropland_in_zone_K": 0.0,
-    "median_km_zoneO_to_network": 37.6233024597168,
+    "median_km_zoneO_to_network": 37.85047912597656,
     "adjoins_network": false
    }
   },
-  "beta_real": -0.05271370468618141,
+  "beta_real": -0.05271819576026909,
   "p_one_sided_all": 0.375,
   "n_placebos_not_adjoining": 10,
   "p_one_sided_not_adjoining": 0.18181818181818182

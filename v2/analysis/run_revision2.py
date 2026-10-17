@@ -9,7 +9,7 @@ import sys
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-STEPS = ["r2_prepare.py", "r2_h1.py", "r2_h1_placebo.py", "r2_h2.py", "r2_h3_h4.py", "r2_summary.py"]
+STEPS = ["r2_prepare.py", "r2_h1.py", "r2_h1_placebo.py", "r2_h2.py", "r2_h3_h4.py", "r2_summary.py", "r2_figures.py"]
 
 if __name__ == "__main__":
     sys.path.insert(0, HERE)

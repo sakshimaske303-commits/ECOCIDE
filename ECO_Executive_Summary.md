@@ -24,60 +24,46 @@ My first study (Study 1) compared the average greenness (NDVI) of the whole of K
 
 ## What I did in Study 2
 
-- **Data.** I used MODIS NDVI at 250 m for 2016–2024 (2010–2015 for the revision) and looked at each pixel.
-- **Exposure groups.** I defined each group by what physically happened to the land: flooded land (UNOSAT maps), the drained reservoir bed, and farmland within 5 km of the reservoir's canals (OpenStreetMap).
-- **Comparisons.** I compared each group with similar land in the same war zone:
-  - flooded land with matched unflooded land on the same river bank;
-  - irrigated with rainfed farmland, inside and outside the canal zone.
-- **Plan fixed in advance.** I wrote the full analysis plan, including the words I would use for each result, and made it public on GitHub before downloading any data (commit 521672f).
-- **Registered revision.** When the first results showed five problems, I wrote a second plan and made it public before collecting the extra data it needed (commit 30e3840). It added:
-  - irrigation status from 2010–2015;
-  - a comparison zone limited to the steppe oblasts;
-  - district-level placebo tests;
-  - occupation and war intensity from VIINA;
-  - yearly water masks.
-- **Tests.** I used clustered and spatial standard errors, a wild cluster bootstrap, placebo tests, the Holm correction, and Rambachan–Roth sensitivity bounds.
-- **Later checks (exploratory).** After all results were known, I checked summer weather in the canal zone and how close the placebo districts lie to the canals.
+- **Data.** MODIS NDVI at 250 m for 2016–2024, pixel by pixel.
+- **Exposure groups.** Each group is defined by what physically happened to the land: flooded land (UNOSAT), the drained reservoir bed, and farmland served by the reservoir's canals.
+- **Comparisons inside the war zone.** Flooded land against similar unflooded land on the same river bank; irrigated against non-irrigated farmland.
+- **Plan fixed in advance.** The full analysis plan, including the words for each result, was public on GitHub before any data were downloaded (commit 521672f).
+- **Registered revision 1** (commit 30e3840), written when the first results showed five problems: irrigation from 2010–2015, steppe-only comparison, district placebos, occupation and war intensity (VIINA), yearly water masks.
+- **Registered revision 2** (16 Oct 2026; checksum in `v2/DEVIATIONS.md`, local commit only), written after an external review and before its data were downloaded: independent 30 m irrigation maps (Baber et al., 2026), flood matching on terrain instead of past greenness, weather allowed to change the irrigation contrast, a 2016–2018 baseline, block-bootstrap intervals for the decomposition, and a Sentinel-2 check of the reservoir result.
 
 ## What I found
 
-| Pathway | Main plan | Revision | What it means |
+| Pathway | Plan and revision 1 | Revision 2 | Verdict (rule fixed in advance) |
 |---|---|---|---|
-| **Flood**: flooded vs unflooded land | All flooded pixels +0.010 NDVI (95% CI −0.004 to 0.025); matched sample (1.8% of pixels) +0.006 (−0.014 to 0.026); placebo p = 0.63 | Matched +0.055, unmatched +0.012 (n.s.) | No detectable lasting loss of July–October greenness |
-| Floodplain wetlands | −0.041 | −0.061 | Wetlands lost greenness (flood or lower river level) |
-| **Irrigated farmland**: canal zone vs elsewhere | −0.074, but already falling before the war | −0.053; close to the 2021 level after the breach (−0.006 to −0.014, n.s.); placebo p = 0.38 | Not testable with this design (see below) |
-| **Reservoir bed** | Area with NDVI above 0.3: 86–100 km² each year before the breach, 906 km² in 2023, 1,574 km² in 2024 | Same path on land-only pixels | Largest change (description only, no comparison group) |
-| **Kherson Oblast, 2021 to 2024** | −0.029 overall; reservoir bed +0.010; irrigated canal zone −0.013; land outside the exposure groups −0.024 | −0.052 (reservoir bed removed by the water rule) | The oblast average mixes changes of opposite sign |
+| **Flood** | All flooded pixels +0.010 NDVI (95% CI −0.004 to 0.025); matched samples +0.006 and +0.055 | Matched on terrain (59% of flooded pixels): −0.004 (−0.021 to 0.013), placebo p = 0.42; placebo-in-time test 0.000 | **not supported**: no lasting loss of July–October greenness |
+| Floodplain wetlands | −0.041 and −0.061 | — | wetlands lost greenness |
+| **Irrigated farmland** | NDVI-proxy groups: −0.074 and −0.053, but trends, weather and exposed comparison land made it untestable | Irrigated fields (Baber maps) vs never-irrigated cropland: **−0.179** (−0.211 to −0.147), a third of their 2016–2018 level; the drop starts with the breach; the placebo test fails (+0.050 in 2019–2021, the years that define the groups) | **suggestive** |
+| **Reservoir bed** | NDVI > 0.3: 86–100 km² each year before the breach → 1,574 km² in 2024 | Sentinel-2 agrees within 18% where both can be compared | description |
+| **Kherson Oblast** | 2021→2024: −0.029; reservoir bed +0.010 | 2016–18→2023–24: −0.020 (−0.025 to −0.015); irrigated cropland, 4% of the area, −0.008; never-irrigated cropland 0.000; flood 0.000 | description with intervals |
 
-By the naming rule in my plan, the flood result is "not supported" and the irrigation result is "suggestive".
-
-**Why the irrigation result cannot be read as "no effect".** The year-by-year results are compared with 2021, the wettest summer of the record in the canal zone (161 mm of July–October rain, against 67 mm in 2023 and 94 mm in 2024). Before the war the farmland contrast moved closely with summer rain (r = −0.97), but my models do not let weather change that contrast. Also, the placebo districts with the largest declines lie next to the canal network and are partly irrigated by it. So my design neither shows nor rules out an effect of the lost canal water.
+The NDVI-based irrigation proxy of the first two analyses agreed with the independent maps on only 16% of its "irrigated" pixels in Kherson Oblast (1% in Zaporizhzhia).
 
 ## What this means
 
-1. **The reservoir bed changed the most.** About 1,500 km² became green within two seasons. This is a description, not a tested effect, because there is no comparison area. Field studies report the same (Kuzemko et al., 2025).
-2. **I found no lasting loss of July–October greenness on flooded land, except in wetlands.** The wetland loss may come from the lower, unregulated river after the dam's loss rather than from the flood itself.
-3. **The irrigation pathway was not testable with my design, even though irrigation stopped.** Other work shows that irrigated area fell by about 90% (Baber et al., 2026; NASA Harvest). Testing it needs field-level irrigation maps, comparison land outside the whole irrigation command area, and models in which weather can change the irrigated–rainfed contrast.
-4. **Study 1's decline across Kherson Oblast was real, but an oblast average cannot say what caused it.** It mixes the greening reservoir, the flood, farmland and the war's other effects. To link change to one act, the analysis has to follow the physical footprint of each pathway.
+1. **The reservoir bed changed the most.** About 1,500 km² became green within two seasons, as field studies also report (Kuzemko et al., 2025).
+2. **No lasting loss of greenness on flooded land, except in wetlands,** whichever way the comparison land was chosen.
+3. **Fields that lost canal irrigation lost about a third of their summer greenness.** The loss starts with the breach and is not explained by weather. The pre-registered rule still calls it *suggestive*: the fields were already diverging in 2019–2021, and with no irrigated land outside the canal system there is no way to separate the lost water from other war effects that hit irrigated farms harder.
+4. **An oblast average cannot say what caused a change.** In Kherson it mixes a greening reservoir, a flood with no lasting effect, a large loss on a small irrigated area and almost no change elsewhere. The analysis has to follow the physical footprint of each pathway.
 
 ## Main limitations
 
-- **Irrigation measure.** Irrigation status is based on NDVI and mostly captures summer crops.
-- **Weather and reference year.** Weather is not allowed to change the irrigated–rainfed contrast, and the reference year 2021 was the wettest of the record.
-- **Exposed comparison land.** Irrigated land more than 5 km from the mapped canals counts as comparison land.
-- **Parallel trends.** Pre-trend tests fail in most specifications; the one that passes was matched on the pre-war values it tests.
-- **Small flood samples.** Few unflooded pixels look like the flooded floodplain, so the matched flood samples are small.
-- **Scale of inference.** The canal zone and the flood are each one connected area, so the placebo tests are a better guide than the very small clustered p-values.
-- **Timing of the revision.** It was written after the first results were known. I report it next to them, not instead of them.
-- **Water maps.** The yearly water maps are coarse for 2023 and missing for 2024.
+- **Irrigation comparison.** No irrigated land outside the canal system was available, so the irrigation result cannot be separated from other war effects on irrigated farms.
+- **Placebo test.** The irrigation groups are defined by 2019–2021 maps, and fields were greener in those years; field maps before 2019 do not exist.
+- **Map quality.** The irrigation maps have their own errors and cover only Kherson and Zaporizhzhia.
+- **Parallel trends.** Pre-trend tests fail in most specifications.
+- **Timing of the revisions.** Both were written after earlier results were known; revision 2 is dated only by a local commit.
+- **Water maps.** The yearly water maps are coarse for 2023 and missing for 2024, which limits the reservoir checks.
 - **War data.** VIINA is based on news reports.
-- **What NDVI shows.** NDVI measures greenness only.
+- **What NDVI shows.** Greenness only; July–October misses spring and winter crops.
 
 ## How to reproduce
 
-- Data: `v2/01`–`08`.
-- Main plan: `python v2/analysis/run_all.py`.
-- Revision: `python v2/analysis/run_revision.py`.
-- Later checks: `python v2/analysis/x1_review_diagnostics.py`.
-- Results: `outputs/v2/study2_summary.json`, `outputs/v2/r1_summary.json` and `outputs/v2/x1_review_diagnostics.json`.
+- Data: `v2/01`–`11`.
+- `python v2/analysis/run_all.py`, `run_revision.py`, `run_revision2.py`.
+- Results: `outputs/v2/study2_summary.json`, `r1_summary.json`, `r2_summary.json`.
 - All changes to the plans: `v2/DEVIATIONS.md`.
