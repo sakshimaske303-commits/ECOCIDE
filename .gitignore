@@ -33,3 +33,6 @@ data/v2/s2_parts/
 data/v2/irrigation_baber/*.tif
 data/v2/derived/r2_layers.npz
 data/v2/derived/r2_h1_cov_weights.npy
+
+# UNOSAT FL20230606UKR: the code reads the zip (data/ndwi/FL20230606UKR_SHP.zip); the unzipped copy is not tracked
+data/ndwi/FL20230606UKR_SHP/
