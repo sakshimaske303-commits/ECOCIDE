@@ -39,6 +39,7 @@ The NDVI-based irrigation proxy used in the plan and revision 1 agreed with the 
 | [`ECO_RESULTS_RECONCILIATION.md`](./ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
 | [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Chronological research diary (historical entries describe the state at that time) |
 | [`ECOCIDE_Maps_and_Plots.pdf`](./ECOCIDE_Maps_and_Plots.pdf) | All figures with captions |
+| [`ECO_Declarations.pdf`](./ECO_Declarations.pdf) | Declarations: authorship, funding, pre-registration and deviations, data and licences, earlier versions, use of AI tools |
 
 ## Study 1 (background): Kherson Oblast vs Romanian counties
 
@@ -130,6 +131,16 @@ ECOCIDE/
 | Flood extent | UNITAR/UNOSAT, FL20230606UKR (Sentinel-1, Sentinel-2, Sentinel-3, ICEYE layers; preliminary) |
 | NDVI and true-colour imagery (Study 1) | Copernicus Sentinel-2 L2A via Sentinel Hub (Copernicus Data Space Ecosystem) |
 | Administrative boundaries | GADM v4.1 (academic and non-commercial use; not redistributed here — `download_gadm.py`) |
+
+## Declarations
+
+Read the full statement in [`ECO_Declarations.pdf`](./ECO_Declarations.pdf) (source: [`ECO_Declarations.md`](./ECO_Declarations.md)). In short:
+
+- **Who did the work:** one author, who planned, coded, ran, checked and wrote up every part of it.
+- **Money and interests:** no external funding, no competing interests.
+- **Ethics:** satellite and public data only; no participants or personal data.
+- **Pre-registration:** the main plan was public before any data were downloaded; both revisions were written before their extra data were collected, and every departure is in `v2/DEVIATIONS.md`.
+- **AI tools:** Alongside the external reviews of the project, I also used Claude (Anthropic), an AI assistant, for smaller and more routine tasks. I gave it the paper, summaries, README and dashboard text to compare against the JSON result files of the main plan and both revisions, so that a flood estimate, an irrigation coefficient or a verdict quoted in one place matched the others. I sometimes turned to it when a download or estimation script stopped with an error I could not trace, and I used it for the layout of the project web pages. The writing is mine: I asked it to point out passages that were unclear or too technical, places where something seemed missing, and punctuation, and I chose which of those suggestions to take. It had no part in writing the analysis plans, choosing the exposed and comparison groups, setting the decision rule or naming any result. It did not fetch or process the satellite data, and it did not run the models. Every suggestion was checked by me before I used it, and I am responsible for all of the content.
 
 ## Author and licence
 
