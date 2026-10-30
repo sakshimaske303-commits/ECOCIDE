@@ -21,8 +21,7 @@ abstract: >-
   relative to never-irrigated cropland, a result the pre-registered rule names
   suggestive. Study 1 (Kherson Oblast vs Romanian counties, monthly
   Sentinel-2 NDVI) is retained as background.
-  Zenodo v1.0.0 and EarthArXiv preprint v1 report an earlier, superseded
-  analysis.
+  EarthArXiv preprint v1 reports an earlier, superseded analysis.
 keywords:
   - pre-registration
   - MODIS
@@ -34,10 +33,6 @@ keywords:
   - Kakhovka Dam
   - NDVI
   - geospatial analysis
-identifiers:
-  - type: doi
-    value: "10.5281/zenodo.21757974"
-    description: "Zenodo archive of the earlier ECOCIDE v1.0.0 (superseded analysis); not this version"
 license:
   - MIT
   - CC-BY-4.0

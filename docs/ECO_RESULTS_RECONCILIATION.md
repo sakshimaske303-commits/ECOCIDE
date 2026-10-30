@@ -41,7 +41,7 @@ Every headline number in the paper, README, executive summary, CITATION.cff and 
 
 | Version | NDVI extraction | Inference | Where it appears |
 |---|---|---|---|
-| A — original | Bounding box, scene-level cloud filter (`data/ndvi_old_bbox`) | Stacked OLS, HAC on row order, normal dist. | EarthArXiv preprint v1, Zenodo v1.0.0 |
+| A — original | Bounding box, scene-level cloud filter (`data/ndvi_old_bbox`) | Stacked OLS, HAC on row order, normal dist. | EarthArXiv preprint v1 |
 | B — Phase 2 | GADM polygon + pixel SCL mask, default 256 × 256 grid, water kept, single scene (`data/ndvi_v2`; an identical copy in `data/ndvi` was removed on 16 Oct 2026) | Stacked OLS, HAC on row order, t dist. (external script) | Repo drafts, 11–23 Sept 2026 |
 | C — inference fix | Same data as B | Monthly gap series, HAC maxlags 3, t dist. (`eco_core.py`) | Repo, 24 Sept 2026 (morning) |
 | **D — current** | **Polygon, common 0.002° grid, cloud/shadow/cirrus/snow/water masked, per-pixel monthly median (`data/ndvi_v3`)** | **Same as C** | **Everything in this repo now** |
@@ -83,6 +83,6 @@ Earlier versions attributed all dates to "ICEYE, Landsat-9, SkySat, WorldView-3,
 
 ## Still outside this repository
 
-- EarthArXiv preprint v1 and Zenodo v1.0.0 show version A. Post a new EarthArXiv version and a new Zenodo release once the paper is final.
+- EarthArXiv preprint v1 shows version A (superseded).
 - Sentinel Hub / CDSE credentials were once committed (`.env`, `.env.txt`, commits `ad88ce3` and `14b88ec`) and are still in the public git history; rotate them.
 - `outputs/v2/x1_review_diagnostics.json` was first generated from an independent reconstruction of the derived layers; re-run `x1_review_diagnostics.py` after `run_all.py` and `run_revision.py` to regenerate it from the pipeline's own layers.
