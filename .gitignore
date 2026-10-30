@@ -36,3 +36,7 @@ data/v2/derived/r2_h1_cov_weights.npy
 
 # UNOSAT FL20230606UKR: the code reads the zip (data/ndwi/FL20230606UKR_SHP.zip); the unzipped copy is not tracked
 data/ndwi/FL20230606UKR_SHP/
+
+# Built locally and not tracked: the figure PDF (build_maps_plots_pdf.py) and journal-submission files (make_submission.py)
+ECOCIDE_Maps_and_Plots.pdf
+submission/

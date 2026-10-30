@@ -38,7 +38,6 @@ The NDVI-based irrigation proxy used in the plan and revision 1 agreed with the 
 | [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Study 1 paper (background study: Kherson Oblast vs Romanian counties) |
 | [`ECO_RESULTS_RECONCILIATION.md`](./ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
 | [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Chronological research diary (historical entries describe the state at that time) |
-| [`ECOCIDE_Maps_and_Plots.pdf`](./ECOCIDE_Maps_and_Plots.pdf) | All figures with captions |
 | [`ECO_Declarations.pdf`](./ECO_Declarations.pdf) | Declarations: authorship, funding, pre-registration and deviations, data and licences, earlier versions, use of AI tools |
 
 ## Study 1 (background): Kherson Oblast vs Romanian counties
@@ -85,7 +84,7 @@ python tests/test_r2lib.py                    # checks of the Revision 2 helpers
 # Study 1 (background)
 python generate_model_results.py      # all statistics -> outputs/model_results.json (reads data/ndvi_v3)
 python flood_progression.py           # UNOSAT areas  -> outputs/flood_extent_table.csv
-python build_all_figures.py           # every Study 1 figure and the figure PDF
+python build_all_figures.py           # every Study 1 figure -> outputs/plots
 
 cd dashboard && streamlit run app.py
 ```
@@ -105,7 +104,7 @@ ECOCIDE/
 │   ├── grid.py                  # common EPSG:3035 231.656 m grid
 │   ├── DEVIATIONS.md, README_v2.md
 │   └── analysis/                # a1–a8 (plan), r1_* (revision 1), r2_* (revision 2), x1 (exploratory checks), v2lib.py (engine)
-├── tests/                       # checks of the Study 2 engine
+├── tests/                       # checks of the Study 2 engine and the Revision 2 helpers
 ├── eco_core.py                  # Study 1 estimation engine (gap-series DiD, HAC, event study)
 ├── eco_flood.py / eco_style.py  # UNOSAT layer definitions / figure style
 ├── generate_model_results.py    # runs every Study 1 model -> outputs/model_results.json
@@ -115,8 +114,8 @@ ECOCIDE/
 ├── download_*.py                # Study 1 data acquisition (Sentinel Hub)
 ├── data/                        # boundaries, Study 1 NDVI, UNOSAT zip, small Study 2 inputs (large ones are regenerated)
 ├── outputs/                     # model_results.json, flood table, plots, maps; outputs/v2 for Study 2
-├── submission/                  # anonymised manuscript files built by make_submission.py
-└── dashboard/                   # Streamlit app
+├── dashboard/                   # Streamlit app
+└── archive/                     # early NDWI/SAR exploration and one-off checks, not used in any result (see archive/README.md)
 ```
 
 ## Data sources
@@ -126,6 +125,9 @@ ECOCIDE/
 | NDVI and EVI, 250 m, 2010–2024 (Study 2) | MODIS Terra MOD13Q1 v061 (NASA LP DAAC), via Microsoft Planetary Computer |
 | Land cover | ESA WorldCover 2021 v200; Impact Observatory annual land cover 2017–2023 |
 | Weather | ERA5-Land monthly means (Copernicus Climate Data Store) |
+| Irrigated fields, 30 m, 2019–2025 (Study 2, second revision) | Baber et al. (2026), Zenodo record 22036773, CC BY 4.0 |
+| Elevation (Study 2, second revision) | Copernicus DEM GLO-30, via Microsoft Planetary Computer |
+| Sentinel-2 check of the reservoir bed (Study 2, second revision) | Copernicus Sentinel-2 L2A, August 2024, via Microsoft Planetary Computer |
 | Irrigation canals | © OpenStreetMap contributors, Open Database License (ODbL 1.0); the extract in `data/v2` is a derived database under the same licence |
 | War events and territorial control | VIINA (Zhukov, 2023) |
 | Flood extent | UNITAR/UNOSAT, FL20230606UKR (Sentinel-1, Sentinel-2, Sentinel-3, ICEYE layers; preliminary) |
