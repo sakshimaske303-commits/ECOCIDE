@@ -32,7 +32,7 @@ r2h1, r2h2, r2h4 = R2["H1_flood"], R2["H2_irrigation"], R2["H4"]
 h3 = S["H3_reservoir_bed"]
 pre_km2 = [h3[str(y)]["km2_ndvi_gt_0_3"] for y in range(2016, 2023)]
 
-st.markdown("<h1 style='text-align: center;'>🧪 STUDY 2 — MAIN RESULTS</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>STUDY 2 — MAIN RESULTS</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Pre-registered, exposure-based "
             "pixel analysis (MODIS 250 m, 2016–2024)</h3>", unsafe_allow_html=True)
 st.markdown("---")

@@ -8,7 +8,7 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(BASE_DIR)
 from styles import apply_custom_style, PALETTE
 from doc_viewer import render_doc_viewer
-from results import R, FLOOD, S2, R1, H1R, p, c, ci, sig
+from results import R, FLOOD, S2, R1, R2, H1R, p, c, ci, sig
 
 st.set_page_config(
     page_title="ECOCIDE",
@@ -19,7 +19,7 @@ st.set_page_config(
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>🛰️ ECOCIDE</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>ECOCIDE</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700; margin-top: -10px;'>"
     "What Did the Destruction of the Kakhovka Dam Do to Vegetation?<br>"
@@ -91,23 +91,24 @@ st.markdown(
 st.markdown("---")
 
 col1, col2, col3, col4 = st.columns(4)
-_h1, _h2, _h3 = S2["H1_flood"], S2["H2_irrigation"], S2["H3_reservoir_bed"]
-_h1all = H1R["robustness"]["1_no_matching"]
+_h3 = S2["H3_reservoir_bed"]
+_f, _i = R2["H1_flood"], R2["H2_irrigation"]
 _pre = [_h3[str(y)]["km2_ndvi_gt_0_3"] for y in range(2016, 2023)]
 with col1:
     st.metric("UNOSAT FLOOD (6–9 JUNE)", f"{FLOOD['composite_6_9_june']['flood_km2']:.0f} km²", "cumulative, multi-sensor")
 with col2:
-    st.metric("FLOODED LAND (H1, all pixels)", f"{_h1all['beta']:+.3f} NDVI",
-              f"{_h1['verdict']} — no detectable lasting loss", delta_color="off")
+    st.metric("FLOODED LAND (H1)", f"{_f['beta']:+.3f} NDVI",
+              f"{_f['verdict']}: matched on terrain, placebo p = {_f['p_randomization']:.2f}", delta_color="off")
 with col3:
-    st.metric("CANAL FARMLAND (H2)", f"{_h2['beta']:+.3f} NDVI",
-              f"{_h2['verdict']} by rule — not attributable to the dam", delta_color="off")
+    st.metric("FORMERLY IRRIGATED FIELDS (H2)", f"{_i['beta']:+.3f} NDVI",
+              f"{_i['verdict']}: −{abs(_i['beta_pct_of_base_mean']):.0f}% vs the 2016–18 level; placebo test fails",
+              delta_color="off")
 with col4:
     st.metric("RESERVOIR BED, NDVI > 0.3 (H3)", f"{_h3['2024']['km2_ndvi_gt_0_3']:,.0f} km²",
               f"2024; {min(_pre):.0f}–{max(_pre):.0f} km² each year 2016–22", delta_color="off")
-st.caption("Headline numbers are from Study 2 (outputs/v2/study2_summary.json and h1_results.json). Why H2 cannot be "
-           "attributed to the dam is explained on the Study 2 Main Results page. Study 1 numbers (Kherson vs Romania) "
-           "are on the Study 1 pages.")
+st.caption("Headline numbers are the final results of Study 2 (second registered revision, outputs/v2/r2_summary.json). "
+           "The two earlier analyses and why they were revised are on the Study 2 Main Results page. Study 1 numbers "
+           "(Kherson vs Romania) are on the Study 1 pages.")
 
 st.markdown("---")
 
@@ -145,7 +146,8 @@ with col_left:
 
     **Study 2 (main)** uses MODIS NDVI at 250 m for 2016–2024. Land is grouped by what physically
     happened to it (flooded, drained reservoir bed, canal-irrigated farmland) and compared with similar
-    land in the same war zone. The analysis plan was made public before any data were downloaded.
+    land in the same war zone. The analysis plan was made public before any data were downloaded, and two
+    registered revisions followed, the second with independent 30 m irrigation maps and terrain-based flood matching.
 
     **Study 1 (background)** compared the whole of Kherson Oblast with four Romanian counties. It found a
     decline but could not link it to the dam.
@@ -162,11 +164,12 @@ with col_right:
             <p style="color:{PALETTE['text_primary']}; font-size:0.95rem; line-height:1.7; margin:0; font-weight:500;">
                 The drained reservoir bed changed the most: land with NDVI above 0.3 grew from
                 {min(_pre):.0f}–{max(_pre):.0f} km² in each year before the breach to
-                {_h3["2024"]["km2_ndvi_gt_0_3"]:,.0f} km² in 2024. Flooded land showed no detectable lasting loss of
-                July–October greenness ({_h1all["beta"]:+.3f} NDVI over all flooded pixels), except floodplain
-                wetlands. Canal-zone farmland declined relative to other farmland, starting before the war, but this
-                design cannot tell whether the loss of canal water added to the decline. An oblast-wide average
-                mixes all of these changes.
+                {_h3["2024"]["km2_ndvi_gt_0_3"]:,.0f} km² in 2024. Fields that had been irrigated from the canals lost
+                {abs(_i["beta"]):.2f} NDVI after the breach, about a third of their summer greenness, against cropland
+                that was never irrigated; the pre-registered rule calls this suggestive, because those fields were
+                already greener in the years used to identify them. Flooded land showed no detectable lasting loss
+                ({_f["beta"]:+.3f} NDVI against land matched on terrain), except floodplain wetlands. An oblast-wide
+                average mixes all of these changes.
             </p>
         </div>
         """, unsafe_allow_html=True
@@ -195,7 +198,7 @@ with m2:
         <p style="color: {PALETTE['vegetation']}; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px;">Causal Inference</p>
         <p style="color: {PALETTE['text_primary']}; font-size: 0.88rem; margin: 0;">
             Study 2: pixel-level difference-in-differences with matching, placebo rivers and districts,
-            wild cluster bootstrap, a pre-registered plan and a registered revision. Study 1: monthly
+            wild cluster bootstrap, a pre-registered plan and two registered revisions. Study 1: monthly
             Kherson-minus-control NDVI gap with HAC standard errors.
         </p>
     </div>

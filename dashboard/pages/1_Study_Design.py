@@ -10,7 +10,7 @@ from styles import apply_custom_style, PALETTE
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>🏛️ STUDY 1 — STUDY DESIGN</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>STUDY 1 — STUDY DESIGN</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Treatment Zone, Control Zone, and Causal Framework</h3>",
     unsafe_allow_html=True,

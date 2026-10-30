@@ -9,7 +9,7 @@ from styles import apply_custom_style, PALETTE
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>🗺️ INTERACTIVE MAPS &amp; PLOTS</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>INTERACTIVE MAPS &amp; PLOTS</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>UNOSAT Flood-Extent Layers (preliminary) and Study 1 Charts</h3>",
     unsafe_allow_html=True,

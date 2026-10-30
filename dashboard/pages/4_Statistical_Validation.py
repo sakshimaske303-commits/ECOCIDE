@@ -10,7 +10,7 @@ from results import R, NAMES, p, c, ci, sig, pv
 
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>📊 STUDY 1 — STATISTICAL VALIDATION</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>STUDY 1 — STATISTICAL VALIDATION</h1>", unsafe_allow_html=True)
 st.markdown(
     "<h3 style='text-align: center; color: #B0BEC5; font-weight: 700;'>Every Check, With Its Actual Result</h3>",
     unsafe_allow_html=True,

@@ -10,30 +10,12 @@ from styles import apply_custom_style, PALETTE
 st.set_page_config(page_title="Theoretical Foundations — ECOCIDE", page_icon="🌊", layout="wide")
 apply_custom_style()
 
-st.markdown("<h1 style='text-align: center;'>🌊 ANATOMY OF A DAM-BREAK FLOOD</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>ANATOMY OF A DAM-BREAK FLOOD</h1>", unsafe_allow_html=True)
 st.markdown(
     f"<h3 style='text-align: center; color: {PALETTE['accent']}; font-weight: 400;'>"
     "Three Ways the Dam's Destruction Could Change Vegetation</h3>",
     unsafe_allow_html=True,
 )
-st.markdown("---")
-
-# ============================================================
-# DIAGRAM
-# ============================================================
-IMG_PATH = os.path.join(ROOT_DIR, "outputs", "plots", "imgg1.png")
-col_a, col_b, col_c = st.columns([0.2, 5.9, 0.2])
-with col_b:
-    if os.path.exists(IMG_PATH):
-        st.image(IMG_PATH, width="stretch")
-    else:
-        st.warning("Diagram not found at outputs/plots/imgg1.png")
-    st.markdown(
-        f"<p style='text-align:center; color:{PALETTE['text_secondary']}; font-size:0.85rem; margin-top:6px;'>"
-        "The concept and every detail in this image are mine.</p>",
-        unsafe_allow_html=True,
-    )
-
 st.markdown("---")
 
 # ============================================================
