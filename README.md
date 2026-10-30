@@ -12,7 +12,7 @@ The main analysis is **Study 2**: a pre-registered, pixel-level analysis of MODI
 
 ## Study 2 (main result): pre-registered, exposure-based pixel analysis
 
-Study 2 uses 231 m MODIS pixels (2016–2024), defines treatment by physical exposure, and makes all comparisons inside the war zone. Every choice was fixed in [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md) before any data were downloaded, and in two registered revisions, each written before its extra data were downloaded ([`ADDENDUM_1`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`ADDENDUM_2`](./ANALYSIS_PLAN_v2_ADDENDUM_2.md)); departures are logged in [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md). Paper: [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md).
+Study 2 uses 231 m MODIS pixels (2016–2024), defines treatment by physical exposure, and makes all comparisons inside the war zone. Every choice was fixed in [`ANALYSIS_PLAN_v2.md`](./docs/preregistration/ANALYSIS_PLAN_v2.md) before any data were downloaded, and in two registered revisions, each written before its extra data were downloaded ([`ADDENDUM_1`](./docs/preregistration/ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`ADDENDUM_2`](./docs/preregistration/ANALYSIS_PLAN_v2_ADDENDUM_2.md)); departures are logged in [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md). Paper: [`ECO_Research_Paper_v2.md`](./docs/ECO_Research_Paper_v2.md).
 
 | Pathway | Final result (registered revision 2, July–October NDVI) | Verdict | Earlier analyses |
 |---|---|---|---|
@@ -31,14 +31,14 @@ The NDVI-based irrigation proxy used in the plan and revision 1 agreed with the 
 
 | Document | Contents |
 |---|---|
-| [`ECO_Research_Paper_v2.md`](./ECO_Research_Paper_v2.md) | **Main paper (Study 2)**: question, data, methods, results, limitations |
-| [`ECO_Executive_Summary.md`](./ECO_Executive_Summary.md) | Two-page summary of Study 2 |
-| [`ANALYSIS_PLAN_v2.md`](./ANALYSIS_PLAN_v2.md), [`ADDENDUM_1`](./ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`ADDENDUM_2`](./ANALYSIS_PLAN_v2_ADDENDUM_2.md), [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md) | Pre-registered plan, two registered revisions, and every deviation |
-| [`RESEARCH_COMPLETION_PLAN.md`](./RESEARCH_COMPLETION_PLAN.md) | The bounded plan for the second revision and its stopping rules |
-| [`ECO_Research_Paper.md`](./ECO_Research_Paper.md) | Study 1 paper (background study: Kherson Oblast vs Romanian counties) |
-| [`ECO_RESULTS_RECONCILIATION.md`](./ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
-| [`ECO_Development_Log.md`](./ECO_Development_Log.md) | Chronological research diary (historical entries describe the state at that time) |
-| [`ECO_Declarations.pdf`](./ECO_Declarations.pdf) | Declarations: authorship, funding, pre-registration and deviations, data and licences, earlier versions, use of AI tools |
+| [`ECO_Research_Paper_v2.md`](./docs/ECO_Research_Paper_v2.md) | **Main paper (Study 2)**: question, data, methods, results, limitations |
+| [`ECO_Executive_Summary.md`](./docs/ECO_Executive_Summary.md) | Two-page summary of Study 2 |
+| [`ANALYSIS_PLAN_v2.md`](./docs/preregistration/ANALYSIS_PLAN_v2.md), [`ADDENDUM_1`](./docs/preregistration/ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`ADDENDUM_2`](./docs/preregistration/ANALYSIS_PLAN_v2_ADDENDUM_2.md), [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md) | Pre-registered plan, two registered revisions, and every deviation |
+| [`RESEARCH_COMPLETION_PLAN.md`](./docs/preregistration/RESEARCH_COMPLETION_PLAN.md) | The bounded plan for the second revision and its stopping rules |
+| [`ECO_Research_Paper.md`](./docs/ECO_Research_Paper.md) | Study 1 paper (background study: Kherson Oblast vs Romanian counties) |
+| [`ECO_RESULTS_RECONCILIATION.md`](./docs/ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
+| [`ECO_Development_Log.md`](./docs/ECO_Development_Log.md) | Chronological research diary (historical entries describe the state at that time) |
+| [`ECO_Declarations.pdf`](./docs/ECO_Declarations.pdf) | Declarations: authorship, funding, pre-registration and deviations, data and licences, earlier versions, use of AI tools |
 
 ## Study 1 (background): Kherson Oblast vs Romanian counties
 
@@ -97,8 +97,8 @@ All commands run from the repository root. Individual Study 1 scripts in `src/` 
 
 ```text
 ECOCIDE/
-├── ANALYSIS_PLAN_v2.md, ..._ADDENDUM_1.md, ..._ADDENDUM_2.md   # Study 2 plans (registered)
-├── ECO_Research_Paper_v2.md     # main paper (Study 2)
+├── docs/                        # papers, executive summary, development log, declarations, results reconciliation
+│   └── preregistration/         # analysis plan, two registered revisions, completion plan
 ├── v2/                          # Study 2
 │   ├── 00–11_*.py               # data download and preparation (MODIS, WorldCover, ERA5-Land, OSM, IO land cover, VIINA, irrigation maps, DEM, Sentinel-2)
 │   ├── grid.py                  # common EPSG:3035 231.656 m grid
@@ -136,7 +136,7 @@ ECOCIDE/
 
 ## Declarations
 
-Read the full statement in [`ECO_Declarations.pdf`](./ECO_Declarations.pdf) (source: [`ECO_Declarations.md`](./ECO_Declarations.md)). In short:
+Read the full statement in [`ECO_Declarations.pdf`](./docs/ECO_Declarations.pdf) (source: [`ECO_Declarations.md`](./docs/ECO_Declarations.md)). In short:
 
 - **Who did the work:** one author, who planned, coded, ran, checked and wrote up every part of it.
 - **Money and interests:** no external funding, no competing interests.

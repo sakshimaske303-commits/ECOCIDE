@@ -48,7 +48,7 @@ The treated unit is Kherson Oblast, Ukraine (GADM v4.1 polygon, ≈25,500 km²).
 
 Two features of the treated unit matter for interpretation. First, the mapped flood covered at most about 564 km² of the oblast (Section 4.1), roughly 2% of its area. Second, the southern part of the former reservoir lies inside the oblast: the pre-breach water extent upstream of the dam inside the polygon is about 556 km² (UNOSAT water-extent layer, 3–5 June 2023). Water pixels are masked in the NDVI extraction (Section 3.3), so the drained bed enters the series as it becomes land. The NDVI outcome therefore averages downstream flooding, vegetation change on the former reservoir bed, any loss of reservoir-fed irrigation, and war effects unrelated to the dam.
 
-![](outputs/plots/study_area_overview.png)
+![](../outputs/plots/study_area_overview.png)
 
 *Figure 1. Treatment zone and the four Romanian control counties (GADM v4.1). Star: Kakhovka Dam.*
 
@@ -111,11 +111,11 @@ UNOSAT's layers map the downstream flood on six dates with four sensors (Table 1
 | 21 June | Sentinel-1 | 21.2 | 16.0 | 10,788 |
 | 6–9 June composite | multiple | 617.0 | 564.0 | — |
 
-![](outputs/plots/flood_extent_map.png)
+![](../outputs/plots/flood_extent_map.png)
 
 *Figure 2. UNOSAT flood-extent layers for 6, 9 and 21 June 2023.*
 
-![](outputs/plots/flood_hydrograph.png)
+![](../outputs/plots/flood_hydrograph.png)
 
 *Figure 3. Flood extent in each UNOSAT layer, by sensor. Points are separate observations.*
 
@@ -125,7 +125,7 @@ Sentinel-2 true-colour mosaics of the lower Dnipro before (April–May 2023) and
 
 Monthly NDVI in Kherson and Tulcea is similar in spring but diverges in summer and autumn, when Tulcea stays greener (Figure 4). The divergence widens after June 2023 and is largest in the 2024 growing season, when Kherson's June–November NDVI stayed between about 0.26 and 0.34 while Tulcea's stayed above 0.45. The primary DiD estimate is −0.108 NDVI (95% CI −0.209 to −0.007; HAC p = 0.037; classical p = 0.001), equal to 29% of Kherson's pre-event mean NDVI — a scale reference, not a measured loss of vegetation.
 
-![](outputs/plots/ndvi_comparison.png)
+![](../outputs/plots/ndvi_comparison.png)
 
 *Figure 4. Monthly mean NDVI, Kherson Oblast and Tulcea County (cloud- and water-masked monthly median composites).*
 
@@ -137,7 +137,7 @@ Allowing each zone its own seasonal cycle reduces the estimate to −0.069 (95% 
 
 The placebo with a fake event date of June 2022 returns +0.012 (95% CI −0.086 to 0.109; p = 0.802): no comparable shift appears a year earlier. Restricting the window to January 2023 onward gives a larger estimate, −0.186 (95% CI −0.280 to −0.092; p = 0.001), but that window's own placebo, a fake date of March 2023 within January–May 2023, is also significant (−0.103; p = 0.004). With five months the placebo is fragile, but it means the narrowed estimate cannot be read as a cleaner measure of the event (Figure 5).
 
-![](outputs/plots/robustness_check.png)
+![](../outputs/plots/robustness_check.png)
 
 *Figure 5. Primary and narrowed-baseline estimates with their placebo tests; classical and HAC 95% confidence intervals.*
 
@@ -147,7 +147,7 @@ After the event, the gap is significantly more negative than in the reference qu
 
 Before the event, four of five quarters also differ significantly from the reference quarter: January–February 2022 (−0.038, p = 0.018), March–May 2022 (−0.050, p = 0.001), June–August 2022 (−0.158, p < 0.001) and December 2022–February 2023 (+0.080, p < 0.001). Part of the post-event pattern is therefore seasonal: June–August is strongly negative in 2022 as well. The comparison that the seasonal pattern cannot explain is between the same seasons in different years: the summer–autumn gap was −0.158 and −0.054 in 2022, −0.137 and −0.156 in 2023, and −0.245 and −0.236 in 2024. The decline grows in the second post-event season rather than appearing as a single step in June 2023. The pre-event deviations nonetheless violate the parallel-trends assumption on which the DiD estimate rests; the pre-existing conflict in Kherson may explain them, but it does not remove the violation.
 
-![](outputs/plots/event_study.png)
+![](../outputs/plots/event_study.png)
 
 *Figure 6. Quarterly event study of the Kherson–Tulcea NDVI gap; 95% HAC confidence intervals; † survives Bonferroni correction.*
 
@@ -155,7 +155,7 @@ Before the event, four of five quarters also differ significantly from the refer
 
 Against the mean of all four Romanian counties the estimate is −0.071 (95% CI −0.132 to −0.011; p = 0.022), and −0.060 with zone-specific seasonality (p = 0.004); the June 2022 placebo is +0.031 (p = 0.223). Against individual controls the estimate is −0.108 for Tulcea (p = 0.037), −0.077 for Galați (p = 0.007), −0.101 for Brăila (p = 0.003) and +0.001 for Constanța (p = 0.98) (Figure 7). Three of four comparisons agree in sign and significance; Constanța, the most coastal and urbanised control, shows no difference.
 
-![](outputs/plots/control_panel_comparison.png)
+![](../outputs/plots/control_panel_comparison.png)
 
 *Figure 7. Kherson against each control county and the four-county mean; 95% HAC confidence intervals.*
 
@@ -163,7 +163,7 @@ Against the mean of all four Romanian counties the estimate is −0.071 (95% CI 
 
 When each of the five units is treated in turn against the other four at the real June 2023 date, Kherson's estimate (−0.071) is almost exactly matched by Constanța's (−0.073), and it is the second largest in absolute value, after Constanța (Figure 8). The exact randomization p-value is 0.40, one-sided and two-sided. By this test, a post-June-2023 decline of Kherson's size relative to the other units is not unusual among these five units.
 
-![](outputs/plots/placebo_in_space.png)
+![](../outputs/plots/placebo_in_space.png)
 
 *Figure 8. Placebo in space: each unit assigned "treated" status against the other four.*
 

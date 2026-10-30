@@ -62,7 +62,8 @@ def test_checksum():
     tmp = tempfile.mkdtemp()
     try:
         os.makedirs(os.path.join(tmp, "v2"))
-        shutil.copy(os.path.join(root, R2L.ADDENDUM), tmp)
+        os.makedirs(os.path.join(tmp, os.path.dirname(R2L.ADDENDUM)), exist_ok=True)
+        shutil.copy(os.path.join(root, R2L.ADDENDUM), os.path.join(tmp, R2L.ADDENDUM))
         shutil.copy(os.path.join(root, R2L.DEVIATIONS), os.path.join(tmp, "v2"))
         cwd = os.getcwd()
         os.chdir(tmp)

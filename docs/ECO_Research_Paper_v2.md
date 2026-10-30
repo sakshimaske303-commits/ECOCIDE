@@ -253,7 +253,7 @@ The irrigation model has pixel effects, year effects by oblast and by occupation
 
 ## 5. Results
 
-![](outputs/v2/figures/s2_fig1_exposure_map.png)
+![](../outputs/v2/figures/s2_fig1_exposure_map.png)
 
 *Figure 1. Flooded land, reservoir bed, canal zone (K), comparison zone (O) and placebo floodplains on the 231 m grid.*
 
@@ -296,7 +296,7 @@ The result is **not supported**: I found no loss of greenness on flooded land. T
 - Without matching (7,681 pixels) the estimate is +0.012 (p = 0.13).
 - Wetlands still decline (−0.061, 95% CI −0.081 to −0.041; 4,258 pixels).
 
-![](outputs/v2/figures/s2_fig2_h1_event_study.png)
+![](../outputs/v2/figures/s2_fig2_h1_event_study.png)
 
 *Figure 2. Flooded minus matched unflooded land, each year compared with 2021. Left: planned matching (148 pixels). Right: matching without the size limit, not in the plan (8,446 pixels). Bars are 95% confidence intervals.*
 
@@ -311,7 +311,7 @@ The result is **not supported**: I found no loss of greenness on flooded land. T
 
 The result is **not supported**. Three ways of choosing comparison land — past greenness, terrain and land cover, or none — agree that the flood left no lasting loss of July–October greenness outside the wetlands.
 
-![](outputs/v2/figures/s2_fig8_r2_flood.png)
+![](../outputs/v2/figures/s2_fig8_r2_flood.png)
 
 *Figure 8. Second revision, flood: flooded minus comparison land, each year compared with the 2016–2018 mean. Red: matched on height above the river and land cover. Grey: all flooded pixels, not matched. Bars are 95% confidence intervals.*
 
@@ -360,19 +360,19 @@ Year by year against 2016–2018 (Figure 9), the contrast was within ±0.02 in 2
 
 In substance, the second revision shows a loss of summer greenness on formerly irrigated fields that is large, starts with the breach and is not explained by weather. What it cannot show is how much of this loss would have happened anyway in a war zone where farming collapsed, because no irrigated land outside the canal system is available for comparison. The July–October window also misses the move to winter crops reported by Baber et al. (2026a).
 
-![](outputs/v2/figures/s2_fig9_r2_irrigation.png)
+![](../outputs/v2/figures/s2_fig9_r2_irrigation.png)
 
-![](outputs/v2/figures/s2_fig11_irrigated_fields.png)
+![](../outputs/v2/figures/s2_fig11_irrigated_fields.png)
 
 *Figure 11. Irrigated fields of Baber et al. (2026b) on the 231 m grid: mean share of each pixel mapped as irrigated in 2019–2021 (left) and in 2024 (right). The 2024 map is much less accurate than the earlier ones (Baber et al., 2026a).*
 
 *Figure 9. Second revision, irrigation: canal-fed irrigated minus never-irrigated cropland (Baber et al., 2026b), each year compared with the 2016–2018 mean, with July–October rainfall in the canal zone below. Bars are 95% confidence intervals.*
 
-![](outputs/v2/figures/s2_fig3_h2_event_study.png)
+![](../outputs/v2/figures/s2_fig3_h2_event_study.png)
 
 *Figure 3. Irrigated minus rainfed farmland, canal zone minus comparison zone, each year compared with 2021 (main plan). Bars are 95% confidence intervals.*
 
-![](outputs/v2/figures/s2_fig4_randomization_inference.png)
+![](../outputs/v2/figures/s2_fig4_randomization_inference.png)
 
 *Figure 4. Placebo tests. Left: flood estimate (red line) against 50 placebo floodplains. Right: irrigation estimate against six placebo oblasts.*
 
@@ -390,7 +390,7 @@ This is a description; there is nothing to compare it with. The revision keeps o
 
 **Sentinel-2 check (second revision).** On the 231 km² of bed where both data sets can be compared, MODIS shows 211 km² with July–October NDVI above 0.3 in 2024 and Sentinel-2 (61 scenes, August median, 23 m) shows 172 km² (ratio 0.82). The check covers only the part of the bed that the 2023 land-cover map calls land.
 
-![](outputs/v2/figures/s2_fig5_h3_reservoir_bed.png)
+![](../outputs/v2/figures/s2_fig5_h3_reservoir_bed.png)
 
 *Figure 5. The former Kakhovka reservoir bed: mean July–October NDVI and area with NDVI above 0.3.*
 
@@ -425,15 +425,15 @@ In the revision, the water rule removes the whole reservoir bed by design, becau
 
 Previously irrigated cropland changed by −0.20 relative to comparison cropland and, though only 4% of the area, accounts for 39% of the oblast's change. Cropland that was never irrigated did not change at all. Because the irrigation contribution's interval excludes zero, the pre-registered rule reports H4 as more than descriptive; but the same caveat as for H2 applies, and the reservoir bed is not part of this total.
 
-![](outputs/v2/figures/s2_fig10_r2_h4.png)
+![](../outputs/v2/figures/s2_fig10_r2_h4.png)
 
 *Figure 10. Second revision: contributions to Kherson Oblast's change in July–October NDVI from 2016–2018 to 2023–2024, relative to the comparison area, with 95% block-bootstrap intervals.*
 
-![](outputs/v2/figures/s2_fig6_h4_decomposition.png)
+![](../outputs/v2/figures/s2_fig6_h4_decomposition.png)
 
 *Figure 6. Contributions to Kherson Oblast's change in July–October NDVI from 2021 to 2024, compared with zone O.*
 
-![](outputs/v2/figures/s2_fig7_revision_event_studies.png)
+![](../outputs/v2/figures/s2_fig7_revision_event_studies.png)
 
 *Figure 7. Year-by-year results under the registered revision, compared with 2021. Left: flood, matched. Centre: flood, not matched. Right: irrigation.*
 

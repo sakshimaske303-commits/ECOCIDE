@@ -8,7 +8,7 @@ from scipy.stats import f as fdist
 
 import v2lib as L
 
-ADDENDUM = "ANALYSIS_PLAN_v2_ADDENDUM_2.md"
+ADDENDUM = "docs/preregistration/ANALYSIS_PLAN_v2_ADDENDUM_2.md"
 DEVIATIONS = "v2/DEVIATIONS.md"
 BASE = [2016, 2017, 2018]
 DEF = [2019, 2020, 2021]
