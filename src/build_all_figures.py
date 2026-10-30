@@ -1,7 +1,13 @@
-"""Regenerates every figure from the current data and outputs/model_results.json.
-Run generate_model_results.py first."""
+"""Regenerates every Study 1 figure from the current data and outputs/model_results.json.
+Run from the repository root, after src/generate_model_results.py:
+
+    python src/build_all_figures.py
+"""
+import os
 import subprocess
 import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 SCRIPTS = [
     "flood_progression.py",
@@ -20,4 +26,4 @@ SCRIPTS = [
 
 for s in SCRIPTS:
     print(f"--- {s}")
-    subprocess.run([sys.executable, s], check=True)
+    subprocess.run([sys.executable, os.path.join(HERE, s)], check=True)

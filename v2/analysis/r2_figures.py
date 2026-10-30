@@ -16,7 +16,7 @@ import numpy as np  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "src"))
 import eco_style as S  # noqa: E402
 
 OUT = "outputs/v2"

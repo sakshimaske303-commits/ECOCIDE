@@ -54,7 +54,7 @@ python v2/02_download_worldcover.py       # ~20–60 minutes
 
 ```powershell
 python v2/04_download_osm_canals.py
-python download_gadm.py                   # oblast and raion boundaries (GADM v4.1; not stored in the repository)
+python src/download_gadm.py                   # oblast and raion boundaries (GADM v4.1; not stored in the repository)
 ```
 
 ## Step 5 — check the downloads

@@ -68,8 +68,8 @@ cd ECOCIDE
 pip install -r requirements.txt
 
 # Boundaries (GADM may not be redistributed, so they are downloaded, not stored here)
-python download_gadm.py
-python extract_boundaries.py && python extract_control_zone_boundaries.py && python export_zone_geometries.py
+python src/download_gadm.py
+python src/extract_boundaries.py && python src/extract_control_zone_boundaries.py && python src/export_zone_geometries.py
 
 # Study 2 (main): first the downloads in v2/README_v2.md, then
 pip install -r v2/requirements_v2.txt
@@ -82,16 +82,16 @@ python tests/test_v2lib.py                    # checks of the estimation engine
 python tests/test_r2lib.py                    # checks of the Revision 2 helpers and the addendum checksum
 
 # Study 1 (background)
-python generate_model_results.py      # all statistics -> outputs/model_results.json (reads data/ndvi_v3)
-python flood_progression.py           # UNOSAT areas  -> outputs/flood_extent_table.csv
-python build_all_figures.py           # every Study 1 figure -> outputs/plots
+python src/generate_model_results.py  # all statistics -> outputs/model_results.json (reads data/ndvi_v3)
+python src/flood_progression.py       # UNOSAT areas  -> outputs/flood_extent_table.csv
+python src/build_all_figures.py       # every Study 1 figure -> outputs/plots
 
 cd dashboard && streamlit run app.py
 ```
 
-Individual Study 1 scripts (`did_model.py`, `placebo_test.py`, `event_study.py`, `placebo_in_space_test.py`, …) print the same numbers; all use the shared engine in `eco_core.py`.
+All commands run from the repository root. Individual Study 1 scripts in `src/` (`did_model.py`, `placebo_test.py`, `event_study.py`, `placebo_in_space_test.py`, …) print the same numbers; all use the shared engine `src/eco_core.py`.
 
-**Study 1 NDVI versions.** `data/ndvi_v3` (current, `download_ndvi_polygon_v3.py`): polygon, common 0.002° grid, cloud/shadow/cirrus/snow/water masked, per-pixel monthly median. `data/ndvi_v2` (`download_ndvi_polygon.py`): polygon, default 256 × 256 sampling grid, water not masked, single scene per month. `data/ndvi_old_bbox`: original bounding-box extraction. Any version can be analysed with `ECO_NDVI_DIR=<folder> python generate_model_results.py`. Re-extraction needs Sentinel Hub credentials in `.env` (see `.env.example`).
+**Study 1 NDVI versions.** `data/ndvi_v3` (current, `src/download_ndvi_polygon_v3.py`): polygon, common 0.002° grid, cloud/shadow/cirrus/snow/water masked, per-pixel monthly median. `data/ndvi_v2` (`src/download_ndvi_polygon.py`): polygon, default 256 × 256 sampling grid, water not masked, single scene per month. `data/ndvi_old_bbox`: original bounding-box extraction. Any version can be analysed with `ECO_NDVI_DIR=<folder> python src/generate_model_results.py`. Re-extraction needs Sentinel Hub credentials in `.env` (see `.env.example`).
 
 ## Repository structure
 
@@ -105,13 +105,13 @@ ECOCIDE/
 │   ├── DEVIATIONS.md, README_v2.md
 │   └── analysis/                # a1–a8 (plan), r1_* (revision 1), r2_* (revision 2), x1 (exploratory checks), v2lib.py (engine)
 ├── tests/                       # checks of the Study 2 engine and the Revision 2 helpers
-├── eco_core.py                  # Study 1 estimation engine (gap-series DiD, HAC, event study)
-├── eco_flood.py / eco_style.py  # UNOSAT layer definitions / figure style
-├── generate_model_results.py    # runs every Study 1 model -> outputs/model_results.json
-├── build_all_figures.py         # regenerates Study 1 figures
-├── did_model*.py, placebo*.py, event_study*.py, …   # individual Study 1 checks (thin wrappers on eco_core)
-├── map*.py, build_*.py          # Study 1 figures, interactive plots, folium map, figure PDF
-├── download_*.py                # Study 1 data acquisition (Sentinel Hub)
+├── src/                         # Study 1 and shared scripts (see src/README.md)
+│   ├── eco_core.py              # Study 1 estimation engine (gap-series DiD, HAC, event study)
+│   ├── eco_flood.py, eco_style.py   # UNOSAT layer definitions, figure style (also used by Study 2 figures)
+│   ├── generate_model_results.py    # runs every Study 1 model -> outputs/model_results.json
+│   ├── did_model*.py, placebo*.py, event_study*.py, …   # individual Study 1 checks (thin wrappers on eco_core)
+│   ├── map*.py, build_*.py      # Study 1 figures, interactive plots, flood web map, figure PDF
+│   └── download_*.py, extract_*.py   # GADM boundaries and Study 1 Sentinel-2 downloads
 ├── data/                        # boundaries, Study 1 NDVI, UNOSAT zip, small Study 2 inputs (large ones are regenerated)
 ├── outputs/                     # model_results.json, flood table, plots, maps; outputs/v2 for Study 2
 ├── dashboard/                   # Streamlit app
@@ -132,7 +132,7 @@ ECOCIDE/
 | War events and territorial control | VIINA (Zhukov, 2023) |
 | Flood extent | UNITAR/UNOSAT, FL20230606UKR (Sentinel-1, Sentinel-2, Sentinel-3, ICEYE layers; preliminary) |
 | NDVI and true-colour imagery (Study 1) | Copernicus Sentinel-2 L2A via Sentinel Hub (Copernicus Data Space Ecosystem) |
-| Administrative boundaries | GADM v4.1 (academic and non-commercial use; not redistributed here — `download_gadm.py`) |
+| Administrative boundaries | GADM v4.1 (academic and non-commercial use; not redistributed here — `src/download_gadm.py`) |
 
 ## Declarations
 

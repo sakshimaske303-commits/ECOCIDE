@@ -12,7 +12,7 @@ from matplotlib.lines import Line2D  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "src"))
 import v2lib as L  # noqa: E402
 import eco_style as S  # noqa: E402
 
