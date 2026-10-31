@@ -2,13 +2,13 @@
 
 *Separating flood, reservoir and irrigation effects with satellite data*
 
-[![EarthArXiv](https://img.shields.io/badge/EarthArXiv-Preprint%20v1%20(superseded%20results)-B7410E.svg)](https://eartharxiv.org/repository/view/14827/)
+[![EarthArXiv](https://img.shields.io/badge/EarthArXiv-Preprint%20v1%20(superseded%20results)-B7410E.svg)](https://eartharxiv.org/repository/view/14827/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23828462.svg)](https://doi.org/10.5281/zenodo.23828462)
 
 **Research question.** Which physical pathway of the Kakhovka Dam's destruction (6 June 2023) — the flood below the dam, the draining of the reservoir, or the loss of water for the irrigation canals — left a detectable mark on vegetation, when exposed land is compared with similar land in the same war zone?
 
 The main analysis is **Study 2**: a pre-registered, pixel-level analysis of MODIS NDVI. **Study 1**, an earlier comparison of the whole of Kherson Oblast with Romanian counties, is kept as the background study that motivated it.
 
-> **Version note.** EarthArXiv preprint v1 (5 September 2026) reports an earlier version of Study 1 (bounding-box NDVI, stacked-panel standard errors) with a significant result (−0.0703, p = 0.022). That result is superseded.
+> **Version note.** EarthArXiv preprint v1 (5 September 2026) reports an earlier version of Study 1 (bounding-box NDVI, stacked-panel standard errors) with a significant result (−0.0703, p = 0.022). That result is superseded. The current version (3.0.0: code, data and paper) is archived on Zenodo, DOI [10.5281/zenodo.23828462](https://doi.org/10.5281/zenodo.23828462).
 
 ## Study 2 (main result): pre-registered, exposure-based pixel analysis
 

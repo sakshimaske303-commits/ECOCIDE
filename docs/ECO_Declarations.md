@@ -4,7 +4,7 @@
 
 Sakshi D. Maske · Independent Geospatial Researcher · ORCID [0009-0002-5683-5966](https://orcid.org/0009-0002-5683-5966)
 
-Version 3.0.0 · Code and data: [github.com/sakshimaske303-commits/ECOCIDE](https://github.com/sakshimaske303-commits/ECOCIDE)  
+Version 3.0.0 · Code and data: [github.com/sakshimaske303-commits/ECOCIDE](https://github.com/sakshimaske303-commits/ECOCIDE) · Zenodo DOI [10.5281/zenodo.23828462](https://doi.org/10.5281/zenodo.23828462)  
 Earlier, superseded analysis: [EarthArXiv preprint v1](https://eartharxiv.org/repository/view/14827/)
 
 ## Highlights

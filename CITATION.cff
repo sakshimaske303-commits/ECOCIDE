@@ -7,6 +7,7 @@ authors:
     given-names: "Sakshi D."
 repository-code: "https://github.com/sakshimaske303-commits/ECOCIDE"
 url: "https://github.com/sakshimaske303-commits/ECOCIDE"
+doi: "10.5281/zenodo.23828462"
 abstract: >-
   Code, analysis plans and results for a pre-registered, pixel-level test of
   the vegetation effects of the Kakhovka Dam destruction (6 June 2023) using
@@ -33,6 +34,10 @@ keywords:
   - Kakhovka Dam
   - NDVI
   - geospatial analysis
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23828462"
+    description: "Zenodo archive of version 3.0.0 (code, data and paper)"
 license:
   - MIT
   - CC-BY-4.0
