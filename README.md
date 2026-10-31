@@ -31,13 +31,13 @@ The NDVI-based irrigation proxy used in the plan and revision 1 agreed with the 
 
 | Document | Contents |
 |---|---|
-| [`ECO_Research_Paper_v2.md`](./docs/ECO_Research_Paper_v2.md) | **Main paper (Study 2)**: question, data, methods, results, limitations |
-| [`ECO_Executive_Summary.md`](./docs/ECO_Executive_Summary.md) | Two-page summary of Study 2 |
+| [`ECO_Research_Paper_v2.md`](./docs/ECO_Research_Paper_v2.md) · [PDF](./docs/ECO_Research_Paper_v2.pdf) | **Main paper (Study 2)**: question, data, methods, results, limitations |
+| [`ECO_Executive_Summary.md`](./docs/ECO_Executive_Summary.md) · [PDF](./docs/ECO_Executive_Summary.pdf) | Two-page summary of Study 2 |
 | [`ANALYSIS_PLAN_v2.md`](./docs/preregistration/ANALYSIS_PLAN_v2.md), [`ADDENDUM_1`](./docs/preregistration/ANALYSIS_PLAN_v2_ADDENDUM_1.md), [`ADDENDUM_2`](./docs/preregistration/ANALYSIS_PLAN_v2_ADDENDUM_2.md), [`v2/DEVIATIONS.md`](./v2/DEVIATIONS.md) | Pre-registered plan, two registered revisions, and every deviation |
 | [`RESEARCH_COMPLETION_PLAN.md`](./docs/preregistration/RESEARCH_COMPLETION_PLAN.md) | The bounded plan for the second revision and its stopping rules |
-| [`ECO_Research_Paper.md`](./docs/ECO_Research_Paper.md) | Study 1 paper (background study: Kherson Oblast vs Romanian counties) |
+| [`ECO_Research_Paper.md`](./docs/ECO_Research_Paper.md) · [PDF](./docs/ECO_Research_Paper.pdf) | Study 1 paper (background study: Kherson Oblast vs Romanian counties) |
 | [`ECO_RESULTS_RECONCILIATION.md`](./docs/ECO_RESULTS_RECONCILIATION.md) | Every headline number, old vs current, and which script produces it |
-| [`ECO_Development_Log.md`](./docs/ECO_Development_Log.md) | Chronological research diary (historical entries describe the state at that time) |
+| [`ECO_Development_Log.md`](./docs/ECO_Development_Log.md) · [PDF](./docs/ECO_Development_Log.pdf) | Chronological research diary (historical entries describe the state at that time) |
 | [`ECO_Declarations.pdf`](./docs/ECO_Declarations.pdf) | Declarations: authorship, funding, pre-registration and deviations, data and licences, earlier versions, use of AI tools |
 
 ## Study 1 (background): Kherson Oblast vs Romanian counties
